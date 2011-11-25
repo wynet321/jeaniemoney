@@ -9,11 +9,25 @@ using System.Windows.Forms;
 
 namespace JeanieMoney.Forms
 {
-    public partial class Main : Form
+    public partial class formMain : Form
     {
-        public Main()
+        public formMain()
         {
             InitializeComponent();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void formMain_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'jeanieMoneyDataSet.journal_record' table. You can move, or remove it, as needed.
+            this.journal_recordTableAdapter.Fill(this.jeanieMoneyDataSet.journal_record);
+            // TODO: This line of code loads data into the 'jeanieMoneyDataSet.journal_record' table. You can move, or remove it, as needed.
+            this.journal_recordTableAdapter.Fill(this.jeanieMoneyDataSet.journal_record);
+            
         }
     }
 }

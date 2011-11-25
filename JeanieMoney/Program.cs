@@ -15,7 +15,7 @@ namespace JeanieMoney
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.Main());
+            Application.Run(new Forms.formMain());
         }
     }
 }
