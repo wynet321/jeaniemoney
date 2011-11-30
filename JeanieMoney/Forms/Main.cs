@@ -29,5 +29,11 @@ namespace JeanieMoney.Forms
             this.journal_recordTableAdapter.Fill(this.jeanieMoneyDataSet.journal_record);
             
         }
+
+        private void toolStripButtonRecordInput_Click(object sender, EventArgs e)
+        {
+            RecordInput ri = new RecordInput();
+            ri.ShowDialog();
+        }
     }
 }
