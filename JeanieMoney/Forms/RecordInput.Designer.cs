@@ -36,7 +36,7 @@
             this.radioButtonIn = new System.Windows.Forms.RadioButton();
             this.radioButtonOut = new System.Windows.Forms.RadioButton();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerRecordInput = new System.Windows.Forms.DateTimePicker();
             this.comboBoxPayer = new System.Windows.Forms.ComboBox();
             this.labelPayer = new System.Windows.Forms.Label();
             this.comboBoxLocation = new System.Windows.Forms.ComboBox();
@@ -62,7 +62,7 @@
             this.textBoxMoney.Location = new System.Drawing.Point(132, 15);
             this.textBoxMoney.Name = "textBoxMoney";
             this.textBoxMoney.Size = new System.Drawing.Size(100, 20);
-            this.textBoxMoney.TabIndex = 1;
+            this.textBoxMoney.TabIndex = 2;
             // 
             // labelCategory
             // 
@@ -89,7 +89,7 @@
             this.groupBoxInOut.Location = new System.Drawing.Point(12, 18);
             this.groupBoxInOut.Name = "groupBoxInOut";
             this.groupBoxInOut.Size = new System.Drawing.Size(59, 69);
-            this.groupBoxInOut.TabIndex = 22;
+            this.groupBoxInOut.TabIndex = 0;
             this.groupBoxInOut.TabStop = false;
             this.groupBoxInOut.Text = "InOut";
             // 
@@ -99,18 +99,18 @@
             this.radioButtonIn.Location = new System.Drawing.Point(6, 42);
             this.radioButtonIn.Name = "radioButtonIn";
             this.radioButtonIn.Size = new System.Drawing.Size(34, 17);
-            this.radioButtonIn.TabIndex = 1;
-            this.radioButtonIn.TabStop = true;
+            this.radioButtonIn.TabIndex = 0;
             this.radioButtonIn.Text = "In";
             this.radioButtonIn.UseVisualStyleBackColor = true;
             // 
             // radioButtonOut
             // 
             this.radioButtonOut.AutoSize = true;
+            this.radioButtonOut.Checked = true;
             this.radioButtonOut.Location = new System.Drawing.Point(6, 19);
             this.radioButtonOut.Name = "radioButtonOut";
             this.radioButtonOut.Size = new System.Drawing.Size(42, 17);
-            this.radioButtonOut.TabIndex = 0;
+            this.radioButtonOut.TabIndex = 1;
             this.radioButtonOut.TabStop = true;
             this.radioButtonOut.Text = "Out";
             this.radioButtonOut.UseVisualStyleBackColor = true;
@@ -128,14 +128,15 @@
             this.comboBoxCategory.Location = new System.Drawing.Point(132, 51);
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(100, 21);
-            this.comboBoxCategory.TabIndex = 23;
+            this.comboBoxCategory.TabIndex = 4;
             // 
-            // dateTimePicker1
+            // dateTimePickerRecordInput
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(280, 15);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(144, 20);
-            this.dateTimePicker1.TabIndex = 24;
+            this.dateTimePickerRecordInput.Location = new System.Drawing.Point(280, 15);
+            this.dateTimePickerRecordInput.Name = "dateTimePickerRecordInput";
+            this.dateTimePickerRecordInput.Size = new System.Drawing.Size(144, 20);
+            this.dateTimePickerRecordInput.TabIndex = 3;
+            this.dateTimePickerRecordInput.Value = new System.DateTime(2011, 12, 6, 0, 0, 0, 0);
             // 
             // comboBoxPayer
             // 
@@ -150,7 +151,7 @@
             this.comboBoxPayer.Location = new System.Drawing.Point(280, 51);
             this.comboBoxPayer.Name = "comboBoxPayer";
             this.comboBoxPayer.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxPayer.TabIndex = 26;
+            this.comboBoxPayer.TabIndex = 5;
             // 
             // labelPayer
             // 
@@ -174,7 +175,7 @@
             this.comboBoxLocation.Location = new System.Drawing.Point(70, 101);
             this.comboBoxLocation.Name = "comboBoxLocation";
             this.comboBoxLocation.Size = new System.Drawing.Size(282, 21);
-            this.comboBoxLocation.TabIndex = 28;
+            this.comboBoxLocation.TabIndex = 6;
             // 
             // labelLocation
             // 
@@ -190,16 +191,17 @@
             this.buttonReset.Location = new System.Drawing.Point(199, 164);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 23);
-            this.buttonReset.TabIndex = 29;
+            this.buttonReset.TabIndex = 9;
             this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // buttonDetail
             // 
             this.buttonDetail.Location = new System.Drawing.Point(371, 99);
             this.buttonDetail.Name = "buttonDetail";
             this.buttonDetail.Size = new System.Drawing.Size(75, 23);
-            this.buttonDetail.TabIndex = 30;
+            this.buttonDetail.TabIndex = 7;
             this.buttonDetail.Text = "Detail";
             this.buttonDetail.UseVisualStyleBackColor = true;
             // 
@@ -208,7 +210,7 @@
             this.buttonOK.Location = new System.Drawing.Point(102, 164);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOK.TabIndex = 31;
+            this.buttonOK.TabIndex = 8;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             // 
@@ -217,9 +219,10 @@
             this.buttonCancel.Location = new System.Drawing.Point(296, 164);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 32;
+            this.buttonCancel.TabIndex = 10;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // RecordInput
             // 
@@ -234,7 +237,7 @@
             this.Controls.Add(this.labelLocation);
             this.Controls.Add(this.comboBoxPayer);
             this.Controls.Add(this.labelPayer);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePickerRecordInput);
             this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.groupBoxInOut);
             this.Controls.Add(this.label1Date);
@@ -245,6 +248,7 @@
             this.Name = "RecordInput";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RecordInput";
+            this.Load += new System.EventHandler(this.RecordInput_Load);
             this.groupBoxInOut.ResumeLayout(false);
             this.groupBoxInOut.PerformLayout();
             this.ResumeLayout(false);
@@ -262,7 +266,7 @@
         private System.Windows.Forms.RadioButton radioButtonIn;
         private System.Windows.Forms.RadioButton radioButtonOut;
         private System.Windows.Forms.ComboBox comboBoxCategory;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerRecordInput;
         private System.Windows.Forms.ComboBox comboBoxPayer;
         private System.Windows.Forms.Label labelPayer;
         private System.Windows.Forms.ComboBox comboBoxLocation;

@@ -15,5 +15,28 @@ namespace JeanieMoney.Forms
         {
             InitializeComponent();
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void RecordInput_Load(object sender, EventArgs e)
+        {
+            Init();
+        }
+
+        private void Init()
+        {
+            dateTimePickerRecordInput.Value = DateTime.Now;
+            radioButtonOut.Select();
+            textBoxMoney.Clear();
+
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            Init();
+        }
     }
 }
