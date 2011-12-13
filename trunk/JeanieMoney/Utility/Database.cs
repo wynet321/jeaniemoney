@@ -67,7 +67,7 @@ namespace JeanieMoney.Utility
             localconnection.Close();
             return affectedRows;
         }
-        public static DataTable execQuery(string command)
+        public static DataTable getDataTable(string command)
         {
             DbConnection localConnection = getConnection();
             DbCommand localCommand = connection.CreateCommand();
@@ -79,7 +79,7 @@ namespace JeanieMoney.Utility
             return dataTable;
         }
 
-        public static object execQuery(string command)
+        public static object getValue(string command)
         {
             DbConnection localConnection = getConnection();
             DbCommand localCommand = connection.CreateCommand();
