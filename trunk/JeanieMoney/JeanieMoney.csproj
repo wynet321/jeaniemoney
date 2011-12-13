@@ -95,6 +95,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Database.cs" />
+    <Compile Include="Utility\ProviderName.cs" />
     <EmbeddedResource Include="Forms\CategoryConfig.resx">
       <DependentUpon>CategoryConfig.cs</DependentUpon>
     </EmbeddedResource>
