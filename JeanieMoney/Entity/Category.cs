@@ -16,7 +16,15 @@ namespace JeanieMoney.Entity
         private string pinyin { get; set; }
         public string Pinyin { get { return pinyin; } set { pinyin = value; } }
 
-        private string parent_id { get; set; }
-        public string Parent_id { get { return parent_id; } set { parent_id = value; } }
+        private string parentId { get; set; }
+        public string ParentId { get { return parentId; } set { parentId = value; } }
+
+        public void Category(string id,string name,string pinyin,string parentid)
+        {
+            this.id = id;
+            this.name = name;
+            this.pinyin = pinyin;
+            this.parentId = parentid;
+        }
     }
 }
