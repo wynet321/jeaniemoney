@@ -18,8 +18,8 @@ namespace JeanieMoney.Utility
                 dbProviderFactory = DbProviderFactories.GetFactory(ProviderName.getPIN("SQLSERVER"));
                 connection = dbProviderFactory.CreateConnection();
                 connection.ConnectionString = "Data Source=localhost\\sqlexpress;Initial Catalog=JeanieMoney;Integrated Security=True";
-                connection.Open();
             }
+            connection.Open();
             return connection;
         }
 
@@ -76,6 +76,7 @@ namespace JeanieMoney.Utility
             dbDataAdapter.SelectCommand = localCommand;
             DataTable dataTable = new DataTable();
             dbDataAdapter.Fill(dataTable);
+            localConnection.Close();
             return dataTable;
         }
 
@@ -84,6 +85,7 @@ namespace JeanieMoney.Utility
             DbConnection localConnection = getConnection();
             DbCommand localCommand = connection.CreateCommand();
             localCommand.CommandText = command;
+            localConnection.Close();
             return localCommand.ExecuteScalar();
         }
 
