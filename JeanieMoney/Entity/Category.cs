@@ -19,12 +19,6 @@ namespace JeanieMoney.Entity
         private string parentId { get; set; }
         public string ParentId { get { return parentId; } set { parentId = value; } }
 
-        public void Category(string id,string name,string pinyin,string parentid)
-        {
-            this.id = id;
-            this.name = name;
-            this.pinyin = pinyin;
-            this.parentId = parentid;
-        }
+        
     }
 }
