@@ -32,10 +32,10 @@ namespace JeanieMoney.Forms
 
         private void toolStripButtonRecordInput_Click(object sender, EventArgs e)
         {
-            //RecordInput ri = new RecordInput();
-            //ri.ShowDialog();
-            CategoryConfig cc = new CategoryConfig();
-            cc.ShowDialog();
+            RecordInput ri = new RecordInput();
+            ri.ShowDialog();
+            //CategoryConfig cc = new CategoryConfig();
+            //cc.ShowDialog();
         }
     }
 }

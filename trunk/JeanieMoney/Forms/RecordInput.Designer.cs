@@ -45,6 +45,8 @@
             this.buttonDetail = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.textBoxCategory = new System.Windows.Forms.TextBox();
+            this.textBoxPayer = new System.Windows.Forms.TextBox();
             this.groupBoxInOut.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,13 +119,7 @@
             // 
             // comboBoxCategory
             // 
-            this.comboBoxCategory.AutoCompleteCustomSource.AddRange(new string[] {
-            "abc",
-            "cba",
-            "dkls",
-            "fdsak"});
-            this.comboBoxCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCategory.FormattingEnabled = true;
             this.comboBoxCategory.Location = new System.Drawing.Point(132, 51);
             this.comboBoxCategory.Name = "comboBoxCategory";
@@ -213,6 +209,7 @@
             this.buttonOK.TabIndex = 8;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // buttonCancel
             // 
@@ -224,11 +221,29 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // textBoxCategory
+            // 
+            this.textBoxCategory.Location = new System.Drawing.Point(132, 51);
+            this.textBoxCategory.Name = "textBoxCategory";
+            this.textBoxCategory.Size = new System.Drawing.Size(83, 20);
+            this.textBoxCategory.TabIndex = 28;
+            this.textBoxCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCategory_KeyPress);
+            // 
+            // textBoxPayer
+            // 
+            this.textBoxPayer.Location = new System.Drawing.Point(281, 51);
+            this.textBoxPayer.Name = "textBoxPayer";
+            this.textBoxPayer.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPayer.TabIndex = 29;
+            this.textBoxPayer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPayer_KeyPress);
+            // 
             // RecordInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 216);
+            this.Controls.Add(this.textBoxPayer);
+            this.Controls.Add(this.textBoxCategory);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.buttonDetail);
@@ -275,5 +290,7 @@
         private System.Windows.Forms.Button buttonDetail;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.TextBox textBoxCategory;
+        private System.Windows.Forms.TextBox textBoxPayer;
     }
 }

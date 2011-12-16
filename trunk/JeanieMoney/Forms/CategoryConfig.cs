@@ -24,6 +24,20 @@ namespace JeanieMoney.Forms
             init();
         }
 
+        public CategoryConfig(string pinyin)
+        {
+            InitializeComponent();
+            categoryAction = new CategoryAction();
+            init();
+            textBoxPinyin.Text = pinyin;
+            textBoxPinyin.Enabled = false;
+            textBoxKeyword.Enabled = false;
+            listBoxCategory.Enabled = false;
+            buttonDelete.Enabled = false;
+            buttonReset.Enabled = false;
+            textBoxName.Select();
+        }
+
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -77,8 +91,7 @@ namespace JeanieMoney.Forms
             comboBoxParent.DisplayMember = "Name";
             comboBoxParent.ValueMember = "Id";
             comboBoxParent.DataSource = categoryList;
-            //if (0 < comboBoxParent.Items.Count)
-            //    comboBoxParent.SelectedIndex = 0;
+
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
