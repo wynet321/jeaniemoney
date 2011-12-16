@@ -68,12 +68,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\CategoryAction.cs" />
+    <Compile Include="Action\PayerAction.cs" />
     <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\Payer.cs" />
     <Compile Include="Forms\CategoryConfig.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CategoryConfig.Designer.cs">
       <DependentUpon>CategoryConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PayerConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PayerConfig.Designer.cs">
+      <DependentUpon>PayerConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
@@ -98,6 +106,9 @@
     <Compile Include="Utility\ProviderName.cs" />
     <EmbeddedResource Include="Forms\CategoryConfig.resx">
       <DependentUpon>CategoryConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PayerConfig.resx">
+      <DependentUpon>PayerConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

@@ -112,5 +112,21 @@ namespace JeanieMoney.Action
             }
             return categoryList;
         }
+
+        public List<Category> retrieveCategoryListOfLeafNodeByPinyin(string pinyin)
+        {
+            string SQL = "select id,name from category where id not in (select distinct parent_id from category where parent_id is not null) and pinyin like '"+pinyin+"%'";
+            DataTable dataTable = Database.getDataTable(SQL);
+            List<Category> categoryList = new List<Category>();
+            Category category;
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                category = new Category();
+                category.Id = dataRow.ItemArray[0].ToString();
+                category.Name = dataRow.ItemArray[1].ToString();
+                categoryList.Add(category);
+            }
+            return categoryList;
+        }
     }
 }
