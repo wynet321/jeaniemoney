@@ -64,6 +64,8 @@ namespace JeanieMoney.Forms
             {
                 textBoxName.Text = ((Category)listBoxCategory.SelectedItem).Name;
                 textBoxPinyin.Text = categoryListByPinyin.ElementAt(listBoxCategory.SelectedIndex).Pinyin;
+                radioButtonIn.Checked=((Category)listBoxCategory.SelectedItem).InOrOut=='1'?true:false;
+                radioButtonOut.Checked = !radioButtonIn.Checked;
                 categoryList = categoryAction.retrieveCategoryList();
                 Category category = new Category();
                 categoryList.Insert(0, category);
@@ -71,6 +73,8 @@ namespace JeanieMoney.Forms
                 comboBoxParent.ValueMember = "Id";
                 comboBoxParent.DataSource = categoryList;
                 comboBoxParent.SelectedValue = categoryListByPinyin.ElementAt(listBoxCategory.SelectedIndex).ParentId;
+                if (null == comboBoxParent.SelectedValue)
+                    comboBoxParent.SelectedIndex = 0;
             }
         }
 
@@ -91,6 +95,7 @@ namespace JeanieMoney.Forms
             comboBoxParent.DisplayMember = "Name";
             comboBoxParent.ValueMember = "Id";
             comboBoxParent.DataSource = categoryList;
+            radioButtonIn.Checked = true;
 
         }
 
@@ -120,6 +125,7 @@ namespace JeanieMoney.Forms
                 category.Name = textBoxName.Text;
                 category.ParentId = categoryList.ElementAt(comboBoxParent.SelectedIndex).Id;
                 category.Pinyin = textBoxPinyin.Text;
+                category.InOrOut = radioButtonIn.Checked ? '1' : '0';
                 if (categoryAction.updateCategoryById(category))
                 {
                     MessageBox.Show("OK");
@@ -143,6 +149,7 @@ namespace JeanieMoney.Forms
                 category.Name=textBoxName.Text;
                 category.ParentId=categoryList.ElementAt(comboBoxParent.SelectedIndex).Id;
                 category.Pinyin=textBoxPinyin.Text;
+                category.InOrOut = radioButtonIn.Checked?'1':'0';
                 if (categoryAction.createCategory(category))
                 {
                     MessageBox.Show("OK");

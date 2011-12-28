@@ -37,7 +37,7 @@ namespace JeanieMoney.Forms
             dateTimePickerRecordInput.Value = DateTime.Now;
             radioButtonOut.Select();
             textBoxMoney.Clear();
-            categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin("%");
+            categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin("%",radioButtonIn.Checked?'1':'0');
             comboBoxCategory.DisplayMember = "Name";
             comboBoxCategory.ValueMember = "Id";
             comboBoxCategory.DataSource = categoryList;
@@ -58,6 +58,7 @@ namespace JeanieMoney.Forms
 
         private void textBoxCategory_KeyPress(object sender, KeyPressEventArgs e)
         {
+            String category;
             if (e.KeyChar == (char)Keys.Enter)
             {
                 if (0 < comboBoxCategory.Items.Count)
@@ -69,7 +70,7 @@ namespace JeanieMoney.Forms
                     {
                         CategoryConfig cc = new CategoryConfig(textBoxCategory.Text);
                         cc.ShowDialog();
-                        categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(textBoxCategory.Text);
+                        categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(textBoxCategory.Text, radioButtonIn.Checked ? '1' : '0');
                         if (0 < categoryList.Count)
                         {
                             comboBoxCategory.DataSource = categoryList;
@@ -83,7 +84,8 @@ namespace JeanieMoney.Forms
             }
             else
             {
-                categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(textBoxCategory.Text + e.KeyChar.ToString());
+                category = textBoxCategory.Text.Trim();
+                categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(category, radioButtonIn.Checked ? '1' : '0');
                 comboBoxCategory.DataSource = categoryList;
                 if (0 < comboBoxCategory.Items.Count)
                 {
@@ -128,6 +130,11 @@ namespace JeanieMoney.Forms
                     comboBoxPayer.SelectedIndex = 0;
                 }
             }
+        }
+
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxCategory.Text = comboBoxCategory.Text;
         }
     }
 }
