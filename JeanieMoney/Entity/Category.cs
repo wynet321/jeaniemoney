@@ -16,6 +16,9 @@ namespace JeanieMoney.Entity
         private string pinyin { get; set; }
         public string Pinyin { get { return pinyin; } set { pinyin = value; } }
 
+        private char inorout { get; set; }
+        public char InOrOut { get { return inorout; } set { inorout = value; } }
+
         private string parentId { get; set; }
         public string ParentId { get { return parentId; } set { parentId = value; } }
 

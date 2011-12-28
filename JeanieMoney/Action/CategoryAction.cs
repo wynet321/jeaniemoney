@@ -14,9 +14,9 @@ namespace JeanieMoney.Action
         {
             string SQL;
             if (null == category.ParentId)
-                SQL = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Pinyin + "',null)";
+                SQL = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Pinyin + "','" + category.InOrOut + "',null)";
             else
-                SQL = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Pinyin + "','" + category.ParentId.Trim() + "')";
+                SQL = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Pinyin + "','" + category.InOrOut + "','" + category.ParentId.Trim() + "')";
             if (0 < Database.execCommand(SQL))
                 return true;
             return false;
@@ -27,8 +27,8 @@ namespace JeanieMoney.Action
             string SQL = "update category set ";
             if (0 > category.Id.Length)
                 return false;
-            SQL += "name='" + category.Name + "',pinyin='" + category.Pinyin + "',";
-            
+            SQL += "name='" + category.Name + "',pinyin='" + category.Pinyin + "',flag_in_out='"+category.InOrOut+"',";
+
             if (null != category.ParentId)
                 SQL += "parent_id='" + category.ParentId.Trim() + "'";
             else
@@ -51,13 +51,14 @@ namespace JeanieMoney.Action
 
         public Category retrieveCategoryById(string id)
         {
-            string SQL = "select id,name,parent_id,pinyin from category where id='" + id + "'";
+            string SQL = "select name,parent_id,pinyin,flag_in_out from category where id='" + id + "'";
             DataTable dataTable = Database.getDataTable(SQL);
             Category category = new Category();
             category.Id = id;
-            category.Name = dataTable.Rows[0].ItemArray[1].ToString();
-            category.ParentId = dataTable.Rows[0].ItemArray[2].ToString();
-            category.Pinyin = dataTable.Rows[0].ItemArray[3].ToString();
+            category.Name = dataTable.Rows[0].ItemArray[0].ToString();
+            category.ParentId = dataTable.Rows[0].ItemArray[1].ToString();
+            category.Pinyin = dataTable.Rows[0].ItemArray[2].ToString();
+            category.InOrOut = ((bool)dataTable.Rows[0].ItemArray[3]) ? '1' : '0';
             return category;
         }
 
@@ -79,7 +80,7 @@ namespace JeanieMoney.Action
 
         public List<Category> retrieveCategoryListByParentId(string parentId)
         {
-            string SQL = "select id,name,pinyin from category where parent_id='" + parentId + "'";
+            string SQL = "select id,name,pinyin,flag_in_out from category where parent_id='" + parentId + "'";
             DataTable dataTable = Database.getDataTable(SQL);
             List<Category> categoryList = new List<Category>();
             Category category;
@@ -90,6 +91,7 @@ namespace JeanieMoney.Action
                 category.Name = dataRow.ItemArray[1].ToString();
                 category.ParentId = parentId;
                 category.Pinyin = dataRow.ItemArray[2].ToString();
+                category.InOrOut = ((bool)dataTable.Rows[0].ItemArray[3]) ? '1' : '0';
                 categoryList.Add(category);
             }
             return categoryList;
@@ -97,7 +99,7 @@ namespace JeanieMoney.Action
 
         public List<Category> retrieveCategoryListByPinyin(string pinyin)
         {
-            string SQL = "select id,name,parent_id,pinyin from category where pinyin like '" + pinyin + "%'";
+            string SQL = "select id,name,parent_id,pinyin,flag_in_out from category where pinyin like '" + pinyin + "%'";
             DataTable dataTable = Database.getDataTable(SQL);
             List<Category> categoryList = new List<Category>();
             Category category;
@@ -108,14 +110,15 @@ namespace JeanieMoney.Action
                 category.Name = dataRow.ItemArray[1].ToString();
                 category.ParentId = dataRow.ItemArray[2].ToString();
                 category.Pinyin = dataRow.ItemArray[3].ToString();
+                category.InOrOut = ((bool)dataRow.ItemArray[4])?'1':'0';
                 categoryList.Add(category);
             }
             return categoryList;
         }
 
-        public List<Category> retrieveCategoryListOfLeafNodeByPinyin(string pinyin)
+        public List<Category> retrieveCategoryListOfLeafNodeByPinyin(string pinyin,char inorout)
         {
-            string SQL = "select id,name from category where id not in (select distinct parent_id from category where parent_id is not null) and pinyin like '"+pinyin+"%'";
+            string SQL = "select id,name from category where id not in (select distinct parent_id from category where parent_id is not null) and pinyin like '" + pinyin + "%' and flag_in_out='" + inorout + "'";
             DataTable dataTable = Database.getDataTable(SQL);
             List<Category> categoryList = new List<Category>();
             Category category;
