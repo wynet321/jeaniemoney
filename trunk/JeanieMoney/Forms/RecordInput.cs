@@ -38,11 +38,13 @@ namespace JeanieMoney.Forms
             radioButtonOut.Select();
             textBoxMoney.Clear();
             categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin("%",radioButtonIn.Checked?'1':'0');
-            comboBoxCategory.DisplayMember = "Name";
-            comboBoxCategory.ValueMember = "Id";
-            comboBoxCategory.DataSource = categoryList;
-
-
+            //comboBoxCategory.DisplayMember = "Name";
+            //comboBoxCategory.ValueMember = "Id";
+            //comboBoxCategory.DataSource = categoryList;
+            //comboBoxCategory.SelectedIndex = -1;
+            listBoxCategory.DisplayMember = "Name";
+            listBoxCategory.ValueMember = "Id";
+            listBoxCategory.DataSource = categoryList;
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
@@ -58,41 +60,8 @@ namespace JeanieMoney.Forms
 
         private void textBoxCategory_KeyPress(object sender, KeyPressEventArgs e)
         {
-            String category;
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                if (0 < comboBoxCategory.Items.Count)
-                    textBoxCategory.Text = comboBoxCategory.Text;
-                else
-                {
-                    //add category
-                    if (DialogResult.Yes == MessageBox.Show("do you want to add new category?", "?", MessageBoxButtons.YesNo))
-                    {
-                        CategoryConfig cc = new CategoryConfig(textBoxCategory.Text);
-                        cc.ShowDialog();
-                        categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(textBoxCategory.Text, radioButtonIn.Checked ? '1' : '0');
-                        if (0 < categoryList.Count)
-                        {
-                            comboBoxCategory.DataSource = categoryList;
-                            comboBoxCategory.SelectedIndex = 0;
-                            textBoxCategory.Text = categoryList.ElementAt(0).Name;
-                        }
-                    }
 
-                }
-                comboBoxCategory.DroppedDown = false;
-            }
-            else
-            {
-                category = textBoxCategory.Text.Trim();
-                categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(category, radioButtonIn.Checked ? '1' : '0');
-                comboBoxCategory.DataSource = categoryList;
-                if (0 < comboBoxCategory.Items.Count)
-                {
-                    comboBoxCategory.DroppedDown = true;
-                    comboBoxCategory.SelectedIndex = 0;
-                }
-            }
+           
         }
 
         private void textBoxPayer_KeyPress(object sender, KeyPressEventArgs e)
@@ -134,7 +103,57 @@ namespace JeanieMoney.Forms
 
         private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBoxCategory.Text = comboBoxCategory.Text;
+            //textBoxCategory.Text = comboBoxCategory.Text;
+        }
+
+        private void comboBoxCategory_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            
+           
+        }
+
+       
+
+        private void textBoxCategory_TextChanged(object sender, EventArgs e)
+        {
+            String category;
+           
+            
+                category = textBoxCategory.Text.Trim();
+                categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(category, radioButtonIn.Checked ? '1' : '0');
+                listBoxCategory.DataSource = categoryList;
+                if(0<listBoxCategory.Items.Count)
+                    listBoxCategory.SelectedIndex = 0;
+         
+        }
+
+        private void textBoxCategory_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter: if (0 < listBoxCategory.Items.Count) textBoxCategory.Text = categoryList.ElementAt(listBoxCategory.SelectedIndex).Name;
+                    else
+                    {
+                        //add category
+                        if (DialogResult.Yes == MessageBox.Show("do you want to add new category?", "?", MessageBoxButtons.YesNo))
+                        {
+                            CategoryConfig cc = new CategoryConfig(textBoxCategory.Text);
+                            cc.ShowDialog();
+                            categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(textBoxCategory.Text, radioButtonIn.Checked ? '1' : '0');
+                            if (0 < categoryList.Count)
+                            {
+                                listBoxCategory.DataSource = categoryList;
+                                listBoxCategory.SelectedIndex = 0;
+                                textBoxCategory.Text = categoryList.ElementAt(0).Name;
+                            }
+                        }
+                    }
+                    break;
+                case Keys.Up: if (0 < listBoxCategory.SelectedIndex) listBoxCategory.SelectedIndex--; break;
+                case Keys.Down: if (listBoxCategory.SelectedIndex < listBoxCategory.Items.Count - 1) listBoxCategory.SelectedIndex++; break;
+
+            }
         }
     }
 }

@@ -35,7 +35,6 @@
             this.groupBoxInOut = new System.Windows.Forms.GroupBox();
             this.radioButtonIn = new System.Windows.Forms.RadioButton();
             this.radioButtonOut = new System.Windows.Forms.RadioButton();
-            this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.dateTimePickerRecordInput = new System.Windows.Forms.DateTimePicker();
             this.comboBoxPayer = new System.Windows.Forms.ComboBox();
             this.labelPayer = new System.Windows.Forms.Label();
@@ -47,6 +46,8 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.textBoxCategory = new System.Windows.Forms.TextBox();
             this.textBoxPayer = new System.Windows.Forms.TextBox();
+            this.listBoxCategory = new System.Windows.Forms.ListBox();
+            this.buttonShowListCategory = new System.Windows.Forms.Button();
             this.groupBoxInOut.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,16 +117,6 @@
             this.radioButtonOut.TabStop = true;
             this.radioButtonOut.Text = "Out";
             this.radioButtonOut.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxCategory
-            // 
-            this.comboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(132, 51);
-            this.comboBoxCategory.Name = "comboBoxCategory";
-            this.comboBoxCategory.Size = new System.Drawing.Size(100, 21);
-            this.comboBoxCategory.TabIndex = 4;
-            this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
             // 
             // dateTimePickerRecordInput
             // 
@@ -228,7 +219,9 @@
             this.textBoxCategory.Name = "textBoxCategory";
             this.textBoxCategory.Size = new System.Drawing.Size(83, 20);
             this.textBoxCategory.TabIndex = 28;
+            this.textBoxCategory.TextChanged += new System.EventHandler(this.textBoxCategory_TextChanged);
             this.textBoxCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCategory_KeyPress);
+            this.textBoxCategory.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxCategory_KeyUp);
             // 
             // textBoxPayer
             // 
@@ -238,11 +231,30 @@
             this.textBoxPayer.TabIndex = 29;
             this.textBoxPayer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPayer_KeyPress);
             // 
+            // listBoxCategory
+            // 
+            this.listBoxCategory.FormattingEnabled = true;
+            this.listBoxCategory.Location = new System.Drawing.Point(132, 71);
+            this.listBoxCategory.Name = "listBoxCategory";
+            this.listBoxCategory.Size = new System.Drawing.Size(100, 95);
+            this.listBoxCategory.TabIndex = 30;
+            // 
+            // buttonShowListCategory
+            // 
+            this.buttonShowListCategory.Location = new System.Drawing.Point(212, 51);
+            this.buttonShowListCategory.Name = "buttonShowListCategory";
+            this.buttonShowListCategory.Size = new System.Drawing.Size(20, 21);
+            this.buttonShowListCategory.TabIndex = 31;
+            this.buttonShowListCategory.Text = "!";
+            this.buttonShowListCategory.UseVisualStyleBackColor = true;
+            // 
             // RecordInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 216);
+            this.Controls.Add(this.buttonShowListCategory);
+            this.Controls.Add(this.listBoxCategory);
             this.Controls.Add(this.textBoxPayer);
             this.Controls.Add(this.textBoxCategory);
             this.Controls.Add(this.buttonCancel);
@@ -254,7 +266,6 @@
             this.Controls.Add(this.comboBoxPayer);
             this.Controls.Add(this.labelPayer);
             this.Controls.Add(this.dateTimePickerRecordInput);
-            this.Controls.Add(this.comboBoxCategory);
             this.Controls.Add(this.groupBoxInOut);
             this.Controls.Add(this.label1Date);
             this.Controls.Add(this.labelCategory);
@@ -281,7 +292,6 @@
         private System.Windows.Forms.GroupBox groupBoxInOut;
         private System.Windows.Forms.RadioButton radioButtonIn;
         private System.Windows.Forms.RadioButton radioButtonOut;
-        private System.Windows.Forms.ComboBox comboBoxCategory;
         private System.Windows.Forms.DateTimePicker dateTimePickerRecordInput;
         private System.Windows.Forms.ComboBox comboBoxPayer;
         private System.Windows.Forms.Label labelPayer;
@@ -293,5 +303,7 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TextBox textBoxCategory;
         private System.Windows.Forms.TextBox textBoxPayer;
+        private System.Windows.Forms.ListBox listBoxCategory;
+        private System.Windows.Forms.Button buttonShowListCategory;
     }
 }
