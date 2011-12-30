@@ -68,14 +68,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\CategoryAction.cs" />
+    <Compile Include="Action\LocationAction.cs" />
     <Compile Include="Action\PayerAction.cs" />
     <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\Location.cs" />
     <Compile Include="Entity\Payer.cs" />
     <Compile Include="Forms\CategoryConfig.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CategoryConfig.Designer.cs">
       <DependentUpon>CategoryConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LocationConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LocationConfig.Designer.cs">
+      <DependentUpon>LocationConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PayerConfig.cs">
       <SubType>Form</SubType>
@@ -106,6 +114,9 @@
     <Compile Include="Utility\ProviderName.cs" />
     <EmbeddedResource Include="Forms\CategoryConfig.resx">
       <DependentUpon>CategoryConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LocationConfig.resx">
+      <DependentUpon>LocationConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PayerConfig.resx">
       <DependentUpon>PayerConfig.cs</DependentUpon>
