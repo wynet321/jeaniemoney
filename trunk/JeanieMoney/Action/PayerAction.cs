@@ -77,13 +77,5 @@ namespace JeanieMoney.Action
                 return true;
             return false;
         }
-
-
-
-
-
-
-
-
     }
 }
