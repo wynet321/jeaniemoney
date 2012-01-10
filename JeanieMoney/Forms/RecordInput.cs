@@ -63,7 +63,9 @@ namespace JeanieMoney.Forms
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-
+            if (validateInput())
+                //insert into db;
+                ;
         }
         #region category
         private void textBoxCategory_TextChanged(object sender, EventArgs e)
@@ -85,22 +87,6 @@ namespace JeanieMoney.Forms
                 case Keys.Enter:
                     listBoxCategory.Visible = false;
                     if (0 < listBoxCategory.Items.Count) labelSummaryResultCategory.Text = categoryList.ElementAt(listBoxCategory.SelectedIndex).Name;
-                    else
-                    {
-                        //add category
-                        if (DialogResult.Yes == MessageBox.Show("do you want to add new category?", "?", MessageBoxButtons.YesNo))
-                        {
-                            CategoryConfig cc = new CategoryConfig(textBoxCategory.Text);
-                            cc.ShowDialog();
-                            categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(textBoxCategory.Text, radioButtonIn.Checked ? '1' : '0');
-                            if (0 < categoryList.Count)
-                            {
-                                listBoxCategory.DataSource = categoryList;
-                                listBoxCategory.SelectedIndex = 0;
-                                labelSummaryResultCategory.Text = categoryList.ElementAt(0).Name;
-                            }
-                        }
-                    }
                     textBoxPayer.Focus();
                     break;
                 case Keys.Up: if (0 < listBoxCategory.SelectedIndex) listBoxCategory.SelectedIndex--; break;
@@ -110,10 +96,32 @@ namespace JeanieMoney.Forms
 
         private void textBoxCategory_Leave(object sender, EventArgs e)
         {
-            listBoxCategory.Visible = false;
+            if (0 == categoryList.Count)
+            {
+                listBoxCategory.Visible = false;
+                //add category
+                if (DialogResult.Yes == MessageBox.Show("do you want to add new category?", "?", MessageBoxButtons.YesNo))
+                {
+                    CategoryConfig cc;
+                    if (0 < textBoxCategory.Text.Length)
+                        cc = new CategoryConfig(textBoxCategory.Text);
+                    else
+                        cc = new CategoryConfig();
+                    cc.ShowDialog();
+                    categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(textBoxCategory.Text, radioButtonIn.Checked ? '1' : '0');
+                    if (0 < categoryList.Count)
+                    {
+                        listBoxCategory.DataSource = categoryList;
+                        listBoxCategory.SelectedIndex = 0;
+                        labelSummaryResultCategory.Text = categoryList.ElementAt(0).Name;
+                    }
+                }
+            }
+            else if (!listBoxCategory.Focused)
+                listBoxCategory.Visible = false;
         }
 
-        private void listBoxCategory_DoubleClick(object sender, EventArgs e)
+        private void listBoxCategory_Click(object sender, EventArgs e)
         {
             labelSummaryResultCategory.Text = categoryList.ElementAt(listBoxCategory.SelectedIndex).Name;
             listBoxCategory.Visible = false;
@@ -132,22 +140,6 @@ namespace JeanieMoney.Forms
                 case Keys.Enter:
                     listBoxPayer.Visible = false;
                     if (0 < listBoxPayer.Items.Count) labelSummaryResultPayer.Text = payerList.ElementAt(listBoxPayer.SelectedIndex).Name;
-                    else
-                    {
-                        //add payer
-                        if (DialogResult.Yes == MessageBox.Show("do you want to add new payer?", "?", MessageBoxButtons.YesNo))
-                        {
-                            PayerConfig pc = new PayerConfig(textBoxPayer.Text);
-                            pc.ShowDialog();
-                            payerList = payerAction.retrievePayerListByPinyin(textBoxPayer.Text);
-                            if (0 < payerList.Count)
-                            {
-                                listBoxPayer.DataSource = payerList;
-                                listBoxPayer.SelectedIndex = 0;
-                                labelSummaryResultPayer.Text = payerList.ElementAt(0).Name;
-                            }
-                        }
-                    }
                     textBoxLocation.Focus();
                     break;
                 case Keys.Up: if (0 < listBoxPayer.SelectedIndex) listBoxPayer.SelectedIndex--; break;
@@ -174,17 +166,39 @@ namespace JeanieMoney.Forms
 
         private void textBoxPayer_Leave(object sender, EventArgs e)
         {
-            listBoxPayer.Visible = false;
+            if (0 == payerList.Count)
+            {
+                listBoxPayer.Visible = false;
+                //add payer
+                if (DialogResult.Yes == MessageBox.Show("do you want to add new payer?", "?", MessageBoxButtons.YesNo))
+                {
+                    PayerConfig pc;
+                    if (0 < textBoxPayer.Text.Length)
+                        pc = new PayerConfig(textBoxPayer.Text);
+                    else
+                        pc = new PayerConfig();
+                    pc.ShowDialog();
+                    payerList = payerAction.retrievePayerListByPinyin(textBoxPayer.Text);
+                    if (0 < payerList.Count)
+                    {
+                        listBoxPayer.DataSource = payerList;
+                        listBoxPayer.SelectedIndex = 0;
+                        labelSummaryResultPayer.Text = payerList.ElementAt(0).Name;
+                    }
+                }
+            }
+            else if (!listBoxPayer.Focused)
+                listBoxPayer.Visible = false;
         }
-
-        private void listBoxPayer_DoubleClick(object sender, EventArgs e)
+        private void listBoxPayer_Click(object sender, EventArgs e)
         {
             labelSummaryResultPayer.Text = payerList.ElementAt(listBoxPayer.SelectedIndex).Name;
             listBoxPayer.Visible = false;
         }
         #endregion payer
         #region location
-        private void listBoxLocation_DoubleClick(object sender, EventArgs e)
+
+        private void listBoxLocation_Click(object sender, EventArgs e)
         {
             labelSummaryResultLocation.Text = locationList.ElementAt(listBoxLocation.SelectedIndex).Name;
             listBoxLocation.Visible = false;
@@ -209,23 +223,7 @@ namespace JeanieMoney.Forms
                 case Keys.Enter:
                     listBoxLocation.Visible = false;
                     if (0 < listBoxLocation.Items.Count) labelSummaryResultLocation.Text = locationList.ElementAt(listBoxLocation.SelectedIndex).Name;
-                    else
-                    {
-                        //add location
-                        if (DialogResult.Yes == MessageBox.Show("do you want to add new location?", "?", MessageBoxButtons.YesNo))
-                        {
-                            LocationConfig pc = new LocationConfig(textBoxLocation.Text);
-                            pc.ShowDialog();
-                            locationList = locationAction.retrieveLocationListByPinyin(textBoxLocation.Text);
-                            if (0 < locationList.Count)
-                            {
-                                listBoxLocation.DataSource = locationList;
-                                listBoxLocation.SelectedIndex = 0;
-                                labelSummaryResultLocation.Text = locationList.ElementAt(0).Name;
-                            }
-                        }
-                    }
-                    textBoxLocation.Focus();
+                    buttonDetails.Focus();
                     break;
                 case Keys.Up: if (0 < listBoxLocation.SelectedIndex) listBoxLocation.SelectedIndex--; break;
                 case Keys.Down: if (listBoxLocation.SelectedIndex < listBoxLocation.Items.Count - 1) listBoxLocation.SelectedIndex++; break;
@@ -239,9 +237,61 @@ namespace JeanieMoney.Forms
 
         private void textBoxLocation_Leave(object sender, EventArgs e)
         {
-            listBoxLocation.Visible = false;
+            if (0 == locationList.Count)
+            {
+                listBoxLocation.Visible = false;
+                //add location
+                if (DialogResult.Yes == MessageBox.Show("do you want to add new location?", "?", MessageBoxButtons.YesNo))
+                {
+                    LocationConfig lc;
+                    if (0 < textBoxLocation.Text.Length)
+                        lc = new LocationConfig(textBoxLocation.Text);
+                    else
+                        lc = new LocationConfig();
+                    lc.ShowDialog();
+                    locationList = locationAction.retrieveLocationListByPinyin(textBoxLocation.Text);
+                    if (0 < locationList.Count)
+                    {
+                        listBoxLocation.DataSource = locationList;
+                        listBoxLocation.SelectedIndex = 0;
+                        labelSummaryResultLocation.Text = locationList.ElementAt(0).Name;
+                    }
+                }
+            }
+            else if (!listBoxLocation.Focused)
+                listBoxLocation.Visible = false;
         }
         #endregion location
+
+        private void textBoxMoney_Leave(object sender, EventArgs e)
+        {
+            labelSummaryResultMoney.Text = textBoxMoney.Text;
+        }
+
+        private void buttonDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePickerRecordInput_Leave(object sender, EventArgs e)
+        {
+            labelSummaryResultDate.Text = dateTimePickerRecordInput.Value.ToLongDateString();
+        }
+
+        private Boolean validateInput()
+        {
+            if (0 == labelSummaryResultCategory.Text.Length)
+            {
+                MessageBox.Show("Please select category first.", "!", MessageBoxButtons.OK);
+                textBoxCategory.Focus();
+            }
+            return true;
+        }
+
+
+
+
+
 
     }
 }
