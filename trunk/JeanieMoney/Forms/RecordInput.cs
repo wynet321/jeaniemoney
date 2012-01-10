@@ -288,6 +288,14 @@ namespace JeanieMoney.Forms
             return true;
         }
 
+        private void radioButtonOut_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonOut.Checked)
+                labelSummaryResultInOut.Text = "Outgoings";
+            else
+                labelSummaryResultInOut.Text = "Income";
+        }
+
 
 
 
