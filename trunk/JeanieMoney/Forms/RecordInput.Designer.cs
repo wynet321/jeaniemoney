@@ -86,7 +86,8 @@
             this.textBoxMoney.Location = new System.Drawing.Point(187, 12);
             this.textBoxMoney.Name = "textBoxMoney";
             this.textBoxMoney.Size = new System.Drawing.Size(110, 20);
-            this.textBoxMoney.TabIndex = 2;
+            this.textBoxMoney.TabIndex = 3;
+            this.textBoxMoney.Leave += new System.EventHandler(this.textBoxMoney_Leave);
             // 
             // labelCategory
             // 
@@ -123,7 +124,7 @@
             this.radioButtonIn.Location = new System.Drawing.Point(66, 19);
             this.radioButtonIn.Name = "radioButtonIn";
             this.radioButtonIn.Size = new System.Drawing.Size(34, 17);
-            this.radioButtonIn.TabIndex = 0;
+            this.radioButtonIn.TabIndex = 2;
             this.radioButtonIn.Text = "In";
             this.radioButtonIn.UseVisualStyleBackColor = true;
             // 
@@ -144,8 +145,9 @@
             this.dateTimePickerRecordInput.Location = new System.Drawing.Point(187, 38);
             this.dateTimePickerRecordInput.Name = "dateTimePickerRecordInput";
             this.dateTimePickerRecordInput.Size = new System.Drawing.Size(144, 20);
-            this.dateTimePickerRecordInput.TabIndex = 3;
+            this.dateTimePickerRecordInput.TabIndex = 4;
             this.dateTimePickerRecordInput.Value = new System.DateTime(2011, 12, 6, 0, 0, 0, 0);
+            this.dateTimePickerRecordInput.Leave += new System.EventHandler(this.dateTimePickerRecordInput_Leave);
             // 
             // labelPayer
             // 
@@ -170,7 +172,7 @@
             this.buttonReset.Location = new System.Drawing.Point(339, 391);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 23);
-            this.buttonReset.TabIndex = 9;
+            this.buttonReset.TabIndex = 11;
             this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
@@ -180,16 +182,17 @@
             this.buttonDetails.Location = new System.Drawing.Point(17, 125);
             this.buttonDetails.Name = "buttonDetails";
             this.buttonDetails.Size = new System.Drawing.Size(75, 23);
-            this.buttonDetails.TabIndex = 7;
+            this.buttonDetails.TabIndex = 8;
             this.buttonDetails.Text = "Details";
             this.buttonDetails.UseVisualStyleBackColor = true;
+            this.buttonDetails.Click += new System.EventHandler(this.buttonDetails_Click);
             // 
             // buttonOK
             // 
             this.buttonOK.Location = new System.Drawing.Point(242, 391);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOK.TabIndex = 8;
+            this.buttonOK.TabIndex = 9;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -209,7 +212,7 @@
             this.textBoxCategory.Location = new System.Drawing.Point(73, 64);
             this.textBoxCategory.Name = "textBoxCategory";
             this.textBoxCategory.Size = new System.Drawing.Size(115, 20);
-            this.textBoxCategory.TabIndex = 28;
+            this.textBoxCategory.TabIndex = 5;
             this.textBoxCategory.TextChanged += new System.EventHandler(this.textBoxCategory_TextChanged);
             this.textBoxCategory.Enter += new System.EventHandler(this.textBoxCategory_TextChanged);
             this.textBoxCategory.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxCategory_KeyUp);
@@ -220,7 +223,7 @@
             this.textBoxPayer.Location = new System.Drawing.Point(271, 67);
             this.textBoxPayer.Name = "textBoxPayer";
             this.textBoxPayer.Size = new System.Drawing.Size(94, 20);
-            this.textBoxPayer.TabIndex = 29;
+            this.textBoxPayer.TabIndex = 6;
             this.textBoxPayer.TextChanged += new System.EventHandler(this.textBoxPayer_TextChanged);
             this.textBoxPayer.Enter += new System.EventHandler(this.textBoxPayer_TextChanged);
             this.textBoxPayer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPayer_KeyUp);
@@ -233,7 +236,7 @@
             this.listBoxCategory.Name = "listBoxCategory";
             this.listBoxCategory.Size = new System.Drawing.Size(115, 199);
             this.listBoxCategory.TabIndex = 30;
-            this.listBoxCategory.DoubleClick += new System.EventHandler(this.listBoxCategory_DoubleClick);
+            this.listBoxCategory.Click += new System.EventHandler(this.listBoxCategory_Click);
             // 
             // buttonShowListCategory
             // 
@@ -291,9 +294,8 @@
             this.labelSummaryResultPayer.AutoSize = true;
             this.labelSummaryResultPayer.Location = new System.Drawing.Point(189, 51);
             this.labelSummaryResultPayer.Name = "labelSummaryResultPayer";
-            this.labelSummaryResultPayer.Size = new System.Drawing.Size(33, 13);
+            this.labelSummaryResultPayer.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryResultPayer.TabIndex = 12;
-            this.labelSummaryResultPayer.Text = "payer";
             // 
             // labelSummaryPayer
             // 
@@ -318,9 +320,8 @@
             this.labelSummaryResultLocation.AutoSize = true;
             this.labelSummaryResultLocation.Location = new System.Drawing.Point(73, 72);
             this.labelSummaryResultLocation.Name = "labelSummaryResultLocation";
-            this.labelSummaryResultLocation.Size = new System.Drawing.Size(48, 13);
+            this.labelSummaryResultLocation.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryResultLocation.TabIndex = 9;
-            this.labelSummaryResultLocation.Text = "Location";
             // 
             // labelSummaryResultInOut
             // 
@@ -372,9 +373,8 @@
             this.labelSummaryResultCategory.AutoSize = true;
             this.labelSummaryResultCategory.Location = new System.Drawing.Point(77, 51);
             this.labelSummaryResultCategory.Name = "labelSummaryResultCategory";
-            this.labelSummaryResultCategory.Size = new System.Drawing.Size(49, 13);
+            this.labelSummaryResultCategory.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryResultCategory.TabIndex = 3;
-            this.labelSummaryResultCategory.Text = "Category";
             // 
             // labelSummaryCategory
             // 
@@ -420,7 +420,7 @@
             this.listBoxPayer.Name = "listBoxPayer";
             this.listBoxPayer.Size = new System.Drawing.Size(94, 199);
             this.listBoxPayer.TabIndex = 34;
-            this.listBoxPayer.DoubleClick += new System.EventHandler(this.listBoxPayer_DoubleClick);
+            this.listBoxPayer.Click += new System.EventHandler(this.listBoxPayer_Click);
             // 
             // labelMoneyUnit
             // 
@@ -436,7 +436,7 @@
             this.textBoxLocation.Location = new System.Drawing.Point(73, 96);
             this.textBoxLocation.Name = "textBoxLocation";
             this.textBoxLocation.Size = new System.Drawing.Size(292, 20);
-            this.textBoxLocation.TabIndex = 36;
+            this.textBoxLocation.TabIndex = 7;
             this.textBoxLocation.TextChanged += new System.EventHandler(this.textBoxLocation_TextChanged);
             this.textBoxLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLocation_KeyUp);
             this.textBoxLocation.Leave += new System.EventHandler(this.textBoxLocation_Leave);
@@ -458,7 +458,7 @@
             this.listBoxLocation.Name = "listBoxLocation";
             this.listBoxLocation.Size = new System.Drawing.Size(292, 264);
             this.listBoxLocation.TabIndex = 38;
-            this.listBoxLocation.DoubleClick += new System.EventHandler(this.listBoxLocation_DoubleClick);
+            this.listBoxLocation.Click += new System.EventHandler(this.listBoxLocation_Click);
             // 
             // RecordInput
             // 
@@ -467,7 +467,6 @@
             this.ClientSize = new System.Drawing.Size(794, 426);
             this.Controls.Add(this.listBoxLocation);
             this.Controls.Add(this.buttonShowListLocation);
-            this.Controls.Add(this.textBoxLocation);
             this.Controls.Add(this.labelMoneyUnit);
             this.Controls.Add(this.listBoxPayer);
             this.Controls.Add(this.buttonShowListPayer);
@@ -488,6 +487,7 @@
             this.Controls.Add(this.labelCategory);
             this.Controls.Add(this.textBoxMoney);
             this.Controls.Add(this.labelMoney);
+            this.Controls.Add(this.textBoxLocation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "RecordInput";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
