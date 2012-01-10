@@ -139,6 +139,7 @@
             this.radioButtonOut.TabStop = true;
             this.radioButtonOut.Text = "Out";
             this.radioButtonOut.UseVisualStyleBackColor = true;
+            this.radioButtonOut.CheckedChanged += new System.EventHandler(this.radioButtonOut_CheckedChanged);
             // 
             // dateTimePickerRecordInput
             // 
