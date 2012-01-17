@@ -68,11 +68,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\CategoryAction.cs" />
+    <Compile Include="Action\TradeRecordAction.cs" />
+    <Compile Include="Action\TradeRecordDetailAction.cs" />
     <Compile Include="Action\LocationAction.cs" />
+    <Compile Include="Action\ManufactoryAction.cs" />
     <Compile Include="Action\PayerAction.cs" />
+    <Compile Include="Action\ProductAction.cs" />
+    <Compile Include="Action\SpecificationAction.cs" />
     <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\TradeRecord.cs" />
+    <Compile Include="Entity\TradeRecordDetail.cs" />
     <Compile Include="Entity\Location.cs" />
+    <Compile Include="Entity\Manufactory.cs" />
     <Compile Include="Entity\Payer.cs" />
+    <Compile Include="Entity\Product.cs" />
+    <Compile Include="Entity\Specification.cs" />
     <Compile Include="Forms\CategoryConfig.cs">
       <SubType>Form</SubType>
     </Compile>

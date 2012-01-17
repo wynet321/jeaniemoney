@@ -71,7 +71,7 @@ namespace JeanieMoney.Action
             string SQL = "update payer set ";
             if (0 > payer.Id.Length)
                 return false;
-            SQL += "name='" + payer.Name + "',pinyin='" + payer.Pinyin + "'," + " Where id='" + payer.Id.Trim() + "'";
+            SQL += "name='" + payer.Name + "',pinyin='" + payer.Pinyin + "' Where id='" + payer.Id.Trim() + "'";
 
             if (0 < Database.execCommand(SQL))
                 return true;

@@ -71,7 +71,7 @@ namespace JeanieMoney.Action
             string SQL = "update location set ";
             if (0 > location.Id.Length)
                 return false;
-            SQL += "name='" + location.Name + "',pinyin='" + location.Pinyin + "'," + " Where id='" + location.Id.Trim() + "'";
+            SQL += "name='" + location.Name + "',pinyin='" + location.Pinyin + "' Where id='" + location.Id.Trim() + "'";
 
             if (0 < Database.execCommand(SQL))
                 return true;

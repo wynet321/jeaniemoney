@@ -10,16 +10,16 @@ namespace JeanieMoney.Entity
         private string id;
         public string Id { get { return id; } set { id = value; } }
 
-        private string name { get; set; }
+        private string name ="";
         public string Name { get { return name; } set { name = value; } }
 
-        private string pinyin { get; set; }
+        private string pinyin ="";
         public string Pinyin { get { return pinyin; } set { pinyin = value; } }
 
-        private char inorout { get; set; }
+        private char inorout ="";
         public char InOrOut { get { return inorout; } set { inorout = value; } }
 
-        private string parentId { get; set; }
+        private string parentId ="";
         public string ParentId { get { return parentId; } set { parentId = value; } }
 
         
