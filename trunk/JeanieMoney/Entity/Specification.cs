@@ -5,15 +5,16 @@ using System.Text;
 
 namespace JeanieMoney.Entity
 {
-    class Payer
+    class Specification
     {
-        private string id;
+        private string id = "";
         public string Id { get { return id; } set { id = value; } }
 
-        private string name ="";
+        private string name = "";
         public string Name { get { return name; } set { name = value; } }
 
-        private string pinyin ="";
+        private string pinyin = "";
         public string Pinyin { get { return pinyin; } set { pinyin = value; } }
+
     }
 }

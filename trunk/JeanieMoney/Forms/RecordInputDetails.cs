@@ -11,9 +11,16 @@ namespace JeanieMoney.Forms
 {
     public partial class RecordInputDetails : Form
     {
-        public RecordInputDetails()
+        private string tradeId = "";
+        public RecordInputDetails(string tradeId)
         {
             InitializeComponent();
+            this.tradeId = tradeId;
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

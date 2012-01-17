@@ -61,6 +61,7 @@
             this.buttonOK.TabIndex = 0;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // textBoxProductName
             // 
@@ -106,7 +107,7 @@
             // 
             // buttonBeneficiaryDropDown
             // 
-            this.buttonBeneficiaryDropDown.Location = new System.Drawing.Point(162, 207);
+            this.buttonBeneficiaryDropDown.Location = new System.Drawing.Point(159, 216);
             this.buttonBeneficiaryDropDown.Name = "buttonBeneficiaryDropDown";
             this.buttonBeneficiaryDropDown.Size = new System.Drawing.Size(21, 20);
             this.buttonBeneficiaryDropDown.TabIndex = 8;
@@ -116,7 +117,7 @@
             // labelBeneficiaryName
             // 
             this.labelBeneficiaryName.AutoSize = true;
-            this.labelBeneficiaryName.Location = new System.Drawing.Point(1, 210);
+            this.labelBeneficiaryName.Location = new System.Drawing.Point(-2, 219);
             this.labelBeneficiaryName.Name = "labelBeneficiaryName";
             this.labelBeneficiaryName.Size = new System.Drawing.Size(58, 13);
             this.labelBeneficiaryName.TabIndex = 7;
@@ -124,7 +125,7 @@
             // 
             // textBoxBeneficiaryName
             // 
-            this.textBoxBeneficiaryName.Location = new System.Drawing.Point(65, 207);
+            this.textBoxBeneficiaryName.Location = new System.Drawing.Point(62, 216);
             this.textBoxBeneficiaryName.Name = "textBoxBeneficiaryName";
             this.textBoxBeneficiaryName.Size = new System.Drawing.Size(100, 20);
             this.textBoxBeneficiaryName.TabIndex = 6;
@@ -182,7 +183,7 @@
             // listBoxProduct
             // 
             this.listBoxProduct.FormattingEnabled = true;
-            this.listBoxProduct.Location = new System.Drawing.Point(173, 6);
+            this.listBoxProduct.Location = new System.Drawing.Point(53, 27);
             this.listBoxProduct.Name = "listBoxProduct";
             this.listBoxProduct.Size = new System.Drawing.Size(120, 95);
             this.listBoxProduct.TabIndex = 15;
@@ -190,7 +191,7 @@
             // listBoxBeneficiary
             // 
             this.listBoxBeneficiary.FormattingEnabled = true;
-            this.listBoxBeneficiary.Location = new System.Drawing.Point(177, 15);
+            this.listBoxBeneficiary.Location = new System.Drawing.Point(62, 236);
             this.listBoxBeneficiary.Name = "listBoxBeneficiary";
             this.listBoxBeneficiary.Size = new System.Drawing.Size(120, 95);
             this.listBoxBeneficiary.TabIndex = 16;
@@ -254,6 +255,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 322);
+            this.Controls.Add(this.listBoxProduct);
             this.Controls.Add(this.labelManufactoryName);
             this.Controls.Add(this.labelSpecification);
             this.Controls.Add(this.buttonCancel);
@@ -261,7 +263,6 @@
             this.Controls.Add(this.buttonRemoveFromSummary);
             this.Controls.Add(this.buttonAddToSummary);
             this.Controls.Add(this.listBoxBeneficiary);
-            this.Controls.Add(this.listBoxProduct);
             this.Controls.Add(this.labelPriceAverage);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
