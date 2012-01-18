@@ -55,10 +55,10 @@ namespace JeanieMoney.Action
             DataTable dataTable = Database.getDataTable(SQL);
             Category category = new Category();
             category.Id = id;
-            category.Name = dataTable.Rows[0].ItemArray[0].ToString();
-            category.ParentId = dataTable.Rows[0].ItemArray[1].ToString();
-            category.Pinyin = dataTable.Rows[0].ItemArray[2].ToString();
-            category.InOrOut = ((bool)dataTable.Rows[0].ItemArray[3]) ? '1' : '0';
+            category.Name = dataTable.Rows[0]["name"].ToString();
+            category.ParentId = dataTable.Rows[0]["parent_id"].ToString();
+            category.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
+            category.InOrOut = ((bool)dataTable.Rows[0]["flag_in_out"]) ? '1' : '0';
             return category;
         }
 
@@ -71,8 +71,8 @@ namespace JeanieMoney.Action
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 category = new Category();
-                category.Id = dataRow.ItemArray[0].ToString();
-                category.Name = dataRow.ItemArray[1].ToString();
+                category.Id = dataRow["id"].ToString();
+                category.Name = dataRow["name"].ToString();
                 categoryList.Add(category);
             }
             return categoryList;
@@ -87,11 +87,11 @@ namespace JeanieMoney.Action
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 category = new Category();
-                category.Id = dataRow.ItemArray[0].ToString();
-                category.Name = dataRow.ItemArray[1].ToString();
+                category.Id = dataRow["id"].ToString();
+                category.Name = dataRow["name"].ToString();
                 category.ParentId = parentId;
-                category.Pinyin = dataRow.ItemArray[2].ToString();
-                category.InOrOut = ((bool)dataTable.Rows[0].ItemArray[3]) ? '1' : '0';
+                category.Pinyin = dataRow["pinyin"].ToString();
+                category.InOrOut = ((bool)dataTable.Rows[0]["flag_in_out"]) ? '1' : '0';
                 categoryList.Add(category);
             }
             return categoryList;
@@ -106,11 +106,11 @@ namespace JeanieMoney.Action
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 category = new Category();
-                category.Id = dataRow.ItemArray[0].ToString();
-                category.Name = dataRow.ItemArray[1].ToString();
-                category.ParentId = dataRow.ItemArray[2].ToString();
-                category.Pinyin = dataRow.ItemArray[3].ToString();
-                category.InOrOut = ((bool)dataRow.ItemArray[4])?'1':'0';
+                category.Id = dataRow["id"].ToString();
+                category.Name = dataRow["name"].ToString();
+                category.ParentId = dataRow["parent_id"].ToString();
+                category.Pinyin = dataRow["pinyin"].ToString();
+                category.InOrOut = ((bool)dataRow["flag_in_out"])?'1':'0';
                 categoryList.Add(category);
             }
             return categoryList;
@@ -125,8 +125,8 @@ namespace JeanieMoney.Action
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 category = new Category();
-                category.Id = dataRow.ItemArray[0].ToString();
-                category.Name = dataRow.ItemArray[1].ToString();
+                category.Id = dataRow["id"].ToString();
+                category.Name = dataRow["name"].ToString();
                 categoryList.Add(category);
             }
             return categoryList;

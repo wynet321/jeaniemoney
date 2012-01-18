@@ -67,7 +67,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\BeneficiaryAction.cs" />
     <Compile Include="Action\CategoryAction.cs" />
+    <Compile Include="Action\ProductSpecificationManufactoryAction.cs" />
     <Compile Include="Action\TradeRecordAction.cs" />
     <Compile Include="Action\TradeRecordDetailAction.cs" />
     <Compile Include="Action\LocationAction.cs" />
@@ -75,7 +77,9 @@
     <Compile Include="Action\PayerAction.cs" />
     <Compile Include="Action\ProductAction.cs" />
     <Compile Include="Action\SpecificationAction.cs" />
+    <Compile Include="Entity\Beneficiary.cs" />
     <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\ProductSpecificationManufactory.cs" />
     <Compile Include="Entity\TradeRecord.cs" />
     <Compile Include="Entity\TradeRecordDetail.cs" />
     <Compile Include="Entity\Location.cs" />
@@ -83,22 +87,22 @@
     <Compile Include="Entity\Payer.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Entity\Specification.cs" />
-    <Compile Include="Forms\CategoryConfig.cs">
+    <Compile Include="Forms\Config\CategoryConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CategoryConfig.Designer.cs">
+    <Compile Include="Forms\Config\CategoryConfig.Designer.cs">
       <DependentUpon>CategoryConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LocationConfig.cs">
+    <Compile Include="Forms\Config\LocationConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LocationConfig.Designer.cs">
+    <Compile Include="Forms\Config\LocationConfig.Designer.cs">
       <DependentUpon>LocationConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PayerConfig.cs">
+    <Compile Include="Forms\Config\PayerConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PayerConfig.Designer.cs">
+    <Compile Include="Forms\Config\PayerConfig.Designer.cs">
       <DependentUpon>PayerConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Main.cs">
@@ -106,6 +110,12 @@
     </Compile>
     <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Config\ProductConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\ProductConfig.Designer.cs">
+      <DependentUpon>ProductConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RecordInput.cs">
       <SubType>Form</SubType>
@@ -128,13 +138,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Database.cs" />
     <Compile Include="Utility\ProviderName.cs" />
-    <EmbeddedResource Include="Forms\CategoryConfig.resx">
+    <EmbeddedResource Include="Forms\Config\CategoryConfig.resx">
       <DependentUpon>CategoryConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LocationConfig.resx">
+    <EmbeddedResource Include="Forms\Config\LocationConfig.resx">
       <DependentUpon>LocationConfig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PayerConfig.resx">
+    <EmbeddedResource Include="Forms\Config\PayerConfig.resx">
       <DependentUpon>PayerConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">

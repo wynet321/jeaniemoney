@@ -24,8 +24,8 @@ namespace JeanieMoney.Action
             DataTable dataTable = Database.getDataTable(SQL);
             Specification specification = new Specification();
             specification.Id = id;
-            specification.Name = dataTable.Rows[0].ItemArray[1].ToString();
-            specification.Pinyin = dataTable.Rows[0].ItemArray[2].ToString();
+            specification.Name = dataTable.Rows[0]["name"].ToString();
+            specification.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
             return specification;
         }
 
@@ -58,9 +58,9 @@ namespace JeanieMoney.Action
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 specification = new Specification();
-                specification.Id = dataRow.ItemArray[0].ToString();
-                specification.Name = dataRow.ItemArray[1].ToString();
-                specification.Pinyin = dataRow.ItemArray[2].ToString();
+                specification.Id = dataRow["id"].ToString();
+                specification.Name = dataRow["name"].ToString();
+                specification.Pinyin = dataRow["pinyin"].ToString();
                 specificationList.Add(specification);
             }
             return specificationList;
@@ -78,5 +78,5 @@ namespace JeanieMoney.Action
             return false;
         }
     }
-    }
+    
 }

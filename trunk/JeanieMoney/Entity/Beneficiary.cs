@@ -5,23 +5,15 @@ using System.Text;
 
 namespace JeanieMoney.Entity
 {
-    class Category
+    class Beneficiary
     {
         private string id;
         public string Id { get { return id; } set { id = value; } }
 
-        private string name ="";
+        private string name = "";
         public string Name { get { return name; } set { name = value; } }
 
-        private string pinyin ="";
+        private string pinyin = "";
         public string Pinyin { get { return pinyin; } set { pinyin = value; } }
-
-        private char inorout ='0';
-        public char InOrOut { get { return inorout; } set { inorout = value; } }
-
-        private string parentId ="";
-        public string ParentId { get { return parentId; } set { parentId = value; } }
-
-        
     }
 }

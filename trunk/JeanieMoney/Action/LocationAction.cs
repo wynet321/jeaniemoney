@@ -24,8 +24,8 @@ namespace JeanieMoney.Action
             DataTable dataTable = Database.getDataTable(SQL);
             Location location = new Location();
             location.Id = id;
-            location.Name = dataTable.Rows[0].ItemArray[1].ToString();
-            location.Pinyin = dataTable.Rows[0].ItemArray[2].ToString();
+            location.Name = dataTable.Rows[0]["name"].ToString();
+            location.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
             return location;
         }
 
@@ -58,9 +58,9 @@ namespace JeanieMoney.Action
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 location = new Location();
-                location.Id = dataRow.ItemArray[0].ToString();
-                location.Name = dataRow.ItemArray[1].ToString();
-                location.Pinyin = dataRow.ItemArray[2].ToString();
+                location.Id = dataRow["id"].ToString();
+                location.Name = dataRow["name"].ToString();
+                location.Pinyin = dataRow["pinyin"].ToString();
                 locationList.Add(location);
             }
             return locationList;

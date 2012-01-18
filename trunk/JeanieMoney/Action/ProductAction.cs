@@ -24,11 +24,11 @@ namespace JeanieMoney.Action
             DataTable dataTable = Database.getDataTable(SQL);
             Product product = new Product();
             product.Id = id;
-            product.Name = dataTable.Rows[0].ItemArray[1].ToString();
-            product.Pinyin = dataTable.Rows[0].ItemArray[2].ToString();
-            product.SpecificationId = dataTable.Rows[0].ItemArray[3].ToString();
-            product.SpecificationQuantity = dataTable.Rows[0].ItemArray[4].ToString();
-            product.ManufactoryId = dataTable.Rows[0].ItemArray[5].ToString();
+            product.Name = dataTable.Rows[0]["name"].ToString();
+            product.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
+            product.SpecificationId = dataTable.Rows[0]["specification_id"].ToString();
+            product.SpecificationQuantity = dataTable.Rows[0]["specification_quantity"].ToString();
+            product.ManufactoryId = dataTable.Rows[0]["manufactory_id"].ToString();
             return product;
         }
 
@@ -61,12 +61,12 @@ namespace JeanieMoney.Action
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 product = new Product();
-                product.Id = dataRow.ItemArray[0].ToString();
-                product.Name = dataRow.ItemArray[1].ToString();
-                product.Pinyin = dataRow.ItemArray[2].ToString();
-                product.SpecificationId = dataRow.ItemArray[3].ToString();
-                product.SpecificationQuantity = dataRow.ItemArray[4].ToString();
-                product.ManufactoryId = dataRow.ItemArray[5].ToString();
+                product.Id = dataRow["id"].ToString();
+                product.Name = dataRow["name"].ToString();
+                product.Pinyin = dataRow["pinyin"].ToString();
+                product.SpecificationId = dataRow["specification_id"].ToString();
+                product.SpecificationQuantity = dataRow["specification_quantity"].ToString();
+                product.ManufactoryId = dataRow["manufactory_id"].ToString();
                 productList.Add(product);
             }
             return productList;

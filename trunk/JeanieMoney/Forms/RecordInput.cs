@@ -15,16 +15,90 @@ namespace JeanieMoney.Forms
         List<Payer> payerList;
         LocationAction locationAction;
         List<Location> locationList;
+        SpecificationAction specificationAction;
+        List<Specification> specificationList;
+        ManufactoryAction manufactoryAction;
+        List<Manufactory> manufactoryList;
+        BeneficiaryAction beneficiaryAction;
+        List<Beneficiary> beneficiaryList;
+        ProductSpecificationManufactoryAction productSpecificationManufactoryAction;
+        List<ProductSpecificationManufactory> productSpecificationManufactoryList;
+        TradeRecordAction tradeRecordAction;
+        TradeRecordDetailAction tradeRecordDetailAction;
+
         public RecordInput()
         {
             InitializeComponent();
             categoryAction = new CategoryAction();
             payerAction = new PayerAction();
             locationAction = new LocationAction();
+            productAction = new ProductAction();
+            specificationAction = new SpecificationAction();
+            manufactoryAction = new ManufactoryAction();
+            tradeRecordAction = new TradeRecordAction();
+            tradeRecordDetailAction = new TradeRecordDetailAction();
             Init();
 
         }
+        private void textBoxMoney_Leave(object sender, EventArgs e)
+        {
+            labelSummaryResultMoney.Text = textBoxMoney.Text;
+        }
 
+        private void dateTimePickerRecordInput_Leave(object sender, EventArgs e)
+        {
+            labelSummaryResultDate.Text = dateTimePickerRecordInput.Value.ToLongDateString();
+        }
+
+        private Boolean validateInput()
+        {
+            if (0 == labelSummaryResultCategory.Text.Length)
+            {
+                MessageBox.Show("Please select category first.", "!", MessageBoxButtons.OK);
+                textBoxCategory.Focus();
+            }
+            return true;
+        }
+
+        private void radioButtonOut_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonOut.Checked)
+                labelSummaryResultInOut.Text = "Outgoings";
+            else
+                labelSummaryResultInOut.Text = "Income";
+        }
+
+        private void checkBoxDetails_CheckedChanged(object sender, EventArgs e)
+        {
+            panelDetails.Visible = !panelDetails.Visible;
+            listBoxDetails.Enabled = !listBoxDetails.Enabled;
+            if (panelDetails.Visible)
+            {
+                panelDetailInit();
+                textBoxDetailProductName.Focus();
+            }
+        }
+
+        private void panelDetailInit()
+        {
+            textBoxPrice.Clear();
+            textBoxQuantity.Clear();
+
+            //product
+            //productList = productAction.retrieveProductListByPinyin("%");
+            listBoxDetailProduct.DisplayMember = "Name";
+            listBoxDetailProduct.ValueMember = "Id";
+            // listBoxDetailProduct.DataSource = productList;
+            listBoxDetailProduct.Visible = false;
+
+            //beneficiary
+            //beneficiaryList = beneficiaryAction.retrieveBeneficiaryListByPinyin("%");
+            listBoxDetailBeneficiary.DisplayMember = "Name";
+            listBoxDetailBeneficiary.ValueMember = "Id";
+            // listBoxDetailBeneficiary.DataSource = productList;
+            listBoxDetailBeneficiary.Visible = false;
+
+        }
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -36,24 +110,24 @@ namespace JeanieMoney.Forms
             radioButtonOut.Select();
             textBoxMoney.Clear();
             //category
-            categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin("%", radioButtonIn.Checked ? '1' : '0');
+            //categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin("%", radioButtonIn.Checked ? '1' : '0');
             listBoxCategory.DisplayMember = "Name";
             listBoxCategory.ValueMember = "Id";
-            listBoxCategory.DataSource = categoryList;
+            //listBoxCategory.DataSource = categoryList;
             listBoxCategory.Visible = false;
 
             //payer
-            payerList = payerAction.retrievePayerListByPinyin("%");
+            //payerList = payerAction.retrievePayerListByPinyin("%");
             listBoxPayer.DisplayMember = "Name";
             listBoxPayer.ValueMember = "Id";
-            listBoxPayer.DataSource = payerList;
+            //listBoxPayer.DataSource = payerList;
             listBoxPayer.Visible = false;
 
             //location
-            locationList = locationAction.retrieveLocationListByPinyin("%");
+            //locationList = locationAction.retrieveLocationListByPinyin("%");
             listBoxLocation.DisplayMember = "Name";
             listBoxLocation.ValueMember = "Id";
-            listBoxLocation.DataSource = locationList;
+            //listBoxLocation.DataSource = locationList;
             listBoxLocation.Visible = false;
         }
         private void buttonReset_Click(object sender, EventArgs e)
@@ -99,23 +173,21 @@ namespace JeanieMoney.Forms
             if (0 == categoryList.Count)
             {
                 listBoxCategory.Visible = false;
-                //add category
-                if (DialogResult.Yes == MessageBox.Show("do you want to add new category?", "?", MessageBoxButtons.YesNo))
-                {
-                    CategoryConfig cc;
-                    if (0 < textBoxCategory.Text.Length)
-                        cc = new CategoryConfig(textBoxCategory.Text);
-                    else
-                        cc = new CategoryConfig();
-                    cc.ShowDialog();
-                    categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(textBoxCategory.Text, radioButtonIn.Checked ? '1' : '0');
-                    if (0 < categoryList.Count)
+                if (0 < textBoxCategory.Text.Trim().Length)
+                    //add category
+                    if (DialogResult.Yes == MessageBox.Show("do you want to add new category?", "?", MessageBoxButtons.YesNo))
                     {
-                        listBoxCategory.DataSource = categoryList;
-                        listBoxCategory.SelectedIndex = 0;
-                        labelSummaryResultCategory.Text = categoryList.ElementAt(0).Name;
+                        CategoryConfig cc = new CategoryConfig(textBoxCategory.Text.Trim());
+
+                        cc.ShowDialog();
+                        categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(textBoxCategory.Text.Trim(), radioButtonIn.Checked ? '1' : '0');
+                        if (0 < categoryList.Count)
+                        {
+                            listBoxCategory.DataSource = categoryList;
+                            listBoxCategory.SelectedIndex = 0;
+                            labelSummaryResultCategory.Text = categoryList.ElementAt(0).Name;
+                        }
                     }
-                }
             }
             else if (!listBoxCategory.Focused)
                 listBoxCategory.Visible = false;
@@ -125,6 +197,7 @@ namespace JeanieMoney.Forms
         {
             labelSummaryResultCategory.Text = categoryList.ElementAt(listBoxCategory.SelectedIndex).Name;
             listBoxCategory.Visible = false;
+            textBoxPayer.Focus();
         }
 
         private void buttonShowListCategory_Click(object sender, EventArgs e)
@@ -169,23 +242,20 @@ namespace JeanieMoney.Forms
             if (0 == payerList.Count)
             {
                 listBoxPayer.Visible = false;
-                //add payer
-                if (DialogResult.Yes == MessageBox.Show("do you want to add new payer?", "?", MessageBoxButtons.YesNo))
-                {
-                    PayerConfig pc;
-                    if (0 < textBoxPayer.Text.Length)
-                        pc = new PayerConfig(textBoxPayer.Text);
-                    else
-                        pc = new PayerConfig();
-                    pc.ShowDialog();
-                    payerList = payerAction.retrievePayerListByPinyin(textBoxPayer.Text);
-                    if (0 < payerList.Count)
+                if (0 < textBoxPayer.Text.Trim().Length)
+                    //add payer
+                    if (DialogResult.Yes == MessageBox.Show("do you want to add new payer?", "?", MessageBoxButtons.YesNo))
                     {
-                        listBoxPayer.DataSource = payerList;
-                        listBoxPayer.SelectedIndex = 0;
-                        labelSummaryResultPayer.Text = payerList.ElementAt(0).Name;
+                        PayerConfig pc = new PayerConfig(textBoxPayer.Text.Trim());
+                        pc.ShowDialog();
+                        payerList = payerAction.retrievePayerListByPinyin(textBoxPayer.Text.Trim());
+                        if (0 < payerList.Count)
+                        {
+                            listBoxPayer.DataSource = payerList;
+                            listBoxPayer.SelectedIndex = 0;
+                            labelSummaryResultPayer.Text = payerList.ElementAt(0).Name;
+                        }
                     }
-                }
             }
             else if (!listBoxPayer.Focused)
                 listBoxPayer.Visible = false;
@@ -194,6 +264,7 @@ namespace JeanieMoney.Forms
         {
             labelSummaryResultPayer.Text = payerList.ElementAt(listBoxPayer.SelectedIndex).Name;
             listBoxPayer.Visible = false;
+            textBoxLocation.Focus();
         }
         #endregion payer
         #region location
@@ -202,6 +273,7 @@ namespace JeanieMoney.Forms
         {
             labelSummaryResultLocation.Text = locationList.ElementAt(listBoxLocation.SelectedIndex).Name;
             listBoxLocation.Visible = false;
+            checkBoxDetails.Focus();
         }
 
         private void textBoxLocation_TextChanged(object sender, EventArgs e)
@@ -223,7 +295,7 @@ namespace JeanieMoney.Forms
                 case Keys.Enter:
                     listBoxLocation.Visible = false;
                     if (0 < listBoxLocation.Items.Count) labelSummaryResultLocation.Text = locationList.ElementAt(listBoxLocation.SelectedIndex).Name;
-                    buttonDetails.Focus();
+                    checkBoxDetails.Focus();
                     break;
                 case Keys.Up: if (0 < listBoxLocation.SelectedIndex) listBoxLocation.SelectedIndex--; break;
                 case Keys.Down: if (listBoxLocation.SelectedIndex < listBoxLocation.Items.Count - 1) listBoxLocation.SelectedIndex++; break;
@@ -240,61 +312,90 @@ namespace JeanieMoney.Forms
             if (0 == locationList.Count)
             {
                 listBoxLocation.Visible = false;
-                //add location
-                if (DialogResult.Yes == MessageBox.Show("do you want to add new location?", "?", MessageBoxButtons.YesNo))
-                {
-                    LocationConfig lc;
-                    if (0 < textBoxLocation.Text.Length)
-                        lc = new LocationConfig(textBoxLocation.Text);
-                    else
-                        lc = new LocationConfig();
-                    lc.ShowDialog();
-                    locationList = locationAction.retrieveLocationListByPinyin(textBoxLocation.Text);
-                    if (0 < locationList.Count)
+                if (0 < textBoxLocation.Text.Trim().Length)
+                    //add location
+                    if (DialogResult.Yes == MessageBox.Show("do you want to add new location?", "?", MessageBoxButtons.YesNo))
                     {
-                        listBoxLocation.DataSource = locationList;
-                        listBoxLocation.SelectedIndex = 0;
-                        labelSummaryResultLocation.Text = locationList.ElementAt(0).Name;
+                        LocationConfig lc = new LocationConfig(textBoxLocation.Text.Trim());
+
+                        lc.ShowDialog();
+                        locationList = locationAction.retrieveLocationListByPinyin(textBoxLocation.Text.Trim());
+                        if (0 < locationList.Count)
+                        {
+                            listBoxLocation.DataSource = locationList;
+                            listBoxLocation.SelectedIndex = 0;
+                            labelSummaryResultLocation.Text = locationList.ElementAt(0).Name;
+                        }
                     }
-                }
             }
             else if (!listBoxLocation.Focused)
                 listBoxLocation.Visible = false;
         }
         #endregion location
 
-        private void textBoxMoney_Leave(object sender, EventArgs e)
+        #region product
+        private void textBoxProduct_KeyUp(object sender, KeyEventArgs e)
         {
-            labelSummaryResultMoney.Text = textBoxMoney.Text;
-        }
-
-        private void buttonDetails_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePickerRecordInput_Leave(object sender, EventArgs e)
-        {
-            labelSummaryResultDate.Text = dateTimePickerRecordInput.Value.ToLongDateString();
-        }
-
-        private Boolean validateInput()
-        {
-            if (0 == labelSummaryResultCategory.Text.Length)
+            switch (e.KeyCode)
             {
-                MessageBox.Show("Please select category first.", "!", MessageBoxButtons.OK);
-                textBoxCategory.Focus();
+                case Keys.Enter:
+                    listBoxDetailProduct.Visible = false;
+                    if (0 < listBoxDetailProduct.Items.Count) labelSummaryResultProduct.Text = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Name;
+                    textBoxLocation.Focus();
+                    break;
+                case Keys.Up: if (0 < listBoxDetailProduct.SelectedIndex) listBoxDetailProduct.SelectedIndex--; break;
+                case Keys.Down: if (listBoxDetailProduct.SelectedIndex < listBoxDetailProduct.Items.Count - 1) listBoxDetailProduct.SelectedIndex++; break;
             }
-            return true;
         }
 
-        private void radioButtonOut_CheckedChanged(object sender, EventArgs e)
+        private void buttonShowListProduct_Click(object sender, EventArgs e)
         {
-            if (radioButtonOut.Checked)
-                labelSummaryResultInOut.Text = "Outgoings";
-            else
-                labelSummaryResultInOut.Text = "Income";
+            listBoxDetailProduct.Visible = !listBoxDetailProduct.Visible;
         }
+
+        private void textBoxProduct_TextChanged(object sender, EventArgs e)
+        {
+            String product = textBoxDetailProductName.Text.Trim();
+            productSpecificationManufactoryList = productSpecificationManufactoryAction.retrieveProductSpecificationListByPinyin(product);
+            listBoxDetailProduct.DataSource = productSpecificationManufactoryList;
+            if (0 < listBoxDetailProduct.Items.Count)
+            {
+                listBoxDetailProduct.SelectedIndex = 0;
+                listBoxDetailProduct.Visible = true;
+            }
+        }
+
+        private void textBoxProduct_Leave(object sender, EventArgs e)
+        {
+            if (0 == productSpecificationManufactoryList.Count)
+            {
+                listBoxDetailProduct.Visible = false;
+                if (0 < textBoxDetailProductName.Text.Trim().Length)
+                    //add product
+                    if (DialogResult.Yes == MessageBox.Show("do you want to add new product?", "?", MessageBoxButtons.YesNo))
+                    {
+                        ProductConfig pc = new ProductConfig(textBoxDetailProductName.Text.Trim());
+                        pc.ShowDialog();
+                        productSpecificationManufactoryList = productSpecificationManufactoryAction.retrieveProductSpecificationListByPinyin(textBoxDetailProductName.Text.Trim());
+                        if (0 < productSpecificationManufactoryList.Count)
+                        {
+                            listBoxDetailProduct.DataSource = productSpecificationManufactoryList;
+                            listBoxDetailProduct.SelectedIndex = 0;
+                            labelSummaryResultProduct.Text = productSpecificationManufactoryList.ElementAt(0).Name;
+                        }
+                    }
+            }
+            else if (!listBoxDetailProduct.Focused)
+                listBoxDetailProduct.Visible = false;
+        }
+        private void listBoxDetailProduct_Click(object sender, EventArgs e)
+        {
+            labelSummaryResultProduct.Text = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Name;
+            listBoxDetailProduct.Visible = false;
+            textBoxLocation.Focus();
+        }
+        #endregion product
+
 
 
 

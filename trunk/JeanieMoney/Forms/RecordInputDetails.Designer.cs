@@ -69,6 +69,7 @@
             this.textBoxProductName.Name = "textBoxProductName";
             this.textBoxProductName.Size = new System.Drawing.Size(100, 20);
             this.textBoxProductName.TabIndex = 1;
+            this.textBoxProductName.TextChanged += new System.EventHandler(this.textBoxProductName_TextChanged);
             // 
             // listBoxSummary
             // 
@@ -77,6 +78,7 @@
             this.listBoxSummary.Name = "listBoxSummary";
             this.listBoxSummary.Size = new System.Drawing.Size(328, 251);
             this.listBoxSummary.TabIndex = 2;
+            this.listBoxSummary.SelectedIndexChanged += new System.EventHandler(this.listBoxSummary_SelectedIndexChanged);
             // 
             // labelProductName
             // 
@@ -86,6 +88,7 @@
             this.labelProductName.Size = new System.Drawing.Size(33, 13);
             this.labelProductName.TabIndex = 3;
             this.labelProductName.Text = "name";
+            this.labelProductName.Click += new System.EventHandler(this.labelProductName_Click);
             // 
             // labelProductNameResult
             // 
@@ -95,6 +98,7 @@
             this.labelProductNameResult.Size = new System.Drawing.Size(41, 13);
             this.labelProductNameResult.TabIndex = 4;
             this.labelProductNameResult.Text = "Name: ";
+            this.labelProductNameResult.Click += new System.EventHandler(this.labelProductNameResult_Click);
             // 
             // buttonProductNameDropDown
             // 
@@ -104,6 +108,7 @@
             this.buttonProductNameDropDown.TabIndex = 5;
             this.buttonProductNameDropDown.Text = "!";
             this.buttonProductNameDropDown.UseVisualStyleBackColor = true;
+            this.buttonProductNameDropDown.Click += new System.EventHandler(this.buttonProductNameDropDown_Click);
             // 
             // buttonBeneficiaryDropDown
             // 
@@ -113,6 +118,7 @@
             this.buttonBeneficiaryDropDown.TabIndex = 8;
             this.buttonBeneficiaryDropDown.Text = "!";
             this.buttonBeneficiaryDropDown.UseVisualStyleBackColor = true;
+            this.buttonBeneficiaryDropDown.Click += new System.EventHandler(this.buttonBeneficiaryDropDown_Click);
             // 
             // labelBeneficiaryName
             // 
@@ -122,6 +128,7 @@
             this.labelBeneficiaryName.Size = new System.Drawing.Size(58, 13);
             this.labelBeneficiaryName.TabIndex = 7;
             this.labelBeneficiaryName.Text = "beneficiary";
+            this.labelBeneficiaryName.Click += new System.EventHandler(this.labelBeneficiaryName_Click);
             // 
             // textBoxBeneficiaryName
             // 
@@ -129,6 +136,7 @@
             this.textBoxBeneficiaryName.Name = "textBoxBeneficiaryName";
             this.textBoxBeneficiaryName.Size = new System.Drawing.Size(100, 20);
             this.textBoxBeneficiaryName.TabIndex = 6;
+            this.textBoxBeneficiaryName.TextChanged += new System.EventHandler(this.textBoxBeneficiaryName_TextChanged);
             // 
             // label2
             // 
@@ -138,6 +146,7 @@
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Price";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // textBox2
             // 
@@ -145,6 +154,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 9;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
             // 
@@ -154,6 +164,7 @@
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Quantity";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // textBox3
             // 
@@ -161,6 +172,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 11;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label4
             // 
@@ -170,6 +182,7 @@
             this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 13;
             this.label4.Text = "Total";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // labelPriceAverage
             // 
@@ -179,6 +192,7 @@
             this.labelPriceAverage.Size = new System.Drawing.Size(71, 13);
             this.labelPriceAverage.TabIndex = 14;
             this.labelPriceAverage.Text = "PriceAverage";
+            this.labelPriceAverage.Click += new System.EventHandler(this.labelPriceAverage_Click);
             // 
             // listBoxProduct
             // 
@@ -187,6 +201,7 @@
             this.listBoxProduct.Name = "listBoxProduct";
             this.listBoxProduct.Size = new System.Drawing.Size(120, 95);
             this.listBoxProduct.TabIndex = 15;
+            this.listBoxProduct.SelectedIndexChanged += new System.EventHandler(this.listBoxProduct_SelectedIndexChanged);
             // 
             // listBoxBeneficiary
             // 
@@ -195,6 +210,7 @@
             this.listBoxBeneficiary.Name = "listBoxBeneficiary";
             this.listBoxBeneficiary.Size = new System.Drawing.Size(120, 95);
             this.listBoxBeneficiary.TabIndex = 16;
+            this.listBoxBeneficiary.SelectedIndexChanged += new System.EventHandler(this.listBoxBeneficiary_SelectedIndexChanged);
             // 
             // buttonAddToSummary
             // 
@@ -204,6 +220,7 @@
             this.buttonAddToSummary.TabIndex = 17;
             this.buttonAddToSummary.Text = ">>";
             this.buttonAddToSummary.UseVisualStyleBackColor = true;
+            this.buttonAddToSummary.Click += new System.EventHandler(this.buttonAddToSummary_Click);
             // 
             // buttonRemoveFromSummary
             // 
@@ -213,6 +230,7 @@
             this.buttonRemoveFromSummary.TabIndex = 18;
             this.buttonRemoveFromSummary.Text = "<<";
             this.buttonRemoveFromSummary.UseVisualStyleBackColor = true;
+            this.buttonRemoveFromSummary.Click += new System.EventHandler(this.buttonRemoveFromSummary_Click);
             // 
             // buttonReset
             // 
@@ -222,6 +240,7 @@
             this.buttonReset.TabIndex = 19;
             this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // buttonCancel
             // 
@@ -231,6 +250,7 @@
             this.buttonCancel.TabIndex = 20;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // labelSpecification
             // 
@@ -240,6 +260,7 @@
             this.labelSpecification.Size = new System.Drawing.Size(68, 13);
             this.labelSpecification.TabIndex = 21;
             this.labelSpecification.Text = "Specification";
+            this.labelSpecification.Click += new System.EventHandler(this.labelSpecification_Click);
             // 
             // labelManufactoryName
             // 
@@ -249,6 +270,7 @@
             this.labelManufactoryName.Size = new System.Drawing.Size(94, 13);
             this.labelManufactoryName.TabIndex = 22;
             this.labelManufactoryName.Text = "ManufactoryName";
+            this.labelManufactoryName.Click += new System.EventHandler(this.labelManufactoryName_Click);
             // 
             // RecordInputDetails
             // 

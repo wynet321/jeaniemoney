@@ -24,12 +24,12 @@ namespace JeanieMoney.Action
             DataTable dataTable = Database.getDataTable(SQL);
             TradeRecord tradeRecord = new TradeRecord();
             tradeRecord.Id = id;
-            tradeRecord.CategoryId = dataTable.Rows[0].ItemArray[1].ToString();
-            tradeRecord.PayerId = dataTable.Rows[0].ItemArray[2].ToString();
-            tradeRecord.LocationId = dataTable.Rows[0].ItemArray[3].ToString();
-            tradeRecord.PaymentCategoryId = dataTable.Rows[0].ItemArray[4].ToString();
-            tradeRecord.Money = dataTable.Rows[0].ItemArray[5].ToString();
-            tradeRecord.Date = dataTable.Rows[0].ItemArray[6].ToString();
+            tradeRecord.CategoryId = dataTable.Rows[0]["category_id"].ToString();
+            tradeRecord.PayerId = dataTable.Rows[0]["payer_id"].ToString();
+            tradeRecord.LocationId = dataTable.Rows[0]["location_id"].ToString();
+            tradeRecord.PaymentCategoryId = dataTable.Rows[0]["payment_category_id"].ToString();
+            tradeRecord.Money = dataTable.Rows[0]["money"].ToString();
+            tradeRecord.Date = dataTable.Rows[0]["date"].ToString();
             return tradeRecord;
         }
 
@@ -62,13 +62,13 @@ namespace JeanieMoney.Action
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 tradeRecord = new TradeRecord();
-                tradeRecord.Id = dataRow.ItemArray[0].ToString();
-                tradeRecord.CategoryId = dataRow.ItemArray[1].ToString();
-                tradeRecord.PayerId = dataRow.ItemArray[2].ToString();
-                tradeRecord.LocationId = dataRow.ItemArray[3].ToString();
-                tradeRecord.PaymentCategoryId = dataRow.ItemArray[4].ToString();
-                tradeRecord.Money = dataRow.ItemArray[5].ToString();
-                tradeRecord.Date = dataRow.ItemArray[6].ToString();
+                tradeRecord.Id = dataRow[0].ToString();
+                tradeRecord.CategoryId = dataRow["category_id"].ToString();
+                tradeRecord.PayerId = dataRow["parent_id"].ToString();
+                tradeRecord.LocationId = dataRow["location_id"].ToString();
+                tradeRecord.PaymentCategoryId = dataRow["payment_category_id"].ToString();
+                tradeRecord.Money = dataRow["money"].ToString();
+                tradeRecord.Date = dataRow["date"].ToString();
                 tradeRecordList.Add(tradeRecord);
             }
             return tradeRecordList;
