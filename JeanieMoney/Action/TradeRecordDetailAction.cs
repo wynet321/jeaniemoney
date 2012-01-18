@@ -24,11 +24,11 @@ namespace JeanieMoney.Action
             DataTable dataTable = Database.getDataTable(SQL);
             TradeRecordDetail tradeRecordDetail = new TradeRecordDetail();
             tradeRecordDetail.Id = id;
-            tradeRecordDetail.AccountId = dataTable.Rows[0].ItemArray[1].ToString();
-            tradeRecordDetail.ProductId = dataTable.Rows[0].ItemArray[2].ToString();
-            tradeRecordDetail.Quantity = dataTable.Rows[0].ItemArray[3].ToString();
-            tradeRecordDetail.Price = dataTable.Rows[0].ItemArray[4].ToString();
-            tradeRecordDetail.BeneficiaryId = dataTable.Rows[0].ItemArray[5].ToString();
+            tradeRecordDetail.AccountId = dataTable.Rows[0]["].ToString();
+            tradeRecordDetail.ProductId = dataTable.Rows[0][2].ToString();
+            tradeRecordDetail.Quantity = dataTable.Rows[0][3].ToString();
+            tradeRecordDetail.Price = dataTable.Rows[0][4].ToString();
+            tradeRecordDetail.BeneficiaryId = dataTable.Rows[0][5].ToString();
             return tradeRecordDetail;
         }
 
@@ -61,12 +61,12 @@ namespace JeanieMoney.Action
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 tradeRecordDetail = new TradeRecordDetail();
-                tradeRecordDetail.Id = dataRow.ItemArray[0].ToString();
-                tradeRecordDetail.AccountId = dataRow.ItemArray[1].ToString();
-                tradeRecordDetail.ProductId = dataRow.ItemArray[2].ToString();
-                tradeRecordDetail.Quantity = dataRow.ItemArray[3].ToString();
-                tradeRecordDetail.Price = dataRow.ItemArray[4].ToString();
-                tradeRecordDetail.BeneficiaryId = dataRow.ItemArray[5].ToString();
+                tradeRecordDetail.Id = dataRow[0].ToString();
+                tradeRecordDetail.AccountId = dataRow[1].ToString();
+                tradeRecordDetail.ProductId = dataRow[2].ToString();
+                tradeRecordDetail.Quantity = dataRow[3].ToString();
+                tradeRecordDetail.Price = dataRow[4].ToString();
+                tradeRecordDetail.BeneficiaryId = dataRow[5].ToString();
                 tradeRecordDetailList.Add(tradeRecordDetail);
             }
             return tradeRecordDetailList;

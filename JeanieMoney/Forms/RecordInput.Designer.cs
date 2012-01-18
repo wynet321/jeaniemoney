@@ -39,15 +39,13 @@
             this.labelPayer = new System.Windows.Forms.Label();
             this.labelLocation = new System.Windows.Forms.Label();
             this.buttonReset = new System.Windows.Forms.Button();
-            this.buttonDetails = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.textBoxCategory = new System.Windows.Forms.TextBox();
             this.textBoxPayer = new System.Windows.Forms.TextBox();
             this.listBoxCategory = new System.Windows.Forms.ListBox();
             this.buttonShowListCategory = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBoxSummary = new System.Windows.Forms.GroupBox();
             this.listBoxDetails = new System.Windows.Forms.ListBox();
             this.labelSummaryResultPayer = new System.Windows.Forms.Label();
             this.labelSummaryPayer = new System.Windows.Forms.Label();
@@ -64,12 +62,33 @@
             this.labelSummaryInOut = new System.Windows.Forms.Label();
             this.buttonShowListPayer = new System.Windows.Forms.Button();
             this.listBoxPayer = new System.Windows.Forms.ListBox();
-            this.labelMoneyUnit = new System.Windows.Forms.Label();
             this.textBoxLocation = new System.Windows.Forms.TextBox();
             this.buttonShowListLocation = new System.Windows.Forms.Button();
             this.listBoxLocation = new System.Windows.Forms.ListBox();
+            this.listBoxDetailProduct = new System.Windows.Forms.ListBox();
+            this.labelDetailManufactoryName = new System.Windows.Forms.Label();
+            this.labelDetailSpecification = new System.Windows.Forms.Label();
+            this.buttonDetailRemoveFromSummary = new System.Windows.Forms.Button();
+            this.buttonDetailAddToSummary = new System.Windows.Forms.Button();
+            this.listBoxDetailBeneficiary = new System.Windows.Forms.ListBox();
+            this.labelDetailPriceAverage = new System.Windows.Forms.Label();
+            this.labelDetailTotal = new System.Windows.Forms.Label();
+            this.labelDetailQuantity = new System.Windows.Forms.Label();
+            this.textBoxQuantity = new System.Windows.Forms.TextBox();
+            this.labelDetailPrice = new System.Windows.Forms.Label();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.buttonDetailBeneficiaryDropDown = new System.Windows.Forms.Button();
+            this.labelBeneficiaryName = new System.Windows.Forms.Label();
+            this.textBoxDetailBeneficiaryName = new System.Windows.Forms.TextBox();
+            this.buttonDetailProductNameDropDown = new System.Windows.Forms.Button();
+            this.labelDetailProductNameResult = new System.Windows.Forms.Label();
+            this.labelDetailProductName = new System.Windows.Forms.Label();
+            this.textBoxDetailProductName = new System.Windows.Forms.TextBox();
+            this.checkBoxDetails = new System.Windows.Forms.CheckBox();
+            this.panelDetails = new System.Windows.Forms.Panel();
             this.groupBoxInOut.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxSummary.SuspendLayout();
+            this.panelDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelMoney
@@ -170,7 +189,7 @@
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(339, 391);
+            this.buttonReset.Location = new System.Drawing.Point(461, 517);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 23);
             this.buttonReset.TabIndex = 11;
@@ -178,19 +197,9 @@
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
-            // buttonDetails
-            // 
-            this.buttonDetails.Location = new System.Drawing.Point(17, 125);
-            this.buttonDetails.Name = "buttonDetails";
-            this.buttonDetails.Size = new System.Drawing.Size(75, 23);
-            this.buttonDetails.TabIndex = 8;
-            this.buttonDetails.Text = "Details";
-            this.buttonDetails.UseVisualStyleBackColor = true;
-            this.buttonDetails.Click += new System.EventHandler(this.buttonDetails_Click);
-            // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(242, 391);
+            this.buttonOK.Location = new System.Drawing.Point(364, 517);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 9;
@@ -200,7 +209,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(436, 391);
+            this.buttonCancel.Location = new System.Drawing.Point(558, 517);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 10;
@@ -244,50 +253,41 @@
             this.buttonShowListCategory.Location = new System.Drawing.Point(187, 63);
             this.buttonShowListCategory.Name = "buttonShowListCategory";
             this.buttonShowListCategory.Size = new System.Drawing.Size(20, 21);
-            this.buttonShowListCategory.TabIndex = 31;
+            this.buttonShowListCategory.TabIndex = 0;
             this.buttonShowListCategory.Text = "!";
             this.buttonShowListCategory.UseVisualStyleBackColor = true;
             this.buttonShowListCategory.Click += new System.EventHandler(this.buttonShowListCategory_Click);
             // 
-            // groupBox1
+            // groupBoxSummary
             // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.listBoxDetails);
-            this.groupBox1.Controls.Add(this.labelSummaryResultPayer);
-            this.groupBox1.Controls.Add(this.labelSummaryPayer);
-            this.groupBox1.Controls.Add(this.labelSummaryLocation);
-            this.groupBox1.Controls.Add(this.labelSummaryResultLocation);
-            this.groupBox1.Controls.Add(this.labelSummaryResultInOut);
-            this.groupBox1.Controls.Add(this.labelSummaryMoney);
-            this.groupBox1.Controls.Add(this.labelSummaryResultMoney);
-            this.groupBox1.Controls.Add(this.labelSummaryDate);
-            this.groupBox1.Controls.Add(this.labelSummaryResultDate);
-            this.groupBox1.Controls.Add(this.labelSummaryResultCategory);
-            this.groupBox1.Controls.Add(this.labelSummaryCategory);
-            this.groupBox1.Controls.Add(this.labelSummaryDetails);
-            this.groupBox1.Controls.Add(this.labelSummaryInOut);
-            this.groupBox1.Location = new System.Drawing.Point(390, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(392, 373);
-            this.groupBox1.TabIndex = 32;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Summary";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(215, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "Yuan";
+            this.groupBoxSummary.Controls.Add(this.listBoxDetails);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryResultPayer);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryPayer);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryLocation);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryResultLocation);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryResultInOut);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryMoney);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryResultMoney);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryDate);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryResultDate);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryResultCategory);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryCategory);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryDetails);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryInOut);
+            this.groupBoxSummary.Location = new System.Drawing.Point(461, 7);
+            this.groupBoxSummary.Name = "groupBoxSummary";
+            this.groupBoxSummary.Size = new System.Drawing.Size(545, 491);
+            this.groupBoxSummary.TabIndex = 32;
+            this.groupBoxSummary.TabStop = false;
+            this.groupBoxSummary.Text = "Summary";
             // 
             // listBoxDetails
             // 
+            this.listBoxDetails.Enabled = false;
             this.listBoxDetails.FormattingEnabled = true;
             this.listBoxDetails.Location = new System.Drawing.Point(25, 113);
             this.listBoxDetails.Name = "listBoxDetails";
-            this.listBoxDetails.Size = new System.Drawing.Size(361, 251);
+            this.listBoxDetails.Size = new System.Drawing.Size(514, 368);
             this.listBoxDetails.TabIndex = 13;
             // 
             // labelSummaryResultPayer
@@ -409,7 +409,7 @@
             this.buttonShowListPayer.Location = new System.Drawing.Point(364, 66);
             this.buttonShowListPayer.Name = "buttonShowListPayer";
             this.buttonShowListPayer.Size = new System.Drawing.Size(20, 21);
-            this.buttonShowListPayer.TabIndex = 33;
+            this.buttonShowListPayer.TabIndex = 0;
             this.buttonShowListPayer.Text = "!";
             this.buttonShowListPayer.UseVisualStyleBackColor = true;
             this.buttonShowListPayer.Click += new System.EventHandler(this.buttonShowListPayer_Click);
@@ -422,15 +422,6 @@
             this.listBoxPayer.Size = new System.Drawing.Size(94, 199);
             this.listBoxPayer.TabIndex = 34;
             this.listBoxPayer.Click += new System.EventHandler(this.listBoxPayer_Click);
-            // 
-            // labelMoneyUnit
-            // 
-            this.labelMoneyUnit.AutoSize = true;
-            this.labelMoneyUnit.Location = new System.Drawing.Point(303, 15);
-            this.labelMoneyUnit.Name = "labelMoneyUnit";
-            this.labelMoneyUnit.Size = new System.Drawing.Size(32, 13);
-            this.labelMoneyUnit.TabIndex = 35;
-            this.labelMoneyUnit.Text = "Yuan";
             // 
             // textBoxLocation
             // 
@@ -447,7 +438,7 @@
             this.buttonShowListLocation.Location = new System.Drawing.Point(364, 95);
             this.buttonShowListLocation.Name = "buttonShowListLocation";
             this.buttonShowListLocation.Size = new System.Drawing.Size(20, 21);
-            this.buttonShowListLocation.TabIndex = 37;
+            this.buttonShowListLocation.TabIndex = 0;
             this.buttonShowListLocation.Text = "!";
             this.buttonShowListLocation.UseVisualStyleBackColor = true;
             this.buttonShowListLocation.Click += new System.EventHandler(this.buttonShowListLocation_Click);
@@ -461,24 +452,224 @@
             this.listBoxLocation.TabIndex = 38;
             this.listBoxLocation.Click += new System.EventHandler(this.listBoxLocation_Click);
             // 
+            // listBoxDetailProduct
+            // 
+            this.listBoxDetailProduct.FormattingEnabled = true;
+            this.listBoxDetailProduct.Location = new System.Drawing.Point(65, 32);
+            this.listBoxDetailProduct.Name = "listBoxDetailProduct";
+            this.listBoxDetailProduct.Size = new System.Drawing.Size(288, 134);
+            this.listBoxDetailProduct.TabIndex = 37;
+            // 
+            // labelDetailManufactoryName
+            // 
+            this.labelDetailManufactoryName.AutoSize = true;
+            this.labelDetailManufactoryName.Location = new System.Drawing.Point(24, 79);
+            this.labelDetailManufactoryName.Name = "labelDetailManufactoryName";
+            this.labelDetailManufactoryName.Size = new System.Drawing.Size(94, 13);
+            this.labelDetailManufactoryName.TabIndex = 42;
+            this.labelDetailManufactoryName.Text = "ManufactoryName";
+            // 
+            // labelDetailSpecification
+            // 
+            this.labelDetailSpecification.AutoSize = true;
+            this.labelDetailSpecification.Location = new System.Drawing.Point(24, 57);
+            this.labelDetailSpecification.Name = "labelDetailSpecification";
+            this.labelDetailSpecification.Size = new System.Drawing.Size(68, 13);
+            this.labelDetailSpecification.TabIndex = 41;
+            this.labelDetailSpecification.Text = "Specification";
+            // 
+            // buttonDetailRemoveFromSummary
+            // 
+            this.buttonDetailRemoveFromSummary.Location = new System.Drawing.Point(400, 161);
+            this.buttonDetailRemoveFromSummary.Name = "buttonDetailRemoveFromSummary";
+            this.buttonDetailRemoveFromSummary.Size = new System.Drawing.Size(31, 23);
+            this.buttonDetailRemoveFromSummary.TabIndex = 40;
+            this.buttonDetailRemoveFromSummary.Text = "<<";
+            this.buttonDetailRemoveFromSummary.UseVisualStyleBackColor = true;
+            // 
+            // buttonDetailAddToSummary
+            // 
+            this.buttonDetailAddToSummary.Location = new System.Drawing.Point(400, 103);
+            this.buttonDetailAddToSummary.Name = "buttonDetailAddToSummary";
+            this.buttonDetailAddToSummary.Size = new System.Drawing.Size(31, 23);
+            this.buttonDetailAddToSummary.TabIndex = 39;
+            this.buttonDetailAddToSummary.Text = ">>";
+            this.buttonDetailAddToSummary.UseVisualStyleBackColor = true;
+            // 
+            // listBoxDetailBeneficiary
+            // 
+            this.listBoxDetailBeneficiary.FormattingEnabled = true;
+            this.listBoxDetailBeneficiary.Location = new System.Drawing.Point(85, 202);
+            this.listBoxDetailBeneficiary.Name = "listBoxDetailBeneficiary";
+            this.listBoxDetailBeneficiary.Size = new System.Drawing.Size(120, 95);
+            this.listBoxDetailBeneficiary.TabIndex = 38;
+            // 
+            // labelDetailPriceAverage
+            // 
+            this.labelDetailPriceAverage.AutoSize = true;
+            this.labelDetailPriceAverage.Location = new System.Drawing.Point(24, 103);
+            this.labelDetailPriceAverage.Name = "labelDetailPriceAverage";
+            this.labelDetailPriceAverage.Size = new System.Drawing.Size(71, 13);
+            this.labelDetailPriceAverage.TabIndex = 36;
+            this.labelDetailPriceAverage.Text = "PriceAverage";
+            // 
+            // labelDetailTotal
+            // 
+            this.labelDetailTotal.AutoSize = true;
+            this.labelDetailTotal.Location = new System.Drawing.Point(216, 249);
+            this.labelDetailTotal.Name = "labelDetailTotal";
+            this.labelDetailTotal.Size = new System.Drawing.Size(31, 13);
+            this.labelDetailTotal.TabIndex = 35;
+            this.labelDetailTotal.Text = "Total";
+            // 
+            // labelDetailQuantity
+            // 
+            this.labelDetailQuantity.AutoSize = true;
+            this.labelDetailQuantity.Location = new System.Drawing.Point(211, 215);
+            this.labelDetailQuantity.Name = "labelDetailQuantity";
+            this.labelDetailQuantity.Size = new System.Drawing.Size(46, 13);
+            this.labelDetailQuantity.TabIndex = 34;
+            this.labelDetailQuantity.Text = "Quantity";
+            // 
+            // textBoxQuantity
+            // 
+            this.textBoxQuantity.Location = new System.Drawing.Point(263, 212);
+            this.textBoxQuantity.Name = "textBoxQuantity";
+            this.textBoxQuantity.Size = new System.Drawing.Size(100, 20);
+            this.textBoxQuantity.TabIndex = 33;
+            // 
+            // labelDetailPrice
+            // 
+            this.labelDetailPrice.AutoSize = true;
+            this.labelDetailPrice.Location = new System.Drawing.Point(219, 185);
+            this.labelDetailPrice.Name = "labelDetailPrice";
+            this.labelDetailPrice.Size = new System.Drawing.Size(31, 13);
+            this.labelDetailPrice.TabIndex = 32;
+            this.labelDetailPrice.Text = "Price";
+            // 
+            // textBoxPrice
+            // 
+            this.textBoxPrice.Location = new System.Drawing.Point(260, 182);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(101, 20);
+            this.textBoxPrice.TabIndex = 31;
+            // 
+            // buttonDetailBeneficiaryDropDown
+            // 
+            this.buttonDetailBeneficiaryDropDown.Location = new System.Drawing.Point(184, 182);
+            this.buttonDetailBeneficiaryDropDown.Name = "buttonDetailBeneficiaryDropDown";
+            this.buttonDetailBeneficiaryDropDown.Size = new System.Drawing.Size(21, 20);
+            this.buttonDetailBeneficiaryDropDown.TabIndex = 30;
+            this.buttonDetailBeneficiaryDropDown.Text = "!";
+            this.buttonDetailBeneficiaryDropDown.UseVisualStyleBackColor = true;
+            // 
+            // labelBeneficiaryName
+            // 
+            this.labelBeneficiaryName.AutoSize = true;
+            this.labelBeneficiaryName.Location = new System.Drawing.Point(21, 185);
+            this.labelBeneficiaryName.Name = "labelBeneficiaryName";
+            this.labelBeneficiaryName.Size = new System.Drawing.Size(58, 13);
+            this.labelBeneficiaryName.TabIndex = 29;
+            this.labelBeneficiaryName.Text = "beneficiary";
+            // 
+            // textBoxDetailBeneficiaryName
+            // 
+            this.textBoxDetailBeneficiaryName.Location = new System.Drawing.Point(85, 182);
+            this.textBoxDetailBeneficiaryName.Name = "textBoxDetailBeneficiaryName";
+            this.textBoxDetailBeneficiaryName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxDetailBeneficiaryName.TabIndex = 28;
+            // 
+            // buttonDetailProductNameDropDown
+            // 
+            this.buttonDetailProductNameDropDown.Location = new System.Drawing.Point(352, 12);
+            this.buttonDetailProductNameDropDown.Name = "buttonDetailProductNameDropDown";
+            this.buttonDetailProductNameDropDown.Size = new System.Drawing.Size(21, 20);
+            this.buttonDetailProductNameDropDown.TabIndex = 27;
+            this.buttonDetailProductNameDropDown.Text = "!";
+            this.buttonDetailProductNameDropDown.UseVisualStyleBackColor = true;
+            // 
+            // labelDetailProductNameResult
+            // 
+            this.labelDetailProductNameResult.AutoSize = true;
+            this.labelDetailProductNameResult.Location = new System.Drawing.Point(24, 35);
+            this.labelDetailProductNameResult.Name = "labelDetailProductNameResult";
+            this.labelDetailProductNameResult.Size = new System.Drawing.Size(41, 13);
+            this.labelDetailProductNameResult.TabIndex = 26;
+            this.labelDetailProductNameResult.Text = "Name: ";
+            // 
+            // labelDetailProductName
+            // 
+            this.labelDetailProductName.AutoSize = true;
+            this.labelDetailProductName.Location = new System.Drawing.Point(24, 15);
+            this.labelDetailProductName.Name = "labelDetailProductName";
+            this.labelDetailProductName.Size = new System.Drawing.Size(33, 13);
+            this.labelDetailProductName.TabIndex = 25;
+            this.labelDetailProductName.Text = "name";
+            // 
+            // textBoxDetailProductName
+            // 
+            this.textBoxDetailProductName.Location = new System.Drawing.Point(65, 12);
+            this.textBoxDetailProductName.Name = "textBoxDetailProductName";
+            this.textBoxDetailProductName.Size = new System.Drawing.Size(288, 20);
+            this.textBoxDetailProductName.TabIndex = 23;
+            // 
+            // checkBoxDetails
+            // 
+            this.checkBoxDetails.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxDetails.AutoSize = true;
+            this.checkBoxDetails.Location = new System.Drawing.Point(11, 138);
+            this.checkBoxDetails.Name = "checkBoxDetails";
+            this.checkBoxDetails.Size = new System.Drawing.Size(58, 23);
+            this.checkBoxDetails.TabIndex = 40;
+            this.checkBoxDetails.Text = "Details->";
+            this.checkBoxDetails.UseVisualStyleBackColor = true;
+            this.checkBoxDetails.CheckedChanged += new System.EventHandler(this.checkBoxDetails_CheckedChanged);
+            // 
+            // panelDetails
+            // 
+            this.panelDetails.Controls.Add(this.listBoxDetailProduct);
+            this.panelDetails.Controls.Add(this.labelDetailManufactoryName);
+            this.panelDetails.Controls.Add(this.textBoxDetailProductName);
+            this.panelDetails.Controls.Add(this.labelDetailSpecification);
+            this.panelDetails.Controls.Add(this.labelDetailProductName);
+            this.panelDetails.Controls.Add(this.buttonDetailRemoveFromSummary);
+            this.panelDetails.Controls.Add(this.labelDetailProductNameResult);
+            this.panelDetails.Controls.Add(this.buttonDetailAddToSummary);
+            this.panelDetails.Controls.Add(this.buttonDetailProductNameDropDown);
+            this.panelDetails.Controls.Add(this.listBoxDetailBeneficiary);
+            this.panelDetails.Controls.Add(this.textBoxDetailBeneficiaryName);
+            this.panelDetails.Controls.Add(this.labelDetailPriceAverage);
+            this.panelDetails.Controls.Add(this.labelBeneficiaryName);
+            this.panelDetails.Controls.Add(this.labelDetailTotal);
+            this.panelDetails.Controls.Add(this.buttonDetailBeneficiaryDropDown);
+            this.panelDetails.Controls.Add(this.labelDetailQuantity);
+            this.panelDetails.Controls.Add(this.textBoxPrice);
+            this.panelDetails.Controls.Add(this.textBoxQuantity);
+            this.panelDetails.Controls.Add(this.labelDetailPrice);
+            this.panelDetails.Location = new System.Drawing.Point(12, 167);
+            this.panelDetails.Name = "panelDetails";
+            this.panelDetails.Size = new System.Drawing.Size(443, 331);
+            this.panelDetails.TabIndex = 41;
+            this.panelDetails.Visible = false;
+            // 
             // RecordInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 426);
+            this.ClientSize = new System.Drawing.Size(1018, 552);
+            this.Controls.Add(this.panelDetails);
+            this.Controls.Add(this.checkBoxDetails);
             this.Controls.Add(this.listBoxLocation);
             this.Controls.Add(this.buttonShowListLocation);
-            this.Controls.Add(this.labelMoneyUnit);
             this.Controls.Add(this.listBoxPayer);
             this.Controls.Add(this.buttonShowListPayer);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxSummary);
             this.Controls.Add(this.buttonShowListCategory);
             this.Controls.Add(this.listBoxCategory);
             this.Controls.Add(this.textBoxPayer);
             this.Controls.Add(this.textBoxCategory);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
-            this.Controls.Add(this.buttonDetails);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.labelLocation);
             this.Controls.Add(this.labelPayer);
@@ -495,8 +686,10 @@
             this.Text = "RecordInput";
             this.groupBoxInOut.ResumeLayout(false);
             this.groupBoxInOut.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxSummary.ResumeLayout(false);
+            this.groupBoxSummary.PerformLayout();
+            this.panelDetails.ResumeLayout(false);
+            this.panelDetails.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -515,14 +708,13 @@
         private System.Windows.Forms.Label labelPayer;
         private System.Windows.Forms.Label labelLocation;
         private System.Windows.Forms.Button buttonReset;
-        private System.Windows.Forms.Button buttonDetails;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TextBox textBoxCategory;
         private System.Windows.Forms.TextBox textBoxPayer;
         private System.Windows.Forms.ListBox listBoxCategory;
         private System.Windows.Forms.Button buttonShowListCategory;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxSummary;
         private System.Windows.Forms.Label labelSummaryResultPayer;
         private System.Windows.Forms.Label labelSummaryPayer;
         private System.Windows.Forms.Label labelSummaryLocation;
@@ -537,12 +729,31 @@
         private System.Windows.Forms.Label labelSummaryDetails;
         private System.Windows.Forms.Label labelSummaryInOut;
         private System.Windows.Forms.ListBox listBoxDetails;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonShowListPayer;
         private System.Windows.Forms.ListBox listBoxPayer;
-        private System.Windows.Forms.Label labelMoneyUnit;
         private System.Windows.Forms.TextBox textBoxLocation;
         private System.Windows.Forms.Button buttonShowListLocation;
         private System.Windows.Forms.ListBox listBoxLocation;
+        private System.Windows.Forms.ListBox listBoxDetailProduct;
+        private System.Windows.Forms.Label labelDetailManufactoryName;
+        private System.Windows.Forms.Label labelDetailSpecification;
+        private System.Windows.Forms.Button buttonDetailRemoveFromSummary;
+        private System.Windows.Forms.Button buttonDetailAddToSummary;
+        private System.Windows.Forms.ListBox listBoxDetailBeneficiary;
+        private System.Windows.Forms.Label labelDetailPriceAverage;
+        private System.Windows.Forms.Label labelDetailTotal;
+        private System.Windows.Forms.Label labelDetailQuantity;
+        private System.Windows.Forms.TextBox textBoxQuantity;
+        private System.Windows.Forms.Label labelDetailPrice;
+        private System.Windows.Forms.TextBox textBoxPrice;
+        private System.Windows.Forms.Button buttonDetailBeneficiaryDropDown;
+        private System.Windows.Forms.Label labelBeneficiaryName;
+        private System.Windows.Forms.TextBox textBoxDetailBeneficiaryName;
+        private System.Windows.Forms.Button buttonDetailProductNameDropDown;
+        private System.Windows.Forms.Label labelDetailProductNameResult;
+        private System.Windows.Forms.Label labelDetailProductName;
+        private System.Windows.Forms.TextBox textBoxDetailProductName;
+        private System.Windows.Forms.CheckBox checkBoxDetails;
+        private System.Windows.Forms.Panel panelDetails;
     }
 }

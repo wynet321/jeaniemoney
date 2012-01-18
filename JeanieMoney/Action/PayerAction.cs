@@ -24,8 +24,8 @@ namespace JeanieMoney.Action
             DataTable dataTable = Database.getDataTable(SQL);
             Payer payer = new Payer();
             payer.Id = id;
-            payer.Name = dataTable.Rows[0].ItemArray[1].ToString();
-            payer.Pinyin = dataTable.Rows[0].ItemArray[2].ToString();
+            payer.Name = dataTable.Rows[0]["name"].ToString();
+            payer.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
             return payer;
         }
 
@@ -58,9 +58,9 @@ namespace JeanieMoney.Action
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 payer = new Payer();
-                payer.Id = dataRow.ItemArray[0].ToString();
-                payer.Name = dataRow.ItemArray[1].ToString();
-                payer.Pinyin = dataRow.ItemArray[2].ToString();
+                payer.Id = dataRow["id"].ToString();
+                payer.Name = dataRow["name"].ToString();
+                payer.Pinyin = dataRow["pinyin"].ToString();
                 payerList.Add(payer);
             }
             return payerList;
