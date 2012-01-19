@@ -20,7 +20,7 @@ namespace JeanieMoney.Action
 
         public Beneficiary retrieveBeneficiaryById(string id)
         {
-            string SQL = "select id,name,pinyin from beneficiary where id='" + id + "'";
+            string SQL = "select * from beneficiary where id='" + id + "'";
             DataTable dataTable = Database.getDataTable(SQL);
             Beneficiary beneficiary = new Beneficiary();
             beneficiary.Id = id;
@@ -31,7 +31,7 @@ namespace JeanieMoney.Action
 
         public List<Beneficiary> retrieveBeneficiaryList()
         {
-            string SQL = "select id,name,pinyin from beneficiary";
+            string SQL = "select * from beneficiary";
             List<Beneficiary> beneficiaryList = retrieveBeneficiaryListBySQL(SQL);
             return beneficiaryList;
         }
@@ -45,7 +45,7 @@ namespace JeanieMoney.Action
         }
         public List<Beneficiary> retrieveBeneficiaryListByPinyin(string pinyin)
         {
-            string SQL = "select id,name,pinyin from beneficiary where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from beneficiary where pinyin like '" + pinyin + "%'";
             List<Beneficiary> beneficiaryList = retrieveBeneficiaryListBySQL(SQL);
             return beneficiaryList;
         }

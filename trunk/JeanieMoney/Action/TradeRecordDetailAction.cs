@@ -12,7 +12,7 @@ namespace JeanieMoney.Action
     {
         public bool createTradeRecordDetail(TradeRecordDetail tradeRecordDetail)
         {
-            string SQL = "insert into trade_record_detail values('" + tradeRecordDetail.Id + "','" + tradeRecordDetail.AccountId + "','" + tradeRecordDetail.ProductId + "','" + tradeRecordDetail.Quantity + "','" + tradeRecordDetail.Price + "','" + tradeRecordDetail.BeneficiaryId + "')";
+            string SQL = "insert into trade_record_detail values('" + tradeRecordDetail.Id + "','" + tradeRecordDetail.TradeRecordId + "','" + tradeRecordDetail.ProductId + "','" + tradeRecordDetail.Quantity + "','" + tradeRecordDetail.Price + "','" + tradeRecordDetail.BeneficiaryId + "')";
             if (0 < Database.execCommand(SQL))
                 return true;
             return false;
@@ -20,21 +20,21 @@ namespace JeanieMoney.Action
 
         public TradeRecordDetail retrieveTradeRecordDetailById(string id)
         {
-            string SQL = "select id,account_id,product_id,quantity,price,beneficiary_id from trade_record_detail where id='" + id + "'";
+            string SQL = "select * from trade_record_detail where id='" + id + "'";
             DataTable dataTable = Database.getDataTable(SQL);
             TradeRecordDetail tradeRecordDetail = new TradeRecordDetail();
             tradeRecordDetail.Id = id;
-            tradeRecordDetail.AccountId = dataTable.Rows[0]["].ToString();
-            tradeRecordDetail.ProductId = dataTable.Rows[0][2].ToString();
-            tradeRecordDetail.Quantity = dataTable.Rows[0][3].ToString();
-            tradeRecordDetail.Price = dataTable.Rows[0][4].ToString();
-            tradeRecordDetail.BeneficiaryId = dataTable.Rows[0][5].ToString();
+            tradeRecordDetail.TradeRecordId = dataTable.Rows[0]["trade_record_id"].ToString();
+            tradeRecordDetail.ProductId = dataTable.Rows[0]["product_id"].ToString();
+            tradeRecordDetail.Quantity = dataTable.Rows[0]["quantity"].ToString();
+            tradeRecordDetail.Price = dataTable.Rows[0]["price"].ToString();
+            tradeRecordDetail.BeneficiaryId = dataTable.Rows[0]["beneficiary_id"].ToString();
             return tradeRecordDetail;
         }
 
         public List<TradeRecordDetail> retrieveTradeRecordDetailList()
         {
-            string SQL = "select id,account_id,product_id,quantity,price,beneficiary_id from trade_record_detail";
+            string SQL = "select * from trade_record_detail";
             List<TradeRecordDetail> tradeRecordDetailList = retrieveTradeRecordDetailListBySQL(SQL);
             return tradeRecordDetailList;
         }
@@ -48,7 +48,7 @@ namespace JeanieMoney.Action
         }
         public List<TradeRecordDetail> retrieveTradeRecordDetailListByPinyin(string pinyin)
         {
-            string SQL = "select id,account_id,product_id,quantity,price,beneficiary_id from trade_record_detail where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from trade_record_detail where pinyin like '" + pinyin + "%'";
             List<TradeRecordDetail> tradeRecordDetailList = retrieveTradeRecordDetailListBySQL(SQL);
             return tradeRecordDetailList;
         }
@@ -62,11 +62,11 @@ namespace JeanieMoney.Action
             {
                 tradeRecordDetail = new TradeRecordDetail();
                 tradeRecordDetail.Id = dataRow[0].ToString();
-                tradeRecordDetail.AccountId = dataRow[1].ToString();
-                tradeRecordDetail.ProductId = dataRow[2].ToString();
-                tradeRecordDetail.Quantity = dataRow[3].ToString();
-                tradeRecordDetail.Price = dataRow[4].ToString();
-                tradeRecordDetail.BeneficiaryId = dataRow[5].ToString();
+                tradeRecordDetail.TradeRecordId = dataRow["trade_record_id"].ToString();
+                tradeRecordDetail.ProductId = dataRow["product_id"].ToString();
+                tradeRecordDetail.Quantity = dataRow["quantity"].ToString();
+                tradeRecordDetail.Price = dataRow["price"].ToString();
+                tradeRecordDetail.BeneficiaryId = dataRow["beneficiary_id"].ToString();
                 tradeRecordDetailList.Add(tradeRecordDetail);
             }
             return tradeRecordDetailList;
@@ -77,7 +77,7 @@ namespace JeanieMoney.Action
             string SQL = "update trade_record_detail set ";
             if (0 > tradeRecordDetail.Id.Length)
                 return false;
-            SQL += "account_id='" + tradeRecordDetail.AccountId + "',product_id='" + tradeRecordDetail.ProductId + "',quantity='" + tradeRecordDetail.Quantity + "',price='" + tradeRecordDetail.Price + "',beneficiary_id='" + tradeRecordDetail.BeneficiaryId + "' Where id='" + tradeRecordDetail.Id.Trim() + "'";
+            SQL += "trade_record_id='" + tradeRecordDetail.TradeRecordId + "',product_id='" + tradeRecordDetail.ProductId + "',quantity='" + tradeRecordDetail.Quantity + "',price='" + tradeRecordDetail.Price + "',beneficiary_id='" + tradeRecordDetail.BeneficiaryId + "' Where id='" + tradeRecordDetail.Id.Trim() + "'";
             if (0 < Database.execCommand(SQL))
                 return true;
             return false;

@@ -20,7 +20,7 @@ namespace JeanieMoney.Action
 
         public Product retrieveProductById(string id)
         {
-            string SQL = "select id,name,pinyin,specification_id,specification_quantity,manufactory_id from product where id='" + id + "'";
+            string SQL = "select * from product where id='" + id + "'";
             DataTable dataTable = Database.getDataTable(SQL);
             Product product = new Product();
             product.Id = id;
@@ -34,7 +34,7 @@ namespace JeanieMoney.Action
 
         public List<Product> retrieveProductList()
         {
-            string SQL = "select id,name,pinyin,specification_id,specification_quantity,manufactory_id from product";
+            string SQL = "select * from product";
             List<Product> productList = retrieveProductListBySQL(SQL);
             return productList;
         }
@@ -48,7 +48,7 @@ namespace JeanieMoney.Action
         }
         public List<Product> retrieveProductListByPinyin(string pinyin)
         {
-            string SQL = "select id,name,pinyin,specification_id,specification_quantity,manufactory_id from product where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from product where pinyin like '" + pinyin + "%'";
             List<Product> productList = retrieveProductListBySQL(SQL);
             return productList;
         }

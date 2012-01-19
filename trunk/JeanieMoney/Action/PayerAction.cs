@@ -20,7 +20,7 @@ namespace JeanieMoney.Action
 
         public Payer retrievePayerById(string id)
         {
-            string SQL = "select id,name,pinyin from payer where id='" + id + "'";
+            string SQL = "select * from payer where id='" + id + "'";
             DataTable dataTable = Database.getDataTable(SQL);
             Payer payer = new Payer();
             payer.Id = id;
@@ -31,7 +31,7 @@ namespace JeanieMoney.Action
 
         public List<Payer> retrievePayerList()
         {
-            string SQL = "select id,name,pinyin from payer";
+            string SQL = "select * from payer";
             List<Payer> payerList = retrievePayerListBySQL(SQL);
             return payerList;
         }
@@ -45,7 +45,7 @@ namespace JeanieMoney.Action
         }
         public List<Payer> retrievePayerListByPinyin(string pinyin)
         {
-            string SQL = "select id,name,pinyin from payer where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from payer where pinyin like '" + pinyin + "%'";
             List<Payer> payerList = retrievePayerListBySQL(SQL);
             return payerList;
         }
