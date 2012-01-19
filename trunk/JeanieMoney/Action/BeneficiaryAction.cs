@@ -12,7 +12,7 @@ namespace JeanieMoney.Action
     {
         public bool createBeneficiary(Beneficiary beneficiary)
         {
-            string SQL = "insert into beneficiary values('" + beneficiary.Id + "','" + beneficiary.Name + "','" + beneficiary.Pinyin + "')";
+            string SQL = "insert into beneficiary values('" + beneficiary.Id + "','" + beneficiary.Name + "','" + beneficiary.Abbr + "')";
             if (0 < Database.execCommand(SQL))
                 return true;
             return false;
@@ -25,7 +25,7 @@ namespace JeanieMoney.Action
             Beneficiary beneficiary = new Beneficiary();
             beneficiary.Id = id;
             beneficiary.Name = dataTable.Rows[0]["name"].ToString();
-            beneficiary.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
+            beneficiary.Abbr = dataTable.Rows[0]["abbr"].ToString();
             return beneficiary;
         }
 
@@ -43,9 +43,9 @@ namespace JeanieMoney.Action
                 return true;
             return false;
         }
-        public List<Beneficiary> retrieveBeneficiaryListByPinyin(string pinyin)
+        public List<Beneficiary> retrieveBeneficiaryListByAbbr(string abbr)
         {
-            string SQL = "select * from beneficiary where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from beneficiary where abbr like '" + abbr + "%'";
             List<Beneficiary> beneficiaryList = retrieveBeneficiaryListBySQL(SQL);
             return beneficiaryList;
         }
@@ -60,7 +60,7 @@ namespace JeanieMoney.Action
                 beneficiary = new Beneficiary();
                 beneficiary.Id = dataRow["id"].ToString();
                 beneficiary.Name = dataRow["name"].ToString();
-                beneficiary.Pinyin = dataRow["pinyin"].ToString();
+                beneficiary.Abbr = dataRow["abbr"].ToString();
                 beneficiaryList.Add(beneficiary);
             }
             return beneficiaryList;
@@ -71,7 +71,7 @@ namespace JeanieMoney.Action
             string SQL = "update beneficiary set ";
             if (0 > beneficiary.Id.Length)
                 return false;
-            SQL += "name='" + beneficiary.Name + "',pinyin='" + beneficiary.Pinyin + "' Where id='" + beneficiary.Id.Trim() + "'";
+            SQL += "name='" + beneficiary.Name + "',abbr='" + beneficiary.Abbr + "' Where id='" + beneficiary.Id.Trim() + "'";
 
             if (0 < Database.execCommand(SQL))
                 return true;

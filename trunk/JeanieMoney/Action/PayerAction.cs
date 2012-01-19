@@ -12,7 +12,7 @@ namespace JeanieMoney.Action
     {
         public bool createPayer(Payer payer)
         {
-            string SQL = "insert into payer values('" + payer.Id + "','" + payer.Name + "','" + payer.Pinyin + "')";
+            string SQL = "insert into payer values('" + payer.Id + "','" + payer.Name + "','" + payer.Abbr + "')";
             if (0 < Database.execCommand(SQL))
                 return true;
             return false;
@@ -25,7 +25,7 @@ namespace JeanieMoney.Action
             Payer payer = new Payer();
             payer.Id = id;
             payer.Name = dataTable.Rows[0]["name"].ToString();
-            payer.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
+            payer.Abbr = dataTable.Rows[0]["abbr"].ToString();
             return payer;
         }
 
@@ -43,9 +43,9 @@ namespace JeanieMoney.Action
                 return true;
             return false;
         }
-        public List<Payer> retrievePayerListByPinyin(string pinyin)
+        public List<Payer> retrievePayerListByAbbr(string abbr)
         {
-            string SQL = "select * from payer where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from payer where abbr like '" + abbr + "%'";
             List<Payer> payerList = retrievePayerListBySQL(SQL);
             return payerList;
         }
@@ -60,7 +60,7 @@ namespace JeanieMoney.Action
                 payer = new Payer();
                 payer.Id = dataRow["id"].ToString();
                 payer.Name = dataRow["name"].ToString();
-                payer.Pinyin = dataRow["pinyin"].ToString();
+                payer.Abbr = dataRow["abbr"].ToString();
                 payerList.Add(payer);
             }
             return payerList;
@@ -71,7 +71,7 @@ namespace JeanieMoney.Action
             string SQL = "update payer set ";
             if (0 > payer.Id.Length)
                 return false;
-            SQL += "name='" + payer.Name + "',pinyin='" + payer.Pinyin + "' Where id='" + payer.Id.Trim() + "'";
+            SQL += "name='" + payer.Name + "',abbr='" + payer.Abbr + "' Where id='" + payer.Id.Trim() + "'";
 
             if (0 < Database.execCommand(SQL))
                 return true;

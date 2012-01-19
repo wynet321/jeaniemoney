@@ -12,7 +12,7 @@ namespace JeanieMoney.Action
     {
         public bool createProduct(Product product)
         {
-            string SQL = "insert into product values('" + product.Id + "','" + product.Name + "','" + product.Pinyin + "','" + product.SpecificationId + "','" + product.SpecificationQuantity + "','" + product.ManufactoryId + "')";
+            string SQL = "insert into product values('" + product.Id + "','" + product.Name + "','" + product.Abbr + "','" + product.SpecificationId + "','" + product.SpecificationQuantity + "','" + product.ManufactoryId + "')";
             if (0 < Database.execCommand(SQL))
                 return true;
             return false;
@@ -25,7 +25,7 @@ namespace JeanieMoney.Action
             Product product = new Product();
             product.Id = id;
             product.Name = dataTable.Rows[0]["name"].ToString();
-            product.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
+            product.Abbr = dataTable.Rows[0]["abbr"].ToString();
             product.SpecificationId = dataTable.Rows[0]["specification_id"].ToString();
             product.SpecificationQuantity = dataTable.Rows[0]["specification_quantity"].ToString();
             product.ManufactoryId = dataTable.Rows[0]["manufactory_id"].ToString();
@@ -46,9 +46,9 @@ namespace JeanieMoney.Action
                 return true;
             return false;
         }
-        public List<Product> retrieveProductListByPinyin(string pinyin)
+        public List<Product> retrieveProductListByAbbr(string abbr)
         {
-            string SQL = "select * from product where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from product where abbr like '" + abbr + "%'";
             List<Product> productList = retrieveProductListBySQL(SQL);
             return productList;
         }
@@ -63,7 +63,7 @@ namespace JeanieMoney.Action
                 product = new Product();
                 product.Id = dataRow["id"].ToString();
                 product.Name = dataRow["name"].ToString();
-                product.Pinyin = dataRow["pinyin"].ToString();
+                product.Abbr = dataRow["abbr"].ToString();
                 product.SpecificationId = dataRow["specification_id"].ToString();
                 product.SpecificationQuantity = dataRow["specification_quantity"].ToString();
                 product.ManufactoryId = dataRow["manufactory_id"].ToString();
@@ -77,7 +77,7 @@ namespace JeanieMoney.Action
             string SQL = "update product set ";
             if (0 > product.Id.Length)
                 return false;
-            SQL += "name='" + product.Name + "',pinyin='" + product.Pinyin + "'," + "specification_id='" + product.SpecificationId + "',specification_quantity='" + product.SpecificationQuantity + "',manufactory_id='" + product.ManufactoryId + "' Where id='" + product.Id.Trim() + "'";
+            SQL += "name='" + product.Name + "',abbr='" + product.Abbr + "'," + "specification_id='" + product.SpecificationId + "',specification_quantity='" + product.SpecificationQuantity + "',manufactory_id='" + product.ManufactoryId + "' Where id='" + product.Id.Trim() + "'";
 
             if (0 < Database.execCommand(SQL))
                 return true;

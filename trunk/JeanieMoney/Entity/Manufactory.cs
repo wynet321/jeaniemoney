@@ -13,8 +13,8 @@ namespace JeanieMoney.Entity
         private string name ="";
         public string Name { get { return name; } set { name = value; } }
 
-        private string pinyin ="";
-        public string Pinyin { get { return pinyin; } set { pinyin = value; } }
+        private string abbr ="";
+        public string Abbr { get { return abbr; } set { abbr = value; } }
 
         private string address ="";
         public string Address { get { return address; } set { address = value; } }

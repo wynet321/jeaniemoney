@@ -34,8 +34,8 @@
             this.listBoxPayer = new System.Windows.Forms.ListBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
-            this.textBoxPinyin = new System.Windows.Forms.TextBox();
-            this.labelPinyin = new System.Windows.Forms.Label();
+            this.textBoxAbbr = new System.Windows.Forms.TextBox();
+            this.labelAbbr = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -93,21 +93,21 @@
             this.labelName.TabIndex = 5;
             this.labelName.Text = "Name";
             // 
-            // textBoxPinyin
+            // textBoxAbbr
             // 
-            this.textBoxPinyin.Location = new System.Drawing.Point(272, 59);
-            this.textBoxPinyin.Name = "textBoxPinyin";
-            this.textBoxPinyin.Size = new System.Drawing.Size(180, 20);
-            this.textBoxPinyin.TabIndex = 8;
+            this.textBoxAbbr.Location = new System.Drawing.Point(272, 59);
+            this.textBoxAbbr.Name = "textBoxAbbr";
+            this.textBoxAbbr.Size = new System.Drawing.Size(180, 20);
+            this.textBoxAbbr.TabIndex = 8;
             // 
-            // labelPinyin
+            // labelAbbr
             // 
-            this.labelPinyin.AutoSize = true;
-            this.labelPinyin.Location = new System.Drawing.Point(231, 62);
-            this.labelPinyin.Name = "labelPinyin";
-            this.labelPinyin.Size = new System.Drawing.Size(35, 13);
-            this.labelPinyin.TabIndex = 7;
-            this.labelPinyin.Text = "Pinyin";
+            this.labelAbbr.AutoSize = true;
+            this.labelAbbr.Location = new System.Drawing.Point(231, 62);
+            this.labelAbbr.Name = "labelAbbr";
+            this.labelAbbr.Size = new System.Drawing.Size(35, 13);
+            this.labelAbbr.TabIndex = 7;
+            this.labelAbbr.Text = "Abbr";
             // 
             // buttonCancel
             // 
@@ -147,8 +147,8 @@
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.textBoxPinyin);
-            this.Controls.Add(this.labelPinyin);
+            this.Controls.Add(this.textBoxAbbr);
+            this.Controls.Add(this.labelAbbr);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.listBoxPayer);
@@ -170,8 +170,8 @@
         private System.Windows.Forms.ListBox listBoxPayer;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.TextBox textBoxPinyin;
-        private System.Windows.Forms.Label labelPinyin;
+        private System.Windows.Forms.TextBox textBoxAbbr;
+        private System.Windows.Forms.Label labelAbbr;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button buttonDelete;

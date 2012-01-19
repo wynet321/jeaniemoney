@@ -12,7 +12,7 @@ namespace JeanieMoney.Action
     {
         public bool createManufactory(Manufactory manufactory)
         {
-            string SQL = "insert into manufactory values('" + manufactory.Id + "','" + manufactory.Name + "','" + manufactory.Pinyin + "','" + manufactory.Address + "','" + manufactory.Tel + "')";
+            string SQL = "insert into manufactory values('" + manufactory.Id + "','" + manufactory.Name + "','" + manufactory.Abbr + "','" + manufactory.Address + "','" + manufactory.Tel + "')";
             if (0 < Database.execCommand(SQL))
                 return true;
             return false;
@@ -25,7 +25,7 @@ namespace JeanieMoney.Action
             Manufactory manufactory = new Manufactory();
             manufactory.Id = id;
             manufactory.Name = dataTable.Rows[0]["name"].ToString();
-            manufactory.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
+            manufactory.Abbr = dataTable.Rows[0]["abbr"].ToString();
             manufactory.Address = dataTable.Rows[0]["address"].ToString();
             manufactory.Tel = dataTable.Rows[0]["tel"].ToString();
             return manufactory;
@@ -45,9 +45,9 @@ namespace JeanieMoney.Action
                 return true;
             return false;
         }
-        public List<Manufactory> retrieveManufactoryListByPinyin(string pinyin)
+        public List<Manufactory> retrieveManufactoryListByAbbr(string abbr)
         {
-            string SQL = "select * from manufactory where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from manufactory where abbr like '" + abbr + "%'";
             List<Manufactory> manufactoryList = retrieveManufactoryListBySQL(SQL);
             return manufactoryList;
         }
@@ -62,7 +62,7 @@ namespace JeanieMoney.Action
                 manufactory = new Manufactory();
                 manufactory.Id = dataRow["id"].ToString();
                 manufactory.Name = dataRow["name"].ToString();
-                manufactory.Pinyin = dataRow["pinyin"].ToString();
+                manufactory.Abbr = dataRow["abbr"].ToString();
                 manufactory.Address = dataRow["address"].ToString();
                 manufactory.Tel = dataRow["tel"].ToString();
                 manufactoryList.Add(manufactory);
@@ -75,7 +75,7 @@ namespace JeanieMoney.Action
             string SQL = "update manufactory set ";
             if (0 > manufactory.Id.Length)
                 return false;
-            SQL += "name='" + manufactory.Name + "',pinyin='" + manufactory.Pinyin + "',address='" + manufactory.Address + "',tel='" + manufactory.Tel + "' Where id='" + manufactory.Id.Trim() + "'";
+            SQL += "name='" + manufactory.Name + "',abbr='" + manufactory.Abbr + "',address='" + manufactory.Address + "',tel='" + manufactory.Tel + "' Where id='" + manufactory.Id.Trim() + "'";
 
             if (0 < Database.execCommand(SQL))
                 return true;

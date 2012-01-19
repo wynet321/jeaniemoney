@@ -12,7 +12,7 @@ namespace JeanieMoney.Action
     {
         public bool createLocation(Location location)
         {
-            string SQL = "insert into location values('" + location.Id + "','" + location.Name + "','" + location.Pinyin + "')";
+            string SQL = "insert into location values('" + location.Id + "','" + location.Name + "','" + location.Abbr + "')";
             if (0 < Database.execCommand(SQL))
                 return true;
             return false;
@@ -25,7 +25,7 @@ namespace JeanieMoney.Action
             Location location = new Location();
             location.Id = id;
             location.Name = dataTable.Rows[0]["name"].ToString();
-            location.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
+            location.Abbr = dataTable.Rows[0]["abbr"].ToString();
             return location;
         }
 
@@ -43,9 +43,9 @@ namespace JeanieMoney.Action
                 return true;
             return false;
         }
-        public List<Location> retrieveLocationListByPinyin(string pinyin)
+        public List<Location> retrieveLocationListByAbbr(string abbr)
         {
-            string SQL = "select * from location where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from location where abbr like '" + abbr + "%'";
             List<Location> locationList = retrieveLocationListBySQL(SQL);
             return locationList;
         }
@@ -60,7 +60,7 @@ namespace JeanieMoney.Action
                 location = new Location();
                 location.Id = dataRow["id"].ToString();
                 location.Name = dataRow["name"].ToString();
-                location.Pinyin = dataRow["pinyin"].ToString();
+                location.Abbr = dataRow["abbr"].ToString();
                 locationList.Add(location);
             }
             return locationList;
@@ -71,7 +71,7 @@ namespace JeanieMoney.Action
             string SQL = "update location set ";
             if (0 > location.Id.Length)
                 return false;
-            SQL += "name='" + location.Name + "',pinyin='" + location.Pinyin + "' Where id='" + location.Id.Trim() + "'";
+            SQL += "name='" + location.Name + "',abbr='" + location.Abbr + "' Where id='" + location.Id.Trim() + "'";
 
             if (0 < Database.execCommand(SQL))
                 return true;
