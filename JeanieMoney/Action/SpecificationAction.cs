@@ -12,7 +12,7 @@ namespace JeanieMoney.Action
     {
         public bool createSpecification(Specification specification)
         {
-            string SQL = "insert into specification values('" + specification.Id + "','" + specification.Name + "','" + specification.Pinyin + "')";
+            string SQL = "insert into specification values('" + specification.Id + "','" + specification.Name + "','" + specification.Abbr + "')";
             if (0 < Database.execCommand(SQL))
                 return true;
             return false;
@@ -25,13 +25,13 @@ namespace JeanieMoney.Action
             Specification specification = new Specification();
             specification.Id = id;
             specification.Name = dataTable.Rows[0]["name"].ToString();
-            specification.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
+            specification.Abbr = dataTable.Rows[0]["abbr"].ToString();
             return specification;
         }
 
         public List<Specification> retrieveSpecificationList()
         {
-            string SQL = "select id,name,pinyin from specification";
+            string SQL = "select id,name,abbr from specification";
             List<Specification> specificationList = retrieveSpecificationListBySQL(SQL);
             return specificationList;
         }
@@ -43,9 +43,9 @@ namespace JeanieMoney.Action
                 return true;
             return false;
         }
-        public List<Specification> retrieveSpecificationListByPinyin(string pinyin)
+        public List<Specification> retrieveSpecificationListByAbbr(string abbr)
         {
-            string SQL = "select * from specification where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from specification where abbr like '" + abbr + "%'";
             List<Specification> specificationList = retrieveSpecificationListBySQL(SQL);
             return specificationList;
         }
@@ -60,7 +60,7 @@ namespace JeanieMoney.Action
                 specification = new Specification();
                 specification.Id = dataRow["id"].ToString();
                 specification.Name = dataRow["name"].ToString();
-                specification.Pinyin = dataRow["pinyin"].ToString();
+                specification.Abbr = dataRow["abbr"].ToString();
                 specificationList.Add(specification);
             }
             return specificationList;
@@ -71,7 +71,7 @@ namespace JeanieMoney.Action
             string SQL = "update specification set ";
             if (0 > specification.Id.Length)
                 return false;
-            SQL += "name='" + specification.Name + "',pinyin='" + specification.Pinyin + "' Where id='" + specification.Id.Trim() + "'";
+            SQL += "name='" + specification.Name + "',abbr='" + specification.Abbr + "' Where id='" + specification.Id.Trim() + "'";
 
             if (0 < Database.execCommand(SQL))
                 return true;

@@ -14,7 +14,7 @@ namespace JeanieMoney.Forms
     public partial class LocationConfig : Form
     {
         LocationAction locationAction;
-        List<Location> locationListByPinyin;
+        List<Location> locationListByAbbr;
         List<Location> locationList;
 
         public LocationConfig()
@@ -24,13 +24,13 @@ namespace JeanieMoney.Forms
             init();
         }
 
-        public LocationConfig(string pinyin)
+        public LocationConfig(string abbr)
         {
             InitializeComponent();
             locationAction = new LocationAction();
             init();
-            textBoxPinyin.Text = pinyin;
-            textBoxPinyin.Enabled = false;
+            textBoxAbbr.Text = abbr;
+            textBoxAbbr.Enabled = false;
             textBoxKeyword.Enabled = false;
             listBoxLocation.Enabled = false;
             buttonDelete.Enabled = false;
@@ -50,10 +50,10 @@ namespace JeanieMoney.Forms
                 listBoxLocation.DataSource = null;
                 return;
             }
-            locationListByPinyin = locationAction.retrieveLocationListByPinyin(textBoxKeyword.Text);
+            locationListByAbbr = locationAction.retrieveLocationListByAbbr(textBoxKeyword.Text);
             listBoxLocation.DisplayMember = "Name";
             listBoxLocation.ValueMember = "Id";
-            listBoxLocation.DataSource = locationListByPinyin;
+            listBoxLocation.DataSource = locationListByAbbr;
             if (0 < listBoxLocation.Items.Count)
                 listBoxLocation.SelectedIndex = 0;
         }
@@ -63,7 +63,7 @@ namespace JeanieMoney.Forms
             if (null != listBoxLocation.SelectedItem)
             {
                 textBoxName.Text = ((Location)listBoxLocation.SelectedItem).Name;
-                textBoxPinyin.Text = locationListByPinyin.ElementAt(listBoxLocation.SelectedIndex).Pinyin;
+                textBoxAbbr.Text = locationListByAbbr.ElementAt(listBoxLocation.SelectedIndex).Abbr;
                 locationList = locationAction.retrieveLocationList();
                 Location category = new Location();
                 locationList.Insert(0, category);
@@ -79,7 +79,7 @@ namespace JeanieMoney.Forms
         private void init()
         {
             textBoxName.Clear();
-            textBoxPinyin.Clear();
+            textBoxAbbr.Clear();
             listBoxLocation.DataSource = null;
             textBoxKeyword.Clear();
             locationList = locationAction.retrieveLocationList();
@@ -91,7 +91,7 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!locationAction.deleteLocationById(locationListByPinyin.ElementAt(listBoxLocation.SelectedIndex).Id))
+            if (!locationAction.deleteLocationById(locationListByAbbr.ElementAt(listBoxLocation.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -100,7 +100,7 @@ namespace JeanieMoney.Forms
             locationList = locationAction.retrieveLocationList();
 
             textBoxName.Clear();
-            textBoxPinyin.Clear();
+            textBoxAbbr.Clear();
             textBoxKeyword_TextChanged(sender, e);
 
         }
@@ -111,17 +111,17 @@ namespace JeanieMoney.Forms
             {
                 //modify
                 Location category = new Location();
-                category.Id = locationListByPinyin.ElementAt(listBoxLocation.SelectedIndex).Id;
+                category.Id = locationListByAbbr.ElementAt(listBoxLocation.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
 
-                category.Pinyin = textBoxPinyin.Text;
+                category.Abbr = textBoxAbbr.Text;
                 if (locationAction.updateLocationById(category))
                 {
                     MessageBox.Show("OK");
                     locationList = locationAction.retrieveLocationList();
 
                     textBoxName.Clear();
-                    textBoxPinyin.Clear();
+                    textBoxAbbr.Clear();
                     textBoxKeyword_TextChanged(sender, e);
                 }
                 else
@@ -137,7 +137,7 @@ namespace JeanieMoney.Forms
                 category.Id = Guid.NewGuid().ToString();
                 category.Name = textBoxName.Text;
 
-                category.Pinyin = textBoxPinyin.Text;
+                category.Abbr = textBoxAbbr.Text;
                 if (locationAction.createLocation(category))
                 {
                     MessageBox.Show("OK");

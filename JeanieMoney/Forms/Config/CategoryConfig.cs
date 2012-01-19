@@ -14,7 +14,7 @@ namespace JeanieMoney.Forms
     public partial class CategoryConfig : Form
     {
         CategoryAction categoryAction;
-        List<Category> categoryListByPinyin;
+        List<Category> categoryListByAbbr;
         List<Category> categoryList;
 
         public CategoryConfig()
@@ -24,13 +24,13 @@ namespace JeanieMoney.Forms
             init();
         }
 
-        public CategoryConfig(string pinyin)
+        public CategoryConfig(string abbr)
         {
             InitializeComponent();
             categoryAction = new CategoryAction();
             init();
-            textBoxPinyin.Text = pinyin;
-            textBoxPinyin.Enabled = false;
+            textBoxAbbr.Text = abbr;
+            textBoxAbbr.Enabled = false;
             textBoxKeyword.Enabled = false;
             listBoxCategory.Enabled = false;
             buttonDelete.Enabled = false;
@@ -50,10 +50,10 @@ namespace JeanieMoney.Forms
                 listBoxCategory.DataSource = null;
                 return;
             }
-            categoryListByPinyin = categoryAction.retrieveCategoryListByPinyin(textBoxKeyword.Text);
+            categoryListByAbbr = categoryAction.retrieveCategoryListByAbbr(textBoxKeyword.Text);
             listBoxCategory.DisplayMember = "Name";
             listBoxCategory.ValueMember = "Id";
-            listBoxCategory.DataSource = categoryListByPinyin;
+            listBoxCategory.DataSource = categoryListByAbbr;
             if (0 < listBoxCategory.Items.Count)
                 listBoxCategory.SelectedIndex = 0;
         }
@@ -63,7 +63,7 @@ namespace JeanieMoney.Forms
             if (null != listBoxCategory.SelectedItem)
             {
                 textBoxName.Text = ((Category)listBoxCategory.SelectedItem).Name;
-                textBoxPinyin.Text = categoryListByPinyin.ElementAt(listBoxCategory.SelectedIndex).Pinyin;
+                textBoxAbbr.Text = categoryListByAbbr.ElementAt(listBoxCategory.SelectedIndex).Abbr;
                 radioButtonIn.Checked=((Category)listBoxCategory.SelectedItem).InOrOut=='1'?true:false;
                 radioButtonOut.Checked = !radioButtonIn.Checked;
                 categoryList = categoryAction.retrieveCategoryList();
@@ -72,7 +72,7 @@ namespace JeanieMoney.Forms
                 comboBoxParent.DisplayMember = "Name";
                 comboBoxParent.ValueMember = "Id";
                 comboBoxParent.DataSource = categoryList;
-                comboBoxParent.SelectedValue = categoryListByPinyin.ElementAt(listBoxCategory.SelectedIndex).ParentId;
+                comboBoxParent.SelectedValue = categoryListByAbbr.ElementAt(listBoxCategory.SelectedIndex).ParentId;
                 if (null == comboBoxParent.SelectedValue)
                     comboBoxParent.SelectedIndex = 0;
             }
@@ -86,7 +86,7 @@ namespace JeanieMoney.Forms
         private void init()
         {
             textBoxName.Clear();
-            textBoxPinyin.Clear();
+            textBoxAbbr.Clear();
             listBoxCategory.DataSource = null;
             textBoxKeyword.Clear();
             categoryList = categoryAction.retrieveCategoryList();
@@ -101,7 +101,7 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!categoryAction.deleteCategoryById(categoryListByPinyin.ElementAt(listBoxCategory.SelectedIndex).Id))
+            if (!categoryAction.deleteCategoryById(categoryListByAbbr.ElementAt(listBoxCategory.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -110,7 +110,7 @@ namespace JeanieMoney.Forms
             categoryList = categoryAction.retrieveCategoryList();
             comboBoxParent.DataSource = categoryList;
             textBoxName.Clear();
-            textBoxPinyin.Clear();
+            textBoxAbbr.Clear();
             textBoxKeyword_TextChanged(sender, e);
 
         }
@@ -121,10 +121,10 @@ namespace JeanieMoney.Forms
             {
                 //modify
                 Category category = new Category();
-                category.Id = categoryListByPinyin.ElementAt(listBoxCategory.SelectedIndex).Id;
+                category.Id = categoryListByAbbr.ElementAt(listBoxCategory.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
                 category.ParentId = categoryList.ElementAt(comboBoxParent.SelectedIndex).Id;
-                category.Pinyin = textBoxPinyin.Text;
+                category.Abbr = textBoxAbbr.Text;
                 category.InOrOut = radioButtonIn.Checked ? '1' : '0';
                 if (categoryAction.updateCategoryById(category))
                 {
@@ -132,7 +132,7 @@ namespace JeanieMoney.Forms
                     categoryList = categoryAction.retrieveCategoryList();
                     comboBoxParent.DataSource = categoryList;
                     textBoxName.Clear();
-                    textBoxPinyin.Clear();
+                    textBoxAbbr.Clear();
                     textBoxKeyword_TextChanged(sender, e);
                 }
                 else
@@ -148,7 +148,7 @@ namespace JeanieMoney.Forms
                 category.Id=Guid.NewGuid().ToString();
                 category.Name=textBoxName.Text;
                 category.ParentId=categoryList.ElementAt(comboBoxParent.SelectedIndex).Id;
-                category.Pinyin=textBoxPinyin.Text;
+                category.Abbr=textBoxAbbr.Text;
                 category.InOrOut = radioButtonIn.Checked?'1':'0';
                 if (categoryAction.createCategory(category))
                 {

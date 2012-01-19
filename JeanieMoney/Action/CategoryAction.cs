@@ -14,9 +14,9 @@ namespace JeanieMoney.Action
         {
             string SQL;
             if (null == category.ParentId)
-                SQL = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Pinyin + "','" + category.InOrOut + "',null)";
+                SQL = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Abbr + "','" + category.InOrOut + "',null)";
             else
-                SQL = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Pinyin + "','" + category.InOrOut + "','" + category.ParentId.Trim() + "')";
+                SQL = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Abbr + "','" + category.InOrOut + "','" + category.ParentId.Trim() + "')";
             if (0 < Database.execCommand(SQL))
                 return true;
             return false;
@@ -27,7 +27,7 @@ namespace JeanieMoney.Action
             string SQL = "update category set ";
             if (0 > category.Id.Length)
                 return false;
-            SQL += "name='" + category.Name + "',pinyin='" + category.Pinyin + "',flag_in_out='" + category.InOrOut + "',";
+            SQL += "name='" + category.Name + "',abbr='" + category.Abbr + "',flag_in_out='" + category.InOrOut + "',";
 
             if (null != category.ParentId)
                 SQL += "parent_id='" + category.ParentId.Trim() + "'";
@@ -57,7 +57,7 @@ namespace JeanieMoney.Action
             category.Id = id;
             category.Name = dataTable.Rows[0]["name"].ToString();
             category.ParentId = dataTable.Rows[0]["parent_id"].ToString();
-            category.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
+            category.Abbr = dataTable.Rows[0]["abbr"].ToString();
             category.InOrOut = ((bool)dataTable.Rows[0]["flag_in_out"]) ? '1' : '0';
             return category;
         }
@@ -90,16 +90,16 @@ namespace JeanieMoney.Action
                 category.Id = dataRow["id"].ToString();
                 category.Name = dataRow["name"].ToString();
                 category.ParentId = parentId;
-                category.Pinyin = dataRow["pinyin"].ToString();
+                category.Abbr = dataRow["abbr"].ToString();
                 category.InOrOut = ((bool)dataTable.Rows[0]["flag_in_out"]) ? '1' : '0';
                 categoryList.Add(category);
             }
             return categoryList;
         }
 
-        public List<Category> retrieveCategoryListByPinyin(string pinyin)
+        public List<Category> retrieveCategoryListByAbbr(string abbr)
         {
-            string SQL = "select * from category where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from category where abbr like '" + abbr + "%'";
             DataTable dataTable = Database.getDataTable(SQL);
             List<Category> categoryList = new List<Category>();
             Category category;
@@ -109,16 +109,16 @@ namespace JeanieMoney.Action
                 category.Id = dataRow["id"].ToString();
                 category.Name = dataRow["name"].ToString();
                 category.ParentId = dataRow["parent_id"].ToString();
-                category.Pinyin = dataRow["pinyin"].ToString();
+                category.Abbr = dataRow["abbr"].ToString();
                 category.InOrOut = ((bool)dataRow["flag_in_out"]) ? '1' : '0';
                 categoryList.Add(category);
             }
             return categoryList;
         }
 
-        public List<Category> retrieveCategoryListOfLeafNodeByPinyin(string pinyin, char inorout)
+        public List<Category> retrieveCategoryListOfLeafNodeByAbbr(string abbr, char inorout)
         {
-            string SQL = "select * from category where id not in (select distinct parent_id from category where parent_id is not null) and pinyin like '" + pinyin + "%' and flag_in_out='" + inorout + "'";
+            string SQL = "select * from category where id not in (select distinct parent_id from category where parent_id is not null) and abbr like '" + abbr + "%' and flag_in_out='" + inorout + "'";
             DataTable dataTable = Database.getDataTable(SQL);
             List<Category> categoryList = new List<Category>();
             Category category;

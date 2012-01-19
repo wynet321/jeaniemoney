@@ -46,9 +46,9 @@ namespace JeanieMoney.Action
                 return true;
             return false;
         }
-        public List<TradeRecordDetail> retrieveTradeRecordDetailListByPinyin(string pinyin)
+        public List<TradeRecordDetail> retrieveTradeRecordDetailListByAbbr(string abbr)
         {
-            string SQL = "select * from trade_record_detail where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from trade_record_detail where abbr like '" + abbr + "%'";
             List<TradeRecordDetail> tradeRecordDetailList = retrieveTradeRecordDetailListBySQL(SQL);
             return tradeRecordDetailList;
         }

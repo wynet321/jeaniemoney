@@ -85,14 +85,14 @@ namespace JeanieMoney.Forms
             textBoxQuantity.Clear();
 
             //product
-            //productList = productAction.retrieveProductListByPinyin("%");
+            //productList = productAction.retrieveProductListByAbbr("%");
             listBoxDetailProduct.DisplayMember = "Name";
             listBoxDetailProduct.ValueMember = "Id";
             // listBoxDetailProduct.DataSource = productList;
             listBoxDetailProduct.Visible = false;
 
             //beneficiary
-            //beneficiaryList = beneficiaryAction.retrieveBeneficiaryListByPinyin("%");
+            //beneficiaryList = beneficiaryAction.retrieveBeneficiaryListByAbbr("%");
             listBoxDetailBeneficiary.DisplayMember = "Name";
             listBoxDetailBeneficiary.ValueMember = "Id";
             // listBoxDetailBeneficiary.DataSource = productList;
@@ -110,21 +110,21 @@ namespace JeanieMoney.Forms
             radioButtonOut.Select();
             textBoxMoney.Clear();
             //category
-            //categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin("%", radioButtonIn.Checked ? '1' : '0');
+            //categoryList = categoryAction.retrieveCategoryListOfLeafNodeByAbbr("%", radioButtonIn.Checked ? '1' : '0');
             listBoxCategory.DisplayMember = "Name";
             listBoxCategory.ValueMember = "Id";
             //listBoxCategory.DataSource = categoryList;
             listBoxCategory.Visible = false;
 
             //payer
-            //payerList = payerAction.retrievePayerListByPinyin("%");
+            //payerList = payerAction.retrievePayerListByAbbr("%");
             listBoxPayer.DisplayMember = "Name";
             listBoxPayer.ValueMember = "Id";
             //listBoxPayer.DataSource = payerList;
             listBoxPayer.Visible = false;
 
             //location
-            //locationList = locationAction.retrieveLocationListByPinyin("%");
+            //locationList = locationAction.retrieveLocationListByAbbr("%");
             listBoxLocation.DisplayMember = "Name";
             listBoxLocation.ValueMember = "Id";
             //listBoxLocation.DataSource = locationList;
@@ -145,7 +145,7 @@ namespace JeanieMoney.Forms
         private void textBoxCategory_TextChanged(object sender, EventArgs e)
         {
             String category = textBoxCategory.Text.Trim();
-            categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(category, radioButtonIn.Checked ? '1' : '0');
+            categoryList = categoryAction.retrieveCategoryListOfLeafNodeByAbbr(category, radioButtonIn.Checked ? '1' : '0');
             listBoxCategory.DataSource = categoryList;
             if (0 < listBoxCategory.Items.Count)
             {
@@ -180,7 +180,7 @@ namespace JeanieMoney.Forms
                         CategoryConfig cc = new CategoryConfig(textBoxCategory.Text.Trim());
 
                         cc.ShowDialog();
-                        categoryList = categoryAction.retrieveCategoryListOfLeafNodeByPinyin(textBoxCategory.Text.Trim(), radioButtonIn.Checked ? '1' : '0');
+                        categoryList = categoryAction.retrieveCategoryListOfLeafNodeByAbbr(textBoxCategory.Text.Trim(), radioButtonIn.Checked ? '1' : '0');
                         if (0 < categoryList.Count)
                         {
                             listBoxCategory.DataSource = categoryList;
@@ -228,7 +228,7 @@ namespace JeanieMoney.Forms
         private void textBoxPayer_TextChanged(object sender, EventArgs e)
         {
             String payer = textBoxPayer.Text.Trim();
-            payerList = payerAction.retrievePayerListByPinyin(payer);
+            payerList = payerAction.retrievePayerListByAbbr(payer);
             listBoxPayer.DataSource = payerList;
             if (0 < listBoxPayer.Items.Count)
             {
@@ -248,7 +248,7 @@ namespace JeanieMoney.Forms
                     {
                         PayerConfig pc = new PayerConfig(textBoxPayer.Text.Trim());
                         pc.ShowDialog();
-                        payerList = payerAction.retrievePayerListByPinyin(textBoxPayer.Text.Trim());
+                        payerList = payerAction.retrievePayerListByAbbr(textBoxPayer.Text.Trim());
                         if (0 < payerList.Count)
                         {
                             listBoxPayer.DataSource = payerList;
@@ -279,7 +279,7 @@ namespace JeanieMoney.Forms
         private void textBoxLocation_TextChanged(object sender, EventArgs e)
         {
             String location = textBoxLocation.Text.Trim();
-            locationList = locationAction.retrieveLocationListByPinyin(location);
+            locationList = locationAction.retrieveLocationListByAbbr(location);
             listBoxLocation.DataSource = locationList;
             if (0 < listBoxLocation.Items.Count)
             {
@@ -319,7 +319,7 @@ namespace JeanieMoney.Forms
                         LocationConfig lc = new LocationConfig(textBoxLocation.Text.Trim());
 
                         lc.ShowDialog();
-                        locationList = locationAction.retrieveLocationListByPinyin(textBoxLocation.Text.Trim());
+                        locationList = locationAction.retrieveLocationListByAbbr(textBoxLocation.Text.Trim());
                         if (0 < locationList.Count)
                         {
                             listBoxLocation.DataSource = locationList;
@@ -356,7 +356,7 @@ namespace JeanieMoney.Forms
         private void textBoxProduct_TextChanged(object sender, EventArgs e)
         {
             String product = textBoxDetailProductName.Text.Trim();
-            productSpecificationManufactoryList = productSpecificationManufactoryAction.retrieveProductSpecificationListByPinyin(product);
+            productSpecificationManufactoryList = productSpecificationManufactoryAction.retrieveProductSpecificationListByAbbr(product);
             listBoxDetailProduct.DataSource = productSpecificationManufactoryList;
             if (0 < listBoxDetailProduct.Items.Count)
             {
@@ -376,7 +376,7 @@ namespace JeanieMoney.Forms
                     {
                         ProductConfig pc = new ProductConfig(textBoxDetailProductName.Text.Trim());
                         pc.ShowDialog();
-                        productSpecificationManufactoryList = productSpecificationManufactoryAction.retrieveProductSpecificationListByPinyin(textBoxDetailProductName.Text.Trim());
+                        productSpecificationManufactoryList = productSpecificationManufactoryAction.retrieveProductSpecificationListByAbbr(textBoxDetailProductName.Text.Trim());
                         if (0 < productSpecificationManufactoryList.Count)
                         {
                             listBoxDetailProduct.DataSource = productSpecificationManufactoryList;

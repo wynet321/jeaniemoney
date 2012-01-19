@@ -14,7 +14,7 @@ namespace JeanieMoney.Forms
     public partial class PayerConfig : Form
     {
         PayerAction payerAction;
-        List<Payer> payerListByPinyin;
+        List<Payer> payerListByAbbr;
         List<Payer> payerList;
 
         public PayerConfig()
@@ -24,13 +24,13 @@ namespace JeanieMoney.Forms
             init();
         }
 
-        public PayerConfig(string pinyin)
+        public PayerConfig(string abbr)
         {
             InitializeComponent();
             payerAction = new PayerAction();
             init();
-            textBoxPinyin.Text = pinyin;
-            textBoxPinyin.Enabled = false;
+            textBoxAbbr.Text = abbr;
+            textBoxAbbr.Enabled = false;
             textBoxKeyword.Enabled = false;
             listBoxPayer.Enabled = false;
             buttonDelete.Enabled = false;
@@ -50,10 +50,10 @@ namespace JeanieMoney.Forms
                 listBoxPayer.DataSource = null;
                 return;
             }
-            payerListByPinyin = payerAction.retrievePayerListByPinyin(textBoxKeyword.Text);
+            payerListByAbbr = payerAction.retrievePayerListByAbbr(textBoxKeyword.Text);
             listBoxPayer.DisplayMember = "Name";
             listBoxPayer.ValueMember = "Id";
-            listBoxPayer.DataSource = payerListByPinyin;
+            listBoxPayer.DataSource = payerListByAbbr;
             if (0 < listBoxPayer.Items.Count)
                 listBoxPayer.SelectedIndex = 0;
         }
@@ -63,7 +63,7 @@ namespace JeanieMoney.Forms
             if (null != listBoxPayer.SelectedItem)
             {
                 textBoxName.Text = ((Payer)listBoxPayer.SelectedItem).Name;
-                textBoxPinyin.Text = payerListByPinyin.ElementAt(listBoxPayer.SelectedIndex).Pinyin;
+                textBoxAbbr.Text = payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Abbr;
                 payerList = payerAction.retrievePayerList();
                 Payer category = new Payer();
                 payerList.Insert(0, category);
@@ -79,7 +79,7 @@ namespace JeanieMoney.Forms
         private void init()
         {
             textBoxName.Clear();
-            textBoxPinyin.Clear();
+            textBoxAbbr.Clear();
             listBoxPayer.DataSource = null;
             textBoxKeyword.Clear();
             payerList = payerAction.retrievePayerList();
@@ -91,7 +91,7 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!payerAction.deletePayerById(payerListByPinyin.ElementAt(listBoxPayer.SelectedIndex).Id))
+            if (!payerAction.deletePayerById(payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -100,7 +100,7 @@ namespace JeanieMoney.Forms
             payerList = payerAction.retrievePayerList();
             
             textBoxName.Clear();
-            textBoxPinyin.Clear();
+            textBoxAbbr.Clear();
             textBoxKeyword_TextChanged(sender, e);
 
         }
@@ -111,17 +111,17 @@ namespace JeanieMoney.Forms
             {
                 //modify
                 Payer category = new Payer();
-                category.Id = payerListByPinyin.ElementAt(listBoxPayer.SelectedIndex).Id;
+                category.Id = payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
                 
-                category.Pinyin = textBoxPinyin.Text;
+                category.Abbr = textBoxAbbr.Text;
                 if (payerAction.updatePayerById(category))
                 {
                     MessageBox.Show("OK");
                     payerList = payerAction.retrievePayerList();
                    
                     textBoxName.Clear();
-                    textBoxPinyin.Clear();
+                    textBoxAbbr.Clear();
                     textBoxKeyword_TextChanged(sender, e);
                 }
                 else
@@ -137,7 +137,7 @@ namespace JeanieMoney.Forms
                 category.Id=Guid.NewGuid().ToString();
                 category.Name=textBoxName.Text;
                 
-                category.Pinyin=textBoxPinyin.Text;
+                category.Abbr=textBoxAbbr.Text;
                 if (payerAction.createPayer(category))
                 {
                     MessageBox.Show("OK");

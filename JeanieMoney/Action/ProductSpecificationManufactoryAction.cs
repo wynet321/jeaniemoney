@@ -11,9 +11,9 @@ namespace JeanieMoney.Action
     class ProductSpecificationManufactoryAction
     {
         
-        public List<ProductSpecificationManufactory> retrieveProductSpecificationListByPinyin(string pinyin)
+        public List<ProductSpecificationManufactory> retrieveProductSpecificationListByAbbr(string abbr)
         {
-            string SQL = "select * from product_specification_manufactory where pinyin like'" + pinyin + "%'";
+            string SQL = "select * from product_specification_manufactory where abbr like'" + abbr + "%'";
             List<ProductSpecificationManufactory> productSpecificationManufactoryList = retrieveProductListBySQL(SQL);
             return productSpecificationManufactoryList;
         }
@@ -28,7 +28,7 @@ namespace JeanieMoney.Action
                 productSpecificationManufactory = new ProductSpecificationManufactory();
                 productSpecificationManufactory.Id = dataTable.Rows[0]["id"].ToString();
                 productSpecificationManufactory.Name = dataTable.Rows[0]["name"].ToString();
-                productSpecificationManufactory.Pinyin = dataTable.Rows[0]["pinyin"].ToString();
+                productSpecificationManufactory.Abbr = dataTable.Rows[0]["abbr"].ToString();
                 productSpecificationManufactory.Specification = dataTable.Rows[0]["specification"].ToString();
                 productSpecificationManufactory.SpecificationId = dataTable.Rows[0]["specificationid"].ToString();
                 productSpecificationManufactory.NameSpecification = dataTable.Rows[0]["namespecification"].ToString();

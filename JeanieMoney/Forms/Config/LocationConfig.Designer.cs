@@ -31,8 +31,8 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.textBoxPinyin = new System.Windows.Forms.TextBox();
-            this.labelPinyin = new System.Windows.Forms.Label();
+            this.textBoxAbbr = new System.Windows.Forms.TextBox();
+            this.labelAbbr = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
             this.listBoxLocation = new System.Windows.Forms.ListBox();
@@ -68,21 +68,21 @@
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // textBoxPinyin
+            // textBoxAbbr
             // 
-            this.textBoxPinyin.Location = new System.Drawing.Point(272, 62);
-            this.textBoxPinyin.Name = "textBoxPinyin";
-            this.textBoxPinyin.Size = new System.Drawing.Size(180, 20);
-            this.textBoxPinyin.TabIndex = 21;
+            this.textBoxAbbr.Location = new System.Drawing.Point(272, 62);
+            this.textBoxAbbr.Name = "textBoxAbbr";
+            this.textBoxAbbr.Size = new System.Drawing.Size(180, 20);
+            this.textBoxAbbr.TabIndex = 21;
             // 
-            // labelPinyin
+            // labelAbbr
             // 
-            this.labelPinyin.AutoSize = true;
-            this.labelPinyin.Location = new System.Drawing.Point(231, 65);
-            this.labelPinyin.Name = "labelPinyin";
-            this.labelPinyin.Size = new System.Drawing.Size(35, 13);
-            this.labelPinyin.TabIndex = 20;
-            this.labelPinyin.Text = "Pinyin";
+            this.labelAbbr.AutoSize = true;
+            this.labelAbbr.Location = new System.Drawing.Point(231, 65);
+            this.labelAbbr.Name = "labelAbbr";
+            this.labelAbbr.Size = new System.Drawing.Size(35, 13);
+            this.labelAbbr.TabIndex = 20;
+            this.labelAbbr.Text = "Abbr";
             // 
             // textBoxName
             // 
@@ -141,8 +141,8 @@
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.textBoxPinyin);
-            this.Controls.Add(this.labelPinyin);
+            this.Controls.Add(this.textBoxAbbr);
+            this.Controls.Add(this.labelAbbr);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.listBoxLocation);
@@ -161,8 +161,8 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.TextBox textBoxPinyin;
-        private System.Windows.Forms.Label labelPinyin;
+        private System.Windows.Forms.TextBox textBoxAbbr;
+        private System.Windows.Forms.Label labelAbbr;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.ListBox listBoxLocation;
