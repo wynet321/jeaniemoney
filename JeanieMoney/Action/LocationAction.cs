@@ -20,7 +20,7 @@ namespace JeanieMoney.Action
 
         public Location retrieveLocationById(string id)
         {
-            string SQL = "select id,name,pinyin from location where id='" + id + "'";
+            string SQL = "select * from location where id='" + id + "'";
             DataTable dataTable = Database.getDataTable(SQL);
             Location location = new Location();
             location.Id = id;
@@ -31,7 +31,7 @@ namespace JeanieMoney.Action
 
         public List<Location> retrieveLocationList()
         {
-            string SQL = "select id,name,pinyin from location";
+            string SQL = "select * from location";
             List<Location> locationList = retrieveLocationListBySQL(SQL);
             return locationList;
         }
@@ -45,7 +45,7 @@ namespace JeanieMoney.Action
         }
         public List<Location> retrieveLocationListByPinyin(string pinyin)
         {
-            string SQL = "select id,name,pinyin from location where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from location where pinyin like '" + pinyin + "%'";
             List<Location> locationList = retrieveLocationListBySQL(SQL);
             return locationList;
         }

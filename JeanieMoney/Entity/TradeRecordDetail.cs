@@ -10,8 +10,8 @@ namespace JeanieMoney.Entity
         private string id="";
         public string Id { get { return id; } set { id = value; } }
 
-        private string accountid = "";
-        public string AccountId { get { return accountid; } set { accountid = value; } }
+        private string traderecordid = "";
+        public string TradeRecordId { get { return traderecordid; } set { traderecordid = value; } }
 
         private string productid = "";
         public string ProductId { get { return productid; } set { productid = value; } }

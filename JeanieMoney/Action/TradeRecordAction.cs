@@ -20,7 +20,7 @@ namespace JeanieMoney.Action
 
         public TradeRecord retrieveTradeRecordById(string id)
         {
-            string SQL = "select id,category_id,payer_id,location_id,payment_category_id,money,date from trade_record where id='" + id + "'";
+            string SQL = "select * from trade_record where id='" + id + "'";
             DataTable dataTable = Database.getDataTable(SQL);
             TradeRecord tradeRecord = new TradeRecord();
             tradeRecord.Id = id;
@@ -35,7 +35,7 @@ namespace JeanieMoney.Action
 
         public List<TradeRecord> retrieveTradeRecordList()
         {
-            string SQL = "select id,category_id,payer_id,location_id,payment_category_id,money,date from trade_record";
+            string SQL = "select * from trade_record";
             List<TradeRecord> tradeRecordList = retrieveTradeRecordListBySQL(SQL);
             return tradeRecordList;
         }
@@ -49,7 +49,7 @@ namespace JeanieMoney.Action
         }
         public List<TradeRecord> retrieveTradeRecordListByPinyin(string pinyin)
         {
-            string SQL = "select id,category_id,payer_id,location_id,payment_category_id,money,date from trade_record where pinyin like '" + pinyin + "%'";
+            string SQL = "select * from trade_record where pinyin like '" + pinyin + "%'";
             List<TradeRecord> tradeRecordList = retrieveTradeRecordListBySQL(SQL);
             return tradeRecordList;
         }
