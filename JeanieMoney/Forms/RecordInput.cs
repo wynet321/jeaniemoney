@@ -16,10 +16,6 @@ namespace JeanieMoney.Forms
         List<Payer> payerList;
         LocationAction locationAction;
         List<Location> locationList;
-        SpecificationAction specificationAction;
-        List<Specification> specificationList;
-        ManufactoryAction manufactoryAction;
-        List<Manufactory> manufactoryList;
         BeneficiaryAction beneficiaryAction;
         List<Beneficiary> beneficiaryList;
         ProductSpecificationManufactoryAction productSpecificationManufactoryAction;
@@ -33,12 +29,18 @@ namespace JeanieMoney.Forms
             categoryAction = new CategoryAction();
             payerAction = new PayerAction();
             locationAction = new LocationAction();
-            specificationAction = new SpecificationAction();
-            manufactoryAction = new ManufactoryAction();
             tradeRecordAction = new TradeRecordAction();
             tradeRecordDetailAction = new TradeRecordDetailAction();
             beneficiaryAction = new BeneficiaryAction();
             productSpecificationManufactoryAction = new ProductSpecificationManufactoryAction();
+
+            listViewSummaryDetails.Columns.Add("Name");
+            listViewSummaryDetails.Columns.Add("Specification");
+            listViewSummaryDetails.Columns.Add("Manufactory");
+            listViewSummaryDetails.Columns.Add("Beneficiary");
+            listViewSummaryDetails.Columns.Add("Total");
+            listViewSummaryDetails.Columns.Add("Price");
+            listViewSummaryDetails.Columns.Add("Quantity");
             Init();
 
         }
@@ -73,7 +75,7 @@ namespace JeanieMoney.Forms
         private void checkBoxDetails_CheckedChanged(object sender, EventArgs e)
         {
             panelDetails.Visible = !panelDetails.Visible;
-            listBoxDetails.Enabled = !listBoxDetails.Enabled;
+            listViewSummaryDetails.Enabled = !listViewSummaryDetails.Enabled;
             if (panelDetails.Visible)
             {
                 panelDetailInit();
@@ -458,6 +460,20 @@ namespace JeanieMoney.Forms
         }
         #endregion beneficiary
 
+        private void buttonDetailAddToSummary_Click(object sender, EventArgs e)
+        {
+            if (verifyDetailInput())
+            {
+                listViewSummaryDetails.Items.Add("dennis");
+                
 
+            }
+        }
+
+        private Boolean verifyDetailInput()
+        {
+
+            return true;
+        }
     }
 }

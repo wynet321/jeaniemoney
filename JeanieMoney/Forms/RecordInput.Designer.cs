@@ -46,7 +46,6 @@
             this.listBoxCategory = new System.Windows.Forms.ListBox();
             this.buttonShowListCategory = new System.Windows.Forms.Button();
             this.groupBoxSummary = new System.Windows.Forms.GroupBox();
-            this.listBoxDetails = new System.Windows.Forms.ListBox();
             this.labelSummaryResultPayer = new System.Windows.Forms.Label();
             this.labelSummaryPayer = new System.Windows.Forms.Label();
             this.labelSummaryLocation = new System.Windows.Forms.Label();
@@ -91,6 +90,7 @@
             this.labelDetailManufactoryResult = new System.Windows.Forms.Label();
             this.labelDetailSpecificationResult = new System.Windows.Forms.Label();
             this.labelDetailProductResult = new System.Windows.Forms.Label();
+            this.listViewSummaryDetails = new System.Windows.Forms.ListView();
             this.groupBoxInOut.SuspendLayout();
             this.groupBoxSummary.SuspendLayout();
             this.panelDetails.SuspendLayout();
@@ -265,7 +265,7 @@
             // 
             // groupBoxSummary
             // 
-            this.groupBoxSummary.Controls.Add(this.listBoxDetails);
+            this.groupBoxSummary.Controls.Add(this.listViewSummaryDetails);
             this.groupBoxSummary.Controls.Add(this.labelSummaryResultPayer);
             this.groupBoxSummary.Controls.Add(this.labelSummaryPayer);
             this.groupBoxSummary.Controls.Add(this.labelSummaryLocation);
@@ -285,15 +285,6 @@
             this.groupBoxSummary.TabIndex = 32;
             this.groupBoxSummary.TabStop = false;
             this.groupBoxSummary.Text = "Summary";
-            // 
-            // listBoxDetails
-            // 
-            this.listBoxDetails.Enabled = false;
-            this.listBoxDetails.FormattingEnabled = true;
-            this.listBoxDetails.Location = new System.Drawing.Point(25, 113);
-            this.listBoxDetails.Name = "listBoxDetails";
-            this.listBoxDetails.Size = new System.Drawing.Size(514, 368);
-            this.listBoxDetails.TabIndex = 13;
             // 
             // labelSummaryResultPayer
             // 
@@ -435,6 +426,7 @@
             this.textBoxLocation.Size = new System.Drawing.Size(292, 20);
             this.textBoxLocation.TabIndex = 7;
             this.textBoxLocation.TextChanged += new System.EventHandler(this.textBoxLocation_TextChanged);
+            this.textBoxLocation.Enter += new System.EventHandler(this.textBoxLocation_TextChanged);
             this.textBoxLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLocation_KeyUp);
             this.textBoxLocation.Leave += new System.EventHandler(this.textBoxLocation_Leave);
             // 
@@ -460,7 +452,7 @@
             // listBoxDetailProduct
             // 
             this.listBoxDetailProduct.FormattingEnabled = true;
-            this.listBoxDetailProduct.Location = new System.Drawing.Point(65, 35);
+            this.listBoxDetailProduct.Location = new System.Drawing.Point(65, 32);
             this.listBoxDetailProduct.Name = "listBoxDetailProduct";
             this.listBoxDetailProduct.Size = new System.Drawing.Size(288, 134);
             this.listBoxDetailProduct.TabIndex = 37;
@@ -501,13 +493,14 @@
             this.buttonDetailAddToSummary.TabIndex = 39;
             this.buttonDetailAddToSummary.Text = ">>";
             this.buttonDetailAddToSummary.UseVisualStyleBackColor = true;
+            this.buttonDetailAddToSummary.Click += new System.EventHandler(this.buttonDetailAddToSummary_Click);
             // 
             // listBoxDetailBeneficiary
             // 
             this.listBoxDetailBeneficiary.FormattingEnabled = true;
             this.listBoxDetailBeneficiary.Location = new System.Drawing.Point(85, 202);
             this.listBoxDetailBeneficiary.Name = "listBoxDetailBeneficiary";
-            this.listBoxDetailBeneficiary.Size = new System.Drawing.Size(120, 95);
+            this.listBoxDetailBeneficiary.Size = new System.Drawing.Size(100, 95);
             this.listBoxDetailBeneficiary.TabIndex = 38;
             this.listBoxDetailBeneficiary.Click += new System.EventHandler(this.listBoxDetailBeneficiary_Click);
             // 
@@ -580,13 +573,14 @@
             this.labelBeneficiaryName.TabIndex = 29;
             this.labelBeneficiaryName.Text = "beneficiary";
             // 
-            // textBoxDetailBeneficiaryName
+            // textBoxDetailBeneficiary
             // 
             this.textBoxDetailBeneficiary.Location = new System.Drawing.Point(85, 182);
-            this.textBoxDetailBeneficiary.Name = "textBoxDetailBeneficiaryName";
+            this.textBoxDetailBeneficiary.Name = "textBoxDetailBeneficiary";
             this.textBoxDetailBeneficiary.Size = new System.Drawing.Size(100, 20);
             this.textBoxDetailBeneficiary.TabIndex = 28;
             this.textBoxDetailBeneficiary.TextChanged += new System.EventHandler(this.textBoxDetailBeneficiary_TextChanged);
+            this.textBoxDetailBeneficiary.Enter += new System.EventHandler(this.textBoxDetailBeneficiary_TextChanged);
             this.textBoxDetailBeneficiary.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxDetailBeneficiary_KeyUp);
             this.textBoxDetailBeneficiary.Leave += new System.EventHandler(this.textBoxDetailBeneficiary_Leave);
             // 
@@ -616,6 +610,7 @@
             this.textBoxDetailProduct.Size = new System.Drawing.Size(288, 20);
             this.textBoxDetailProduct.TabIndex = 23;
             this.textBoxDetailProduct.TextChanged += new System.EventHandler(this.textBoxDetailProduct_TextChanged);
+            this.textBoxDetailProduct.Enter += new System.EventHandler(this.textBoxDetailProduct_TextChanged);
             this.textBoxDetailProduct.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxDetailProduct_KeyUp);
             this.textBoxDetailProduct.Leave += new System.EventHandler(this.textBoxDetailProduct_Leave);
             // 
@@ -663,11 +658,11 @@
             this.panelDetails.TabIndex = 41;
             this.panelDetails.Visible = false;
             // 
-            // labelDetailBeneficiaryNameResult
+            // labelDetailBeneficiaryResult
             // 
             this.labelDetailBeneficiaryResult.AutoSize = true;
             this.labelDetailBeneficiaryResult.Location = new System.Drawing.Point(82, 212);
-            this.labelDetailBeneficiaryResult.Name = "labelDetailBeneficiaryNameResult";
+            this.labelDetailBeneficiaryResult.Name = "labelDetailBeneficiaryResult";
             this.labelDetailBeneficiaryResult.Size = new System.Drawing.Size(0, 13);
             this.labelDetailBeneficiaryResult.TabIndex = 48;
             // 
@@ -711,6 +706,18 @@
             this.labelDetailProductResult.Name = "labelDetailProductResult";
             this.labelDetailProductResult.Size = new System.Drawing.Size(0, 13);
             this.labelDetailProductResult.TabIndex = 43;
+            // 
+            // listViewSummaryDetails
+            // 
+            this.listViewSummaryDetails.FullRowSelect = true;
+            this.listViewSummaryDetails.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewSummaryDetails.Location = new System.Drawing.Point(25, 112);
+            this.listViewSummaryDetails.MultiSelect = false;
+            this.listViewSummaryDetails.Name = "listViewSummaryDetails";
+            this.listViewSummaryDetails.Size = new System.Drawing.Size(514, 373);
+            this.listViewSummaryDetails.TabIndex = 14;
+            this.listViewSummaryDetails.UseCompatibleStateImageBehavior = false;
+            this.listViewSummaryDetails.View = System.Windows.Forms.View.Details;
             // 
             // RecordInput
             // 
@@ -788,7 +795,6 @@
         private System.Windows.Forms.Label labelSummaryCategory;
         private System.Windows.Forms.Label labelSummaryDetails;
         private System.Windows.Forms.Label labelSummaryInOut;
-        private System.Windows.Forms.ListBox listBoxDetails;
         private System.Windows.Forms.Button buttonShowListPayer;
         private System.Windows.Forms.ListBox listBoxPayer;
         private System.Windows.Forms.TextBox textBoxLocation;
@@ -820,5 +826,6 @@
         private System.Windows.Forms.Label labelDetailProductResult;
         private System.Windows.Forms.Label labelDetailProductNameResultTitle;
         private System.Windows.Forms.Label labelDetailBeneficiaryResult;
+        private System.Windows.Forms.ListView listViewSummaryDetails;
     }
 }

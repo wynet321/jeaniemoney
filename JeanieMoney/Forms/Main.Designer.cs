@@ -64,9 +64,9 @@
             // 
             // statusStripMain
             // 
-            this.statusStripMain.Location = new System.Drawing.Point(0, 516);
+            this.statusStripMain.Location = new System.Drawing.Point(0, 660);
             this.statusStripMain.Name = "statusStripMain";
-            this.statusStripMain.Size = new System.Drawing.Size(1008, 22);
+            this.statusStripMain.Size = new System.Drawing.Size(1264, 22);
             this.statusStripMain.TabIndex = 0;
             this.statusStripMain.Text = "statusStrip1";
             // 
@@ -78,13 +78,13 @@
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.dataGridViewJournalRecord);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panelSearchCondition);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1008, 445);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1264, 445);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Top;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(1008, 516);
+            this.toolStripContainer1.Size = new System.Drawing.Size(1264, 516);
             this.toolStripContainer1.TabIndex = 1;
             // 
             // toolStripContainer1.TopToolStripPanel
@@ -111,7 +111,7 @@
             this.dataGridViewJournalRecord.Name = "dataGridViewJournalRecord";
             this.dataGridViewJournalRecord.ReadOnly = true;
             this.dataGridViewJournalRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewJournalRecord.Size = new System.Drawing.Size(1008, 417);
+            this.dataGridViewJournalRecord.Size = new System.Drawing.Size(1264, 417);
             this.dataGridViewJournalRecord.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -176,7 +176,7 @@
             this.panelSearchCondition.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSearchCondition.Location = new System.Drawing.Point(0, 0);
             this.panelSearchCondition.Name = "panelSearchCondition";
-            this.panelSearchCondition.Size = new System.Drawing.Size(1008, 28);
+            this.panelSearchCondition.Size = new System.Drawing.Size(1264, 28);
             this.panelSearchCondition.TabIndex = 7;
             // 
             // labelSeperator
@@ -228,7 +228,7 @@
             this.toolStripButton3});
             this.toolStripMainMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMainMenu.Name = "toolStripMainMenu";
-            this.toolStripMainMenu.Size = new System.Drawing.Size(179, 71);
+            this.toolStripMainMenu.Size = new System.Drawing.Size(148, 71);
             this.toolStripMainMenu.TabIndex = 0;
             // 
             // toolStripButtonRecordInput
@@ -278,7 +278,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 538);
+            this.ClientSize = new System.Drawing.Size(1264, 682);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.statusStripMain);
             this.Name = "formMain";
