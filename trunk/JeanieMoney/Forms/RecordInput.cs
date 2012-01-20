@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using JeanieMoney.Entity;
 using JeanieMoney.Action;
+using JeanieMoney.Forms.Config;
 
 namespace JeanieMoney.Forms
 {
@@ -32,11 +33,12 @@ namespace JeanieMoney.Forms
             categoryAction = new CategoryAction();
             payerAction = new PayerAction();
             locationAction = new LocationAction();
-            productAction = new ProductAction();
             specificationAction = new SpecificationAction();
             manufactoryAction = new ManufactoryAction();
             tradeRecordAction = new TradeRecordAction();
             tradeRecordDetailAction = new TradeRecordDetailAction();
+            beneficiaryAction = new BeneficiaryAction();
+            productSpecificationManufactoryAction = new ProductSpecificationManufactoryAction();
             Init();
 
         }
@@ -75,7 +77,7 @@ namespace JeanieMoney.Forms
             if (panelDetails.Visible)
             {
                 panelDetailInit();
-                textBoxDetailProductName.Focus();
+                textBoxDetailProduct.Focus();
             }
         }
 
@@ -85,17 +87,13 @@ namespace JeanieMoney.Forms
             textBoxQuantity.Clear();
 
             //product
-            //productList = productAction.retrieveProductListByAbbr("%");
             listBoxDetailProduct.DisplayMember = "Name";
             listBoxDetailProduct.ValueMember = "Id";
-            // listBoxDetailProduct.DataSource = productList;
             listBoxDetailProduct.Visible = false;
 
             //beneficiary
-            //beneficiaryList = beneficiaryAction.retrieveBeneficiaryListByAbbr("%");
             listBoxDetailBeneficiary.DisplayMember = "Name";
             listBoxDetailBeneficiary.ValueMember = "Id";
-            // listBoxDetailBeneficiary.DataSource = productList;
             listBoxDetailBeneficiary.Visible = false;
 
         }
@@ -110,24 +108,18 @@ namespace JeanieMoney.Forms
             radioButtonOut.Select();
             textBoxMoney.Clear();
             //category
-            //categoryList = categoryAction.retrieveCategoryListOfLeafNodeByAbbr("%", radioButtonIn.Checked ? '1' : '0');
             listBoxCategory.DisplayMember = "Name";
             listBoxCategory.ValueMember = "Id";
-            //listBoxCategory.DataSource = categoryList;
             listBoxCategory.Visible = false;
 
             //payer
-            //payerList = payerAction.retrievePayerListByAbbr("%");
             listBoxPayer.DisplayMember = "Name";
             listBoxPayer.ValueMember = "Id";
-            //listBoxPayer.DataSource = payerList;
             listBoxPayer.Visible = false;
 
             //location
-            //locationList = locationAction.retrieveLocationListByAbbr("%");
             listBoxLocation.DisplayMember = "Name";
             listBoxLocation.ValueMember = "Id";
-            //listBoxLocation.DataSource = locationList;
             listBoxLocation.Visible = false;
         }
         private void buttonReset_Click(object sender, EventArgs e)
@@ -332,15 +324,23 @@ namespace JeanieMoney.Forms
                 listBoxLocation.Visible = false;
         }
         #endregion location
-
         #region product
-        private void textBoxProduct_KeyUp(object sender, KeyEventArgs e)
+        private void refreshProductInfo()
+        {
+            labelDetailProductResult.Text = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Name;
+            labelDetailSpecificationResult.Text = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Specification;
+            labelDetailManufactoryResult.Text = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).ManufactoryName;
+            string productId = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Id;
+            labelDetailPriceAverageResult.Text = tradeRecordDetailAction.getProductAveragePriceByProductId(productId);
+        }
+
+        private void textBoxDetailProduct_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.Enter:
                     listBoxDetailProduct.Visible = false;
-                    if (0 < listBoxDetailProduct.Items.Count) labelSummaryResultProduct.Text = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Name;
+                    if (0 < listBoxDetailProduct.Items.Count) refreshProductInfo();
                     textBoxLocation.Focus();
                     break;
                 case Keys.Up: if (0 < listBoxDetailProduct.SelectedIndex) listBoxDetailProduct.SelectedIndex--; break;
@@ -348,14 +348,14 @@ namespace JeanieMoney.Forms
             }
         }
 
-        private void buttonShowListProduct_Click(object sender, EventArgs e)
+        private void buttonShowListDetailProduct_Click(object sender, EventArgs e)
         {
             listBoxDetailProduct.Visible = !listBoxDetailProduct.Visible;
         }
 
-        private void textBoxProduct_TextChanged(object sender, EventArgs e)
+        private void textBoxDetailProduct_TextChanged(object sender, EventArgs e)
         {
-            String product = textBoxDetailProductName.Text.Trim();
+            String product = textBoxDetailProduct.Text.Trim();
             productSpecificationManufactoryList = productSpecificationManufactoryAction.retrieveProductSpecificationListByAbbr(product);
             listBoxDetailProduct.DataSource = productSpecificationManufactoryList;
             if (0 < listBoxDetailProduct.Items.Count)
@@ -365,23 +365,23 @@ namespace JeanieMoney.Forms
             }
         }
 
-        private void textBoxProduct_Leave(object sender, EventArgs e)
+        private void textBoxDetailProduct_Leave(object sender, EventArgs e)
         {
             if (0 == productSpecificationManufactoryList.Count)
             {
                 listBoxDetailProduct.Visible = false;
-                if (0 < textBoxDetailProductName.Text.Trim().Length)
+                if (0 < textBoxDetailProduct.Text.Trim().Length)
                     //add product
                     if (DialogResult.Yes == MessageBox.Show("do you want to add new product?", "?", MessageBoxButtons.YesNo))
                     {
-                        ProductConfig pc = new ProductConfig(textBoxDetailProductName.Text.Trim());
+                        ProductConfig pc = new ProductConfig(textBoxDetailProduct.Text.Trim());
                         pc.ShowDialog();
-                        productSpecificationManufactoryList = productSpecificationManufactoryAction.retrieveProductSpecificationListByAbbr(textBoxDetailProductName.Text.Trim());
+                        productSpecificationManufactoryList = productSpecificationManufactoryAction.retrieveProductSpecificationListByAbbr(textBoxDetailProduct.Text.Trim());
                         if (0 < productSpecificationManufactoryList.Count)
                         {
                             listBoxDetailProduct.DataSource = productSpecificationManufactoryList;
                             listBoxDetailProduct.SelectedIndex = 0;
-                            labelSummaryResultProduct.Text = productSpecificationManufactoryList.ElementAt(0).Name;
+                            refreshProductInfo();
                         }
                     }
             }
@@ -390,16 +390,73 @@ namespace JeanieMoney.Forms
         }
         private void listBoxDetailProduct_Click(object sender, EventArgs e)
         {
-            labelSummaryResultProduct.Text = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Name;
+            refreshProductInfo();
             listBoxDetailProduct.Visible = false;
             textBoxLocation.Focus();
         }
         #endregion product
+        #region beneficiary
+        private void textBoxDetailBeneficiary_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    listBoxDetailBeneficiary.Visible = false;
+                    if (0 < listBoxDetailBeneficiary.Items.Count) labelDetailBeneficiaryResult.Text = beneficiaryList.ElementAt(listBoxDetailBeneficiary.SelectedIndex).Name;
+                    textBoxLocation.Focus();
+                    break;
+                case Keys.Up: if (0 < listBoxDetailBeneficiary.SelectedIndex) listBoxDetailBeneficiary.SelectedIndex--; break;
+                case Keys.Down: if (listBoxDetailBeneficiary.SelectedIndex < listBoxDetailBeneficiary.Items.Count - 1) listBoxDetailBeneficiary.SelectedIndex++; break;
+            }
+        }
 
+        private void buttonShowListDetailBeneficiary_Click(object sender, EventArgs e)
+        {
+            listBoxDetailBeneficiary.Visible = !listBoxDetailBeneficiary.Visible;
+        }
 
+        private void textBoxDetailBeneficiary_TextChanged(object sender, EventArgs e)
+        {
+            String beneficiary = textBoxDetailBeneficiary.Text.Trim();
+            beneficiaryList = beneficiaryAction.retrieveBeneficiaryListByAbbr(beneficiary);
+            listBoxDetailBeneficiary.DataSource = beneficiaryList;
+            if (0 < listBoxDetailBeneficiary.Items.Count)
+            {
+                listBoxDetailBeneficiary.SelectedIndex = 0;
+                listBoxDetailBeneficiary.Visible = true;
+            }
+        }
 
-
-
+        private void textBoxDetailBeneficiary_Leave(object sender, EventArgs e)
+        {
+            if (0 == beneficiaryList.Count)
+            {
+                listBoxDetailBeneficiary.Visible = false;
+                if (0 < textBoxDetailBeneficiary.Text.Trim().Length)
+                    //add beneficiary
+                    if (DialogResult.Yes == MessageBox.Show("do you want to add new beneficiary?", "?", MessageBoxButtons.YesNo))
+                    {
+                        BeneficiaryConfig pc = new BeneficiaryConfig(textBoxDetailBeneficiary.Text.Trim());
+                        pc.ShowDialog();
+                        beneficiaryList = beneficiaryAction.retrieveBeneficiaryListByAbbr(textBoxDetailBeneficiary.Text.Trim());
+                        if (0 < beneficiaryList.Count)
+                        {
+                            listBoxDetailBeneficiary.DataSource = beneficiaryList;
+                            listBoxDetailBeneficiary.SelectedIndex = 0;
+                            labelDetailBeneficiaryResult.Text = beneficiaryList.ElementAt(0).Name;
+                        }
+                    }
+            }
+            else if (!listBoxDetailBeneficiary.Focused)
+                listBoxDetailBeneficiary.Visible = false;
+        }
+        private void listBoxDetailBeneficiary_Click(object sender, EventArgs e)
+        {
+            labelDetailBeneficiaryResult.Text = beneficiaryList.ElementAt(listBoxDetailBeneficiary.SelectedIndex).Name;
+            listBoxDetailBeneficiary.Visible = false;
+            textBoxLocation.Focus();
+        }
+        #endregion beneficiary
 
 
     }

@@ -7,21 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace JeanieMoney.Forms
+namespace JeanieMoney.Forms.Config
 {
-    public partial class ProductConfig : Form
+    public partial class BeneficiaryConfig : Form
     {
-        private string productName;
-
-        public ProductConfig()
+        private string abbr;
+        public BeneficiaryConfig()
         {
             InitializeComponent();
         }
 
-        public ProductConfig(string name)
+        public BeneficiaryConfig(string abbr)
         {
             InitializeComponent();
-            productName = name;
+            this.abbr = abbr;
         }
     }
 }

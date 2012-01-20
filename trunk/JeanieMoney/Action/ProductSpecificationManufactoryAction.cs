@@ -26,16 +26,16 @@ namespace JeanieMoney.Action
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 productSpecificationManufactory = new ProductSpecificationManufactory();
-                productSpecificationManufactory.Id = dataTable.Rows[0]["id"].ToString();
-                productSpecificationManufactory.Name = dataTable.Rows[0]["name"].ToString();
-                productSpecificationManufactory.Abbr = dataTable.Rows[0]["abbr"].ToString();
-                productSpecificationManufactory.Specification = dataTable.Rows[0]["specification"].ToString();
-                productSpecificationManufactory.SpecificationId = dataTable.Rows[0]["specificationid"].ToString();
-                productSpecificationManufactory.NameSpecification = dataTable.Rows[0]["namespecification"].ToString();
-                productSpecificationManufactory.ManufactoryId = dataTable.Rows[0]["manufactoryid"].ToString();
-                productSpecificationManufactory.ManufactoryName = dataTable.Rows[0]["manufactoryname"].ToString();
-                productSpecificationManufactory.Address = dataTable.Rows[0]["address"].ToString();
-                productSpecificationManufactory.Tel = dataTable.Rows[0]["tel"].ToString();
+                productSpecificationManufactory.Id = dataRow["id"].ToString();
+                productSpecificationManufactory.Name = dataRow["name"].ToString();
+                productSpecificationManufactory.Abbr = dataRow["abbr"].ToString();
+                productSpecificationManufactory.Specification = dataRow["specification_name"].ToString();
+                productSpecificationManufactory.SpecificationId = dataRow["specification_id"].ToString();
+                productSpecificationManufactory.NameSpecification = dataRow["name_specification"].ToString();
+                productSpecificationManufactory.ManufactoryId = dataRow["manufactory_id"].ToString();
+                productSpecificationManufactory.ManufactoryName = dataRow["manufactory_name"].ToString();
+                productSpecificationManufactory.Address = dataRow["address"].ToString();
+                productSpecificationManufactory.Tel = dataRow["tel"].ToString();
                 productSpecificationManufactoryList.Add(productSpecificationManufactory);
             }
             return productSpecificationManufactoryList;
