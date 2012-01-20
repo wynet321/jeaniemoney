@@ -83,5 +83,14 @@ namespace JeanieMoney.Action
             return false;
         }
 
+        public string getProductAveragePriceByProductId(string productId)
+        {
+            string SQL = "SELECT  AVG(price) AS average_price FROM trade_record_detail WHERE (product_id = '"+productId+"')";
+            string result = "";
+            DataTable dataTable = Database.getDataTable(SQL);
+            if (0 < dataTable.Rows.Count)
+                result = dataTable.Rows[0]["average_price"].ToString();
+            return result;
+        }
     }
 }

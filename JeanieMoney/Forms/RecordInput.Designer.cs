@@ -31,7 +31,7 @@
             this.labelMoney = new System.Windows.Forms.Label();
             this.textBoxMoney = new System.Windows.Forms.TextBox();
             this.labelCategory = new System.Windows.Forms.Label();
-            this.label1Date = new System.Windows.Forms.Label();
+            this.labelDate = new System.Windows.Forms.Label();
             this.groupBoxInOut = new System.Windows.Forms.GroupBox();
             this.radioButtonIn = new System.Windows.Forms.RadioButton();
             this.radioButtonOut = new System.Windows.Forms.RadioButton();
@@ -77,15 +77,20 @@
             this.textBoxQuantity = new System.Windows.Forms.TextBox();
             this.labelDetailPrice = new System.Windows.Forms.Label();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
-            this.buttonDetailBeneficiaryDropDown = new System.Windows.Forms.Button();
+            this.buttonDetailShowListBeneficiary = new System.Windows.Forms.Button();
             this.labelBeneficiaryName = new System.Windows.Forms.Label();
-            this.textBoxDetailBeneficiaryName = new System.Windows.Forms.TextBox();
-            this.buttonDetailProductNameDropDown = new System.Windows.Forms.Button();
-            this.labelDetailProductNameResult = new System.Windows.Forms.Label();
+            this.textBoxDetailBeneficiary = new System.Windows.Forms.TextBox();
+            this.buttonDetailShowListProductName = new System.Windows.Forms.Button();
             this.labelDetailProductName = new System.Windows.Forms.Label();
-            this.textBoxDetailProductName = new System.Windows.Forms.TextBox();
+            this.textBoxDetailProduct = new System.Windows.Forms.TextBox();
             this.checkBoxDetails = new System.Windows.Forms.CheckBox();
             this.panelDetails = new System.Windows.Forms.Panel();
+            this.labelDetailBeneficiaryResult = new System.Windows.Forms.Label();
+            this.labelDetailProductNameResultTitle = new System.Windows.Forms.Label();
+            this.labelDetailPriceAverageResult = new System.Windows.Forms.Label();
+            this.labelDetailManufactoryResult = new System.Windows.Forms.Label();
+            this.labelDetailSpecificationResult = new System.Windows.Forms.Label();
+            this.labelDetailProductResult = new System.Windows.Forms.Label();
             this.groupBoxInOut.SuspendLayout();
             this.groupBoxSummary.SuspendLayout();
             this.panelDetails.SuspendLayout();
@@ -117,14 +122,14 @@
             this.labelCategory.TabIndex = 6;
             this.labelCategory.Text = "Category";
             // 
-            // label1Date
+            // labelDate
             // 
-            this.label1Date.AutoSize = true;
-            this.label1Date.Location = new System.Drawing.Point(143, 42);
-            this.label1Date.Name = "label1Date";
-            this.label1Date.Size = new System.Drawing.Size(30, 13);
-            this.label1Date.TabIndex = 20;
-            this.label1Date.Text = "Date";
+            this.labelDate.AutoSize = true;
+            this.labelDate.Location = new System.Drawing.Point(143, 42);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(30, 13);
+            this.labelDate.TabIndex = 20;
+            this.labelDate.Text = "Date";
             // 
             // groupBoxInOut
             // 
@@ -455,10 +460,11 @@
             // listBoxDetailProduct
             // 
             this.listBoxDetailProduct.FormattingEnabled = true;
-            this.listBoxDetailProduct.Location = new System.Drawing.Point(65, 32);
+            this.listBoxDetailProduct.Location = new System.Drawing.Point(65, 35);
             this.listBoxDetailProduct.Name = "listBoxDetailProduct";
             this.listBoxDetailProduct.Size = new System.Drawing.Size(288, 134);
             this.listBoxDetailProduct.TabIndex = 37;
+            this.listBoxDetailProduct.Click += new System.EventHandler(this.listBoxDetailProduct_Click);
             // 
             // labelDetailManufactoryName
             // 
@@ -503,6 +509,7 @@
             this.listBoxDetailBeneficiary.Name = "listBoxDetailBeneficiary";
             this.listBoxDetailBeneficiary.Size = new System.Drawing.Size(120, 95);
             this.listBoxDetailBeneficiary.TabIndex = 38;
+            this.listBoxDetailBeneficiary.Click += new System.EventHandler(this.listBoxDetailBeneficiary_Click);
             // 
             // labelDetailPriceAverage
             // 
@@ -554,14 +561,15 @@
             this.textBoxPrice.Size = new System.Drawing.Size(101, 20);
             this.textBoxPrice.TabIndex = 31;
             // 
-            // buttonDetailBeneficiaryDropDown
+            // buttonDetailShowListBeneficiary
             // 
-            this.buttonDetailBeneficiaryDropDown.Location = new System.Drawing.Point(184, 182);
-            this.buttonDetailBeneficiaryDropDown.Name = "buttonDetailBeneficiaryDropDown";
-            this.buttonDetailBeneficiaryDropDown.Size = new System.Drawing.Size(21, 20);
-            this.buttonDetailBeneficiaryDropDown.TabIndex = 30;
-            this.buttonDetailBeneficiaryDropDown.Text = "!";
-            this.buttonDetailBeneficiaryDropDown.UseVisualStyleBackColor = true;
+            this.buttonDetailShowListBeneficiary.Location = new System.Drawing.Point(184, 182);
+            this.buttonDetailShowListBeneficiary.Name = "buttonDetailShowListBeneficiary";
+            this.buttonDetailShowListBeneficiary.Size = new System.Drawing.Size(21, 20);
+            this.buttonDetailShowListBeneficiary.TabIndex = 30;
+            this.buttonDetailShowListBeneficiary.Text = "!";
+            this.buttonDetailShowListBeneficiary.UseVisualStyleBackColor = true;
+            this.buttonDetailShowListBeneficiary.Click += new System.EventHandler(this.buttonShowListDetailBeneficiary_Click);
             // 
             // labelBeneficiaryName
             // 
@@ -574,44 +582,42 @@
             // 
             // textBoxDetailBeneficiaryName
             // 
-            this.textBoxDetailBeneficiaryName.Location = new System.Drawing.Point(85, 182);
-            this.textBoxDetailBeneficiaryName.Name = "textBoxDetailBeneficiaryName";
-            this.textBoxDetailBeneficiaryName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxDetailBeneficiaryName.TabIndex = 28;
+            this.textBoxDetailBeneficiary.Location = new System.Drawing.Point(85, 182);
+            this.textBoxDetailBeneficiary.Name = "textBoxDetailBeneficiaryName";
+            this.textBoxDetailBeneficiary.Size = new System.Drawing.Size(100, 20);
+            this.textBoxDetailBeneficiary.TabIndex = 28;
+            this.textBoxDetailBeneficiary.TextChanged += new System.EventHandler(this.textBoxDetailBeneficiary_TextChanged);
+            this.textBoxDetailBeneficiary.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxDetailBeneficiary_KeyUp);
+            this.textBoxDetailBeneficiary.Leave += new System.EventHandler(this.textBoxDetailBeneficiary_Leave);
             // 
-            // buttonDetailProductNameDropDown
+            // buttonDetailShowListProductName
             // 
-            this.buttonDetailProductNameDropDown.Location = new System.Drawing.Point(352, 12);
-            this.buttonDetailProductNameDropDown.Name = "buttonDetailProductNameDropDown";
-            this.buttonDetailProductNameDropDown.Size = new System.Drawing.Size(21, 20);
-            this.buttonDetailProductNameDropDown.TabIndex = 27;
-            this.buttonDetailProductNameDropDown.Text = "!";
-            this.buttonDetailProductNameDropDown.UseVisualStyleBackColor = true;
-            // 
-            // labelDetailProductNameResult
-            // 
-            this.labelDetailProductNameResult.AutoSize = true;
-            this.labelDetailProductNameResult.Location = new System.Drawing.Point(24, 35);
-            this.labelDetailProductNameResult.Name = "labelDetailProductNameResult";
-            this.labelDetailProductNameResult.Size = new System.Drawing.Size(41, 13);
-            this.labelDetailProductNameResult.TabIndex = 26;
-            this.labelDetailProductNameResult.Text = "Name: ";
+            this.buttonDetailShowListProductName.Location = new System.Drawing.Point(352, 12);
+            this.buttonDetailShowListProductName.Name = "buttonDetailShowListProductName";
+            this.buttonDetailShowListProductName.Size = new System.Drawing.Size(21, 20);
+            this.buttonDetailShowListProductName.TabIndex = 27;
+            this.buttonDetailShowListProductName.Text = "!";
+            this.buttonDetailShowListProductName.UseVisualStyleBackColor = true;
+            this.buttonDetailShowListProductName.Click += new System.EventHandler(this.buttonShowListDetailProduct_Click);
             // 
             // labelDetailProductName
             // 
             this.labelDetailProductName.AutoSize = true;
             this.labelDetailProductName.Location = new System.Drawing.Point(24, 15);
             this.labelDetailProductName.Name = "labelDetailProductName";
-            this.labelDetailProductName.Size = new System.Drawing.Size(33, 13);
+            this.labelDetailProductName.Size = new System.Drawing.Size(35, 13);
             this.labelDetailProductName.TabIndex = 25;
-            this.labelDetailProductName.Text = "name";
+            this.labelDetailProductName.Text = "Name";
             // 
-            // textBoxDetailProductName
+            // textBoxDetailProduct
             // 
-            this.textBoxDetailProductName.Location = new System.Drawing.Point(65, 12);
-            this.textBoxDetailProductName.Name = "textBoxDetailProductName";
-            this.textBoxDetailProductName.Size = new System.Drawing.Size(288, 20);
-            this.textBoxDetailProductName.TabIndex = 23;
+            this.textBoxDetailProduct.Location = new System.Drawing.Point(65, 12);
+            this.textBoxDetailProduct.Name = "textBoxDetailProduct";
+            this.textBoxDetailProduct.Size = new System.Drawing.Size(288, 20);
+            this.textBoxDetailProduct.TabIndex = 23;
+            this.textBoxDetailProduct.TextChanged += new System.EventHandler(this.textBoxDetailProduct_TextChanged);
+            this.textBoxDetailProduct.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxDetailProduct_KeyUp);
+            this.textBoxDetailProduct.Leave += new System.EventHandler(this.textBoxDetailProduct_Leave);
             // 
             // checkBoxDetails
             // 
@@ -627,21 +633,26 @@
             // 
             // panelDetails
             // 
+            this.panelDetails.Controls.Add(this.listBoxDetailBeneficiary);
+            this.panelDetails.Controls.Add(this.labelDetailBeneficiaryResult);
+            this.panelDetails.Controls.Add(this.labelDetailProductNameResultTitle);
+            this.panelDetails.Controls.Add(this.labelDetailPriceAverageResult);
+            this.panelDetails.Controls.Add(this.labelDetailManufactoryResult);
+            this.panelDetails.Controls.Add(this.labelDetailSpecificationResult);
+            this.panelDetails.Controls.Add(this.labelDetailProductResult);
             this.panelDetails.Controls.Add(this.listBoxDetailProduct);
             this.panelDetails.Controls.Add(this.labelDetailManufactoryName);
-            this.panelDetails.Controls.Add(this.textBoxDetailProductName);
+            this.panelDetails.Controls.Add(this.textBoxDetailProduct);
             this.panelDetails.Controls.Add(this.labelDetailSpecification);
             this.panelDetails.Controls.Add(this.labelDetailProductName);
             this.panelDetails.Controls.Add(this.buttonDetailRemoveFromSummary);
-            this.panelDetails.Controls.Add(this.labelDetailProductNameResult);
             this.panelDetails.Controls.Add(this.buttonDetailAddToSummary);
-            this.panelDetails.Controls.Add(this.buttonDetailProductNameDropDown);
-            this.panelDetails.Controls.Add(this.listBoxDetailBeneficiary);
-            this.panelDetails.Controls.Add(this.textBoxDetailBeneficiaryName);
+            this.panelDetails.Controls.Add(this.buttonDetailShowListProductName);
+            this.panelDetails.Controls.Add(this.textBoxDetailBeneficiary);
             this.panelDetails.Controls.Add(this.labelDetailPriceAverage);
             this.panelDetails.Controls.Add(this.labelBeneficiaryName);
             this.panelDetails.Controls.Add(this.labelDetailTotal);
-            this.panelDetails.Controls.Add(this.buttonDetailBeneficiaryDropDown);
+            this.panelDetails.Controls.Add(this.buttonDetailShowListBeneficiary);
             this.panelDetails.Controls.Add(this.labelDetailQuantity);
             this.panelDetails.Controls.Add(this.textBoxPrice);
             this.panelDetails.Controls.Add(this.textBoxQuantity);
@@ -651,6 +662,55 @@
             this.panelDetails.Size = new System.Drawing.Size(443, 331);
             this.panelDetails.TabIndex = 41;
             this.panelDetails.Visible = false;
+            // 
+            // labelDetailBeneficiaryNameResult
+            // 
+            this.labelDetailBeneficiaryResult.AutoSize = true;
+            this.labelDetailBeneficiaryResult.Location = new System.Drawing.Point(82, 212);
+            this.labelDetailBeneficiaryResult.Name = "labelDetailBeneficiaryNameResult";
+            this.labelDetailBeneficiaryResult.Size = new System.Drawing.Size(0, 13);
+            this.labelDetailBeneficiaryResult.TabIndex = 48;
+            // 
+            // labelDetailProductNameResultTitle
+            // 
+            this.labelDetailProductNameResultTitle.AutoSize = true;
+            this.labelDetailProductNameResultTitle.Location = new System.Drawing.Point(29, 35);
+            this.labelDetailProductNameResultTitle.Name = "labelDetailProductNameResultTitle";
+            this.labelDetailProductNameResultTitle.Size = new System.Drawing.Size(35, 13);
+            this.labelDetailProductNameResultTitle.TabIndex = 47;
+            this.labelDetailProductNameResultTitle.Text = "Name";
+            // 
+            // labelDetailPriceAverageResult
+            // 
+            this.labelDetailPriceAverageResult.AutoSize = true;
+            this.labelDetailPriceAverageResult.Location = new System.Drawing.Point(101, 103);
+            this.labelDetailPriceAverageResult.Name = "labelDetailPriceAverageResult";
+            this.labelDetailPriceAverageResult.Size = new System.Drawing.Size(0, 13);
+            this.labelDetailPriceAverageResult.TabIndex = 46;
+            // 
+            // labelDetailManufactoryResult
+            // 
+            this.labelDetailManufactoryResult.AutoSize = true;
+            this.labelDetailManufactoryResult.Location = new System.Drawing.Point(124, 79);
+            this.labelDetailManufactoryResult.Name = "labelDetailManufactoryResult";
+            this.labelDetailManufactoryResult.Size = new System.Drawing.Size(0, 13);
+            this.labelDetailManufactoryResult.TabIndex = 45;
+            // 
+            // labelDetailSpecificationResult
+            // 
+            this.labelDetailSpecificationResult.AutoSize = true;
+            this.labelDetailSpecificationResult.Location = new System.Drawing.Point(98, 57);
+            this.labelDetailSpecificationResult.Name = "labelDetailSpecificationResult";
+            this.labelDetailSpecificationResult.Size = new System.Drawing.Size(0, 13);
+            this.labelDetailSpecificationResult.TabIndex = 44;
+            // 
+            // labelDetailProductResult
+            // 
+            this.labelDetailProductResult.AutoSize = true;
+            this.labelDetailProductResult.Location = new System.Drawing.Point(64, 35);
+            this.labelDetailProductResult.Name = "labelDetailProductResult";
+            this.labelDetailProductResult.Size = new System.Drawing.Size(0, 13);
+            this.labelDetailProductResult.TabIndex = 43;
             // 
             // RecordInput
             // 
@@ -675,7 +735,7 @@
             this.Controls.Add(this.labelPayer);
             this.Controls.Add(this.dateTimePickerRecordInput);
             this.Controls.Add(this.groupBoxInOut);
-            this.Controls.Add(this.label1Date);
+            this.Controls.Add(this.labelDate);
             this.Controls.Add(this.labelCategory);
             this.Controls.Add(this.textBoxMoney);
             this.Controls.Add(this.labelMoney);
@@ -700,7 +760,7 @@
         private System.Windows.Forms.Label labelMoney;
         private System.Windows.Forms.TextBox textBoxMoney;
         private System.Windows.Forms.Label labelCategory;
-        private System.Windows.Forms.Label label1Date;
+        private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.GroupBox groupBoxInOut;
         private System.Windows.Forms.RadioButton radioButtonIn;
         private System.Windows.Forms.RadioButton radioButtonOut;
@@ -746,14 +806,19 @@
         private System.Windows.Forms.TextBox textBoxQuantity;
         private System.Windows.Forms.Label labelDetailPrice;
         private System.Windows.Forms.TextBox textBoxPrice;
-        private System.Windows.Forms.Button buttonDetailBeneficiaryDropDown;
+        private System.Windows.Forms.Button buttonDetailShowListBeneficiary;
         private System.Windows.Forms.Label labelBeneficiaryName;
-        private System.Windows.Forms.TextBox textBoxDetailBeneficiaryName;
-        private System.Windows.Forms.Button buttonDetailProductNameDropDown;
-        private System.Windows.Forms.Label labelDetailProductNameResult;
+        private System.Windows.Forms.TextBox textBoxDetailBeneficiary;
+        private System.Windows.Forms.Button buttonDetailShowListProductName;
         private System.Windows.Forms.Label labelDetailProductName;
-        private System.Windows.Forms.TextBox textBoxDetailProductName;
+        private System.Windows.Forms.TextBox textBoxDetailProduct;
         private System.Windows.Forms.CheckBox checkBoxDetails;
         private System.Windows.Forms.Panel panelDetails;
+        private System.Windows.Forms.Label labelDetailPriceAverageResult;
+        private System.Windows.Forms.Label labelDetailManufactoryResult;
+        private System.Windows.Forms.Label labelDetailSpecificationResult;
+        private System.Windows.Forms.Label labelDetailProductResult;
+        private System.Windows.Forms.Label labelDetailProductNameResultTitle;
+        private System.Windows.Forms.Label labelDetailBeneficiaryResult;
     }
 }
