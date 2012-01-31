@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using JeanieMoney.Entity;
 using JeanieMoney.Action;
 using JeanieMoney.Forms.Config;
+using JeanieMoney.Utility;
+using System.Drawing;
 
 namespace JeanieMoney.Forms
 {
@@ -85,8 +87,8 @@ namespace JeanieMoney.Forms
 
         private void panelDetailInit()
         {
-            textBoxPrice.Clear();
-            textBoxQuantity.Clear();
+            textBoxDetailPrice.Clear();
+            textBoxDetailQuantity.Clear();
 
             //product
             listBoxDetailProduct.DisplayMember = "Name";
@@ -465,7 +467,7 @@ namespace JeanieMoney.Forms
             if (verifyDetailInput())
             {
                 listViewSummaryDetails.Items.Add("dennis");
-                
+
 
             }
         }
@@ -474,6 +476,57 @@ namespace JeanieMoney.Forms
         {
 
             return true;
+        }
+
+        private void textBoxDetailQuantity_Leave(object sender, EventArgs e)
+        {
+            if (textBoxDetailQuantity.BackColor == Color.Red)
+            {
+                textBoxDetailQuantity.Focus();
+                return;
+            }
+            if (0 < textBoxDetailPrice.Text.Length)
+                labelDetailTotalResult.Text = (decimal.Parse(textBoxDetailPrice.Text) * decimal.Parse(textBoxDetailQuantity.Text)).ToString();
+
+        }
+
+        private void textBoxDetailPrice_Leave(object sender, EventArgs e)
+        {
+            if (textBoxDetailPrice.BackColor == Color.Red)
+            {
+                textBoxDetailPrice.Focus();
+                return;
+            }
+            if(0<textBoxDetailQuantity.Text.Length)
+                labelDetailTotalResult.Text = (decimal.Parse(textBoxDetailPrice.Text) * decimal.Parse(textBoxDetailQuantity.Text)).ToString();
+        }
+
+        private void textBoxDetailPrice_TextChanged(object sender, EventArgs e)
+        {
+            decimal price;
+            if (decimal.TryParse(textBoxDetailPrice.Text.Trim(), out price))
+            {
+                textBoxDetailPrice.BackColor = Color.White;
+            }
+            else
+            {
+                textBoxDetailPrice.BackColor = Color.Red;
+                labelDetailTotalResult.ResetText();
+            }
+        }
+
+        private void textBoxDetailQuantity_TextChanged(object sender, EventArgs e)
+        {
+            decimal quantity;
+            if (decimal.TryParse(textBoxDetailQuantity.Text.Trim(), out quantity))
+            {
+                textBoxDetailQuantity.BackColor = Color.White;
+            }
+            else
+            {
+                textBoxDetailQuantity.BackColor = Color.Red;
+                labelDetailTotalResult.ResetText();
+            }
         }
     }
 }

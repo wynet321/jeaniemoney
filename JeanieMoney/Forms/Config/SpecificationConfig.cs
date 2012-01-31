@@ -8,21 +8,13 @@ using System.Text;
 using System.Windows.Forms;
 using JeanieMoney.Utility;
 
-namespace JeanieMoney.Forms
+namespace JeanieMoney.Forms.Config
 {
-    public partial class ProductConfig : BaseConfigForm
+    public partial class SpecificationConfig : BaseConfigForm
     {
-        private string productName;
-
-        public ProductConfig()
+        public SpecificationConfig()
         {
             InitializeComponent();
-        }
-
-        public ProductConfig(string name)
-        {
-            InitializeComponent();
-            productName = name;
         }
     }
 }

@@ -8,10 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using JeanieMoney.Action;
 using JeanieMoney.Entity;
+using JeanieMoney.Utility;
 
 namespace JeanieMoney.Forms
 {
-    public partial class LocationConfig : Form
+    public partial class LocationConfig : BaseConfigForm
     {
         LocationAction locationAction;
         List<Location> locationListByAbbr;
@@ -150,6 +151,8 @@ namespace JeanieMoney.Forms
                 }
             }
         }
+
+      
 
     }
 }
