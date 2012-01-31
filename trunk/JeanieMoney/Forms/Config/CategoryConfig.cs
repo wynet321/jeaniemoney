@@ -8,10 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using JeanieMoney.Action;
 using JeanieMoney.Entity;
+using JeanieMoney.Utility;
 
 namespace JeanieMoney.Forms
 {
-    public partial class CategoryConfig : Form
+    public partial class CategoryConfig : BaseConfigForm
     {
         CategoryAction categoryAction;
         List<Category> categoryListByAbbr;
