@@ -77,7 +77,6 @@ namespace JeanieMoney.Forms
         private void checkBoxDetails_CheckedChanged(object sender, EventArgs e)
         {
             panelDetails.Visible = !panelDetails.Visible;
-            listViewSummaryDetails.Enabled = !listViewSummaryDetails.Enabled;
             if (panelDetails.Visible)
             {
                 panelDetailInit();
@@ -87,8 +86,15 @@ namespace JeanieMoney.Forms
 
         private void panelDetailInit()
         {
-            textBoxDetailPrice.Clear();
+            labelDetailTotalResult.ResetText();
+            labelDetailSpecificationResult.ResetText();
+            labelDetailProductResult.ResetText();
+            labelDetailPriceAverageResult.ResetText();
+            labelDetailManufactoryResult.ResetText();
             textBoxDetailQuantity.Clear();
+            textBoxDetailPrice.Clear();
+            textBoxDetailBeneficiary.Clear();
+            textBoxDetailProduct.Clear();
 
             //product
             listBoxDetailProduct.DisplayMember = "Name";
@@ -466,9 +472,16 @@ namespace JeanieMoney.Forms
         {
             if (verifyDetailInput())
             {
-                listViewSummaryDetails.Items.Add("dennis");
-
-
+                ListViewItem listViewItemDetails=new ListViewItem();
+                listViewItemDetails.Text = labelDetailProductResult.Text;
+                listViewItemDetails.SubItems.Add(labelDetailSpecificationResult.Text);
+                listViewItemDetails.SubItems.Add(labelDetailManufactoryResult.Text);
+                listViewItemDetails.SubItems.Add(labelDetailBeneficiaryResult.Text);
+                listViewItemDetails.SubItems.Add(labelDetailTotalResult.Text);
+                listViewItemDetails.SubItems.Add(textBoxDetailPrice.Text);
+                listViewItemDetails.SubItems.Add(textBoxDetailQuantity.Text);
+                listViewSummaryDetails.Items.Add(listViewItemDetails);
+                panelDetailInit();
             }
         }
 
@@ -510,8 +523,11 @@ namespace JeanieMoney.Forms
             }
             else
             {
-                textBoxDetailPrice.BackColor = Color.Red;
-                labelDetailTotalResult.ResetText();
+                if (0 < textBoxDetailPrice.Text.Length)
+                {
+                    textBoxDetailPrice.BackColor = Color.Red;
+                    labelDetailTotalResult.ResetText();
+                }
             }
         }
 
@@ -524,8 +540,11 @@ namespace JeanieMoney.Forms
             }
             else
             {
-                textBoxDetailQuantity.BackColor = Color.Red;
-                labelDetailTotalResult.ResetText();
+                if (0 < textBoxDetailQuantity.Text.Length)
+                {
+                    textBoxDetailQuantity.BackColor = Color.Red;
+                    labelDetailTotalResult.ResetText();
+                }
             }
         }
     }

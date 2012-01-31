@@ -44,7 +44,6 @@
             this.textBoxCategory = new System.Windows.Forms.TextBox();
             this.textBoxPayer = new System.Windows.Forms.TextBox();
             this.listBoxCategory = new System.Windows.Forms.ListBox();
-            this.buttonShowListCategory = new System.Windows.Forms.Button();
             this.groupBoxSummary = new System.Windows.Forms.GroupBox();
             this.listViewSummaryDetails = new System.Windows.Forms.ListView();
             this.labelSummaryResultPayer = new System.Windows.Forms.Label();
@@ -60,10 +59,8 @@
             this.labelSummaryCategory = new System.Windows.Forms.Label();
             this.labelSummaryDetails = new System.Windows.Forms.Label();
             this.labelSummaryInOut = new System.Windows.Forms.Label();
-            this.buttonShowListPayer = new System.Windows.Forms.Button();
             this.listBoxPayer = new System.Windows.Forms.ListBox();
             this.textBoxLocation = new System.Windows.Forms.TextBox();
-            this.buttonShowListLocation = new System.Windows.Forms.Button();
             this.listBoxLocation = new System.Windows.Forms.ListBox();
             this.listBoxDetailProduct = new System.Windows.Forms.ListBox();
             this.labelDetailManufactoryName = new System.Windows.Forms.Label();
@@ -77,10 +74,8 @@
             this.textBoxDetailQuantity = new System.Windows.Forms.TextBox();
             this.labelDetailPrice = new System.Windows.Forms.Label();
             this.textBoxDetailPrice = new System.Windows.Forms.TextBox();
-            this.buttonDetailShowListBeneficiary = new System.Windows.Forms.Button();
             this.labelBeneficiaryName = new System.Windows.Forms.Label();
             this.textBoxDetailBeneficiary = new System.Windows.Forms.TextBox();
-            this.buttonDetailShowListProductName = new System.Windows.Forms.Button();
             this.labelDetailProductName = new System.Windows.Forms.Label();
             this.textBoxDetailProduct = new System.Windows.Forms.TextBox();
             this.checkBoxDetails = new System.Windows.Forms.CheckBox();
@@ -178,7 +173,7 @@
             // labelPayer
             // 
             this.labelPayer.AutoSize = true;
-            this.labelPayer.Location = new System.Drawing.Point(228, 65);
+            this.labelPayer.Location = new System.Drawing.Point(306, 14);
             this.labelPayer.Name = "labelPayer";
             this.labelPayer.Size = new System.Drawing.Size(35, 12);
             this.labelPayer.TabIndex = 25;
@@ -187,7 +182,7 @@
             // labelLocation
             // 
             this.labelLocation.AutoSize = true;
-            this.labelLocation.Location = new System.Drawing.Point(14, 91);
+            this.labelLocation.Location = new System.Drawing.Point(200, 64);
             this.labelLocation.Name = "labelLocation";
             this.labelLocation.Size = new System.Drawing.Size(53, 12);
             this.labelLocation.TabIndex = 27;
@@ -198,7 +193,7 @@
             this.buttonReset.Location = new System.Drawing.Point(461, 477);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 21);
-            this.buttonReset.TabIndex = 11;
+            this.buttonReset.TabIndex = 16;
             this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
@@ -208,7 +203,7 @@
             this.buttonOK.Location = new System.Drawing.Point(364, 477);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 21);
-            this.buttonOK.TabIndex = 9;
+            this.buttonOK.TabIndex = 15;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -218,7 +213,7 @@
             this.buttonCancel.Location = new System.Drawing.Point(558, 477);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 21);
-            this.buttonCancel.TabIndex = 10;
+            this.buttonCancel.TabIndex = 17;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -236,7 +231,7 @@
             // 
             // textBoxPayer
             // 
-            this.textBoxPayer.Location = new System.Drawing.Point(271, 62);
+            this.textBoxPayer.Location = new System.Drawing.Point(349, 11);
             this.textBoxPayer.Name = "textBoxPayer";
             this.textBoxPayer.Size = new System.Drawing.Size(94, 21);
             this.textBoxPayer.TabIndex = 6;
@@ -251,19 +246,10 @@
             this.listBoxCategory.ItemHeight = 12;
             this.listBoxCategory.Location = new System.Drawing.Point(73, 78);
             this.listBoxCategory.Name = "listBoxCategory";
-            this.listBoxCategory.Size = new System.Drawing.Size(115, 184);
+            this.listBoxCategory.Size = new System.Drawing.Size(115, 88);
             this.listBoxCategory.TabIndex = 30;
+            this.listBoxCategory.TabStop = false;
             this.listBoxCategory.Click += new System.EventHandler(this.listBoxCategory_Click);
-            // 
-            // buttonShowListCategory
-            // 
-            this.buttonShowListCategory.Location = new System.Drawing.Point(187, 58);
-            this.buttonShowListCategory.Name = "buttonShowListCategory";
-            this.buttonShowListCategory.Size = new System.Drawing.Size(20, 19);
-            this.buttonShowListCategory.TabIndex = 0;
-            this.buttonShowListCategory.Text = "!";
-            this.buttonShowListCategory.UseVisualStyleBackColor = true;
-            this.buttonShowListCategory.Click += new System.EventHandler(this.buttonShowListCategory_Click);
             // 
             // groupBoxSummary
             // 
@@ -291,12 +277,13 @@
             // listViewSummaryDetails
             // 
             this.listViewSummaryDetails.FullRowSelect = true;
-            this.listViewSummaryDetails.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewSummaryDetails.HideSelection = false;
             this.listViewSummaryDetails.Location = new System.Drawing.Point(25, 103);
             this.listViewSummaryDetails.MultiSelect = false;
             this.listViewSummaryDetails.Name = "listViewSummaryDetails";
             this.listViewSummaryDetails.Size = new System.Drawing.Size(514, 345);
             this.listViewSummaryDetails.TabIndex = 14;
+            this.listViewSummaryDetails.TabStop = false;
             this.listViewSummaryDetails.UseCompatibleStateImageBehavior = false;
             this.listViewSummaryDetails.View = System.Windows.Forms.View.Details;
             // 
@@ -414,55 +401,37 @@
             this.labelSummaryInOut.TabIndex = 0;
             this.labelSummaryInOut.Text = "InOut:";
             // 
-            // buttonShowListPayer
-            // 
-            this.buttonShowListPayer.Location = new System.Drawing.Point(364, 61);
-            this.buttonShowListPayer.Name = "buttonShowListPayer";
-            this.buttonShowListPayer.Size = new System.Drawing.Size(20, 19);
-            this.buttonShowListPayer.TabIndex = 0;
-            this.buttonShowListPayer.Text = "!";
-            this.buttonShowListPayer.UseVisualStyleBackColor = true;
-            this.buttonShowListPayer.Click += new System.EventHandler(this.buttonShowListPayer_Click);
-            // 
             // listBoxPayer
             // 
             this.listBoxPayer.FormattingEnabled = true;
             this.listBoxPayer.ItemHeight = 12;
-            this.listBoxPayer.Location = new System.Drawing.Point(271, 78);
+            this.listBoxPayer.Location = new System.Drawing.Point(349, 27);
             this.listBoxPayer.Name = "listBoxPayer";
-            this.listBoxPayer.Size = new System.Drawing.Size(94, 184);
+            this.listBoxPayer.Size = new System.Drawing.Size(94, 124);
             this.listBoxPayer.TabIndex = 34;
+            this.listBoxPayer.TabStop = false;
             this.listBoxPayer.Click += new System.EventHandler(this.listBoxPayer_Click);
             // 
             // textBoxLocation
             // 
-            this.textBoxLocation.Location = new System.Drawing.Point(73, 89);
+            this.textBoxLocation.Location = new System.Drawing.Point(259, 62);
             this.textBoxLocation.Name = "textBoxLocation";
-            this.textBoxLocation.Size = new System.Drawing.Size(292, 21);
+            this.textBoxLocation.Size = new System.Drawing.Size(184, 21);
             this.textBoxLocation.TabIndex = 7;
             this.textBoxLocation.TextChanged += new System.EventHandler(this.textBoxLocation_TextChanged);
             this.textBoxLocation.Enter += new System.EventHandler(this.textBoxLocation_TextChanged);
             this.textBoxLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLocation_KeyUp);
             this.textBoxLocation.Leave += new System.EventHandler(this.textBoxLocation_Leave);
             // 
-            // buttonShowListLocation
-            // 
-            this.buttonShowListLocation.Location = new System.Drawing.Point(364, 88);
-            this.buttonShowListLocation.Name = "buttonShowListLocation";
-            this.buttonShowListLocation.Size = new System.Drawing.Size(20, 19);
-            this.buttonShowListLocation.TabIndex = 0;
-            this.buttonShowListLocation.Text = "!";
-            this.buttonShowListLocation.UseVisualStyleBackColor = true;
-            this.buttonShowListLocation.Click += new System.EventHandler(this.buttonShowListLocation_Click);
-            // 
             // listBoxLocation
             // 
             this.listBoxLocation.FormattingEnabled = true;
             this.listBoxLocation.ItemHeight = 12;
-            this.listBoxLocation.Location = new System.Drawing.Point(73, 107);
+            this.listBoxLocation.Location = new System.Drawing.Point(259, 80);
             this.listBoxLocation.Name = "listBoxLocation";
-            this.listBoxLocation.Size = new System.Drawing.Size(292, 244);
+            this.listBoxLocation.Size = new System.Drawing.Size(184, 136);
             this.listBoxLocation.TabIndex = 38;
+            this.listBoxLocation.TabStop = false;
             this.listBoxLocation.Click += new System.EventHandler(this.listBoxLocation_Click);
             // 
             // listBoxDetailProduct
@@ -473,6 +442,7 @@
             this.listBoxDetailProduct.Name = "listBoxDetailProduct";
             this.listBoxDetailProduct.Size = new System.Drawing.Size(288, 124);
             this.listBoxDetailProduct.TabIndex = 37;
+            this.listBoxDetailProduct.TabStop = false;
             this.listBoxDetailProduct.Click += new System.EventHandler(this.listBoxDetailProduct_Click);
             // 
             // labelDetailManufactoryName
@@ -498,7 +468,7 @@
             this.buttonDetailRemoveFromSummary.Location = new System.Drawing.Point(400, 149);
             this.buttonDetailRemoveFromSummary.Name = "buttonDetailRemoveFromSummary";
             this.buttonDetailRemoveFromSummary.Size = new System.Drawing.Size(31, 21);
-            this.buttonDetailRemoveFromSummary.TabIndex = 40;
+            this.buttonDetailRemoveFromSummary.TabIndex = 14;
             this.buttonDetailRemoveFromSummary.Text = "<<";
             this.buttonDetailRemoveFromSummary.UseVisualStyleBackColor = true;
             // 
@@ -507,7 +477,7 @@
             this.buttonDetailAddToSummary.Location = new System.Drawing.Point(400, 95);
             this.buttonDetailAddToSummary.Name = "buttonDetailAddToSummary";
             this.buttonDetailAddToSummary.Size = new System.Drawing.Size(31, 21);
-            this.buttonDetailAddToSummary.TabIndex = 39;
+            this.buttonDetailAddToSummary.TabIndex = 13;
             this.buttonDetailAddToSummary.Text = ">>";
             this.buttonDetailAddToSummary.UseVisualStyleBackColor = true;
             this.buttonDetailAddToSummary.Click += new System.EventHandler(this.buttonDetailAddToSummary_Click);
@@ -518,8 +488,9 @@
             this.listBoxDetailBeneficiary.ItemHeight = 12;
             this.listBoxDetailBeneficiary.Location = new System.Drawing.Point(85, 186);
             this.listBoxDetailBeneficiary.Name = "listBoxDetailBeneficiary";
-            this.listBoxDetailBeneficiary.Size = new System.Drawing.Size(100, 88);
+            this.listBoxDetailBeneficiary.Size = new System.Drawing.Size(100, 100);
             this.listBoxDetailBeneficiary.TabIndex = 38;
+            this.listBoxDetailBeneficiary.TabStop = false;
             this.listBoxDetailBeneficiary.Click += new System.EventHandler(this.listBoxDetailBeneficiary_Click);
             // 
             // labelDetailPriceAverage
@@ -554,7 +525,7 @@
             this.textBoxDetailQuantity.Location = new System.Drawing.Point(260, 196);
             this.textBoxDetailQuantity.Name = "textBoxDetailQuantity";
             this.textBoxDetailQuantity.Size = new System.Drawing.Size(100, 21);
-            this.textBoxDetailQuantity.TabIndex = 33;
+            this.textBoxDetailQuantity.TabIndex = 12;
             this.textBoxDetailQuantity.TextChanged += new System.EventHandler(this.textBoxDetailQuantity_TextChanged);
             this.textBoxDetailQuantity.Leave += new System.EventHandler(this.textBoxDetailQuantity_Leave);
             // 
@@ -572,19 +543,9 @@
             this.textBoxDetailPrice.Location = new System.Drawing.Point(260, 168);
             this.textBoxDetailPrice.Name = "textBoxDetailPrice";
             this.textBoxDetailPrice.Size = new System.Drawing.Size(101, 21);
-            this.textBoxDetailPrice.TabIndex = 31;
+            this.textBoxDetailPrice.TabIndex = 11;
             this.textBoxDetailPrice.TextChanged += new System.EventHandler(this.textBoxDetailPrice_TextChanged);
             this.textBoxDetailPrice.Leave += new System.EventHandler(this.textBoxDetailPrice_Leave);
-            // 
-            // buttonDetailShowListBeneficiary
-            // 
-            this.buttonDetailShowListBeneficiary.Location = new System.Drawing.Point(184, 168);
-            this.buttonDetailShowListBeneficiary.Name = "buttonDetailShowListBeneficiary";
-            this.buttonDetailShowListBeneficiary.Size = new System.Drawing.Size(21, 18);
-            this.buttonDetailShowListBeneficiary.TabIndex = 30;
-            this.buttonDetailShowListBeneficiary.Text = "!";
-            this.buttonDetailShowListBeneficiary.UseVisualStyleBackColor = true;
-            this.buttonDetailShowListBeneficiary.Click += new System.EventHandler(this.buttonShowListDetailBeneficiary_Click);
             // 
             // labelBeneficiaryName
             // 
@@ -600,21 +561,11 @@
             this.textBoxDetailBeneficiary.Location = new System.Drawing.Point(85, 168);
             this.textBoxDetailBeneficiary.Name = "textBoxDetailBeneficiary";
             this.textBoxDetailBeneficiary.Size = new System.Drawing.Size(100, 21);
-            this.textBoxDetailBeneficiary.TabIndex = 28;
+            this.textBoxDetailBeneficiary.TabIndex = 10;
             this.textBoxDetailBeneficiary.TextChanged += new System.EventHandler(this.textBoxDetailBeneficiary_TextChanged);
             this.textBoxDetailBeneficiary.Enter += new System.EventHandler(this.textBoxDetailBeneficiary_TextChanged);
             this.textBoxDetailBeneficiary.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxDetailBeneficiary_KeyUp);
             this.textBoxDetailBeneficiary.Leave += new System.EventHandler(this.textBoxDetailBeneficiary_Leave);
-            // 
-            // buttonDetailShowListProductName
-            // 
-            this.buttonDetailShowListProductName.Location = new System.Drawing.Point(352, 11);
-            this.buttonDetailShowListProductName.Name = "buttonDetailShowListProductName";
-            this.buttonDetailShowListProductName.Size = new System.Drawing.Size(21, 18);
-            this.buttonDetailShowListProductName.TabIndex = 27;
-            this.buttonDetailShowListProductName.Text = "!";
-            this.buttonDetailShowListProductName.UseVisualStyleBackColor = true;
-            this.buttonDetailShowListProductName.Click += new System.EventHandler(this.buttonShowListDetailProduct_Click);
             // 
             // labelDetailProductName
             // 
@@ -630,7 +581,7 @@
             this.textBoxDetailProduct.Location = new System.Drawing.Point(65, 11);
             this.textBoxDetailProduct.Name = "textBoxDetailProduct";
             this.textBoxDetailProduct.Size = new System.Drawing.Size(288, 21);
-            this.textBoxDetailProduct.TabIndex = 23;
+            this.textBoxDetailProduct.TabIndex = 9;
             this.textBoxDetailProduct.TextChanged += new System.EventHandler(this.textBoxDetailProduct_TextChanged);
             this.textBoxDetailProduct.Enter += new System.EventHandler(this.textBoxDetailProduct_TextChanged);
             this.textBoxDetailProduct.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxDetailProduct_KeyUp);
@@ -643,7 +594,7 @@
             this.checkBoxDetails.Location = new System.Drawing.Point(11, 127);
             this.checkBoxDetails.Name = "checkBoxDetails";
             this.checkBoxDetails.Size = new System.Drawing.Size(69, 22);
-            this.checkBoxDetails.TabIndex = 40;
+            this.checkBoxDetails.TabIndex = 8;
             this.checkBoxDetails.Text = "Details->";
             this.checkBoxDetails.UseVisualStyleBackColor = true;
             this.checkBoxDetails.CheckedChanged += new System.EventHandler(this.checkBoxDetails_CheckedChanged);
@@ -665,12 +616,10 @@
             this.panelDetails.Controls.Add(this.labelDetailProductName);
             this.panelDetails.Controls.Add(this.buttonDetailRemoveFromSummary);
             this.panelDetails.Controls.Add(this.buttonDetailAddToSummary);
-            this.panelDetails.Controls.Add(this.buttonDetailShowListProductName);
             this.panelDetails.Controls.Add(this.textBoxDetailBeneficiary);
             this.panelDetails.Controls.Add(this.labelDetailPriceAverage);
             this.panelDetails.Controls.Add(this.labelBeneficiaryName);
             this.panelDetails.Controls.Add(this.labelDetailTotal);
-            this.panelDetails.Controls.Add(this.buttonDetailShowListBeneficiary);
             this.panelDetails.Controls.Add(this.labelDetailQuantity);
             this.panelDetails.Controls.Add(this.textBoxDetailPrice);
             this.panelDetails.Controls.Add(this.textBoxDetailQuantity);
@@ -743,14 +692,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 510);
-            this.Controls.Add(this.panelDetails);
-            this.Controls.Add(this.checkBoxDetails);
             this.Controls.Add(this.listBoxLocation);
-            this.Controls.Add(this.buttonShowListLocation);
             this.Controls.Add(this.listBoxPayer);
-            this.Controls.Add(this.buttonShowListPayer);
             this.Controls.Add(this.groupBoxSummary);
-            this.Controls.Add(this.buttonShowListCategory);
             this.Controls.Add(this.listBoxCategory);
             this.Controls.Add(this.textBoxPayer);
             this.Controls.Add(this.textBoxCategory);
@@ -766,6 +710,8 @@
             this.Controls.Add(this.textBoxMoney);
             this.Controls.Add(this.labelMoney);
             this.Controls.Add(this.textBoxLocation);
+            this.Controls.Add(this.checkBoxDetails);
+            this.Controls.Add(this.panelDetails);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "RecordInput";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -799,7 +745,6 @@
         private System.Windows.Forms.TextBox textBoxCategory;
         private System.Windows.Forms.TextBox textBoxPayer;
         private System.Windows.Forms.ListBox listBoxCategory;
-        private System.Windows.Forms.Button buttonShowListCategory;
         private System.Windows.Forms.GroupBox groupBoxSummary;
         private System.Windows.Forms.Label labelSummaryResultPayer;
         private System.Windows.Forms.Label labelSummaryPayer;
@@ -814,10 +759,8 @@
         private System.Windows.Forms.Label labelSummaryCategory;
         private System.Windows.Forms.Label labelSummaryDetails;
         private System.Windows.Forms.Label labelSummaryInOut;
-        private System.Windows.Forms.Button buttonShowListPayer;
         private System.Windows.Forms.ListBox listBoxPayer;
         private System.Windows.Forms.TextBox textBoxLocation;
-        private System.Windows.Forms.Button buttonShowListLocation;
         private System.Windows.Forms.ListBox listBoxLocation;
         private System.Windows.Forms.ListBox listBoxDetailProduct;
         private System.Windows.Forms.Label labelDetailManufactoryName;
@@ -831,10 +774,8 @@
         private System.Windows.Forms.TextBox textBoxDetailQuantity;
         private System.Windows.Forms.Label labelDetailPrice;
         private System.Windows.Forms.TextBox textBoxDetailPrice;
-        private System.Windows.Forms.Button buttonDetailShowListBeneficiary;
         private System.Windows.Forms.Label labelBeneficiaryName;
         private System.Windows.Forms.TextBox textBoxDetailBeneficiary;
-        private System.Windows.Forms.Button buttonDetailShowListProductName;
         private System.Windows.Forms.Label labelDetailProductName;
         private System.Windows.Forms.TextBox textBoxDetailProduct;
         private System.Windows.Forms.CheckBox checkBoxDetails;
