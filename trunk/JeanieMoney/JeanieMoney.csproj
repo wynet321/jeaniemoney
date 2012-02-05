@@ -69,8 +69,10 @@
   <ItemGroup>
     <Compile Include="Action\BeneficiaryAction.cs" />
     <Compile Include="Action\CategoryAction.cs" />
+    <Compile Include="Action\PaymentCategoryAction.cs" />
     <Compile Include="Action\ProductSpecificationManufactoryAction.cs" />
     <Compile Include="Action\TradeRecordAction.cs" />
+    <Compile Include="Action\TradeRecordAndTradeRecordDetailAction.cs" />
     <Compile Include="Action\TradeRecordDetailAction.cs" />
     <Compile Include="Action\LocationAction.cs" />
     <Compile Include="Action\ManufactoryAction.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Action\SpecificationAction.cs" />
     <Compile Include="Entity\Beneficiary.cs" />
     <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\PaymentCategory.cs" />
     <Compile Include="Entity\ProductSpecificationManufactory.cs" />
     <Compile Include="Entity\TradeRecord.cs" />
     <Compile Include="Entity\TradeRecordDetail.cs" />
@@ -110,6 +113,12 @@
     </Compile>
     <Compile Include="Forms\Config\PayerConfig.Designer.cs">
       <DependentUpon>PayerConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Config\PaymentCategoryConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config\PaymentCategoryConfig.Designer.cs">
+      <DependentUpon>PaymentCategoryConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Config\SpecificationConfig.cs">
       <SubType>Form</SubType>
@@ -161,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Config\PayerConfig.resx">
       <DependentUpon>PayerConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\PaymentCategoryConfig.resx">
+      <DependentUpon>PaymentCategoryConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Config\ProductConfig.resx">
       <DependentUpon>ProductConfig.cs</DependentUpon>

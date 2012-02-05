@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.Common;
+using System.Collections.Generic;
 
 namespace JeanieMoney.Utility
 {
@@ -23,15 +24,16 @@ namespace JeanieMoney.Utility
             return connection;
         }
 
-        public static int execTranx(string[] commands)
+        public static int execTranx(List<string> commandList)
         {
             DbConnection localconnection = getConnection();
             DbCommand localcommand = connection.CreateCommand();
             DbTransaction tranx = connection.BeginTransaction();
+            localcommand.Transaction = tranx;
             int affectedRows = 0;
             try
             {
-                foreach (string command in commands)
+                foreach (string command in commandList)
                 {
                     localcommand.CommandText = command;
                     affectedRows += localcommand.ExecuteNonQuery();

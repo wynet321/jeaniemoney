@@ -12,16 +12,16 @@ namespace JeanieMoney.Action
     {
         public bool createPayer(Payer payer)
         {
-            string SQL = "insert into payer values('" + payer.Id + "','" + payer.Name + "','" + payer.Abbr + "')";
-            if (0 < Database.execCommand(SQL))
+            string command = "insert into payer values('" + payer.Id + "','" + payer.Name + "','" + payer.Abbr + "')";
+            if (1== Database.execCommand(command))
                 return true;
             return false;
         }
 
         public Payer retrievePayerById(string id)
         {
-            string SQL = "select * from payer where id='" + id + "'";
-            DataTable dataTable = Database.getDataTable(SQL);
+            string command = "select * from payer where id='" + id + "'";
+            DataTable dataTable = Database.getDataTable(command);
             Payer payer = new Payer();
             payer.Id = id;
             payer.Name = dataTable.Rows[0]["name"].ToString();
@@ -31,28 +31,28 @@ namespace JeanieMoney.Action
 
         public List<Payer> retrievePayerList()
         {
-            string SQL = "select * from payer";
-            List<Payer> payerList = retrievePayerListBySQL(SQL);
+            string command = "select * from payer";
+            List<Payer> payerList = retrievePayerListBySQL(command);
             return payerList;
         }
 
         public bool deletePayerById(string id)
         {
-            string SQL = "delete from payer where id='" + id + "'";
-            if (0 < Database.execCommand(SQL))
+            string command = "delete from payer where id='" + id + "'";
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }
         public List<Payer> retrievePayerListByAbbr(string abbr)
         {
-            string SQL = "select * from payer where abbr like '" + abbr + "%'";
-            List<Payer> payerList = retrievePayerListBySQL(SQL);
+            string command = "select * from payer where abbr like '" + abbr + "%'";
+            List<Payer> payerList = retrievePayerListBySQL(command);
             return payerList;
         }
 
-        public List<Payer> retrievePayerListBySQL(string SQL)
+        public List<Payer> retrievePayerListBySQL(string command)
         {
-            DataTable dataTable = Database.getDataTable(SQL);
+            DataTable dataTable = Database.getDataTable(command);
             List<Payer> payerList = new List<Payer>();
             Payer payer;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -68,12 +68,12 @@ namespace JeanieMoney.Action
 
         public bool updatePayerById(Payer payer)
         {
-            string SQL = "update payer set ";
+            string command = "update payer set ";
             if (0 > payer.Id.Length)
                 return false;
-            SQL += "name='" + payer.Name + "',abbr='" + payer.Abbr + "' Where id='" + payer.Id.Trim() + "'";
+            command += "name='" + payer.Name + "',abbr='" + payer.Abbr + "' Where id='" + payer.Id.Trim() + "'";
 
-            if (0 < Database.execCommand(SQL))
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }

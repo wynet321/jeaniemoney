@@ -12,16 +12,16 @@ namespace JeanieMoney.Action
     {
         public bool createProduct(Product product)
         {
-            string SQL = "insert into product values('" + product.Id + "','" + product.Name + "','" + product.Abbr + "','" + product.SpecificationId + "','" + product.SpecificationQuantity + "','" + product.ManufactoryId + "')";
-            if (0 < Database.execCommand(SQL))
+            string command = "insert into product values('" + product.Id + "','" + product.Name + "','" + product.Abbr + "','" + product.SpecificationId + "','" + product.SpecificationQuantity + "','" + product.ManufactoryId + "')";
+            if (1==Database.execCommand(command))
                 return true;
             return false;
         }
 
         public Product retrieveProductById(string id)
         {
-            string SQL = "select * from product where id='" + id + "'";
-            DataTable dataTable = Database.getDataTable(SQL);
+            string command = "select * from product where id='" + id + "'";
+            DataTable dataTable = Database.getDataTable(command);
             Product product = new Product();
             product.Id = id;
             product.Name = dataTable.Rows[0]["name"].ToString();
@@ -34,28 +34,28 @@ namespace JeanieMoney.Action
 
         public List<Product> retrieveProductList()
         {
-            string SQL = "select * from product";
-            List<Product> productList = retrieveProductListBySQL(SQL);
+            string command = "select * from product";
+            List<Product> productList = retrieveProductListBySQL(command);
             return productList;
         }
 
         public bool deleteProductById(string id)
         {
-            string SQL = "delete from product where id='" + id + "'";
-            if (0 < Database.execCommand(SQL))
+            string command = "delete from product where id='" + id + "'";
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }
         public List<Product> retrieveProductListByAbbr(string abbr)
         {
-            string SQL = "select * from product where abbr like '" + abbr + "%'";
-            List<Product> productList = retrieveProductListBySQL(SQL);
+            string command = "select * from product where abbr like '" + abbr + "%'";
+            List<Product> productList = retrieveProductListBySQL(command);
             return productList;
         }
 
-        public List<Product> retrieveProductListBySQL(string SQL)
+        public List<Product> retrieveProductListBySQL(string command)
         {
-            DataTable dataTable = Database.getDataTable(SQL);
+            DataTable dataTable = Database.getDataTable(command);
             List<Product> productList = new List<Product>();
             Product product;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -74,12 +74,12 @@ namespace JeanieMoney.Action
 
         public bool updateProductById(Product product)
         {
-            string SQL = "update product set ";
+            string command = "update product set ";
             if (0 > product.Id.Length)
                 return false;
-            SQL += "name='" + product.Name + "',abbr='" + product.Abbr + "'," + "specification_id='" + product.SpecificationId + "',specification_quantity='" + product.SpecificationQuantity + "',manufactory_id='" + product.ManufactoryId + "' Where id='" + product.Id.Trim() + "'";
+            command += "name='" + product.Name + "',abbr='" + product.Abbr + "'," + "specification_id='" + product.SpecificationId + "',specification_quantity='" + product.SpecificationQuantity + "',manufactory_id='" + product.ManufactoryId + "' Where id='" + product.Id.Trim() + "'";
 
-            if (0 < Database.execCommand(SQL))
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }

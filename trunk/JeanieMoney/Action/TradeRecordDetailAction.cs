@@ -12,16 +12,22 @@ namespace JeanieMoney.Action
     {
         public bool createTradeRecordDetail(TradeRecordDetail tradeRecordDetail)
         {
-            string SQL = "insert into trade_record_detail values('" + tradeRecordDetail.Id + "','" + tradeRecordDetail.TradeRecordId + "','" + tradeRecordDetail.ProductId + "','" + tradeRecordDetail.Quantity + "','" + tradeRecordDetail.Price + "','" + tradeRecordDetail.BeneficiaryId + "')";
-            if (0 < Database.execCommand(SQL))
+            string command = createTradeRecordDetailCommand(tradeRecordDetail);
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }
 
+        public string createTradeRecordDetailCommand(TradeRecordDetail tradeRecordDetail)
+        {
+            string command = "insert into trade_record_detail values('" + tradeRecordDetail.Id + "','" + tradeRecordDetail.TradeRecordId + "','" + tradeRecordDetail.ProductId + "','" + tradeRecordDetail.Quantity + "','" + tradeRecordDetail.Price + "','" + tradeRecordDetail.BeneficiaryId + "')";
+            return command;
+        }
+
         public TradeRecordDetail retrieveTradeRecordDetailById(string id)
         {
-            string SQL = "select * from trade_record_detail where id='" + id + "'";
-            DataTable dataTable = Database.getDataTable(SQL);
+            string command = "select * from trade_record_detail where id='" + id + "'";
+            DataTable dataTable = Database.getDataTable(command);
             TradeRecordDetail tradeRecordDetail = new TradeRecordDetail();
             tradeRecordDetail.Id = id;
             tradeRecordDetail.TradeRecordId = dataTable.Rows[0]["trade_record_id"].ToString();
@@ -34,28 +40,28 @@ namespace JeanieMoney.Action
 
         public List<TradeRecordDetail> retrieveTradeRecordDetailList()
         {
-            string SQL = "select * from trade_record_detail";
-            List<TradeRecordDetail> tradeRecordDetailList = retrieveTradeRecordDetailListBySQL(SQL);
+            string command = "select * from trade_record_detail";
+            List<TradeRecordDetail> tradeRecordDetailList = retrieveTradeRecordDetailListBySQL(command);
             return tradeRecordDetailList;
         }
 
         public bool deleteTradeRecordDetailById(string id)
         {
-            string SQL = "delete from tradeRecordDetail where id='" + id + "'";
-            if (0 < Database.execCommand(SQL))
+            string command = "delete from tradeRecordDetail where id='" + id + "'";
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }
         public List<TradeRecordDetail> retrieveTradeRecordDetailListByAbbr(string abbr)
         {
-            string SQL = "select * from trade_record_detail where abbr like '" + abbr + "%'";
-            List<TradeRecordDetail> tradeRecordDetailList = retrieveTradeRecordDetailListBySQL(SQL);
+            string command = "select * from trade_record_detail where abbr like '" + abbr + "%'";
+            List<TradeRecordDetail> tradeRecordDetailList = retrieveTradeRecordDetailListBySQL(command);
             return tradeRecordDetailList;
         }
 
-        public List<TradeRecordDetail> retrieveTradeRecordDetailListBySQL(string SQL)
+        public List<TradeRecordDetail> retrieveTradeRecordDetailListBySQL(string command)
         {
-            DataTable dataTable = Database.getDataTable(SQL);
+            DataTable dataTable = Database.getDataTable(command);
             List<TradeRecordDetail> tradeRecordDetailList = new List<TradeRecordDetail>();
             TradeRecordDetail tradeRecordDetail;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -74,20 +80,20 @@ namespace JeanieMoney.Action
 
         public bool updateTradeRecordDetailById(TradeRecordDetail tradeRecordDetail)
         {
-            string SQL = "update trade_record_detail set ";
+            string command = "update trade_record_detail set ";
             if (0 > tradeRecordDetail.Id.Length)
                 return false;
-            SQL += "trade_record_id='" + tradeRecordDetail.TradeRecordId + "',product_id='" + tradeRecordDetail.ProductId + "',quantity='" + tradeRecordDetail.Quantity + "',price='" + tradeRecordDetail.Price + "',beneficiary_id='" + tradeRecordDetail.BeneficiaryId + "' Where id='" + tradeRecordDetail.Id.Trim() + "'";
-            if (0 < Database.execCommand(SQL))
+            command += "trade_record_id='" + tradeRecordDetail.TradeRecordId + "',product_id='" + tradeRecordDetail.ProductId + "',quantity='" + tradeRecordDetail.Quantity + "',price='" + tradeRecordDetail.Price + "',beneficiary_id='" + tradeRecordDetail.BeneficiaryId + "' Where id='" + tradeRecordDetail.Id.Trim() + "'";
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }
 
         public string getProductAveragePriceByProductId(string productId)
         {
-            string SQL = "SELECT  AVG(price) AS average_price FROM trade_record_detail WHERE (product_id = '"+productId+"')";
+            string command = "SELECT  AVG(price) AS average_price FROM trade_record_detail WHERE (product_id = '"+productId+"')";
             string result = "";
-            DataTable dataTable = Database.getDataTable(SQL);
+            DataTable dataTable = Database.getDataTable(command);
             if (0 < dataTable.Rows.Count)
                 result = dataTable.Rows[0]["average_price"].ToString();
             return result;
