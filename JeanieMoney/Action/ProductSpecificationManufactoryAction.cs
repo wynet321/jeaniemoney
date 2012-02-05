@@ -13,14 +13,14 @@ namespace JeanieMoney.Action
         
         public List<ProductSpecificationManufactory> retrieveProductSpecificationListByAbbr(string abbr)
         {
-            string SQL = "select * from product_specification_manufactory where abbr like'" + abbr + "%'";
-            List<ProductSpecificationManufactory> productSpecificationManufactoryList = retrieveProductListBySQL(SQL);
+            string command = "select * from product_specification_manufactory where abbr like'" + abbr + "%'";
+            List<ProductSpecificationManufactory> productSpecificationManufactoryList = retrieveProductListBySQL(command);
             return productSpecificationManufactoryList;
         }
 
-        public List<ProductSpecificationManufactory> retrieveProductListBySQL(string SQL)
+        public List<ProductSpecificationManufactory> retrieveProductListBySQL(string command)
         {
-            DataTable dataTable = Database.getDataTable(SQL);
+            DataTable dataTable = Database.getDataTable(command);
             List<ProductSpecificationManufactory> productSpecificationManufactoryList = new List<ProductSpecificationManufactory>();
             ProductSpecificationManufactory productSpecificationManufactory;
             foreach (DataRow dataRow in dataTable.Rows)

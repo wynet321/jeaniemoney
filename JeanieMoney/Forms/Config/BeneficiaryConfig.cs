@@ -120,7 +120,6 @@ namespace JeanieMoney.Forms.Config
                 {
                     MessageBox.Show("OK");
                     BeneficiaryList = BeneficiaryAction.retrieveBeneficiaryList();
-                   
                     textBoxName.Clear();
                     textBoxAbbr.Clear();
                     textBoxKeyword_TextChanged(sender, e);

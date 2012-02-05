@@ -12,16 +12,16 @@ namespace JeanieMoney.Action
     {
         public bool createSpecification(Specification specification)
         {
-            string SQL = "insert into specification values('" + specification.Id + "','" + specification.Name + "','" + specification.Abbr + "')";
-            if (0 < Database.execCommand(SQL))
+            string command = "insert into specification values('" + specification.Id + "','" + specification.Name + "','" + specification.Abbr + "')";
+            if (1== Database.execCommand(command))
                 return true;
             return false;
         }
 
         public Specification retrieveSpecificationById(string id)
         {
-            string SQL = "select * from specification where id='" + id + "'";
-            DataTable dataTable = Database.getDataTable(SQL);
+            string command = "select * from specification where id='" + id + "'";
+            DataTable dataTable = Database.getDataTable(command);
             Specification specification = new Specification();
             specification.Id = id;
             specification.Name = dataTable.Rows[0]["name"].ToString();
@@ -31,28 +31,28 @@ namespace JeanieMoney.Action
 
         public List<Specification> retrieveSpecificationList()
         {
-            string SQL = "select id,name,abbr from specification";
-            List<Specification> specificationList = retrieveSpecificationListBySQL(SQL);
+            string command = "select id,name,abbr from specification";
+            List<Specification> specificationList = retrieveSpecificationListBySQL(command);
             return specificationList;
         }
 
         public bool deleteSpecificationById(string id)
         {
-            string SQL = "delete from specification where id='" + id + "'";
-            if (0 < Database.execCommand(SQL))
+            string command = "delete from specification where id='" + id + "'";
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }
         public List<Specification> retrieveSpecificationListByAbbr(string abbr)
         {
-            string SQL = "select * from specification where abbr like '" + abbr + "%'";
-            List<Specification> specificationList = retrieveSpecificationListBySQL(SQL);
+            string command = "select * from specification where abbr like '" + abbr + "%'";
+            List<Specification> specificationList = retrieveSpecificationListBySQL(command);
             return specificationList;
         }
 
-        public List<Specification> retrieveSpecificationListBySQL(string SQL)
+        public List<Specification> retrieveSpecificationListBySQL(string command)
         {
-            DataTable dataTable = Database.getDataTable(SQL);
+            DataTable dataTable = Database.getDataTable(command);
             List<Specification> specificationList = new List<Specification>();
             Specification specification;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -68,12 +68,12 @@ namespace JeanieMoney.Action
 
         public bool updateSpecificationById(Specification specification)
         {
-            string SQL = "update specification set ";
+            string command = "update specification set ";
             if (0 > specification.Id.Length)
                 return false;
-            SQL += "name='" + specification.Name + "',abbr='" + specification.Abbr + "' Where id='" + specification.Id.Trim() + "'";
+            command += "name='" + specification.Name + "',abbr='" + specification.Abbr + "' Where id='" + specification.Id.Trim() + "'";
 
-            if (0 < Database.execCommand(SQL))
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }

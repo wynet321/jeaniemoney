@@ -12,16 +12,21 @@ namespace JeanieMoney.Action
     {
         public bool createTradeRecord(TradeRecord tradeRecord)
         {
-            string SQL = "insert into trade_record values('" + tradeRecord.Id + "','" + tradeRecord.CategoryId + "','" + tradeRecord.PayerId + "','" + tradeRecord.LocationId + "','" + tradeRecord.PaymentCategoryId + "','" + tradeRecord.Money + "','" + tradeRecord.Date + "')";
-            if (0 < Database.execCommand(SQL))
+            string command = createTradeRecordCommand(tradeRecord);
+            if (Database.execCommand(command)==1)
                 return true;
             return false;
         }
 
+        public string createTradeRecordCommand(TradeRecord tradeRecord)
+        {
+            string command = "insert into trade_record values('" + tradeRecord.Id + "','" + tradeRecord.CategoryId + "','" + tradeRecord.PayerId + "','" + tradeRecord.LocationId + "','" + tradeRecord.PaymentCategoryId + "','" + tradeRecord.Money + "','" + tradeRecord.Date + "')";
+            return command;
+        }
         public TradeRecord retrieveTradeRecordById(string id)
         {
-            string SQL = "select * from trade_record where id='" + id + "'";
-            DataTable dataTable = Database.getDataTable(SQL);
+            string command = "select * from trade_record where id='" + id + "'";
+            DataTable dataTable = Database.getDataTable(command);
             TradeRecord tradeRecord = new TradeRecord();
             tradeRecord.Id = id;
             tradeRecord.CategoryId = dataTable.Rows[0]["category_id"].ToString();
@@ -35,28 +40,28 @@ namespace JeanieMoney.Action
 
         public List<TradeRecord> retrieveTradeRecordList()
         {
-            string SQL = "select * from trade_record";
-            List<TradeRecord> tradeRecordList = retrieveTradeRecordListBySQL(SQL);
+            string command = "select * from trade_record";
+            List<TradeRecord> tradeRecordList = retrieveTradeRecordListBySQL(command);
             return tradeRecordList;
         }
 
         public bool deleteTradeRecordById(string id)
         {
-            string SQL = "delete from tradeRecord where id='" + id + "'";
-            if (0 < Database.execCommand(SQL))
+            string command = "delete from tradeRecord where id='" + id + "'";
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }
         public List<TradeRecord> retrieveTradeRecordListByAbbr(string abbr)
         {
-            string SQL = "select * from trade_record where abbr like '" + abbr + "%'";
-            List<TradeRecord> tradeRecordList = retrieveTradeRecordListBySQL(SQL);
+            string command = "select * from trade_record where abbr like '" + abbr + "%'";
+            List<TradeRecord> tradeRecordList = retrieveTradeRecordListBySQL(command);
             return tradeRecordList;
         }
 
-        public List<TradeRecord> retrieveTradeRecordListBySQL(string SQL)
+        public List<TradeRecord> retrieveTradeRecordListBySQL(string command)
         {
-            DataTable dataTable = Database.getDataTable(SQL);
+            DataTable dataTable = Database.getDataTable(command);
             List<TradeRecord> tradeRecordList = new List<TradeRecord>();
             TradeRecord tradeRecord;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -76,11 +81,11 @@ namespace JeanieMoney.Action
 
         public bool updateTradeRecordById(TradeRecord tradeRecord)
         {
-            string SQL = "update trade_record set ";
+            string command = "update trade_record set ";
             if (0 > tradeRecord.Id.Length)
                 return false;
-            SQL += "category_id='" + tradeRecord.CategoryId + "',payer_id='" + tradeRecord.PayerId + "',location_id='" + tradeRecord.LocationId + "',payment_category_id='" + tradeRecord.PaymentCategoryId + "',money='" + tradeRecord.Money + "',date='" + tradeRecord.Date + "' Where id='" + tradeRecord.Id.Trim() + "'";
-            if (0 < Database.execCommand(SQL))
+            command += "category_id='" + tradeRecord.CategoryId + "',payer_id='" + tradeRecord.PayerId + "',location_id='" + tradeRecord.LocationId + "',payment_category_id='" + tradeRecord.PaymentCategoryId + "',money='" + tradeRecord.Money + "',date='" + tradeRecord.Date + "' Where id='" + tradeRecord.Id.Trim() + "'";
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }

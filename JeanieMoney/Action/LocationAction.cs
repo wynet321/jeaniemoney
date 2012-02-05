@@ -12,16 +12,16 @@ namespace JeanieMoney.Action
     {
         public bool createLocation(Location location)
         {
-            string SQL = "insert into location values('" + location.Id + "','" + location.Name + "','" + location.Abbr + "')";
-            if (0 < Database.execCommand(SQL))
+            string command = "insert into location values('" + location.Id + "','" + location.Name + "','" + location.Abbr + "')";
+            if (1==Database.execCommand(command))
                 return true;
             return false;
         }
 
         public Location retrieveLocationById(string id)
         {
-            string SQL = "select * from location where id='" + id + "'";
-            DataTable dataTable = Database.getDataTable(SQL);
+            string command = "select * from location where id='" + id + "'";
+            DataTable dataTable = Database.getDataTable(command);
             Location location = new Location();
             location.Id = id;
             location.Name = dataTable.Rows[0]["name"].ToString();
@@ -31,28 +31,28 @@ namespace JeanieMoney.Action
 
         public List<Location> retrieveLocationList()
         {
-            string SQL = "select * from location";
-            List<Location> locationList = retrieveLocationListBySQL(SQL);
+            string command = "select * from location";
+            List<Location> locationList = retrieveLocationListBySQL(command);
             return locationList;
         }
 
         public bool deleteLocationById(string id)
         {
-            string SQL = "delete from location where id='" + id + "'";
-            if (0 < Database.execCommand(SQL))
+            string command = "delete from location where id='" + id + "'";
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }
         public List<Location> retrieveLocationListByAbbr(string abbr)
         {
-            string SQL = "select * from location where abbr like '" + abbr + "%'";
-            List<Location> locationList = retrieveLocationListBySQL(SQL);
+            string command = "select * from location where abbr like '" + abbr + "%'";
+            List<Location> locationList = retrieveLocationListBySQL(command);
             return locationList;
         }
 
-        public List<Location> retrieveLocationListBySQL(string SQL)
+        public List<Location> retrieveLocationListBySQL(string command)
         {
-            DataTable dataTable = Database.getDataTable(SQL);
+            DataTable dataTable = Database.getDataTable(command);
             List<Location> locationList = new List<Location>();
             Location location;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -68,12 +68,12 @@ namespace JeanieMoney.Action
 
         public bool updateLocationById(Location location)
         {
-            string SQL = "update location set ";
+            string command = "update location set ";
             if (0 > location.Id.Length)
                 return false;
-            SQL += "name='" + location.Name + "',abbr='" + location.Abbr + "' Where id='" + location.Id.Trim() + "'";
+            command += "name='" + location.Name + "',abbr='" + location.Abbr + "' Where id='" + location.Id.Trim() + "'";
 
-            if (0 < Database.execCommand(SQL))
+            if (0 < Database.execCommand(command))
                 return true;
             return false;
         }

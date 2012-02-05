@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using JeanieMoney.Action;
 using JeanieMoney.Entity;
@@ -84,8 +80,8 @@ namespace JeanieMoney.Forms
             listBoxPayer.DataSource = null;
             textBoxKeyword.Clear();
             payerList = payerAction.retrievePayerList();
-            Payer category = new Payer();
-            payerList.Insert(0, category);
+            Payer payer = new Payer();
+            payerList.Insert(0, payer);
            
 
         }
@@ -149,8 +145,6 @@ namespace JeanieMoney.Forms
                     MessageBox.Show("Fail");
                     return;
                 }
-
-
             }
         }
     }
