@@ -41,6 +41,71 @@ namespace JeanieMoney.Forms
             paymentCategoryAction = new PaymentCategoryAction();
             tradeRecordAndTradeRecordDetailAction = new TradeRecordAndTradeRecordDetailAction();
 
+            Init();
+
+        }
+
+        private void Init()
+        {
+            dateTimePickerRecordInput.Value = DateTime.Now;
+            radioButtonOut.Select();
+            textBoxMoney.Clear();
+            //category
+            listBoxCategory.DisplayMember = "Name";
+            listBoxCategory.ValueMember = "Id";
+            listBoxCategory.Visible = false;
+
+            //payer
+            listBoxPayer.DisplayMember = "Name";
+            listBoxPayer.ValueMember = "Id";
+            listBoxPayer.Visible = false;
+
+            //location
+            listBoxLocation.DisplayMember = "Name";
+            listBoxLocation.ValueMember = "Id";
+            listBoxLocation.Visible = false;
+
+            //paymentcategory
+            listBoxPaymentCategory.DisplayMember = "Name";
+            listBoxPaymentCategory.ValueMember = "Id";
+            listBoxPaymentCategory.Visible = false;
+
+            groupBoxSummaryInit();
+            panelDetailInit();
+        }
+        private void panelDetailInit()
+        {
+            labelDetailTotalResult.ResetText();
+            labelDetailSpecificationResult.ResetText();
+            labelDetailProductResult.ResetText();
+            labelDetailPriceAverageResult.ResetText();
+            labelDetailManufactoryResult.ResetText();
+            textBoxDetailQuantity.Clear();
+            textBoxDetailPrice.Clear();
+            textBoxDetailBeneficiary.Clear();
+            textBoxDetailProduct.Clear();
+
+            //product
+            listBoxDetailProduct.DisplayMember = "Name";
+            listBoxDetailProduct.ValueMember = "Id";
+            listBoxDetailProduct.Visible = false;
+
+            //beneficiary
+            listBoxDetailBeneficiary.DisplayMember = "Name";
+            listBoxDetailBeneficiary.ValueMember = "Id";
+            listBoxDetailBeneficiary.Visible = false;
+
+        }
+        private void groupBoxSummaryInit()
+        {
+            labelSummaryInOutResult.Text = "Outgoing";
+            labelSummaryMoneyResult.Text = "";
+            labelSummaryDateResult.Text = DateTime.Now.ToLongDateString();
+            labelSummaryCategoryResult.Text = "";
+            labelSummaryLocationResult.Text = "";
+            labelSummaryPayerResult.Text = "";
+            labelSummaryPaymentCategoryResult.Text = "";
+            listViewSummaryDetails.Clear();
             listViewSummaryDetails.Columns.Add("Name");
             listViewSummaryDetails.Columns.Add("Specification");
             listViewSummaryDetails.Columns.Add("Manufactory");
@@ -48,9 +113,6 @@ namespace JeanieMoney.Forms
             listViewSummaryDetails.Columns.Add("Total");
             listViewSummaryDetails.Columns.Add("Price");
             listViewSummaryDetails.Columns.Add("Quantity");
-
-            Init();
-
         }
         private void textBoxMoney_Leave(object sender, EventArgs e)
         {
@@ -121,61 +183,14 @@ namespace JeanieMoney.Forms
             }
         }
 
-        private void panelDetailInit()
-        {
-            labelDetailTotalResult.ResetText();
-            labelDetailSpecificationResult.ResetText();
-            labelDetailProductResult.ResetText();
-            labelDetailPriceAverageResult.ResetText();
-            labelDetailManufactoryResult.ResetText();
-            textBoxDetailQuantity.Clear();
-            textBoxDetailPrice.Clear();
-            textBoxDetailBeneficiary.Clear();
-            textBoxDetailProduct.Clear();
 
-            //product
-            listBoxDetailProduct.DisplayMember = "Name";
-            listBoxDetailProduct.ValueMember = "Id";
-            listBoxDetailProduct.Visible = false;
-
-            //beneficiary
-            listBoxDetailBeneficiary.DisplayMember = "Name";
-            listBoxDetailBeneficiary.ValueMember = "Id";
-            listBoxDetailBeneficiary.Visible = false;
-
-        }
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
-        private void Init()
-        {
-            dateTimePickerRecordInput.Value = DateTime.Now;
-            radioButtonOut.Select();
-            textBoxMoney.Clear();
-            //category
-            listBoxCategory.DisplayMember = "Name";
-            listBoxCategory.ValueMember = "Id";
-            listBoxCategory.Visible = false;
 
-            //payer
-            listBoxPayer.DisplayMember = "Name";
-            listBoxPayer.ValueMember = "Id";
-            listBoxPayer.Visible = false;
 
-            //location
-            listBoxLocation.DisplayMember = "Name";
-            listBoxLocation.ValueMember = "Id";
-            listBoxLocation.Visible = false;
-
-            //paymentcategory
-            listBoxPaymentCategory.DisplayMember = "Name";
-            listBoxPaymentCategory.ValueMember = "Id";
-            listBoxPaymentCategory.Visible = false;
-
-            panelDetailInit();
-        }
         private void buttonReset_Click(object sender, EventArgs e)
         {
             Init();
@@ -294,7 +309,7 @@ namespace JeanieMoney.Forms
             }
         }
 
-   
+
         private void textBoxPayer_TextChanged(object sender, EventArgs e)
         {
             String payer = textBoxPayer.Text.Trim();

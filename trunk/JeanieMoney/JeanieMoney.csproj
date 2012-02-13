@@ -157,7 +157,8 @@
     <Compile Include="Utility\BaseConfigForm.Designer.cs">
       <DependentUpon>BaseConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utility\Database.cs" />
+    <Compile Include="Utility\DBHelper.cs" />
+    <Compile Include="Utility\LanguageHelper.cs" />
     <Compile Include="Utility\ProviderName.cs" />
     <EmbeddedResource Include="Forms\Config\BeneficiaryConfig.resx">
       <DependentUpon>BeneficiaryConfig.cs</DependentUpon>

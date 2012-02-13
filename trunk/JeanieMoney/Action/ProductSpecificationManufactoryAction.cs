@@ -20,7 +20,7 @@ namespace JeanieMoney.Action
 
         public List<ProductSpecificationManufactory> retrieveProductListBySQL(string command)
         {
-            DataTable dataTable = Database.getDataTable(command);
+            DataTable dataTable = DBHelper.getDataTable(command);
             List<ProductSpecificationManufactory> productSpecificationManufactoryList = new List<ProductSpecificationManufactory>();
             ProductSpecificationManufactory productSpecificationManufactory;
             foreach (DataRow dataRow in dataTable.Rows)
