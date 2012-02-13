@@ -13,7 +13,7 @@ namespace JeanieMoney.Action
         public bool createPaymentCategory(PaymentCategory paymentCategory)
         {
             string command = "insert into payment_category values('" + paymentCategory.Id + "','" + paymentCategory.Name + "','" + paymentCategory.Abbr + "')";
-            if (1 == Database.execCommand(command))
+            if (1 == DBHelper.execCommand(command))
                 return true;
             return false;
         }
@@ -21,7 +21,7 @@ namespace JeanieMoney.Action
         public PaymentCategory retrievePaymentCategoryById(string id)
         {
             string command = "select * from payment_category where id='" + id + "'";
-            DataTable dataTable = Database.getDataTable(command);
+            DataTable dataTable = DBHelper.getDataTable(command);
             PaymentCategory paymentCategory = new PaymentCategory();
             paymentCategory.Id = id;
             paymentCategory.Name = dataTable.Rows[0]["name"].ToString();
@@ -39,7 +39,7 @@ namespace JeanieMoney.Action
         public bool deletePaymentCategoryById(string id)
         {
             string command = "delete from payment_category where id='" + id + "'";
-            if (0 < Database.execCommand(command))
+            if (0 < DBHelper.execCommand(command))
                 return true;
             return false;
         }
@@ -52,7 +52,7 @@ namespace JeanieMoney.Action
 
         public List<PaymentCategory> retrievePaymentCategoryListByCommand(string command)
         {
-            DataTable dataTable = Database.getDataTable(command);
+            DataTable dataTable = DBHelper.getDataTable(command);
             List<PaymentCategory> paymentCategoryList = new List<PaymentCategory>();
             PaymentCategory paymentCategory;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -73,7 +73,7 @@ namespace JeanieMoney.Action
                 return false;
             command += "name='" + paymentCategory.Name + "',abbr='" + paymentCategory.Abbr + "' Where id='" + paymentCategory.Id.Trim() + "'";
 
-            if (0 < Database.execCommand(command))
+            if (0 < DBHelper.execCommand(command))
                 return true;
             return false;
         }

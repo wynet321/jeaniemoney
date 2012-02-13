@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace JeanieMoney.Utility
 {
-    class Database
+    class DBHelper
     {
         private static DbProviderFactory dbProviderFactory;
         private static DbConnection connection;
