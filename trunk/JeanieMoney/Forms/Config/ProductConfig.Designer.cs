@@ -43,102 +43,107 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(246, 185);
+            this.buttonDelete.Location = new System.Drawing.Point(246, 200);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 21);
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 24;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(139, 185);
+            this.buttonReset.Location = new System.Drawing.Point(139, 200);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(75, 21);
+            this.buttonReset.Size = new System.Drawing.Size(75, 23);
             this.buttonReset.TabIndex = 23;
             this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(354, 185);
+            this.buttonCancel.Location = new System.Drawing.Point(354, 200);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 21);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 22;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // textBoxAbbr
             // 
-            this.textBoxAbbr.Location = new System.Drawing.Point(272, 57);
+            this.textBoxAbbr.Location = new System.Drawing.Point(272, 62);
             this.textBoxAbbr.Name = "textBoxAbbr";
-            this.textBoxAbbr.Size = new System.Drawing.Size(180, 21);
+            this.textBoxAbbr.Size = new System.Drawing.Size(180, 20);
             this.textBoxAbbr.TabIndex = 21;
             // 
             // labelAbbr
             // 
             this.labelAbbr.AutoSize = true;
-            this.labelAbbr.Location = new System.Drawing.Point(231, 60);
+            this.labelAbbr.Location = new System.Drawing.Point(231, 65);
             this.labelAbbr.Name = "labelAbbr";
-            this.labelAbbr.Size = new System.Drawing.Size(29, 12);
+            this.labelAbbr.Size = new System.Drawing.Size(29, 13);
             this.labelAbbr.TabIndex = 20;
             this.labelAbbr.Text = "Abbr";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(272, 33);
+            this.textBoxName.Location = new System.Drawing.Point(272, 36);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(180, 21);
+            this.textBoxName.Size = new System.Drawing.Size(180, 20);
             this.textBoxName.TabIndex = 19;
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(231, 36);
+            this.labelName.Location = new System.Drawing.Point(231, 39);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(29, 12);
+            this.labelName.Size = new System.Drawing.Size(35, 13);
             this.labelName.TabIndex = 18;
             this.labelName.Text = "Name";
             // 
             // listBoxProduct
             // 
             this.listBoxProduct.FormattingEnabled = true;
-            this.listBoxProduct.ItemHeight = 12;
-            this.listBoxProduct.Location = new System.Drawing.Point(15, 33);
+            this.listBoxProduct.Location = new System.Drawing.Point(15, 36);
             this.listBoxProduct.Name = "listBoxProduct";
-            this.listBoxProduct.Size = new System.Drawing.Size(199, 136);
+            this.listBoxProduct.Size = new System.Drawing.Size(199, 147);
             this.listBoxProduct.TabIndex = 17;
+            this.listBoxProduct.SelectedIndexChanged += new System.EventHandler(this.listBoxProduct_SelectedIndexChanged);
             // 
             // textBoxKeyword
             // 
-            this.textBoxKeyword.Location = new System.Drawing.Point(66, 9);
+            this.textBoxKeyword.Location = new System.Drawing.Point(66, 10);
             this.textBoxKeyword.Name = "textBoxKeyword";
-            this.textBoxKeyword.Size = new System.Drawing.Size(148, 21);
+            this.textBoxKeyword.Size = new System.Drawing.Size(148, 20);
             this.textBoxKeyword.TabIndex = 16;
+            this.textBoxKeyword.TextChanged += new System.EventHandler(this.textBoxKeyword_TextChanged);
             // 
             // labelSearch
             // 
             this.labelSearch.AutoSize = true;
-            this.labelSearch.Location = new System.Drawing.Point(12, 11);
+            this.labelSearch.Location = new System.Drawing.Point(12, 12);
             this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(47, 12);
+            this.labelSearch.Size = new System.Drawing.Size(48, 13);
             this.labelSearch.TabIndex = 15;
             this.labelSearch.Text = "Keyword";
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(37, 185);
+            this.buttonOK.Location = new System.Drawing.Point(37, 200);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 21);
+            this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 14;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // ProductConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 214);
+            this.ClientSize = new System.Drawing.Size(464, 232);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonCancel);
