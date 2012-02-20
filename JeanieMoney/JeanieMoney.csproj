@@ -251,6 +251,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ConsumeRecord.png" />
+    <Content Include="Lang\en_US.xml" />
     <Content Include="Scripts\creation.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
