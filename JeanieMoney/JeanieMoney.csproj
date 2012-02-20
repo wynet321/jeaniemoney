@@ -178,6 +178,9 @@
     <EmbeddedResource Include="Forms\Config\ProductConfig.resx">
       <DependentUpon>ProductConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config\SpecificationConfig.resx">
+      <DependentUpon>SpecificationConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
