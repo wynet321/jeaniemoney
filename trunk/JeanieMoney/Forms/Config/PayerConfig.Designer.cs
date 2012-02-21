@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.buttonOK = new System.Windows.Forms.Button();
-            this.labelSearch = new System.Windows.Forms.Label();
+            this.labelSearchAbbr = new System.Windows.Forms.Label();
             this.textBoxKeyword = new System.Windows.Forms.TextBox();
             this.listBoxPayer = new System.Windows.Forms.ListBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -51,14 +51,14 @@
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // labelSearch
+            // labelSearchAbbr
             // 
-            this.labelSearch.AutoSize = true;
-            this.labelSearch.Location = new System.Drawing.Point(12, 8);
-            this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(47, 12);
-            this.labelSearch.TabIndex = 1;
-            this.labelSearch.Text = "Keyword";
+            this.labelSearchAbbr.AutoSize = true;
+            this.labelSearchAbbr.Location = new System.Drawing.Point(12, 8);
+            this.labelSearchAbbr.Name = "labelSearchAbbr";
+            this.labelSearchAbbr.Size = new System.Drawing.Size(47, 12);
+            this.labelSearchAbbr.TabIndex = 1;
+            this.labelSearchAbbr.Text = "Keyword";
             // 
             // textBoxKeyword
             // 
@@ -154,7 +154,7 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.listBoxPayer);
             this.Controls.Add(this.textBoxKeyword);
-            this.Controls.Add(this.labelSearch);
+            this.Controls.Add(this.labelSearchAbbr);
             this.Controls.Add(this.buttonOK);
             this.Name = "PayerConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -167,7 +167,7 @@
         #endregion
 
         private System.Windows.Forms.Button buttonOK;
-        private System.Windows.Forms.Label labelSearch;
+        private System.Windows.Forms.Label labelSearchAbbr;
         private System.Windows.Forms.TextBox textBoxKeyword;
         private System.Windows.Forms.ListBox listBoxPayer;
         private System.Windows.Forms.TextBox textBoxName;

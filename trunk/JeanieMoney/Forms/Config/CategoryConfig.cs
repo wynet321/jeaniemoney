@@ -83,9 +83,27 @@ namespace JeanieMoney.Forms
         {
             init();
         }
+        private void setCaption()
+        {
+            this.buttonDelete.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Delete");
+            this.buttonReset.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Reset");
+            this.buttonCancel.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Cancel");
+            this.buttonOK.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/OK");
 
+            this.labelAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
+            this.labelSearchAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelParent.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Parent");
+
+            this.groupBoxInOut.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Group/InOut");
+            this.radioButtonIn.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Income");
+            this.radioButtonOut.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Outgoing");
+
+            this.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Form/Category");
+        }
         private void init()
         {
+            setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
             listBoxCategory.DataSource = null;

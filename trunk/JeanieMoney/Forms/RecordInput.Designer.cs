@@ -70,7 +70,7 @@
             this.buttonDetailRemoveFromSummary = new System.Windows.Forms.Button();
             this.buttonDetailAddToSummary = new System.Windows.Forms.Button();
             this.listBoxDetailBeneficiary = new System.Windows.Forms.ListBox();
-            this.labelDetailPriceAverage = new System.Windows.Forms.Label();
+            this.labelDetailAveragePrice = new System.Windows.Forms.Label();
             this.labelDetailTotal = new System.Windows.Forms.Label();
             this.labelDetailQuantity = new System.Windows.Forms.Label();
             this.textBoxDetailQuantity = new System.Windows.Forms.TextBox();
@@ -514,12 +514,12 @@
             // 
             // labelDetailPriceAverage
             // 
-            this.labelDetailPriceAverage.AutoSize = true;
-            this.labelDetailPriceAverage.Location = new System.Drawing.Point(24, 103);
-            this.labelDetailPriceAverage.Name = "labelDetailPriceAverage";
-            this.labelDetailPriceAverage.Size = new System.Drawing.Size(71, 13);
-            this.labelDetailPriceAverage.TabIndex = 36;
-            this.labelDetailPriceAverage.Text = "PriceAverage";
+            this.labelDetailAveragePrice.AutoSize = true;
+            this.labelDetailAveragePrice.Location = new System.Drawing.Point(24, 103);
+            this.labelDetailAveragePrice.Name = "labelDetailPriceAverage";
+            this.labelDetailAveragePrice.Size = new System.Drawing.Size(71, 13);
+            this.labelDetailAveragePrice.TabIndex = 36;
+            this.labelDetailAveragePrice.Text = "PriceAverage";
             // 
             // labelDetailTotal
             // 
@@ -636,7 +636,7 @@
             this.panelDetails.Controls.Add(this.buttonDetailRemoveFromSummary);
             this.panelDetails.Controls.Add(this.buttonDetailAddToSummary);
             this.panelDetails.Controls.Add(this.textBoxDetailBeneficiary);
-            this.panelDetails.Controls.Add(this.labelDetailPriceAverage);
+            this.panelDetails.Controls.Add(this.labelDetailAveragePrice);
             this.panelDetails.Controls.Add(this.labelDetailBeneficiaryName);
             this.panelDetails.Controls.Add(this.labelDetailTotal);
             this.panelDetails.Controls.Add(this.labelDetailQuantity);
@@ -820,7 +820,7 @@
         private System.Windows.Forms.Button buttonDetailRemoveFromSummary;
         private System.Windows.Forms.Button buttonDetailAddToSummary;
         private System.Windows.Forms.ListBox listBoxDetailBeneficiary;
-        private System.Windows.Forms.Label labelDetailPriceAverage;
+        private System.Windows.Forms.Label labelDetailAveragePrice;
         private System.Windows.Forms.Label labelDetailTotal;
         private System.Windows.Forms.Label labelDetailQuantity;
         private System.Windows.Forms.TextBox textBoxDetailQuantity;

@@ -44,9 +44,51 @@ namespace JeanieMoney.Forms
             init();
 
         }
+        private void setCaption()
+        {
+            this.labelDetailProductResultTitle.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
+            this.labelMoney.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Money");
+            this.labelCategory.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Label/Category");
+            this.labelDate.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Label/Date");
+            this.labelPayer.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Payer");
+            this.labelLocation.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Location");
+            this.labelSummaryPaymentCategory.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/PaymentCategory");
+            this.labelSummaryPayer.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Payer");
+            this.labelSummaryLocation.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Location");
+            this.labelSummaryInOutResult.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Income");
+            this.labelSummaryMoney.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Money");
+            this.labelSummaryDate.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Date");
+            this.labelSummaryCategory.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Category");
+            this.labelSummaryDetails.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Details");
+            this.labelSummaryInOut.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Group/InOut");
+            this.labelDetailManufactoryName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Manufactory");
+            this.labelDetailSpecification.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Specification");
+            this.labelDetailAveragePrice.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/AveragePrice");
+            this.labelDetailTotal.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Total");
+            this.labelDetailQuantity.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Quantity");
+            this.labelDetailPrice.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Price");
+            this.labelDetailBeneficiaryName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Beneficiary");
+            this.labelDetailProduct.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
+            this.labelDetailProductResultTitle.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
+            this.labelPaymentCategory.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/PaymentCategory");
 
+            this.groupBoxInOut.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Group/InOut");
+            this.radioButtonIn.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Income");
+            this.radioButtonOut.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Outgoing");
+            this.groupBoxSummary.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Group/Summary");
+            
+            this.buttonReset.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Button/Reset"); 
+            this.buttonOK.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Button/OK");
+            this.buttonCancel.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Button/Cancel");
+            
+            
+            this.checkBoxDetails.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Button/Details")+"->";
+            
+            this.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Form/RecordInput");
+        }
         private void init()
         {
+            setCaption();
             dateTimePickerRecordInput.Value = DateTime.Now;
             radioButtonOut.Select();
             textBoxMoney.Clear();
@@ -72,6 +114,7 @@ namespace JeanieMoney.Forms
 
             groupBoxSummaryInit();
             panelDetailInit();
+
         }
         private void panelDetailInit()
         {
@@ -98,7 +141,7 @@ namespace JeanieMoney.Forms
         }
         private void groupBoxSummaryInit()
         {
-            labelSummaryInOutResult.Text = "Outgoing";
+            labelSummaryInOutResult.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Outgoing");
             labelSummaryMoneyResult.Text = "";
             labelSummaryDateResult.Text = DateTime.Now.ToLongDateString();
             labelSummaryCategoryResult.Text = "";
@@ -106,13 +149,13 @@ namespace JeanieMoney.Forms
             labelSummaryPayerResult.Text = "";
             labelSummaryPaymentCategoryResult.Text = "";
             listViewSummaryDetails.Clear();
-            listViewSummaryDetails.Columns.Add("Name");
-            listViewSummaryDetails.Columns.Add("Specification");
-            listViewSummaryDetails.Columns.Add("Manufactory");
-            listViewSummaryDetails.Columns.Add("Beneficiary");
-            listViewSummaryDetails.Columns.Add("Total");
-            listViewSummaryDetails.Columns.Add("Price");
-            listViewSummaryDetails.Columns.Add("Quantity");
+            listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Name"));
+            listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Specification"));
+            listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Manufactory"));
+            listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Beneficiary"));
+            listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Total"));
+            listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Price"));
+            listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Quantity"));
         }
         private void textBoxMoney_Leave(object sender, EventArgs e)
         {
@@ -168,9 +211,9 @@ namespace JeanieMoney.Forms
         private void radioButtonOut_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonOut.Checked)
-                labelSummaryInOutResult.Text = "Outgoings";
+                labelSummaryInOutResult.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Outgoing");
             else
-                labelSummaryInOutResult.Text = "Income";
+                labelSummaryInOutResult.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Income");
         }
 
         private void checkBoxDetails_CheckedChanged(object sender, EventArgs e)

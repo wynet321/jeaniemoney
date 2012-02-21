@@ -24,7 +24,19 @@ namespace JeanieMoney.Forms
             locationAction = new LocationAction();
             init();
         }
+        private void setCaption()
+        {
+            this.buttonDelete.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Delete");
+            this.buttonReset.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Reset");
+            this.buttonCancel.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Cancel");
+            this.buttonOK.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/OK");
 
+            this.labelAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
+            this.labelSearchAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
+
+            this.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Form/Location");
+        }
         public LocationConfig(string abbr)
         {
             InitializeComponent();
@@ -79,6 +91,7 @@ namespace JeanieMoney.Forms
 
         private void init()
         {
+            setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
             listBoxLocation.DataSource = null;
@@ -86,8 +99,6 @@ namespace JeanieMoney.Forms
             locationList = locationAction.retrieveLocationList();
             Location category = new Location();
             locationList.Insert(0, category);
-
-
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
