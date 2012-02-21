@@ -1,60 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <JeanieMoney>
   <Caption>
-    <Common>
-      <Button_OK>OK</Button_OK>
-      <Button_Reset>Reset</Button_Reset>
-      <Button_Cancel>Cancel</Button_Cancel>
-      <Button_Delete>Delete</Button_Delete>
-      <Button_Search>Search</Button_Search>
-      <Label_Name>Name</Label_Name>
-      <Label_Abbr>Abbreviation</Label_Abbr>
-      <Label_Parent>Parent</Label_Parent>
-      <Group_InOut>Incoume/Outgoing</Group_InOut>
-      <Radio_In>Income</Radio_In>
-      <Radio_Out>Outgoing</Radio_Out>
-    </Common>
-    <Main name="Jeanie Money">
-      <Label_Period>Period</Label_Period>
-      <DataGridView>
-        <Column_Id>ID</Column_Id>
-        <Column_Name>Name</Column_Name>
-        <Column_Location>Location</Column_Location>
-        <Column_Payer>Payer</Column_Payer>
-        <Column_PaymentCategory>Payment Category</Column_PaymentCategory>
-        <Column_Money>Money</Column_Money>
-      </DataGridView>
-    </Main>
-    <RecordInput name="Record Input">
-      
-      
-    </RecordInput>
-    <ConfigForm>
-      <Beneficiary name="Beneficiary Configuration">
-        
-      </Beneficiary>
-      <Category name="Category Configruation">
-        
-        
-      </Category>
-      <Location name="Location Configuration">
-        
-      </Location>
-      <Payer name="Payer Configuration">
-        
-      </Payer>
-      <PaymentCategory name="Payment Category Configuration">
-        
-      </PaymentCategory>
-      <Product name="Product Configuration">
-        
-      </Product>
-      <Specification name="Specification Configuration">
-        
-      </Specification>
-    </ConfigForm>
+    <Button>
+      <OK>OK</OK>
+      <Reset>Reset</Reset>
+      <Cancel>Cancel</Cancel>
+      <Delete>Delete</Delete>
+      <Search>Search</Search>
+      <Details>Details</Details>
+    </Button>
+    <Label>
+      <Name>Name</Name>
+      <Abbr>Abbreviation</Abbr>
+      <Parent>Parent</Parent>
+      <Period>Period</Period>
+      <Money>Money</Money>
+      <Date>Date</Date>
+      <Payer>Payer</Payer>
+      <Location>Location</Location>
+      <Cagtegory>Category</Cagtegory>
+      <PaymentCategory>Payment Category</PaymentCategory>
+      <Details>Details</Details>
+      <Beneficiary>Beneficiary</Beneficiary>
+      <Specification>Specification</Specification>
+      <Manufactory>Manufactory</Manufactory>
+      <AveragePrice>Average Price</AveragePrice>
+      <Price>Price</Price>
+      <Quantity>Quantity</Quantity>
+      <Total>Total</Total>
+    </Label>
+    <Group>
+      <InOut>Incoume/Outgoing</InOut>
+    </Group>
+    <Radio>
+      <In>Income</In>
+      <Out>Outgoing</Out>
+    </Radio>
+    <DataGridView>
+      <ColumnId>ID</ColumnId>
+      <ColumnName>Name</ColumnName>
+      <ColumnLocation>Location</ColumnLocation>
+      <ColumnPayer>Payer</ColumnPayer>
+      <ColumnPaymentCategory>Payment Category</ColumnPaymentCategory>
+      <ColumnMoney>Money</ColumnMoney>
+    </DataGridView>
+    <Form>
+      <Main>Jeanie Money</Main>
+      <RecordInput>Record Input</RecordInput>
+      <Beneficiary>Beneficiary Configuration</Beneficiary>
+      <Category>Category Configruation</Category>
+      <Location>Location Configuration</Location>
+      <Payer>Payer Configuration</Payer>
+      <PaymentCategory>Payment Category Configuration</PaymentCategory>
+      <Product>Product Configuration</Product>
+      <Specification>Specification Configuration</Specification>
+    </Form>
   </Caption>
   <Message>
-    
+
   </Message>
 </JeanieMoney>

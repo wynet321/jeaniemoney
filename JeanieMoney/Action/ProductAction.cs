@@ -13,7 +13,7 @@ namespace JeanieMoney.Action
         public bool createProduct(Product product)
         {
             string command = "insert into product values('" + product.Id + "','" + product.Name + "','" + product.Abbr + "','" + product.SpecificationId + "','" + product.SpecificationQuantity + "','" + product.ManufactoryId + "')";
-            if (1==DBHelper.execCommand(command))
+            if (1==JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
@@ -21,7 +21,7 @@ namespace JeanieMoney.Action
         public Product retrieveProductById(string id)
         {
             string command = "select * from product where id='" + id + "'";
-            DataTable dataTable = DBHelper.getDataTable(command);
+            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
             Product product = new Product();
             product.Id = id;
             product.Name = dataTable.Rows[0]["name"].ToString();
@@ -42,7 +42,7 @@ namespace JeanieMoney.Action
         public bool deleteProductById(string id)
         {
             string command = "delete from product where id='" + id + "'";
-            if (0 < DBHelper.execCommand(command))
+            if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
@@ -55,7 +55,7 @@ namespace JeanieMoney.Action
 
         public List<Product> retrieveProductListBySQL(string command)
         {
-            DataTable dataTable = DBHelper.getDataTable(command);
+            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
             List<Product> productList = new List<Product>();
             Product product;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -79,7 +79,7 @@ namespace JeanieMoney.Action
                 return false;
             command += "name='" + product.Name + "',abbr='" + product.Abbr + "'," + "specification_id='" + product.SpecificationId + "',specification_quantity='" + product.SpecificationQuantity + "',manufactory_id='" + product.ManufactoryId + "' Where id='" + product.Id.Trim() + "'";
 
-            if (0 < DBHelper.execCommand(command))
+            if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }

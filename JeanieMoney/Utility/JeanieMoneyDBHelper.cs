@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JeanieMoney.Utility
 {
-    class LanguageHelper
+    class JeanieMoneyDBHelper:JeanieMoneyDBHelper
     {
 
     }

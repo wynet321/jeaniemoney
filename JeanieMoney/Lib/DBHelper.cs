@@ -6,17 +6,27 @@ using System.Collections.Generic;
 
 namespace JeanieMoney.Utility
 {
-    class DBHelper
+    class JeanieMoneyDBHelper
     {
         private static DbProviderFactory dbProviderFactory;
         private static DbConnection connection;
-
+        private static string SQLSERVER = "System.Data.SqlClient";
+        private static string DB2 = "IBM.Data.DB2.iSeries";
+        private static string ORACLE = "Oracle.DataAccess.Client";
+        private static string OLEDB = "System.Data.OleDb";
+        private static string ODBC = "System.Data.ODBC";
+        private static string MYSQL = "MySql.Data.MySqlClient";
+        private static string SQLITE = "System.Data.SQLite";
+        private static string FIREBIRD = "FirebirdSql.Data.Firebird";
+        private static string POSTGRESQL = "Npgsql";
+        private static string INFORMIX = "IBM.Data.Informix";
+        private static string SQLSERVERCE = "System.Data.SqlServerCe";
         private static DbConnection getConnection()
         {
             if (null == connection)
             {
                 //Todo: need add to config file.
-                dbProviderFactory = DbProviderFactories.GetFactory(ProviderName.getPIN("SQLSERVER"));
+                dbProviderFactory = DbProviderFactories.GetFactory(SQLSERVER);
                 connection = dbProviderFactory.CreateConnection();
                 connection.ConnectionString = "Data Source=localhost\\sqlexpress;Initial Catalog=JeanieMoney;Integrated Security=True";
             }
