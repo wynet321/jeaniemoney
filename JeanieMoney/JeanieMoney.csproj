@@ -252,8 +252,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ConsumeRecord.png" />
-    <Content Include="Lang\en_US.xml">
+    <Content Include="Lang\zh-CN.xml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Lang\en-US.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\creation.sql" />
   </ItemGroup>

@@ -79,6 +79,7 @@ namespace JeanieMoney.Forms.Config
 
         private void init()
         {
+            setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
             listBoxBeneficiary.DataSource = null;
@@ -86,10 +87,20 @@ namespace JeanieMoney.Forms.Config
             BeneficiaryList = BeneficiaryAction.retrieveBeneficiaryList();
             Beneficiary category = new Beneficiary();
             BeneficiaryList.Insert(0, category);
-           
-
         }
+        private void setCaption()
+        {
+            this.buttonDelete.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Delete");
+            this.buttonReset.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Reset");
+            this.buttonCancel.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Cancel");
+            this.buttonOK.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/OK");
 
+            this.labelAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
+            this.labelSearchAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
+
+            this.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Form/Beneficiary");
+        }
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (!BeneficiaryAction.deleteBeneficiaryById(BeneficiaryListByAbbr.ElementAt(listBoxBeneficiary.SelectedIndex).Id))

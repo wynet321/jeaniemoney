@@ -18,7 +18,7 @@
       <Date>Date</Date>
       <Payer>Payer</Payer>
       <Location>Location</Location>
-      <Cagtegory>Category</Cagtegory>
+      <Category>Category</Category>
       <PaymentCategory>Payment Category</PaymentCategory>
       <Details>Details</Details>
       <Beneficiary>Beneficiary</Beneficiary>
@@ -28,22 +28,38 @@
       <Price>Price</Price>
       <Quantity>Quantity</Quantity>
       <Total>Total</Total>
+      <Abbr>Abbreviation</Abbr>
+      <Parent>Parent Category</Parent>
     </Label>
     <Group>
-      <InOut>Incoume/Outgoing</InOut>
+      <InOut>Income/Outgoing</InOut>
+      <Summary>Summary</Summary>
     </Group>
     <Radio>
-      <In>Income</In>
-      <Out>Outgoing</Out>
+      <Income>Income</Income>
+      <Outgoing>Outgoing</Outgoing>
     </Radio>
     <DataGridView>
-      <ColumnId>ID</ColumnId>
-      <ColumnName>Name</ColumnName>
-      <ColumnLocation>Location</ColumnLocation>
-      <ColumnPayer>Payer</ColumnPayer>
-      <ColumnPaymentCategory>Payment Category</ColumnPaymentCategory>
-      <ColumnMoney>Money</ColumnMoney>
+      <Column>
+        <Id>ID</Id>
+        <Name>Name</Name>
+        <Location>Location</Location>
+        <Payer>Payer</Payer>
+        <PaymentCategory>Payment Category</PaymentCategory>
+        <Money>Money</Money>
+      </Column>
     </DataGridView>
+    <ListView>
+      <Column>
+        <Name>Name</Name>
+        <Specification>Specification</Specification>
+        <Manufactory>Manufactory</Manufactory>
+        <Total>Total</Total>
+        <Quantity>Quantity</Quantity>
+        <Price>Price</Price>
+        <Beneficiary>Beneficiary</Beneficiary>
+      </Column>
+    </ListView>
     <Form>
       <Main>Jeanie Money</Main>
       <RecordInput>Record Input</RecordInput>

@@ -38,7 +38,7 @@ namespace JeanieMoney.Forms.Config
             this.labelName = new System.Windows.Forms.Label();
             this.listBoxSpecification = new System.Windows.Forms.ListBox();
             this.textBoxKeyword = new System.Windows.Forms.TextBox();
-            this.labelSearch = new System.Windows.Forms.Label();
+            this.labelSearchAbbr = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -121,14 +121,14 @@ namespace JeanieMoney.Forms.Config
             this.textBoxKeyword.TabIndex = 27;
             this.textBoxKeyword.TextChanged += new System.EventHandler(this.textBoxKeyword_TextChanged);
             // 
-            // labelSearch
+            // labelSearchAbbr
             // 
-            this.labelSearch.AutoSize = true;
-            this.labelSearch.Location = new System.Drawing.Point(17, 28);
-            this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(48, 13);
-            this.labelSearch.TabIndex = 26;
-            this.labelSearch.Text = "Keyword";
+            this.labelSearchAbbr.AutoSize = true;
+            this.labelSearchAbbr.Location = new System.Drawing.Point(17, 28);
+            this.labelSearchAbbr.Name = "labelSearchAbbr";
+            this.labelSearchAbbr.Size = new System.Drawing.Size(48, 13);
+            this.labelSearchAbbr.TabIndex = 26;
+            this.labelSearchAbbr.Text = "Keyword";
             // 
             // buttonOK
             // 
@@ -154,7 +154,7 @@ namespace JeanieMoney.Forms.Config
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.listBoxSpecification);
             this.Controls.Add(this.textBoxKeyword);
-            this.Controls.Add(this.labelSearch);
+            this.Controls.Add(this.labelSearchAbbr);
             this.Controls.Add(this.buttonOK);
             this.Name = "SpecificationConfig";
             this.Text = "SpecificationConfig";
@@ -174,7 +174,7 @@ namespace JeanieMoney.Forms.Config
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.ListBox listBoxSpecification;
         private System.Windows.Forms.TextBox textBoxKeyword;
-        private System.Windows.Forms.Label labelSearch;
+        private System.Windows.Forms.Label labelSearchAbbr;
         private System.Windows.Forms.Button buttonOK;
     }
 }
