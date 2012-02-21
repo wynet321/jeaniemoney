@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using JeanieMoney.Utility;
+using JeanieMoney.Forms.Config;
 
 namespace JeanieMoney.Forms
 {
@@ -51,6 +52,48 @@ namespace JeanieMoney.Forms
             ri.ShowDialog();
             //CategoryConfig cc = new CategoryConfig();
             //cc.ShowDialog();
+        }
+
+        private void toolStripButtonCategory_Click(object sender, EventArgs e)
+        {
+            CategoryConfig cc = new CategoryConfig();
+            cc.ShowDialog();
+        }
+
+        private void toolStripButtonPayer_Click(object sender, EventArgs e)
+        {
+            PayerConfig pc = new PayerConfig();
+            pc.ShowDialog();
+        }
+
+        private void toolStripButtonLocation_Click(object sender, EventArgs e)
+        {
+            LocationConfig lc = new LocationConfig();
+            lc.ShowDialog();
+        }
+
+        private void toolStripButtonProduct_Click(object sender, EventArgs e)
+        {
+            ProductConfig pc = new ProductConfig();
+            pc.ShowDialog();
+        }
+
+        private void toolStripButtonSpecification_Click(object sender, EventArgs e)
+        {
+            SpecificationConfig sc = new SpecificationConfig();
+            sc.ShowDialog();
+        }
+
+        private void toolStripButtonPaymentCategory_Click(object sender, EventArgs e)
+        {
+            PaymentCategoryConfig pcc = new PaymentCategoryConfig();
+            pcc.ShowDialog();
+        }
+
+        private void toolStripButtonBeneficiary_Click(object sender, EventArgs e)
+        {
+            BeneficiaryConfig bc = new BeneficiaryConfig();
+            bc.ShowDialog();
         }
     }
 }
