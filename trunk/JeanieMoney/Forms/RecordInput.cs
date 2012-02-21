@@ -41,11 +41,11 @@ namespace JeanieMoney.Forms
             paymentCategoryAction = new PaymentCategoryAction();
             tradeRecordAndTradeRecordDetailAction = new TradeRecordAndTradeRecordDetailAction();
 
-            Init();
+            init();
 
         }
 
-        private void Init()
+        private void init()
         {
             dateTimePickerRecordInput.Value = DateTime.Now;
             radioButtonOut.Select();
@@ -193,7 +193,7 @@ namespace JeanieMoney.Forms
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            Init();
+            init();
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -224,7 +224,7 @@ namespace JeanieMoney.Forms
                 if (tradeRecordAndTradeRecordDetailAction.createTrade(tradeRecord, tradeRecordDetailList))
                 {
                     MessageBox.Show("Insert successfully!", "", MessageBoxButtons.OK);
-                    Init();
+                    init();
                 }
                 else
                     MessageBox.Show("Insert failed!", "", MessageBoxButtons.OK);

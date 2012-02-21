@@ -157,9 +157,10 @@
     <Compile Include="Utility\BaseConfigForm.Designer.cs">
       <DependentUpon>BaseConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utility\DBHelper.cs" />
-    <Compile Include="Utility\LanguageHelper.cs" />
-    <Compile Include="Utility\ProviderName.cs" />
+    <Compile Include="Lib\DBHelper.cs" />
+    <Compile Include="Lib\XMLHelper.cs" />
+    <Compile Include="Utility\JeanieMoneyDBHelper.cs" />
+    <Compile Include="Utility\PropertyHelper.cs" />
     <EmbeddedResource Include="Forms\Config\BeneficiaryConfig.resx">
       <DependentUpon>BeneficiaryConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -251,7 +252,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ConsumeRecord.png" />
-    <Content Include="Lang\en_US.xml" />
+    <Content Include="Lang\en_US.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\creation.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

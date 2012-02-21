@@ -17,7 +17,7 @@ namespace JeanieMoney.Action
                 command = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Abbr + "','" + category.InOrOut + "',null)";
             else
                 command = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Abbr + "','" + category.InOrOut + "','" + category.ParentId.Trim() + "')";
-            if (1== DBHelper.execCommand(command))
+            if (1== JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
@@ -36,7 +36,7 @@ namespace JeanieMoney.Action
 
             command += " Where id='" + category.Id.Trim() + "'";
 
-            if (0 < DBHelper.execCommand(command))
+            if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
@@ -44,7 +44,7 @@ namespace JeanieMoney.Action
         public bool deleteCategoryById(string id)
         {
             string command = "delete from category where id='" + id + "'";
-            if (0 < DBHelper.execCommand(command))
+            if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
@@ -52,7 +52,7 @@ namespace JeanieMoney.Action
         public Category retrieveCategoryById(string id)
         {
             string command = "select * from category where id='" + id + "'";
-            DataTable dataTable = DBHelper.getDataTable(command);
+            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
             Category category = new Category();
             category.Id = id;
             category.Name = dataTable.Rows[0]["name"].ToString();
@@ -65,7 +65,7 @@ namespace JeanieMoney.Action
         public List<Category> retrieveCategoryList()
         {
             string command = "select * from category";
-            DataTable dataTable = DBHelper.getDataTable(command);
+            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
             List<Category> categoryList = new List<Category>();
             Category category;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -81,7 +81,7 @@ namespace JeanieMoney.Action
         public List<Category> retrieveCategoryListByParentId(string parentId)
         {
             string command = "select * from category where parent_id='" + parentId + "'";
-            DataTable dataTable = DBHelper.getDataTable(command);
+            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
             List<Category> categoryList = new List<Category>();
             Category category;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -100,7 +100,7 @@ namespace JeanieMoney.Action
         public List<Category> retrieveCategoryListByAbbr(string abbr)
         {
             string command = "select * from category where abbr like '" + abbr + "%'";
-            DataTable dataTable = DBHelper.getDataTable(command);
+            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
             List<Category> categoryList = new List<Category>();
             Category category;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -119,7 +119,7 @@ namespace JeanieMoney.Action
         public List<Category> retrieveCategoryListOfLeafNodeByAbbr(string abbr, char inorout)
         {
             string command = "select * from category where id not in (select distinct parent_id from category where parent_id is not null) and abbr like '" + abbr + "%' and flag_in_out='" + inorout + "'";
-            DataTable dataTable = DBHelper.getDataTable(command);
+            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
             List<Category> categoryList = new List<Category>();
             Category category;
             foreach (DataRow dataRow in dataTable.Rows)

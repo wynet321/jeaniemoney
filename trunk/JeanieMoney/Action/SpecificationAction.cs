@@ -13,7 +13,7 @@ namespace JeanieMoney.Action
         public bool createSpecification(Specification specification)
         {
             string command = "insert into specification values('" + specification.Id + "','" + specification.Name + "','" + specification.Abbr + "')";
-            if (1== DBHelper.execCommand(command))
+            if (1== JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
@@ -21,7 +21,7 @@ namespace JeanieMoney.Action
         public Specification retrieveSpecificationById(string id)
         {
             string command = "select * from specification where id='" + id + "'";
-            DataTable dataTable = DBHelper.getDataTable(command);
+            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
             Specification specification = new Specification();
             specification.Id = id;
             specification.Name = dataTable.Rows[0]["name"].ToString();
@@ -39,7 +39,7 @@ namespace JeanieMoney.Action
         public bool deleteSpecificationById(string id)
         {
             string command = "delete from specification where id='" + id + "'";
-            if (0 < DBHelper.execCommand(command))
+            if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
@@ -52,7 +52,7 @@ namespace JeanieMoney.Action
 
         public List<Specification> retrieveSpecificationListBySQL(string command)
         {
-            DataTable dataTable = DBHelper.getDataTable(command);
+            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
             List<Specification> specificationList = new List<Specification>();
             Specification specification;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -73,7 +73,7 @@ namespace JeanieMoney.Action
                 return false;
             command += "name='" + specification.Name + "',abbr='" + specification.Abbr + "' Where id='" + specification.Id.Trim() + "'";
 
-            if (0 < DBHelper.execCommand(command))
+            if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }

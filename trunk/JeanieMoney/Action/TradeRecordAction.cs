@@ -13,7 +13,7 @@ namespace JeanieMoney.Action
         public bool createTradeRecord(TradeRecord tradeRecord)
         {
             string command = createTradeRecordCommand(tradeRecord);
-            if (DBHelper.execCommand(command)==1)
+            if (JeanieMoneyDBHelper.execCommand(command)==1)
                 return true;
             return false;
         }
@@ -26,7 +26,7 @@ namespace JeanieMoney.Action
         public TradeRecord retrieveTradeRecordById(string id)
         {
             string command = "select * from trade_record where id='" + id + "'";
-            DataTable dataTable = DBHelper.getDataTable(command);
+            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
             TradeRecord tradeRecord = new TradeRecord();
             tradeRecord.Id = id;
             tradeRecord.CategoryId = dataTable.Rows[0]["category_id"].ToString();
@@ -48,7 +48,7 @@ namespace JeanieMoney.Action
         public bool deleteTradeRecordById(string id)
         {
             string command = "delete from tradeRecord where id='" + id + "'";
-            if (0 < DBHelper.execCommand(command))
+            if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
@@ -61,7 +61,7 @@ namespace JeanieMoney.Action
 
         public List<TradeRecord> retrieveTradeRecordListBySQL(string command)
         {
-            DataTable dataTable = DBHelper.getDataTable(command);
+            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
             List<TradeRecord> tradeRecordList = new List<TradeRecord>();
             TradeRecord tradeRecord;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -85,7 +85,7 @@ namespace JeanieMoney.Action
             if (0 > tradeRecord.Id.Length)
                 return false;
             command += "category_id='" + tradeRecord.CategoryId + "',payer_id='" + tradeRecord.PayerId + "',location_id='" + tradeRecord.LocationId + "',payment_category_id='" + tradeRecord.PaymentCategoryId + "',money='" + tradeRecord.Money + "',date='" + tradeRecord.Date + "' Where id='" + tradeRecord.Id.Trim() + "'";
-            if (0 < DBHelper.execCommand(command))
+            if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
