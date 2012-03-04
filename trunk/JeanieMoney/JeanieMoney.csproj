@@ -69,7 +69,7 @@
   <ItemGroup>
     <Compile Include="Action\BeneficiaryAction.cs" />
     <Compile Include="Action\CategoryAction.cs" />
-    <Compile Include="Action\PaymentCategoryAction.cs" />
+    <Compile Include="Action\PaymentModeAction.cs" />
     <Compile Include="Action\ProductSpecificationManufactoryAction.cs" />
     <Compile Include="Action\TradeRecordAction.cs" />
     <Compile Include="Action\TradeRecordAndTradeRecordDetailAction.cs" />
@@ -78,7 +78,7 @@
     <Compile Include="Action\ManufactoryAction.cs" />
     <Compile Include="Action\PayerAction.cs" />
     <Compile Include="Action\ProductAction.cs" />
-    <Compile Include="Action\SpecificationAction.cs" />
+    <Compile Include="Action\UnitAction.cs" />
     <Compile Include="Entity\Beneficiary.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\PaymentCategory.cs" />

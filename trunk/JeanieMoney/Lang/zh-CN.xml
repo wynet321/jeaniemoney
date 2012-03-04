@@ -12,6 +12,7 @@
     <Label>
       <Name>Name</Name>
       <Abbr>Abbreviation</Abbr>
+      <Barcode>Barcode</Barcode>
       <Parent>Parent</Parent>
       <Period>Period</Period>
       <Money>Money</Money>

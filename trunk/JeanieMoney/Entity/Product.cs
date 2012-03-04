@@ -24,5 +24,8 @@ namespace JeanieMoney.Entity
 
         private string manufactoryid ="";
         public string ManufactoryId { get { return manufactoryid; } set { manufactoryid = value; } }
+
+        private string barcode = "";
+        public string Barcode { get { return barcode; } set { barcode = value; } }
     }
 }
