@@ -65,6 +65,7 @@ namespace JeanieMoney.Forms
             {
                 textBoxName.Text = ((Product)listBoxProduct.SelectedItem).Name;
                 textBoxAbbr.Text = productListByAbbr.ElementAt(listBoxProduct.SelectedIndex).Abbr;
+                textBoxBarcode.Text = productListByAbbr.ElementAt(listBoxProduct.SelectedIndex).Barcode;
                 productList = productAction.retrieveProductList();
                 Product category = new Product();
                 productList.Insert(0, category);
@@ -86,6 +87,7 @@ namespace JeanieMoney.Forms
             this.labelAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
             this.labelName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
             this.labelSearchAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelBarcode.Text = PropertyHelper.GetValue("jeanieMoney/Caption/Label/Barcode");
 
             this.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Form/Product");
         }
@@ -127,8 +129,8 @@ namespace JeanieMoney.Forms
                 Product category = new Product();
                 category.Id = productListByAbbr.ElementAt(listBoxProduct.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
-                
                 category.Abbr = textBoxAbbr.Text;
+                category.Barcode = textBoxBarcode.Text;
                 if (productAction.updateProductById(category))
                 {
                     MessageBox.Show("OK");
@@ -150,8 +152,8 @@ namespace JeanieMoney.Forms
                 Product category=new Product();
                 category.Id=Guid.NewGuid().ToString();
                 category.Name=textBoxName.Text;
-                
                 category.Abbr=textBoxAbbr.Text;
+                category.Barcode = textBoxBarcode.Text;
                 if (productAction.createProduct(category))
                 {
                     MessageBox.Show("OK");

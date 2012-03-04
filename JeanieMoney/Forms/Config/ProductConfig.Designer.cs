@@ -39,13 +39,15 @@
             this.textBoxKeyword = new System.Windows.Forms.TextBox();
             this.labelSearchAbbr = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
+            this.textBoxBarcode = new System.Windows.Forms.TextBox();
+            this.labelBarcode = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(246, 200);
+            this.buttonDelete.Location = new System.Drawing.Point(246, 185);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.Size = new System.Drawing.Size(75, 21);
             this.buttonDelete.TabIndex = 24;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -53,9 +55,9 @@
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(139, 200);
+            this.buttonReset.Location = new System.Drawing.Point(139, 185);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(75, 23);
+            this.buttonReset.Size = new System.Drawing.Size(75, 21);
             this.buttonReset.TabIndex = 23;
             this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
@@ -63,9 +65,9 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(354, 200);
+            this.buttonCancel.Location = new System.Drawing.Point(354, 185);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 21);
             this.buttonCancel.TabIndex = 22;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -73,77 +75,96 @@
             // 
             // textBoxAbbr
             // 
-            this.textBoxAbbr.Location = new System.Drawing.Point(272, 62);
+            this.textBoxAbbr.Location = new System.Drawing.Point(272, 60);
             this.textBoxAbbr.Name = "textBoxAbbr";
-            this.textBoxAbbr.Size = new System.Drawing.Size(180, 20);
+            this.textBoxAbbr.Size = new System.Drawing.Size(180, 21);
             this.textBoxAbbr.TabIndex = 21;
             // 
             // labelAbbr
             // 
             this.labelAbbr.AutoSize = true;
-            this.labelAbbr.Location = new System.Drawing.Point(231, 65);
+            this.labelAbbr.Location = new System.Drawing.Point(231, 63);
             this.labelAbbr.Name = "labelAbbr";
-            this.labelAbbr.Size = new System.Drawing.Size(29, 13);
+            this.labelAbbr.Size = new System.Drawing.Size(29, 12);
             this.labelAbbr.TabIndex = 20;
             this.labelAbbr.Text = "Abbr";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(272, 36);
+            this.textBoxName.Location = new System.Drawing.Point(272, 33);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(180, 20);
+            this.textBoxName.Size = new System.Drawing.Size(180, 21);
             this.textBoxName.TabIndex = 19;
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(231, 39);
+            this.labelName.Location = new System.Drawing.Point(231, 36);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(35, 13);
+            this.labelName.Size = new System.Drawing.Size(29, 12);
             this.labelName.TabIndex = 18;
             this.labelName.Text = "Name";
             // 
             // listBoxProduct
             // 
             this.listBoxProduct.FormattingEnabled = true;
-            this.listBoxProduct.Location = new System.Drawing.Point(15, 36);
+            this.listBoxProduct.ItemHeight = 12;
+            this.listBoxProduct.Location = new System.Drawing.Point(15, 33);
             this.listBoxProduct.Name = "listBoxProduct";
-            this.listBoxProduct.Size = new System.Drawing.Size(199, 147);
+            this.listBoxProduct.Size = new System.Drawing.Size(199, 136);
             this.listBoxProduct.TabIndex = 17;
             this.listBoxProduct.SelectedIndexChanged += new System.EventHandler(this.listBoxProduct_SelectedIndexChanged);
             // 
             // textBoxKeyword
             // 
-            this.textBoxKeyword.Location = new System.Drawing.Point(66, 10);
+            this.textBoxKeyword.Location = new System.Drawing.Point(66, 9);
             this.textBoxKeyword.Name = "textBoxKeyword";
-            this.textBoxKeyword.Size = new System.Drawing.Size(148, 20);
+            this.textBoxKeyword.Size = new System.Drawing.Size(148, 21);
             this.textBoxKeyword.TabIndex = 16;
             this.textBoxKeyword.TextChanged += new System.EventHandler(this.textBoxKeyword_TextChanged);
             // 
             // labelSearchAbbr
             // 
             this.labelSearchAbbr.AutoSize = true;
-            this.labelSearchAbbr.Location = new System.Drawing.Point(12, 12);
+            this.labelSearchAbbr.Location = new System.Drawing.Point(12, 11);
             this.labelSearchAbbr.Name = "labelSearchAbbr";
-            this.labelSearchAbbr.Size = new System.Drawing.Size(48, 13);
+            this.labelSearchAbbr.Size = new System.Drawing.Size(47, 12);
             this.labelSearchAbbr.TabIndex = 15;
             this.labelSearchAbbr.Text = "Keyword";
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(37, 200);
+            this.buttonOK.Location = new System.Drawing.Point(37, 185);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonOK.Size = new System.Drawing.Size(75, 21);
             this.buttonOK.TabIndex = 14;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
+            // textBoxBarcode
+            // 
+            this.textBoxBarcode.Location = new System.Drawing.Point(272, 87);
+            this.textBoxBarcode.Name = "textBoxBarcode";
+            this.textBoxBarcode.Size = new System.Drawing.Size(180, 21);
+            this.textBoxBarcode.TabIndex = 26;
+            // 
+            // labelBarcode
+            // 
+            this.labelBarcode.AutoSize = true;
+            this.labelBarcode.Location = new System.Drawing.Point(219, 90);
+            this.labelBarcode.Name = "labelBarcode";
+            this.labelBarcode.Size = new System.Drawing.Size(47, 12);
+            this.labelBarcode.TabIndex = 25;
+            this.labelBarcode.Text = "Barcode";
+            // 
             // ProductConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 232);
+            this.ClientSize = new System.Drawing.Size(464, 214);
+            this.Controls.Add(this.textBoxBarcode);
+            this.Controls.Add(this.labelBarcode);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonCancel);
@@ -175,5 +196,7 @@
         private System.Windows.Forms.TextBox textBoxKeyword;
         private System.Windows.Forms.Label labelSearchAbbr;
         private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.TextBox textBoxBarcode;
+        private System.Windows.Forms.Label labelBarcode;
     }
 }

@@ -12,8 +12,8 @@ namespace JeanieMoney.Action
     {
         public bool createProduct(Product product)
         {
-            string command = "insert into product values('" + product.Id + "','" + product.Name + "','" + product.Abbr + "','" + product.UnitId + "','" + product.UnitQuantity + "','" + product.ManufactoryId + "')";
-            if (1==JeanieMoneyDBHelper.execCommand(command))
+            string command = "insert into product values('" + product.Id + "','" + product.Name + "','" + product.Abbr + "','" + product.Barcode + "','" + product.UnitId + "','" + product.UnitQuantity + "','" + product.ManufactoryId + "')";
+            if (1 == JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
@@ -26,6 +26,7 @@ namespace JeanieMoney.Action
             product.Id = id;
             product.Name = dataTable.Rows[0]["name"].ToString();
             product.Abbr = dataTable.Rows[0]["abbr"].ToString();
+            product.Barcode = dataTable.Rows[0]["barcode"].ToString();
             product.UnitId = dataTable.Rows[0]["unit_id"].ToString();
             product.UnitQuantity = dataTable.Rows[0]["unit_quantity"].ToString();
             product.ManufactoryId = dataTable.Rows[0]["manufactory_id"].ToString();
@@ -64,6 +65,7 @@ namespace JeanieMoney.Action
                 product.Id = dataRow["id"].ToString();
                 product.Name = dataRow["name"].ToString();
                 product.Abbr = dataRow["abbr"].ToString();
+                product.Barcode = dataRow["barcode"].ToString();
                 product.UnitId = dataRow["unit_id"].ToString();
                 product.UnitQuantity = dataRow["unit_quantity"].ToString();
                 product.ManufactoryId = dataRow["manufactory_id"].ToString();
@@ -77,7 +79,7 @@ namespace JeanieMoney.Action
             string command = "update product set ";
             if (0 > product.Id.Length)
                 return false;
-            command += "name='" + product.Name + "',abbr='" + product.Abbr + "'," + "unit_id='" + product.UnitId + "',unit_quantity='" + product.UnitQuantity + "',manufactory_id='" + product.ManufactoryId + "' Where id='" + product.Id.Trim() + "'";
+            command += "name='" + product.Name + "',abbr='" + product.Abbr + "'," + product.Barcode + "','" + "unit_id='" + product.UnitId + "',unit_quantity='" + product.UnitQuantity + "',manufactory_id='" + product.ManufactoryId + "' Where id='" + product.Id.Trim() + "'";
 
             if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
