@@ -20,7 +20,7 @@ namespace JeanieMoney.Action
 
         public string createTradeRecordCommand(TradeRecord tradeRecord)
         {
-            string command = "insert into trade_record values('" + tradeRecord.Id + "','" + tradeRecord.CategoryId + "','" + tradeRecord.PayerId + "','" + tradeRecord.LocationId + "','" + tradeRecord.PaymentCategoryId + "','" + tradeRecord.Money + "','" + tradeRecord.Date + "')";
+            string command = "insert into trade_record values('" + tradeRecord.Id + "','" + tradeRecord.CategoryId + "','" + tradeRecord.PayerId + "','" + tradeRecord.LocationId + "','" + tradeRecord.PaymentModeId + "','" + tradeRecord.Money + "','" + tradeRecord.Date + "')";
             return command;
         }
         public TradeRecord retrieveTradeRecordById(string id)
@@ -32,7 +32,7 @@ namespace JeanieMoney.Action
             tradeRecord.CategoryId = dataTable.Rows[0]["category_id"].ToString();
             tradeRecord.PayerId = dataTable.Rows[0]["payer_id"].ToString();
             tradeRecord.LocationId = dataTable.Rows[0]["location_id"].ToString();
-            tradeRecord.PaymentCategoryId = dataTable.Rows[0]["payment_category_id"].ToString();
+            tradeRecord.PaymentModeId = dataTable.Rows[0]["payment_mode_id"].ToString();
             tradeRecord.Money = dataTable.Rows[0]["money"].ToString();
             tradeRecord.Date = dataTable.Rows[0]["date"].ToString();
             return tradeRecord;
@@ -71,7 +71,7 @@ namespace JeanieMoney.Action
                 tradeRecord.CategoryId = dataRow["category_id"].ToString();
                 tradeRecord.PayerId = dataRow["parent_id"].ToString();
                 tradeRecord.LocationId = dataRow["location_id"].ToString();
-                tradeRecord.PaymentCategoryId = dataRow["payment_category_id"].ToString();
+                tradeRecord.PaymentModeId = dataRow["payment_mode_id"].ToString();
                 tradeRecord.Money = dataRow["money"].ToString();
                 tradeRecord.Date = dataRow["date"].ToString();
                 tradeRecordList.Add(tradeRecord);
@@ -84,7 +84,7 @@ namespace JeanieMoney.Action
             string command = "update trade_record set ";
             if (0 > tradeRecord.Id.Length)
                 return false;
-            command += "category_id='" + tradeRecord.CategoryId + "',payer_id='" + tradeRecord.PayerId + "',location_id='" + tradeRecord.LocationId + "',payment_category_id='" + tradeRecord.PaymentCategoryId + "',money='" + tradeRecord.Money + "',date='" + tradeRecord.Date + "' Where id='" + tradeRecord.Id.Trim() + "'";
+            command += "category_id='" + tradeRecord.CategoryId + "',payer_id='" + tradeRecord.PayerId + "',location_id='" + tradeRecord.LocationId + "',payment_mode_id='" + tradeRecord.PaymentModeId + "',money='" + tradeRecord.Money + "',date='" + tradeRecord.Date + "' Where id='" + tradeRecord.Id.Trim() + "'";
             if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;

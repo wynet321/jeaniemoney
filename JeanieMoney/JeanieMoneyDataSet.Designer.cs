@@ -34,9 +34,9 @@ namespace JeanieMoney {
         
         private memberDataTable tablemember;
         
-        private payment_categoryDataTable tablepayment_category;
+        private payment_modeDataTable tablepayment_mode;
         
-        private specificationDataTable tablespecification;
+        private unitDataTable tableunit;
         
         private journal_recordDataTable tablejournal_record;
         
@@ -46,7 +46,7 @@ namespace JeanieMoney {
         
         private global::System.Data.DataRelation relationFK_account_record_member;
         
-        private global::System.Data.DataRelation relationFK_account_record_payment_category;
+        private global::System.Data.DataRelation relationFK_account_record_payment_mode;
         
         private global::System.Data.DataRelation relationFK_category_category;
         
@@ -54,7 +54,7 @@ namespace JeanieMoney {
         
         private global::System.Data.DataRelation relationFK_consume_detail_record_member;
         
-        private global::System.Data.DataRelation relationFK_consume_detail_record_specification;
+        private global::System.Data.DataRelation relationFK_consume_detail_record_unit;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -99,11 +99,11 @@ namespace JeanieMoney {
                 if ((ds.Tables["member"] != null)) {
                     base.Tables.Add(new memberDataTable(ds.Tables["member"]));
                 }
-                if ((ds.Tables["payment_category"] != null)) {
-                    base.Tables.Add(new payment_categoryDataTable(ds.Tables["payment_category"]));
+                if ((ds.Tables["payment_mode"] != null)) {
+                    base.Tables.Add(new payment_modeDataTable(ds.Tables["payment_mode"]));
                 }
-                if ((ds.Tables["specification"] != null)) {
-                    base.Tables.Add(new specificationDataTable(ds.Tables["specification"]));
+                if ((ds.Tables["unit"] != null)) {
+                    base.Tables.Add(new unitDataTable(ds.Tables["unit"]));
                 }
                 if ((ds.Tables["journal_record"] != null)) {
                     base.Tables.Add(new journal_recordDataTable(ds.Tables["journal_record"]));
@@ -180,9 +180,9 @@ namespace JeanieMoney {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public payment_categoryDataTable payment_category {
+        public payment_modeDataTable payment_mode {
             get {
-                return this.tablepayment_category;
+                return this.tablepayment_mode;
             }
         }
         
@@ -190,9 +190,9 @@ namespace JeanieMoney {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public specificationDataTable specification {
+        public unitDataTable unit {
             get {
-                return this.tablespecification;
+                return this.tableunit;
             }
         }
         
@@ -288,11 +288,11 @@ namespace JeanieMoney {
                 if ((ds.Tables["member"] != null)) {
                     base.Tables.Add(new memberDataTable(ds.Tables["member"]));
                 }
-                if ((ds.Tables["payment_category"] != null)) {
-                    base.Tables.Add(new payment_categoryDataTable(ds.Tables["payment_category"]));
+                if ((ds.Tables["payment_mode"] != null)) {
+                    base.Tables.Add(new payment_modeDataTable(ds.Tables["payment_mode"]));
                 }
-                if ((ds.Tables["specification"] != null)) {
-                    base.Tables.Add(new specificationDataTable(ds.Tables["specification"]));
+                if ((ds.Tables["unit"] != null)) {
+                    base.Tables.Add(new unitDataTable(ds.Tables["unit"]));
                 }
                 if ((ds.Tables["journal_record"] != null)) {
                     base.Tables.Add(new journal_recordDataTable(ds.Tables["journal_record"]));
@@ -360,16 +360,16 @@ namespace JeanieMoney {
                     this.tablemember.InitVars();
                 }
             }
-            this.tablepayment_category = ((payment_categoryDataTable)(base.Tables["payment_category"]));
+            this.tablepayment_mode = ((payment_modeDataTable)(base.Tables["payment_mode"]));
             if ((initTable == true)) {
-                if ((this.tablepayment_category != null)) {
-                    this.tablepayment_category.InitVars();
+                if ((this.tablepayment_mode != null)) {
+                    this.tablepayment_mode.InitVars();
                 }
             }
-            this.tablespecification = ((specificationDataTable)(base.Tables["specification"]));
+            this.tableunit = ((unitDataTable)(base.Tables["unit"]));
             if ((initTable == true)) {
-                if ((this.tablespecification != null)) {
-                    this.tablespecification.InitVars();
+                if ((this.tableunit != null)) {
+                    this.tableunit.InitVars();
                 }
             }
             this.tablejournal_record = ((journal_recordDataTable)(base.Tables["journal_record"]));
@@ -381,11 +381,11 @@ namespace JeanieMoney {
             this.relationFK_account_record_category = this.Relations["FK_account_record_category"];
             this.relationFK_account_record_location = this.Relations["FK_account_record_location"];
             this.relationFK_account_record_member = this.Relations["FK_account_record_member"];
-            this.relationFK_account_record_payment_category = this.Relations["FK_account_record_payment_category"];
+            this.relationFK_account_record_payment_mode = this.Relations["FK_account_record_payment_mode"];
             this.relationFK_category_category = this.Relations["FK_category_category"];
             this.relationFK_consume_detail_record_account_record = this.Relations["FK_consume_detail_record_account_record"];
             this.relationFK_consume_detail_record_member = this.Relations["FK_consume_detail_record_member"];
-            this.relationFK_consume_detail_record_specification = this.Relations["FK_consume_detail_record_specification"];
+            this.relationFK_consume_detail_record_unit = this.Relations["FK_consume_detail_record_unit"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -406,10 +406,10 @@ namespace JeanieMoney {
             base.Tables.Add(this.tablelocation);
             this.tablemember = new memberDataTable();
             base.Tables.Add(this.tablemember);
-            this.tablepayment_category = new payment_categoryDataTable();
-            base.Tables.Add(this.tablepayment_category);
-            this.tablespecification = new specificationDataTable();
-            base.Tables.Add(this.tablespecification);
+            this.tablepayment_mode = new payment_modeDataTable();
+            base.Tables.Add(this.tablepayment_mode);
+            this.tableunit = new unitDataTable();
+            base.Tables.Add(this.tableunit);
             this.tablejournal_record = new journal_recordDataTable();
             base.Tables.Add(this.tablejournal_record);
             this.relationFK_account_record_category = new global::System.Data.DataRelation("FK_account_record_category", new global::System.Data.DataColumn[] {
@@ -424,10 +424,10 @@ namespace JeanieMoney {
                         this.tablemember.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableaccount_record.member_payer_idColumn}, false);
             this.Relations.Add(this.relationFK_account_record_member);
-            this.relationFK_account_record_payment_category = new global::System.Data.DataRelation("FK_account_record_payment_category", new global::System.Data.DataColumn[] {
-                        this.tablepayment_category.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableaccount_record.payment_category_idColumn}, false);
-            this.Relations.Add(this.relationFK_account_record_payment_category);
+            this.relationFK_account_record_payment_mode = new global::System.Data.DataRelation("FK_account_record_payment_mode", new global::System.Data.DataColumn[] {
+                        this.tablepayment_mode.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableaccount_record.payment_mode_idColumn}, false);
+            this.Relations.Add(this.relationFK_account_record_payment_mode);
             this.relationFK_category_category = new global::System.Data.DataRelation("FK_category_category", new global::System.Data.DataColumn[] {
                         this.tablecategory.idColumn}, new global::System.Data.DataColumn[] {
                         this.tablecategory.parent_idColumn}, false);
@@ -440,10 +440,10 @@ namespace JeanieMoney {
                         this.tablemember.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableconsume_detail_record.beneficiary_idColumn}, false);
             this.Relations.Add(this.relationFK_consume_detail_record_member);
-            this.relationFK_consume_detail_record_specification = new global::System.Data.DataRelation("FK_consume_detail_record_specification", new global::System.Data.DataColumn[] {
-                        this.tablespecification.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableconsume_detail_record.specification_idColumn}, false);
-            this.Relations.Add(this.relationFK_consume_detail_record_specification);
+            this.relationFK_consume_detail_record_unit = new global::System.Data.DataRelation("FK_consume_detail_record_unit", new global::System.Data.DataColumn[] {
+                        this.tableunit.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableconsume_detail_record.unit_idColumn}, false);
+            this.Relations.Add(this.relationFK_consume_detail_record_unit);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -478,13 +478,13 @@ namespace JeanieMoney {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializepayment_category() {
+        private bool ShouldSerializepayment_mode() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializespecification() {
+        private bool ShouldSerializeunit() {
             return false;
         }
         
@@ -565,10 +565,10 @@ namespace JeanieMoney {
         public delegate void memberRowChangeEventHandler(object sender, memberRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void payment_categoryRowChangeEventHandler(object sender, payment_categoryRowChangeEvent e);
+        public delegate void payment_modeRowChangeEventHandler(object sender, payment_modeRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void specificationRowChangeEventHandler(object sender, specificationRowChangeEvent e);
+        public delegate void unitRowChangeEventHandler(object sender, unitRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void journal_recordRowChangeEventHandler(object sender, journal_recordRowChangeEvent e);
@@ -588,7 +588,7 @@ namespace JeanieMoney {
             
             private global::System.Data.DataColumn columnlocation_id;
             
-            private global::System.Data.DataColumn columnpayment_category_id;
+            private global::System.Data.DataColumn columnpayment_mode_id;
             
             private global::System.Data.DataColumn columnmoney;
             
@@ -659,9 +659,9 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn payment_category_idColumn {
+            public global::System.Data.DataColumn payment_mode_idColumn {
                 get {
-                    return this.columnpayment_category_id;
+                    return this.columnpayment_mode_id;
                 }
             }
             
@@ -710,7 +710,7 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public account_recordRow Addaccount_recordRow(string id, categoryRow parentcategoryRowByFK_account_record_category, memberRow parentmemberRowByFK_account_record_member, locationRow parentlocationRowByFK_account_record_location, payment_categoryRow parentpayment_categoryRowByFK_account_record_payment_category, decimal money) {
+            public account_recordRow Addaccount_recordRow(string id, categoryRow parentcategoryRowByFK_account_record_category, memberRow parentmemberRowByFK_account_record_member, locationRow parentlocationRowByFK_account_record_location, payment_modeRow parentpayment_modeRowByFK_account_record_payment_mode, decimal money) {
                 account_recordRow rowaccount_recordRow = ((account_recordRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
@@ -728,8 +728,8 @@ namespace JeanieMoney {
                 if ((parentlocationRowByFK_account_record_location != null)) {
                     columnValuesArray[3] = parentlocationRowByFK_account_record_location[0];
                 }
-                if ((parentpayment_categoryRowByFK_account_record_payment_category != null)) {
-                    columnValuesArray[4] = parentpayment_categoryRowByFK_account_record_payment_category[0];
+                if ((parentpayment_modeRowByFK_account_record_payment_mode != null)) {
+                    columnValuesArray[4] = parentpayment_modeRowByFK_account_record_payment_mode[0];
                 }
                 rowaccount_recordRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowaccount_recordRow);
@@ -764,7 +764,7 @@ namespace JeanieMoney {
                 this.columncategory_id = base.Columns["category_id"];
                 this.columnmember_payer_id = base.Columns["member_payer_id"];
                 this.columnlocation_id = base.Columns["location_id"];
-                this.columnpayment_category_id = base.Columns["payment_category_id"];
+                this.columnpayment_mode_id = base.Columns["payment_mode_id"];
                 this.columnmoney = base.Columns["money"];
             }
             
@@ -779,8 +779,8 @@ namespace JeanieMoney {
                 base.Columns.Add(this.columnmember_payer_id);
                 this.columnlocation_id = new global::System.Data.DataColumn("location_id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnlocation_id);
-                this.columnpayment_category_id = new global::System.Data.DataColumn("payment_category_id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpayment_category_id);
+                this.columnpayment_mode_id = new global::System.Data.DataColumn("payment_mode_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpayment_mode_id);
                 this.columnmoney = new global::System.Data.DataColumn("money", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmoney);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -794,8 +794,8 @@ namespace JeanieMoney {
                 this.columnmember_payer_id.MaxLength = 36;
                 this.columnlocation_id.AllowDBNull = false;
                 this.columnlocation_id.MaxLength = 36;
-                this.columnpayment_category_id.AllowDBNull = false;
-                this.columnpayment_category_id.MaxLength = 36;
+                this.columnpayment_mode_id.AllowDBNull = false;
+                this.columnpayment_mode_id.MaxLength = 36;
                 this.columnmoney.AllowDBNull = false;
             }
             
@@ -1252,9 +1252,9 @@ namespace JeanieMoney {
             
             private global::System.Data.DataColumn columndate;
             
-            private global::System.Data.DataColumn columnspecification_id;
+            private global::System.Data.DataColumn columnunit_id;
             
-            private global::System.Data.DataColumn columnspecification_quantity;
+            private global::System.Data.DataColumn columnunit_quantity;
             
             private global::System.Data.DataColumn columnbeneficiary_id;
             
@@ -1349,17 +1349,17 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn specification_idColumn {
+            public global::System.Data.DataColumn unit_idColumn {
                 get {
-                    return this.columnspecification_id;
+                    return this.columnunit_id;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn specification_quantityColumn {
+            public global::System.Data.DataColumn unit_quantityColumn {
                 get {
-                    return this.columnspecification_quantity;
+                    return this.columnunit_quantity;
                 }
             }
             
@@ -1408,7 +1408,7 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public consume_detail_recordRow Addconsume_detail_recordRow(string id, account_recordRow parentaccount_recordRowByFK_consume_detail_record_account_record, string name, decimal unit_price, int quantity, decimal price, System.DateTime date, specificationRow parentspecificationRowByFK_consume_detail_record_specification, int specification_quantity, memberRow parentmemberRowByFK_consume_detail_record_member) {
+            public consume_detail_recordRow Addconsume_detail_recordRow(string id, account_recordRow parentaccount_recordRowByFK_consume_detail_record_account_record, string name, decimal unit_price, int quantity, decimal price, System.DateTime date, unitRow parentunitRowByFK_consume_detail_record_unit, int unit_quantity, memberRow parentmemberRowByFK_consume_detail_record_member) {
                 consume_detail_recordRow rowconsume_detail_recordRow = ((consume_detail_recordRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
@@ -1419,13 +1419,13 @@ namespace JeanieMoney {
                         price,
                         date,
                         null,
-                        specification_quantity,
+                        unit_quantity,
                         null};
                 if ((parentaccount_recordRowByFK_consume_detail_record_account_record != null)) {
                     columnValuesArray[1] = parentaccount_recordRowByFK_consume_detail_record_account_record[0];
                 }
-                if ((parentspecificationRowByFK_consume_detail_record_specification != null)) {
-                    columnValuesArray[7] = parentspecificationRowByFK_consume_detail_record_specification[0];
+                if ((parentunitRowByFK_consume_detail_record_unit != null)) {
+                    columnValuesArray[7] = parentunitRowByFK_consume_detail_record_unit[0];
                 }
                 if ((parentmemberRowByFK_consume_detail_record_member != null)) {
                     columnValuesArray[9] = parentmemberRowByFK_consume_detail_record_member[0];
@@ -1466,8 +1466,8 @@ namespace JeanieMoney {
                 this.columnquantity = base.Columns["quantity"];
                 this.columnprice = base.Columns["price"];
                 this.columndate = base.Columns["date"];
-                this.columnspecification_id = base.Columns["specification_id"];
-                this.columnspecification_quantity = base.Columns["specification_quantity"];
+                this.columnunit_id = base.Columns["unit_id"];
+                this.columnunit_quantity = base.Columns["unit_quantity"];
                 this.columnbeneficiary_id = base.Columns["beneficiary_id"];
             }
             
@@ -1488,10 +1488,10 @@ namespace JeanieMoney {
                 base.Columns.Add(this.columnprice);
                 this.columndate = new global::System.Data.DataColumn("date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndate);
-                this.columnspecification_id = new global::System.Data.DataColumn("specification_id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnspecification_id);
-                this.columnspecification_quantity = new global::System.Data.DataColumn("specification_quantity", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnspecification_quantity);
+                this.columnunit_id = new global::System.Data.DataColumn("unit_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnunit_id);
+                this.columnunit_quantity = new global::System.Data.DataColumn("unit_quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnunit_quantity);
                 this.columnbeneficiary_id = new global::System.Data.DataColumn("beneficiary_id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnbeneficiary_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -1507,7 +1507,7 @@ namespace JeanieMoney {
                 this.columnquantity.AllowDBNull = false;
                 this.columnprice.AllowDBNull = false;
                 this.columndate.AllowDBNull = false;
-                this.columnspecification_id.MaxLength = 36;
+                this.columnunit_id.MaxLength = 36;
                 this.columnbeneficiary_id.MaxLength = 36;
             }
             
@@ -2190,7 +2190,7 @@ namespace JeanieMoney {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class payment_categoryDataTable : global::System.Data.TypedTableBase<payment_categoryRow> {
+        public partial class payment_modeDataTable : global::System.Data.TypedTableBase<payment_modeRow> {
             
             private global::System.Data.DataColumn columnid;
             
@@ -2198,8 +2198,8 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public payment_categoryDataTable() {
-                this.TableName = "payment_category";
+            public payment_modeDataTable() {
+                this.TableName = "payment_mode";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2207,7 +2207,7 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal payment_categoryDataTable(global::System.Data.DataTable table) {
+            internal payment_modeDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2224,7 +2224,7 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected payment_categoryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected payment_modeDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -2256,53 +2256,53 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public payment_categoryRow this[int index] {
+            public payment_modeRow this[int index] {
                 get {
-                    return ((payment_categoryRow)(this.Rows[index]));
+                    return ((payment_modeRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event payment_categoryRowChangeEventHandler payment_categoryRowChanging;
+            public event payment_modeRowChangeEventHandler payment_modeRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event payment_categoryRowChangeEventHandler payment_categoryRowChanged;
+            public event payment_modeRowChangeEventHandler payment_modeRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event payment_categoryRowChangeEventHandler payment_categoryRowDeleting;
+            public event payment_modeRowChangeEventHandler payment_modeRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event payment_categoryRowChangeEventHandler payment_categoryRowDeleted;
+            public event payment_modeRowChangeEventHandler payment_modeRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Addpayment_categoryRow(payment_categoryRow row) {
+            public void Addpayment_modeRow(payment_modeRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public payment_categoryRow Addpayment_categoryRow(string id, string name) {
-                payment_categoryRow rowpayment_categoryRow = ((payment_categoryRow)(this.NewRow()));
+            public payment_modeRow Addpayment_modeRow(string id, string name) {
+                payment_modeRow rowpayment_modeRow = ((payment_modeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
                         name};
-                rowpayment_categoryRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowpayment_categoryRow);
-                return rowpayment_categoryRow;
+                rowpayment_modeRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowpayment_modeRow);
+                return rowpayment_modeRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public payment_categoryRow FindByid(string id) {
-                return ((payment_categoryRow)(this.Rows.Find(new object[] {
+            public payment_modeRow FindByid(string id) {
+                return ((payment_modeRow)(this.Rows.Find(new object[] {
                             id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                payment_categoryDataTable cln = ((payment_categoryDataTable)(base.Clone()));
+                payment_modeDataTable cln = ((payment_modeDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2310,7 +2310,7 @@ namespace JeanieMoney {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new payment_categoryDataTable();
+                return new payment_modeDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2338,28 +2338,28 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public payment_categoryRow Newpayment_categoryRow() {
-                return ((payment_categoryRow)(this.NewRow()));
+            public payment_modeRow Newpayment_modeRow() {
+                return ((payment_modeRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new payment_categoryRow(builder);
+                return new payment_modeRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(payment_categoryRow);
+                return typeof(payment_modeRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.payment_categoryRowChanged != null)) {
-                    this.payment_categoryRowChanged(this, new payment_categoryRowChangeEvent(((payment_categoryRow)(e.Row)), e.Action));
+                if ((this.payment_modeRowChanged != null)) {
+                    this.payment_modeRowChanged(this, new payment_modeRowChangeEvent(((payment_modeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2367,8 +2367,8 @@ namespace JeanieMoney {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.payment_categoryRowChanging != null)) {
-                    this.payment_categoryRowChanging(this, new payment_categoryRowChangeEvent(((payment_categoryRow)(e.Row)), e.Action));
+                if ((this.payment_modeRowChanging != null)) {
+                    this.payment_modeRowChanging(this, new payment_modeRowChangeEvent(((payment_modeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2376,8 +2376,8 @@ namespace JeanieMoney {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.payment_categoryRowDeleted != null)) {
-                    this.payment_categoryRowDeleted(this, new payment_categoryRowChangeEvent(((payment_categoryRow)(e.Row)), e.Action));
+                if ((this.payment_modeRowDeleted != null)) {
+                    this.payment_modeRowDeleted(this, new payment_modeRowChangeEvent(((payment_modeRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2385,14 +2385,14 @@ namespace JeanieMoney {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.payment_categoryRowDeleting != null)) {
-                    this.payment_categoryRowDeleting(this, new payment_categoryRowChangeEvent(((payment_categoryRow)(e.Row)), e.Action));
+                if ((this.payment_modeRowDeleting != null)) {
+                    this.payment_modeRowDeleting(this, new payment_modeRowChangeEvent(((payment_modeRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Removepayment_categoryRow(payment_categoryRow row) {
+            public void Removepayment_modeRow(payment_modeRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2419,7 +2419,7 @@ namespace JeanieMoney {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "payment_categoryDataTable";
+                attribute2.FixedValue = "payment_modeDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2465,7 +2465,7 @@ namespace JeanieMoney {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class specificationDataTable : global::System.Data.TypedTableBase<specificationRow> {
+        public partial class unitDataTable : global::System.Data.TypedTableBase<unitRow> {
             
             private global::System.Data.DataColumn columnid;
             
@@ -2473,8 +2473,8 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public specificationDataTable() {
-                this.TableName = "specification";
+            public unitDataTable() {
+                this.TableName = "unit";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2482,7 +2482,7 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal specificationDataTable(global::System.Data.DataTable table) {
+            internal unitDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2499,7 +2499,7 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected specificationDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected unitDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -2531,53 +2531,53 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public specificationRow this[int index] {
+            public unitRow this[int index] {
                 get {
-                    return ((specificationRow)(this.Rows[index]));
+                    return ((unitRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event specificationRowChangeEventHandler specificationRowChanging;
+            public event unitRowChangeEventHandler unitRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event specificationRowChangeEventHandler specificationRowChanged;
+            public event unitRowChangeEventHandler unitRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event specificationRowChangeEventHandler specificationRowDeleting;
+            public event unitRowChangeEventHandler unitRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event specificationRowChangeEventHandler specificationRowDeleted;
+            public event unitRowChangeEventHandler unitRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddspecificationRow(specificationRow row) {
+            public void AddunitRow(unitRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public specificationRow AddspecificationRow(string id, string unit_name) {
-                specificationRow rowspecificationRow = ((specificationRow)(this.NewRow()));
+            public unitRow AddunitRow(string id, string unit_name) {
+                unitRow rowunitRow = ((unitRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
                         unit_name};
-                rowspecificationRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowspecificationRow);
-                return rowspecificationRow;
+                rowunitRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowunitRow);
+                return rowunitRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public specificationRow FindByid(string id) {
-                return ((specificationRow)(this.Rows.Find(new object[] {
+            public unitRow FindByid(string id) {
+                return ((unitRow)(this.Rows.Find(new object[] {
                             id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                specificationDataTable cln = ((specificationDataTable)(base.Clone()));
+                unitDataTable cln = ((unitDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2585,7 +2585,7 @@ namespace JeanieMoney {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new specificationDataTable();
+                return new unitDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2613,28 +2613,28 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public specificationRow NewspecificationRow() {
-                return ((specificationRow)(this.NewRow()));
+            public unitRow NewunitRow() {
+                return ((unitRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new specificationRow(builder);
+                return new unitRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(specificationRow);
+                return typeof(unitRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.specificationRowChanged != null)) {
-                    this.specificationRowChanged(this, new specificationRowChangeEvent(((specificationRow)(e.Row)), e.Action));
+                if ((this.unitRowChanged != null)) {
+                    this.unitRowChanged(this, new unitRowChangeEvent(((unitRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2642,8 +2642,8 @@ namespace JeanieMoney {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.specificationRowChanging != null)) {
-                    this.specificationRowChanging(this, new specificationRowChangeEvent(((specificationRow)(e.Row)), e.Action));
+                if ((this.unitRowChanging != null)) {
+                    this.unitRowChanging(this, new unitRowChangeEvent(((unitRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2651,8 +2651,8 @@ namespace JeanieMoney {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.specificationRowDeleted != null)) {
-                    this.specificationRowDeleted(this, new specificationRowChangeEvent(((specificationRow)(e.Row)), e.Action));
+                if ((this.unitRowDeleted != null)) {
+                    this.unitRowDeleted(this, new unitRowChangeEvent(((unitRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2660,14 +2660,14 @@ namespace JeanieMoney {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.specificationRowDeleting != null)) {
-                    this.specificationRowDeleting(this, new specificationRowChangeEvent(((specificationRow)(e.Row)), e.Action));
+                if ((this.unitRowDeleting != null)) {
+                    this.unitRowDeleting(this, new unitRowChangeEvent(((unitRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemovespecificationRow(specificationRow row) {
+            public void RemoveunitRow(unitRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2694,7 +2694,7 @@ namespace JeanieMoney {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "specificationDataTable";
+                attribute2.FixedValue = "unitDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2750,7 +2750,7 @@ namespace JeanieMoney {
             
             private global::System.Data.DataColumn columnpayer_name;
             
-            private global::System.Data.DataColumn columnpayment_category_name;
+            private global::System.Data.DataColumn columnpayment_mode_name;
             
             private global::System.Data.DataColumn columnmoney;
             
@@ -2821,9 +2821,9 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn payment_category_nameColumn {
+            public global::System.Data.DataColumn payment_mode_nameColumn {
                 get {
-                    return this.columnpayment_category_name;
+                    return this.columnpayment_mode_name;
                 }
             }
             
@@ -2872,14 +2872,14 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public journal_recordRow Addjournal_recordRow(string id, string name, string location_name, string payer_name, string payment_category_name, decimal money) {
+            public journal_recordRow Addjournal_recordRow(string id, string name, string location_name, string payer_name, string payment_mode_name, decimal money) {
                 journal_recordRow rowjournal_recordRow = ((journal_recordRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         id,
                         name,
                         location_name,
                         payer_name,
-                        payment_category_name,
+                        payment_mode_name,
                         money};
                 rowjournal_recordRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowjournal_recordRow);
@@ -2914,7 +2914,7 @@ namespace JeanieMoney {
                 this.columnname = base.Columns["name"];
                 this.columnlocation_name = base.Columns["location_name"];
                 this.columnpayer_name = base.Columns["payer_name"];
-                this.columnpayment_category_name = base.Columns["payment_category_name"];
+                this.columnpayment_mode_name = base.Columns["payment_mode_name"];
                 this.columnmoney = base.Columns["money"];
             }
             
@@ -2929,8 +2929,8 @@ namespace JeanieMoney {
                 base.Columns.Add(this.columnlocation_name);
                 this.columnpayer_name = new global::System.Data.DataColumn("payer_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpayer_name);
-                this.columnpayment_category_name = new global::System.Data.DataColumn("payment_category_name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpayment_category_name);
+                this.columnpayment_mode_name = new global::System.Data.DataColumn("payment_mode_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpayment_mode_name);
                 this.columnmoney = new global::System.Data.DataColumn("money", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmoney);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -2944,8 +2944,8 @@ namespace JeanieMoney {
                 this.columnlocation_name.MaxLength = 50;
                 this.columnpayer_name.AllowDBNull = false;
                 this.columnpayer_name.MaxLength = 50;
-                this.columnpayment_category_name.AllowDBNull = false;
-                this.columnpayment_category_name.MaxLength = 50;
+                this.columnpayment_mode_name.AllowDBNull = false;
+                this.columnpayment_mode_name.MaxLength = 50;
                 this.columnmoney.AllowDBNull = false;
             }
             
@@ -3133,12 +3133,12 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string payment_category_id {
+            public string payment_mode_id {
                 get {
-                    return ((string)(this[this.tableaccount_record.payment_category_idColumn]));
+                    return ((string)(this[this.tableaccount_record.payment_mode_idColumn]));
                 }
                 set {
-                    this[this.tableaccount_record.payment_category_idColumn] = value;
+                    this[this.tableaccount_record.payment_mode_idColumn] = value;
                 }
             }
             
@@ -3188,12 +3188,12 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public payment_categoryRow payment_categoryRow {
+            public payment_modeRow payment_modeRow {
                 get {
-                    return ((payment_categoryRow)(this.GetParentRow(this.Table.ParentRelations["FK_account_record_payment_category"])));
+                    return ((payment_modeRow)(this.GetParentRow(this.Table.ParentRelations["FK_account_record_payment_mode"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_account_record_payment_category"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_account_record_payment_mode"]);
                 }
             }
             
@@ -3411,35 +3411,33 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string specification_id {
+            public string unit_id {
                 get {
                     try {
-                        return ((string)(this[this.tableconsume_detail_record.specification_idColumn]));
+                        return ((string)(this[this.tableconsume_detail_record.unit_idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'specification_id\' in table \'consume_detail_record\' is DBNul" +
-                                "l.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'unit_id\' in table \'consume_detail_record\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableconsume_detail_record.specification_idColumn] = value;
+                    this[this.tableconsume_detail_record.unit_idColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int specification_quantity {
+            public int unit_quantity {
                 get {
                     try {
-                        return ((int)(this[this.tableconsume_detail_record.specification_quantityColumn]));
+                        return ((int)(this[this.tableconsume_detail_record.unit_quantityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'specification_quantity\' in table \'consume_detail_record\' is" +
-                                " DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'unit_quantity\' in table \'consume_detail_record\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableconsume_detail_record.specification_quantityColumn] = value;
+                    this[this.tableconsume_detail_record.unit_quantityColumn] = value;
                 }
             }
             
@@ -3484,37 +3482,37 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public specificationRow specificationRow {
+            public unitRow unitRow {
                 get {
-                    return ((specificationRow)(this.GetParentRow(this.Table.ParentRelations["FK_consume_detail_record_specification"])));
+                    return ((unitRow)(this.GetParentRow(this.Table.ParentRelations["FK_consume_detail_record_unit"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_consume_detail_record_specification"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_consume_detail_record_unit"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isspecification_idNull() {
-                return this.IsNull(this.tableconsume_detail_record.specification_idColumn);
+            public bool Isunit_idNull() {
+                return this.IsNull(this.tableconsume_detail_record.unit_idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setspecification_idNull() {
-                this[this.tableconsume_detail_record.specification_idColumn] = global::System.Convert.DBNull;
+            public void Setunit_idNull() {
+                this[this.tableconsume_detail_record.unit_idColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isspecification_quantityNull() {
-                return this.IsNull(this.tableconsume_detail_record.specification_quantityColumn);
+            public bool Isunit_quantityNull() {
+                return this.IsNull(this.tableconsume_detail_record.unit_quantityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setspecification_quantityNull() {
-                this[this.tableconsume_detail_record.specification_quantityColumn] = global::System.Convert.DBNull;
+            public void Setunit_quantityNull() {
+                this[this.tableconsume_detail_record.unit_quantityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3640,25 +3638,25 @@ namespace JeanieMoney {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class payment_categoryRow : global::System.Data.DataRow {
+        public partial class payment_modeRow : global::System.Data.DataRow {
             
-            private payment_categoryDataTable tablepayment_category;
+            private payment_modeDataTable tablepayment_mode;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal payment_categoryRow(global::System.Data.DataRowBuilder rb) : 
+            internal payment_modeRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablepayment_category = ((payment_categoryDataTable)(this.Table));
+                this.tablepayment_mode = ((payment_modeDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string id {
                 get {
-                    return ((string)(this[this.tablepayment_category.idColumn]));
+                    return ((string)(this[this.tablepayment_mode.idColumn]));
                 }
                 set {
-                    this[this.tablepayment_category.idColumn] = value;
+                    this[this.tablepayment_mode.idColumn] = value;
                 }
             }
             
@@ -3666,21 +3664,21 @@ namespace JeanieMoney {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string name {
                 get {
-                    return ((string)(this[this.tablepayment_category.nameColumn]));
+                    return ((string)(this[this.tablepayment_mode.nameColumn]));
                 }
                 set {
-                    this[this.tablepayment_category.nameColumn] = value;
+                    this[this.tablepayment_mode.nameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public account_recordRow[] Getaccount_recordRows() {
-                if ((this.Table.ChildRelations["FK_account_record_payment_category"] == null)) {
+                if ((this.Table.ChildRelations["FK_account_record_payment_mode"] == null)) {
                     return new account_recordRow[0];
                 }
                 else {
-                    return ((account_recordRow[])(base.GetChildRows(this.Table.ChildRelations["FK_account_record_payment_category"])));
+                    return ((account_recordRow[])(base.GetChildRows(this.Table.ChildRelations["FK_account_record_payment_mode"])));
                 }
             }
         }
@@ -3688,25 +3686,25 @@ namespace JeanieMoney {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class specificationRow : global::System.Data.DataRow {
+        public partial class unitRow : global::System.Data.DataRow {
             
-            private specificationDataTable tablespecification;
+            private unitDataTable tableunit;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal specificationRow(global::System.Data.DataRowBuilder rb) : 
+            internal unitRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablespecification = ((specificationDataTable)(this.Table));
+                this.tableunit = ((unitDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string id {
                 get {
-                    return ((string)(this[this.tablespecification.idColumn]));
+                    return ((string)(this[this.tableunit.idColumn]));
                 }
                 set {
-                    this[this.tablespecification.idColumn] = value;
+                    this[this.tableunit.idColumn] = value;
                 }
             }
             
@@ -3714,21 +3712,21 @@ namespace JeanieMoney {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string unit_name {
                 get {
-                    return ((string)(this[this.tablespecification.unit_nameColumn]));
+                    return ((string)(this[this.tableunit.unit_nameColumn]));
                 }
                 set {
-                    this[this.tablespecification.unit_nameColumn] = value;
+                    this[this.tableunit.unit_nameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public consume_detail_recordRow[] Getconsume_detail_recordRows() {
-                if ((this.Table.ChildRelations["FK_consume_detail_record_specification"] == null)) {
+                if ((this.Table.ChildRelations["FK_consume_detail_record_unit"] == null)) {
                     return new consume_detail_recordRow[0];
                 }
                 else {
-                    return ((consume_detail_recordRow[])(base.GetChildRows(this.Table.ChildRelations["FK_consume_detail_record_specification"])));
+                    return ((consume_detail_recordRow[])(base.GetChildRows(this.Table.ChildRelations["FK_consume_detail_record_unit"])));
                 }
             }
         }
@@ -3793,12 +3791,12 @@ namespace JeanieMoney {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string payment_category_name {
+            public string payment_mode_name {
                 get {
-                    return ((string)(this[this.tablejournal_record.payment_category_nameColumn]));
+                    return ((string)(this[this.tablejournal_record.payment_mode_nameColumn]));
                 }
                 set {
-                    this[this.tablejournal_record.payment_category_nameColumn] = value;
+                    this[this.tablejournal_record.payment_mode_nameColumn] = value;
                 }
             }
             
@@ -3988,22 +3986,22 @@ namespace JeanieMoney {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class payment_categoryRowChangeEvent : global::System.EventArgs {
+        public class payment_modeRowChangeEvent : global::System.EventArgs {
             
-            private payment_categoryRow eventRow;
+            private payment_modeRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public payment_categoryRowChangeEvent(payment_categoryRow row, global::System.Data.DataRowAction action) {
+            public payment_modeRowChangeEvent(payment_modeRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public payment_categoryRow Row {
+            public payment_modeRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4022,22 +4020,22 @@ namespace JeanieMoney {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class specificationRowChangeEvent : global::System.EventArgs {
+        public class unitRowChangeEvent : global::System.EventArgs {
             
-            private specificationRow eventRow;
+            private unitRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public specificationRowChangeEvent(specificationRow row, global::System.Data.DataRowAction action) {
+            public unitRowChangeEvent(unitRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public specificationRow Row {
+            public unitRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4215,46 +4213,46 @@ namespace JeanieMoney.JeanieMoneyDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("category_id", "category_id");
             tableMapping.ColumnMappings.Add("member_payer_id", "member_payer_id");
             tableMapping.ColumnMappings.Add("location_id", "location_id");
-            tableMapping.ColumnMappings.Add("payment_category_id", "payment_category_id");
+            tableMapping.ColumnMappings.Add("payment_mode_id", "payment_mode_id");
             tableMapping.ColumnMappings.Add("money", "money");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[account_record] WHERE (([id] = @Original_id) AND ([category_id] = @Original_category_id) AND ([member_payer_id] = @Original_member_payer_id) AND ([location_id] = @Original_location_id) AND ([payment_category_id] = @Original_payment_category_id) AND ([money] = @Original_money))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[account_record] WHERE (([id] = @Original_id) AND ([category_id] = @Original_category_id) AND ([member_payer_id] = @Original_member_payer_id) AND ([location_id] = @Original_location_id) AND ([payment_mode_id] = @Original_payment_mode_id) AND ([money] = @Original_money))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_category_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "category_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_member_payer_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "member_payer_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_location_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "location_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_payment_category_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_category_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_payment_mode_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_mode_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_money", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "money", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[account_record] ([id], [category_id], [member_payer_id], [location_id], [payment_category_id], [money]) VALUES (@id, @category_id, @member_payer_id, @location_id, @payment_category_id, @money);
-SELECT id, category_id, member_payer_id, location_id, payment_category_id, money FROM account_record WHERE (id = @id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[account_record] ([id], [category_id], [member_payer_id], [location_id], [payment_mode_id], [money]) VALUES (@id, @category_id, @member_payer_id, @location_id, @payment_mode_id, @money);
+SELECT id, category_id, member_payer_id, location_id, payment_mode_id, money FROM account_record WHERE (id = @id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@category_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "category_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@member_payer_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "member_payer_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@location_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "location_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@payment_category_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_category_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@payment_mode_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_mode_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@money", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "money", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[account_record] SET [id] = @id, [category_id] = @category_id, [member_payer_id] = @member_payer_id, [location_id] = @location_id, [payment_category_id] = @payment_category_id, [money] = @money WHERE (([id] = @Original_id) AND ([category_id] = @Original_category_id) AND ([member_payer_id] = @Original_member_payer_id) AND ([location_id] = @Original_location_id) AND ([payment_category_id] = @Original_payment_category_id) AND ([money] = @Original_money));
-SELECT id, category_id, member_payer_id, location_id, payment_category_id, money FROM account_record WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[account_record] SET [id] = @id, [category_id] = @category_id, [member_payer_id] = @member_payer_id, [location_id] = @location_id, [payment_mode_id] = @payment_mode_id, [money] = @money WHERE (([id] = @Original_id) AND ([category_id] = @Original_category_id) AND ([member_payer_id] = @Original_member_payer_id) AND ([location_id] = @Original_location_id) AND ([payment_mode_id] = @Original_payment_mode_id) AND ([money] = @Original_money));
+SELECT id, category_id, member_payer_id, location_id, payment_mode_id, money FROM account_record WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@category_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "category_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@member_payer_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "member_payer_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@location_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "location_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@payment_category_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_category_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@payment_mode_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_mode_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@money", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "money", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_category_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "category_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_member_payer_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "member_payer_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_location_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "location_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_payment_category_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_category_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_payment_mode_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "payment_mode_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_money", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "money", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -4271,8 +4269,8 @@ SELECT id, category_id, member_payer_id, location_id, payment_category_id, money
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, category_id, member_payer_id, location_id, payment_category_id, money " +
-                "FROM dbo.account_record";
+            this._commandCollection[0].CommandText = "SELECT id, category_id, member_payer_id, location_id, payment_mode_id, money FROM" +
+                " dbo.account_record";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4333,7 +4331,7 @@ SELECT id, category_id, member_payer_id, location_id, payment_category_id, money
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_id, string Original_category_id, string Original_member_payer_id, string Original_location_id, string Original_payment_category_id, decimal Original_money) {
+        public virtual int Delete(string Original_id, string Original_category_id, string Original_member_payer_id, string Original_location_id, string Original_payment_mode_id, decimal Original_money) {
             if ((Original_id == null)) {
                 throw new global::System.ArgumentNullException("Original_id");
             }
@@ -4358,11 +4356,11 @@ SELECT id, category_id, member_payer_id, location_id, payment_category_id, money
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_location_id));
             }
-            if ((Original_payment_category_id == null)) {
-                throw new global::System.ArgumentNullException("Original_payment_category_id");
+            if ((Original_payment_mode_id == null)) {
+                throw new global::System.ArgumentNullException("Original_payment_mode_id");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_payment_category_id));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_payment_mode_id));
             }
             this.Adapter.DeleteCommand.Parameters[5].Value = ((decimal)(Original_money));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
@@ -4385,7 +4383,7 @@ SELECT id, category_id, member_payer_id, location_id, payment_category_id, money
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string id, string category_id, string member_payer_id, string location_id, string payment_category_id, decimal money) {
+        public virtual int Insert(string id, string category_id, string member_payer_id, string location_id, string payment_mode_id, decimal money) {
             if ((id == null)) {
                 throw new global::System.ArgumentNullException("id");
             }
@@ -4410,11 +4408,11 @@ SELECT id, category_id, member_payer_id, location_id, payment_category_id, money
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(location_id));
             }
-            if ((payment_category_id == null)) {
-                throw new global::System.ArgumentNullException("payment_category_id");
+            if ((payment_mode_id == null)) {
+                throw new global::System.ArgumentNullException("payment_mode_id");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(payment_category_id));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(payment_mode_id));
             }
             this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(money));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
@@ -4437,7 +4435,7 @@ SELECT id, category_id, member_payer_id, location_id, payment_category_id, money
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string id, string category_id, string member_payer_id, string location_id, string payment_category_id, decimal money, string Original_id, string Original_category_id, string Original_member_payer_id, string Original_location_id, string Original_payment_category_id, decimal Original_money) {
+        public virtual int Update(string id, string category_id, string member_payer_id, string location_id, string payment_mode_id, decimal money, string Original_id, string Original_category_id, string Original_member_payer_id, string Original_location_id, string Original_payment_mode_id, decimal Original_money) {
             if ((id == null)) {
                 throw new global::System.ArgumentNullException("id");
             }
@@ -4462,11 +4460,11 @@ SELECT id, category_id, member_payer_id, location_id, payment_category_id, money
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(location_id));
             }
-            if ((payment_category_id == null)) {
-                throw new global::System.ArgumentNullException("payment_category_id");
+            if ((payment_mode_id == null)) {
+                throw new global::System.ArgumentNullException("payment_mode_id");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(payment_category_id));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(payment_mode_id));
             }
             this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(money));
             if ((Original_id == null)) {
@@ -4493,11 +4491,11 @@ SELECT id, category_id, member_payer_id, location_id, payment_category_id, money
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_location_id));
             }
-            if ((Original_payment_category_id == null)) {
-                throw new global::System.ArgumentNullException("Original_payment_category_id");
+            if ((Original_payment_mode_id == null)) {
+                throw new global::System.ArgumentNullException("Original_payment_mode_id");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_payment_category_id));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_payment_mode_id));
             }
             this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_money));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
@@ -4520,8 +4518,8 @@ SELECT id, category_id, member_payer_id, location_id, payment_category_id, money
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string category_id, string member_payer_id, string location_id, string payment_category_id, decimal money, string Original_id, string Original_category_id, string Original_member_payer_id, string Original_location_id, string Original_payment_category_id, decimal Original_money) {
-            return this.Update(Original_id, category_id, member_payer_id, location_id, payment_category_id, money, Original_id, Original_category_id, Original_member_payer_id, Original_location_id, Original_payment_category_id, Original_money);
+        public virtual int Update(string category_id, string member_payer_id, string location_id, string payment_mode_id, decimal money, string Original_id, string Original_category_id, string Original_member_payer_id, string Original_location_id, string Original_payment_mode_id, decimal Original_money) {
+            return this.Update(Original_id, category_id, member_payer_id, location_id, payment_mode_id, money, Original_id, Original_category_id, Original_member_payer_id, Original_location_id, Original_payment_mode_id, Original_money);
         }
     }
     
@@ -5038,13 +5036,13 @@ SELECT id, name, parent_id, flag_in_out FROM category WHERE (id = @id)";
             tableMapping.ColumnMappings.Add("quantity", "quantity");
             tableMapping.ColumnMappings.Add("price", "price");
             tableMapping.ColumnMappings.Add("date", "date");
-            tableMapping.ColumnMappings.Add("specification_id", "specification_id");
-            tableMapping.ColumnMappings.Add("specification_quantity", "specification_quantity");
+            tableMapping.ColumnMappings.Add("unit_id", "unit_id");
+            tableMapping.ColumnMappings.Add("unit_quantity", "unit_quantity");
             tableMapping.ColumnMappings.Add("beneficiary_id", "beneficiary_id");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[consume_detail_record] WHERE (([id] = @Original_id) AND ([account_id] = @Original_account_id) AND ([name] = @Original_name) AND ([unit_price] = @Original_unit_price) AND ([quantity] = @Original_quantity) AND ([price] = @Original_price) AND ([date] = @Original_date) AND ((@IsNull_specification_id = 1 AND [specification_id] IS NULL) OR ([specification_id] = @Original_specification_id)) AND ((@IsNull_specification_quantity = 1 AND [specification_quantity] IS NULL) OR ([specification_quantity] = @Original_specification_quantity)) AND ((@IsNull_beneficiary_id = 1 AND [beneficiary_id] IS NULL) OR ([beneficiary_id] = @Original_beneficiary_id)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[consume_detail_record] WHERE (([id] = @Original_id) AND ([account_id] = @Original_account_id) AND ([name] = @Original_name) AND ([unit_price] = @Original_unit_price) AND ([quantity] = @Original_quantity) AND ([price] = @Original_price) AND ([date] = @Original_date) AND ((@IsNull_unit_id = 1 AND [unit_id] IS NULL) OR ([unit_id] = @Original_unit_id)) AND ((@IsNull_unit_quantity = 1 AND [unit_quantity] IS NULL) OR ([unit_quantity] = @Original_unit_quantity)) AND ((@IsNull_beneficiary_id = 1 AND [beneficiary_id] IS NULL) OR ([beneficiary_id] = @Original_beneficiary_id)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_account_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "account_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -5053,16 +5051,16 @@ SELECT id, name, parent_id, flag_in_out FROM category WHERE (id = @id)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_price", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_specification_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_specification_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_specification_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_quantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_specification_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_unit_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_unit_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_unit_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_quantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_unit_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_beneficiary_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "beneficiary_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_beneficiary_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "beneficiary_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[consume_detail_record] ([id], [account_id], [name], [unit_price], [quantity], [price], [date], [specification_id], [specification_quantity], [beneficiary_id]) VALUES (@id, @account_id, @name, @unit_price, @quantity, @price, @date, @specification_id, @specification_quantity, @beneficiary_id);
-SELECT id, account_id, name, unit_price, quantity, price, date, specification_id, specification_quantity, beneficiary_id FROM consume_detail_record WHERE (id = @id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[consume_detail_record] ([id], [account_id], [name], [unit_price], [quantity], [price], [date], [unit_id], [unit_quantity], [beneficiary_id]) VALUES (@id, @account_id, @name, @unit_price, @quantity, @price, @date, @unit_id, @unit_quantity, @beneficiary_id);
+SELECT id, account_id, name, unit_price, quantity, price, date, unit_id, unit_quantity, beneficiary_id FROM consume_detail_record WHERE (id = @id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@account_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "account_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5071,13 +5069,13 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@price", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@specification_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@specification_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unit_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unit_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@beneficiary_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "beneficiary_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[consume_detail_record] SET [id] = @id, [account_id] = @account_id, [name] = @name, [unit_price] = @unit_price, [quantity] = @quantity, [price] = @price, [date] = @date, [specification_id] = @specification_id, [specification_quantity] = @specification_quantity, [beneficiary_id] = @beneficiary_id WHERE (([id] = @Original_id) AND ([account_id] = @Original_account_id) AND ([name] = @Original_name) AND ([unit_price] = @Original_unit_price) AND ([quantity] = @Original_quantity) AND ([price] = @Original_price) AND ([date] = @Original_date) AND ((@IsNull_specification_id = 1 AND [specification_id] IS NULL) OR ([specification_id] = @Original_specification_id)) AND ((@IsNull_specification_quantity = 1 AND [specification_quantity] IS NULL) OR ([specification_quantity] = @Original_specification_quantity)) AND ((@IsNull_beneficiary_id = 1 AND [beneficiary_id] IS NULL) OR ([beneficiary_id] = @Original_beneficiary_id)));
-SELECT id, account_id, name, unit_price, quantity, price, date, specification_id, specification_quantity, beneficiary_id FROM consume_detail_record WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[consume_detail_record] SET [id] = @id, [account_id] = @account_id, [name] = @name, [unit_price] = @unit_price, [quantity] = @quantity, [price] = @price, [date] = @date, [unit_id] = @unit_id, [unit_quantity] = @unit_quantity, [beneficiary_id] = @beneficiary_id WHERE (([id] = @Original_id) AND ([account_id] = @Original_account_id) AND ([name] = @Original_name) AND ([unit_price] = @Original_unit_price) AND ([quantity] = @Original_quantity) AND ([price] = @Original_price) AND ([date] = @Original_date) AND ((@IsNull_unit_id = 1 AND [unit_id] IS NULL) OR ([unit_id] = @Original_unit_id)) AND ((@IsNull_unit_quantity = 1 AND [unit_quantity] IS NULL) OR ([unit_quantity] = @Original_unit_quantity)) AND ((@IsNull_beneficiary_id = 1 AND [beneficiary_id] IS NULL) OR ([beneficiary_id] = @Original_beneficiary_id)));
+SELECT id, account_id, name, unit_price, quantity, price, date, unit_id, unit_quantity, beneficiary_id FROM consume_detail_record WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@account_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "account_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5086,8 +5084,8 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@price", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@specification_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@specification_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unit_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unit_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@beneficiary_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "beneficiary_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_account_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "account_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -5096,10 +5094,10 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_price", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_specification_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_specification_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_specification_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_quantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_specification_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "specification_quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_unit_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_unit_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_unit_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_quantity", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_unit_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_beneficiary_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "beneficiary_id", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_beneficiary_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "beneficiary_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -5117,8 +5115,8 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, account_id, name, unit_price, quantity, price, date, specification_id," +
-                " specification_quantity, beneficiary_id FROM dbo.consume_detail_record";
+            this._commandCollection[0].CommandText = "SELECT id, account_id, name, unit_price, quantity, price, date, unit_id, unit_qua" +
+                "ntity, beneficiary_id FROM dbo.consume_detail_record";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5179,7 +5177,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_id, string Original_account_id, string Original_name, decimal Original_unit_price, int Original_quantity, decimal Original_price, System.DateTime Original_date, string Original_specification_id, global::System.Nullable<int> Original_specification_quantity, string Original_beneficiary_id) {
+        public virtual int Delete(string Original_id, string Original_account_id, string Original_name, decimal Original_unit_price, int Original_quantity, decimal Original_price, System.DateTime Original_date, string Original_unit_id, global::System.Nullable<int> Original_unit_quantity, string Original_beneficiary_id) {
             if ((Original_id == null)) {
                 throw new global::System.ArgumentNullException("Original_id");
             }
@@ -5202,17 +5200,17 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_quantity));
             this.Adapter.DeleteCommand.Parameters[5].Value = ((decimal)(Original_price));
             this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_date));
-            if ((Original_specification_id == null)) {
+            if ((Original_unit_id == null)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_specification_id));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_unit_id));
             }
-            if ((Original_specification_quantity.HasValue == true)) {
+            if ((Original_unit_quantity.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_specification_quantity.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_unit_quantity.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
@@ -5246,7 +5244,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string id, string account_id, string name, decimal unit_price, int quantity, decimal price, System.DateTime date, string specification_id, global::System.Nullable<int> specification_quantity, string beneficiary_id) {
+        public virtual int Insert(string id, string account_id, string name, decimal unit_price, int quantity, decimal price, System.DateTime date, string unit_id, global::System.Nullable<int> unit_quantity, string beneficiary_id) {
             if ((id == null)) {
                 throw new global::System.ArgumentNullException("id");
             }
@@ -5269,14 +5267,14 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this.Adapter.InsertCommand.Parameters[4].Value = ((int)(quantity));
             this.Adapter.InsertCommand.Parameters[5].Value = ((decimal)(price));
             this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(date));
-            if ((specification_id == null)) {
+            if ((unit_id == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(specification_id));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(unit_id));
             }
-            if ((specification_quantity.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(specification_quantity.Value));
+            if ((unit_quantity.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(unit_quantity.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
@@ -5315,8 +5313,8 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                     int quantity, 
                     decimal price, 
                     System.DateTime date, 
-                    string specification_id, 
-                    global::System.Nullable<int> specification_quantity, 
+                    string unit_id, 
+                    global::System.Nullable<int> unit_quantity, 
                     string beneficiary_id, 
                     string Original_id, 
                     string Original_account_id, 
@@ -5325,8 +5323,8 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                     int Original_quantity, 
                     decimal Original_price, 
                     System.DateTime Original_date, 
-                    string Original_specification_id, 
-                    global::System.Nullable<int> Original_specification_quantity, 
+                    string Original_unit_id, 
+                    global::System.Nullable<int> Original_unit_quantity, 
                     string Original_beneficiary_id) {
             if ((id == null)) {
                 throw new global::System.ArgumentNullException("id");
@@ -5350,14 +5348,14 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(quantity));
             this.Adapter.UpdateCommand.Parameters[5].Value = ((decimal)(price));
             this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(date));
-            if ((specification_id == null)) {
+            if ((unit_id == null)) {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(specification_id));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(unit_id));
             }
-            if ((specification_quantity.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(specification_quantity.Value));
+            if ((unit_quantity.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(unit_quantity.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
@@ -5390,17 +5388,17 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_quantity));
             this.Adapter.UpdateCommand.Parameters[15].Value = ((decimal)(Original_price));
             this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(Original_date));
-            if ((Original_specification_id == null)) {
+            if ((Original_unit_id == null)) {
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_specification_id));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_unit_id));
             }
-            if ((Original_specification_quantity.HasValue == true)) {
+            if ((Original_unit_quantity.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_specification_quantity.Value));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_unit_quantity.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
@@ -5441,8 +5439,8 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                     int quantity, 
                     decimal price, 
                     System.DateTime date, 
-                    string specification_id, 
-                    global::System.Nullable<int> specification_quantity, 
+                    string unit_id, 
+                    global::System.Nullable<int> unit_quantity, 
                     string beneficiary_id, 
                     string Original_id, 
                     string Original_account_id, 
@@ -5451,10 +5449,10 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                     int Original_quantity, 
                     decimal Original_price, 
                     System.DateTime Original_date, 
-                    string Original_specification_id, 
-                    global::System.Nullable<int> Original_specification_quantity, 
+                    string Original_unit_id, 
+                    global::System.Nullable<int> Original_unit_quantity, 
                     string Original_beneficiary_id) {
-            return this.Update(Original_id, account_id, name, unit_price, quantity, price, date, specification_id, specification_quantity, beneficiary_id, Original_id, Original_account_id, Original_name, Original_unit_price, Original_quantity, Original_price, Original_date, Original_specification_id, Original_specification_quantity, Original_beneficiary_id);
+            return this.Update(Original_id, account_id, name, unit_price, quantity, price, date, unit_id, unit_quantity, beneficiary_id, Original_id, Original_account_id, Original_name, Original_unit_price, Original_quantity, Original_price, Original_date, Original_unit_id, Original_unit_quantity, Original_beneficiary_id);
         }
     }
     
@@ -6146,7 +6144,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class payment_categoryTableAdapter : global::System.ComponentModel.Component {
+    public partial class payment_modeTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -6160,7 +6158,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public payment_categoryTableAdapter() {
+        public payment_modeTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -6257,29 +6255,29 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "payment_category";
+            tableMapping.DataSetTable = "payment_mode";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("name", "name");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[payment_category] WHERE (([id] = @Original_id) AND ([name] = @" +
-                "Original_name))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[payment_mode] WHERE (([id] = @Original_id) AND ([name] = @Orig" +
+                "inal_name))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[payment_category] ([id], [name]) VALUES (@id, @name);\r\nSELECT " +
-                "id, name FROM payment_category WHERE (id = @id)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[payment_mode] ([id], [name]) VALUES (@id, @name);\r\nSELECT id, " +
+                "name FROM payment_mode WHERE (id = @id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[payment_category] SET [id] = @id, [name] = @name WHERE (([id] = @Or" +
-                "iginal_id) AND ([name] = @Original_name));\r\nSELECT id, name FROM payment_categor" +
-                "y WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[payment_mode] SET [id] = @id, [name] = @name WHERE (([id] = @Origin" +
+                "al_id) AND ([name] = @Original_name));\r\nSELECT id, name FROM payment_mode WHERE " +
+                "(id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6300,7 +6298,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, name FROM dbo.payment_category";
+            this._commandCollection[0].CommandText = "SELECT id, name FROM dbo.payment_mode";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6308,7 +6306,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(JeanieMoneyDataSet.payment_categoryDataTable dataTable) {
+        public virtual int Fill(JeanieMoneyDataSet.payment_modeDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6321,9 +6319,9 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual JeanieMoneyDataSet.payment_categoryDataTable GetData() {
+        public virtual JeanieMoneyDataSet.payment_modeDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            JeanieMoneyDataSet.payment_categoryDataTable dataTable = new JeanieMoneyDataSet.payment_categoryDataTable();
+            JeanieMoneyDataSet.payment_modeDataTable dataTable = new JeanieMoneyDataSet.payment_modeDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6331,7 +6329,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(JeanieMoneyDataSet.payment_categoryDataTable dataTable) {
+        public virtual int Update(JeanieMoneyDataSet.payment_modeDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -6339,7 +6337,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(JeanieMoneyDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "payment_category");
+            return this.Adapter.Update(dataSet, "payment_mode");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6486,7 +6484,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class specificationTableAdapter : global::System.ComponentModel.Component {
+    public partial class unitTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -6500,7 +6498,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public specificationTableAdapter() {
+        public unitTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -6597,29 +6595,29 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "specification";
+            tableMapping.DataSetTable = "unit";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("unit_name", "unit_name");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[specification] WHERE (([id] = @Original_id) AND ([unit_name] =" +
-                " @Original_unit_name))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[unit] WHERE (([id] = @Original_id) AND ([unit_name] = @Origina" +
+                "l_unit_name))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_unit_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[specification] ([id], [unit_name]) VALUES (@id, @unit_name);\r\n" +
-                "SELECT id, unit_name FROM specification WHERE (id = @id)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[unit] ([id], [unit_name]) VALUES (@id, @unit_name);\r\nSELECT id" +
+                ", unit_name FROM unit WHERE (id = @id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unit_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[specification] SET [id] = @id, [unit_name] = @unit_name WHERE (([id" +
-                "] = @Original_id) AND ([unit_name] = @Original_unit_name));\r\nSELECT id, unit_nam" +
-                "e FROM specification WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[unit] SET [id] = @id, [unit_name] = @unit_name WHERE (([id] = @Orig" +
+                "inal_id) AND ([unit_name] = @Original_unit_name));\r\nSELECT id, unit_name FROM un" +
+                "it WHERE (id = @id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@unit_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "unit_name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6640,7 +6638,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, unit_name FROM dbo.specification";
+            this._commandCollection[0].CommandText = "SELECT id, unit_name FROM dbo.unit";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6648,7 +6646,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(JeanieMoneyDataSet.specificationDataTable dataTable) {
+        public virtual int Fill(JeanieMoneyDataSet.unitDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6661,9 +6659,9 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual JeanieMoneyDataSet.specificationDataTable GetData() {
+        public virtual JeanieMoneyDataSet.unitDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            JeanieMoneyDataSet.specificationDataTable dataTable = new JeanieMoneyDataSet.specificationDataTable();
+            JeanieMoneyDataSet.unitDataTable dataTable = new JeanieMoneyDataSet.unitDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6671,7 +6669,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(JeanieMoneyDataSet.specificationDataTable dataTable) {
+        public virtual int Update(JeanieMoneyDataSet.unitDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -6679,7 +6677,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(JeanieMoneyDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "specification");
+            return this.Adapter.Update(dataSet, "unit");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6942,7 +6940,7 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             tableMapping.ColumnMappings.Add("name", "name");
             tableMapping.ColumnMappings.Add("location_name", "location_name");
             tableMapping.ColumnMappings.Add("payer_name", "payer_name");
-            tableMapping.ColumnMappings.Add("payment_category_name", "payment_category_name");
+            tableMapping.ColumnMappings.Add("payment_mode_name", "payment_mode_name");
             tableMapping.ColumnMappings.Add("money", "money");
             this._adapter.TableMappings.Add(tableMapping);
         }
@@ -6960,8 +6958,8 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, name, location_name, payer_name, payment_category_name, money FROM dbo" +
-                ".journal_record";
+            this._commandCollection[0].CommandText = "SELECT id, name, location_name, payer_name, payment_mode_name, money FROM dbo.jou" +
+                "rnal_record";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7012,9 +7010,9 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         
         private memberTableAdapter _memberTableAdapter;
         
-        private payment_categoryTableAdapter _payment_categoryTableAdapter;
+        private payment_modeTableAdapter _payment_modeTableAdapter;
         
-        private specificationTableAdapter _specificationTableAdapter;
+        private unitTableAdapter _unitTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -7106,12 +7104,12 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public payment_categoryTableAdapter payment_categoryTableAdapter {
+        public payment_modeTableAdapter payment_modeTableAdapter {
             get {
-                return this._payment_categoryTableAdapter;
+                return this._payment_modeTableAdapter;
             }
             set {
-                this._payment_categoryTableAdapter = value;
+                this._payment_modeTableAdapter = value;
             }
         }
         
@@ -7120,12 +7118,12 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public specificationTableAdapter specificationTableAdapter {
+        public unitTableAdapter unitTableAdapter {
             get {
-                return this._specificationTableAdapter;
+                return this._unitTableAdapter;
             }
             set {
-                this._specificationTableAdapter = value;
+                this._unitTableAdapter = value;
             }
         }
         
@@ -7168,13 +7166,13 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                             && (this._memberTableAdapter.Connection != null))) {
                     return this._memberTableAdapter.Connection;
                 }
-                if (((this._payment_categoryTableAdapter != null) 
-                            && (this._payment_categoryTableAdapter.Connection != null))) {
-                    return this._payment_categoryTableAdapter.Connection;
+                if (((this._payment_modeTableAdapter != null) 
+                            && (this._payment_modeTableAdapter.Connection != null))) {
+                    return this._payment_modeTableAdapter.Connection;
                 }
-                if (((this._specificationTableAdapter != null) 
-                            && (this._specificationTableAdapter.Connection != null))) {
-                    return this._specificationTableAdapter.Connection;
+                if (((this._unitTableAdapter != null) 
+                            && (this._unitTableAdapter.Connection != null))) {
+                    return this._unitTableAdapter.Connection;
                 }
                 return null;
             }
@@ -7204,10 +7202,10 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                 if ((this._memberTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._payment_categoryTableAdapter != null)) {
+                if ((this._payment_modeTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._specificationTableAdapter != null)) {
+                if ((this._unitTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -7230,12 +7228,12 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._payment_categoryTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.payment_category.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._payment_modeTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.payment_mode.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._payment_categoryTableAdapter.Update(updatedRows));
+                    result = (result + this._payment_modeTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -7258,12 +7256,12 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._specificationTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.specification.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._unitTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.unit.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._specificationTableAdapter.Update(updatedRows));
+                    result = (result + this._unitTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -7303,11 +7301,11 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._payment_categoryTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.payment_category.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._payment_modeTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.payment_mode.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._payment_categoryTableAdapter.Update(addedRows));
+                    result = (result + this._payment_modeTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -7328,11 +7326,11 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._specificationTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.specification.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._unitTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.unit.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._specificationTableAdapter.Update(addedRows));
+                    result = (result + this._unitTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -7378,11 +7376,11 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._specificationTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.specification.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._unitTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.unit.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._specificationTableAdapter.Update(deletedRows));
+                    result = (result + this._unitTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -7403,11 +7401,11 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._payment_categoryTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.payment_category.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._payment_modeTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.payment_mode.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._payment_categoryTableAdapter.Update(deletedRows));
+                    result = (result + this._payment_modeTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -7483,13 +7481,13 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._payment_categoryTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._payment_categoryTableAdapter.Connection) == false))) {
+            if (((this._payment_modeTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._payment_modeTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._specificationTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._specificationTableAdapter.Connection) == false))) {
+            if (((this._unitTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._unitTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -7570,22 +7568,22 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                         adaptersWithAcceptChangesDuringUpdate.Add(this._memberTableAdapter.Adapter);
                     }
                 }
-                if ((this._payment_categoryTableAdapter != null)) {
-                    revertConnections.Add(this._payment_categoryTableAdapter, this._payment_categoryTableAdapter.Connection);
-                    this._payment_categoryTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._payment_categoryTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._payment_categoryTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._payment_categoryTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._payment_categoryTableAdapter.Adapter);
+                if ((this._payment_modeTableAdapter != null)) {
+                    revertConnections.Add(this._payment_modeTableAdapter, this._payment_modeTableAdapter.Connection);
+                    this._payment_modeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._payment_modeTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._payment_modeTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._payment_modeTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._payment_modeTableAdapter.Adapter);
                     }
                 }
-                if ((this._specificationTableAdapter != null)) {
-                    revertConnections.Add(this._specificationTableAdapter, this._specificationTableAdapter.Connection);
-                    this._specificationTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._specificationTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._specificationTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._specificationTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._specificationTableAdapter.Adapter);
+                if ((this._unitTableAdapter != null)) {
+                    revertConnections.Add(this._unitTableAdapter, this._unitTableAdapter.Connection);
+                    this._unitTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._unitTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._unitTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._unitTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._unitTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -7666,13 +7664,13 @@ SELECT id, account_id, name, unit_price, quantity, price, date, specification_id
                     this._memberTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._memberTableAdapter]));
                     this._memberTableAdapter.Transaction = null;
                 }
-                if ((this._payment_categoryTableAdapter != null)) {
-                    this._payment_categoryTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._payment_categoryTableAdapter]));
-                    this._payment_categoryTableAdapter.Transaction = null;
+                if ((this._payment_modeTableAdapter != null)) {
+                    this._payment_modeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._payment_modeTableAdapter]));
+                    this._payment_modeTableAdapter.Transaction = null;
                 }
-                if ((this._specificationTableAdapter != null)) {
-                    this._specificationTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._specificationTableAdapter]));
-                    this._specificationTableAdapter.Transaction = null;
+                if ((this._unitTableAdapter != null)) {
+                    this._unitTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._unitTableAdapter]));
+                    this._unitTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

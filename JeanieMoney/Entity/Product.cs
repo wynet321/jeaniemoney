@@ -16,11 +16,11 @@ namespace JeanieMoney.Entity
         private string abbr ="";
         public string Abbr { get { return abbr; } set { abbr = value; } }
 
-        private string specificationid ="";
-        public string SpecificationId { get { return specificationid; } set { specificationid = value; } }
+        private string unitid ="";
+        public string UnitId { get { return unitid; } set { unitid = value; } }
 
-        private string specificationquantity ="";
-        public string SpecificationQuantity { get { return specificationquantity; } set { specificationquantity = value; } }
+        private string unitquantity ="";
+        public string UnitQuantity { get { return unitquantity; } set { unitquantity = value; } }
 
         private string manufactoryid ="";
         public string ManufactoryId { get { return manufactoryid; } set { manufactoryid = value; } }

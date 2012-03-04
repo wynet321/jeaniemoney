@@ -8,70 +8,70 @@ using System.Data;
 
 namespace JeanieMoney.Action
 {
-    class PaymentCategoryAction
+    class PaymentModeAction
     {
-        public bool createPaymentCategory(PaymentCategory paymentCategory)
+        public bool createPaymentMode(PaymentMode paymentMode)
         {
-            string command = "insert into payment_category values('" + paymentCategory.Id + "','" + paymentCategory.Name + "','" + paymentCategory.Abbr + "')";
+            string command = "insert into payment_mode values('" + paymentMode.Id + "','" + paymentMode.Name + "','" + paymentMode.Abbr + "')";
             if (1 == JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
 
-        public PaymentCategory retrievePaymentCategoryById(string id)
+        public PaymentMode retrievePaymentModeById(string id)
         {
-            string command = "select * from payment_category where id='" + id + "'";
+            string command = "select * from payment_mode where id='" + id + "'";
             DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
-            PaymentCategory paymentCategory = new PaymentCategory();
-            paymentCategory.Id = id;
-            paymentCategory.Name = dataTable.Rows[0]["name"].ToString();
-            paymentCategory.Abbr = dataTable.Rows[0]["abbr"].ToString();
-            return paymentCategory;
+            PaymentMode paymentMode = new PaymentMode();
+            paymentMode.Id = id;
+            paymentMode.Name = dataTable.Rows[0]["name"].ToString();
+            paymentMode.Abbr = dataTable.Rows[0]["abbr"].ToString();
+            return paymentMode;
         }
 
-        public List<PaymentCategory> retrievePaymentCategoryList()
+        public List<PaymentMode> retrievePaymentModeList()
         {
-            string command = "select * from payment_category";
-            List<PaymentCategory> paymentCategoryList = retrievePaymentCategoryListByCommand(command);
-            return paymentCategoryList;
+            string command = "select * from payment_mode";
+            List<PaymentMode> paymentModeList = retrievePaymentModeListByCommand(command);
+            return paymentModeList;
         }
 
-        public bool deletePaymentCategoryById(string id)
+        public bool deletePaymentModeById(string id)
         {
-            string command = "delete from payment_category where id='" + id + "'";
+            string command = "delete from payment_mode where id='" + id + "'";
             if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
-        public List<PaymentCategory> retrievePaymentCategoryListByAbbr(string abbr)
+        public List<PaymentMode> retrievePaymentModeListByAbbr(string abbr)
         {
-            string command = "select * from payment_category where abbr like '" + abbr + "%'";
-            List<PaymentCategory> paymentCategoryList = retrievePaymentCategoryListByCommand(command);
-            return paymentCategoryList;
+            string command = "select * from payment_mode where abbr like '" + abbr + "%'";
+            List<PaymentMode> paymentModeList = retrievePaymentModeListByCommand(command);
+            return paymentModeList;
         }
 
-        public List<PaymentCategory> retrievePaymentCategoryListByCommand(string command)
+        public List<PaymentMode> retrievePaymentModeListByCommand(string command)
         {
             DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
-            List<PaymentCategory> paymentCategoryList = new List<PaymentCategory>();
-            PaymentCategory paymentCategory;
+            List<PaymentMode> paymentModeList = new List<PaymentMode>();
+            PaymentMode paymentMode;
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                paymentCategory = new PaymentCategory();
-                paymentCategory.Id = dataRow["id"].ToString();
-                paymentCategory.Name = dataRow["name"].ToString();
-                paymentCategory.Abbr = dataRow["abbr"].ToString();
-                paymentCategoryList.Add(paymentCategory);
+                paymentMode = new PaymentMode();
+                paymentMode.Id = dataRow["id"].ToString();
+                paymentMode.Name = dataRow["name"].ToString();
+                paymentMode.Abbr = dataRow["abbr"].ToString();
+                paymentModeList.Add(paymentMode);
             }
-            return paymentCategoryList;
+            return paymentModeList;
         }
 
-        public bool updatePaymentCategoryById(PaymentCategory paymentCategory)
+        public bool updatePaymentModeById(PaymentMode paymentMode)
         {
-            string command = "update payment_category set ";
-            if (0 > paymentCategory.Id.Length)
+            string command = "update payment_mode set ";
+            if (0 > paymentMode.Id.Length)
                 return false;
-            command += "name='" + paymentCategory.Name + "',abbr='" + paymentCategory.Abbr + "' Where id='" + paymentCategory.Id.Trim() + "'";
+            command += "name='" + paymentMode.Name + "',abbr='" + paymentMode.Abbr + "' Where id='" + paymentMode.Id.Trim() + "'";
 
             if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;

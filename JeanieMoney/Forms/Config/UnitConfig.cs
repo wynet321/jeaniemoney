@@ -12,28 +12,28 @@ using JeanieMoney.Entity;
 
 namespace JeanieMoney.Forms.Config
 {
-    public partial class SpecificationConfig : BaseConfigForm
+    public partial class UnitConfig : BaseConfigForm
     {
-        SpecificationAction specificationAction;
-        List<Specification> specificationListByAbbr;
-        List<Specification> specificationList;
+        UnitAction unitAction;
+        List<Unit> unitListByAbbr;
+        List<Unit> unitList;
 
-        public SpecificationConfig()
+        public UnitConfig()
         {
             InitializeComponent();
-            specificationAction = new SpecificationAction();
+            unitAction = new UnitAction();
             init();
         }
 
-        public SpecificationConfig(string abbr)
+        public UnitConfig(string abbr)
         {
             InitializeComponent();
-            specificationAction = new SpecificationAction();
+            unitAction = new UnitAction();
             init();
             textBoxAbbr.Text = abbr;
             textBoxAbbr.Enabled = false;
             textBoxKeyword.Enabled = false;
-            listBoxSpecification.Enabled = false;
+            listBoxUnit.Enabled = false;
             buttonDelete.Enabled = false;
             buttonReset.Enabled = false;
             textBoxName.Select();
@@ -48,26 +48,26 @@ namespace JeanieMoney.Forms.Config
         {
             if (0 == textBoxKeyword.Text.Length)
             {
-                listBoxSpecification.DataSource = null;
+                listBoxUnit.DataSource = null;
                 return;
             }
-            specificationListByAbbr = specificationAction.retrieveSpecificationListByAbbr(textBoxKeyword.Text);
-            listBoxSpecification.DisplayMember = "Name";
-            listBoxSpecification.ValueMember = "Id";
-            listBoxSpecification.DataSource = specificationListByAbbr;
-            if (0 < listBoxSpecification.Items.Count)
-                listBoxSpecification.SelectedIndex = 0;
+            unitListByAbbr = unitAction.retrieveUnitListByAbbr(textBoxKeyword.Text);
+            listBoxUnit.DisplayMember = "Name";
+            listBoxUnit.ValueMember = "Id";
+            listBoxUnit.DataSource = unitListByAbbr;
+            if (0 < listBoxUnit.Items.Count)
+                listBoxUnit.SelectedIndex = 0;
         }
 
-        private void listBoxSpecification_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxUnit_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (null != listBoxSpecification.SelectedItem)
+            if (null != listBoxUnit.SelectedItem)
             {
-                textBoxName.Text = ((Specification)listBoxSpecification.SelectedItem).Name;
-                textBoxAbbr.Text = specificationListByAbbr.ElementAt(listBoxSpecification.SelectedIndex).Abbr;
-                specificationList = specificationAction.retrieveSpecificationList();
-                Specification category = new Specification();
-                specificationList.Insert(0, category);
+                textBoxName.Text = ((Unit)listBoxUnit.SelectedItem).Name;
+                textBoxAbbr.Text = unitListByAbbr.ElementAt(listBoxUnit.SelectedIndex).Abbr;
+                unitList = unitAction.retrieveUnitList();
+                Unit category = new Unit();
+                unitList.Insert(0, category);
                
             }
         }
@@ -87,7 +87,7 @@ namespace JeanieMoney.Forms.Config
             this.labelName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
             this.labelSearchAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
 
-            this.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Form/Specification");
+            this.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Form/Unit");
         }
 
         private void init()
@@ -95,24 +95,24 @@ namespace JeanieMoney.Forms.Config
             setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
-            listBoxSpecification.DataSource = null;
+            listBoxUnit.DataSource = null;
             textBoxKeyword.Clear();
-            specificationList = specificationAction.retrieveSpecificationList();
-            Specification specification = new Specification();
-            specificationList.Insert(0, specification);
+            unitList = unitAction.retrieveUnitList();
+            Unit unit = new Unit();
+            unitList.Insert(0, unit);
            
 
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!specificationAction.deleteSpecificationById(specificationListByAbbr.ElementAt(listBoxSpecification.SelectedIndex).Id))
+            if (!unitAction.deleteUnitById(unitListByAbbr.ElementAt(listBoxUnit.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
             }
             MessageBox.Show("delete OK");
-            specificationList = specificationAction.retrieveSpecificationList();
+            unitList = unitAction.retrieveUnitList();
             
             textBoxName.Clear();
             textBoxAbbr.Clear();
@@ -122,18 +122,18 @@ namespace JeanieMoney.Forms.Config
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (null != listBoxSpecification.SelectedItem)
+            if (null != listBoxUnit.SelectedItem)
             {
                 //modify
-                Specification category = new Specification();
-                category.Id = specificationListByAbbr.ElementAt(listBoxSpecification.SelectedIndex).Id;
+                Unit category = new Unit();
+                category.Id = unitListByAbbr.ElementAt(listBoxUnit.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
                 
                 category.Abbr = textBoxAbbr.Text;
-                if (specificationAction.updateSpecificationById(category))
+                if (unitAction.updateUnitById(category))
                 {
                     MessageBox.Show("OK");
-                    specificationList = specificationAction.retrieveSpecificationList();
+                    unitList = unitAction.retrieveUnitList();
                    
                     textBoxName.Clear();
                     textBoxAbbr.Clear();
@@ -148,12 +148,12 @@ namespace JeanieMoney.Forms.Config
             else
             {
                 //insert
-                Specification category=new Specification();
+                Unit category=new Unit();
                 category.Id=Guid.NewGuid().ToString();
                 category.Name=textBoxName.Text;
                 
                 category.Abbr=textBoxAbbr.Text;
-                if (specificationAction.createSpecification(category))
+                if (unitAction.createUnit(category))
                 {
                     MessageBox.Show("OK");
                     init();

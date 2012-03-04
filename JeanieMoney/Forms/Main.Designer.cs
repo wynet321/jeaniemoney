@@ -48,17 +48,17 @@
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
             this.toolStripMainMenu = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonRecordInput = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.journal_recordTableAdapter = new JeanieMoney.JeanieMoneyDataSetTableAdapters.journal_recordTableAdapter();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonCategory = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPayer = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLocation = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonProduct = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSpecification = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonPaymentCategory = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonUnit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPaymentMode = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonBeneficiary = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.journal_recordTableAdapter = new JeanieMoney.JeanieMoneyDataSetTableAdapters.journal_recordTableAdapter();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -71,7 +71,7 @@
             // 
             // statusStripMain
             // 
-            this.statusStripMain.Location = new System.Drawing.Point(0, 660);
+            this.statusStripMain.Location = new System.Drawing.Point(0, 608);
             this.statusStripMain.Name = "statusStripMain";
             this.statusStripMain.Size = new System.Drawing.Size(1264, 22);
             this.statusStripMain.TabIndex = 0;
@@ -85,13 +85,13 @@
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.dataGridViewJournalRecord);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panelSearchCondition);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1264, 430);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1264, 388);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Top;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(1264, 516);
+            this.toolStripContainer1.Size = new System.Drawing.Size(1264, 476);
             this.toolStripContainer1.TabIndex = 1;
             // 
             // toolStripContainer1.TopToolStripPanel
@@ -114,11 +114,11 @@
             this.moneyDataGridViewTextBoxColumn});
             this.dataGridViewJournalRecord.DataSource = this.journalrecordBindingSource;
             this.dataGridViewJournalRecord.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewJournalRecord.Location = new System.Drawing.Point(0, 28);
+            this.dataGridViewJournalRecord.Location = new System.Drawing.Point(0, 26);
             this.dataGridViewJournalRecord.Name = "dataGridViewJournalRecord";
             this.dataGridViewJournalRecord.ReadOnly = true;
             this.dataGridViewJournalRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewJournalRecord.Size = new System.Drawing.Size(1264, 402);
+            this.dataGridViewJournalRecord.Size = new System.Drawing.Size(1264, 362);
             this.dataGridViewJournalRecord.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -151,8 +151,8 @@
             // 
             // paymentcategorynameDataGridViewTextBoxColumn
             // 
-            this.paymentcategorynameDataGridViewTextBoxColumn.DataPropertyName = "payment_category_name";
-            this.paymentcategorynameDataGridViewTextBoxColumn.HeaderText = "payment_category_name";
+            this.paymentcategorynameDataGridViewTextBoxColumn.DataPropertyName = "payment_mode_name";
+            this.paymentcategorynameDataGridViewTextBoxColumn.HeaderText = "payment_mode_name";
             this.paymentcategorynameDataGridViewTextBoxColumn.Name = "paymentcategorynameDataGridViewTextBoxColumn";
             this.paymentcategorynameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -183,24 +183,24 @@
             this.panelSearchCondition.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSearchCondition.Location = new System.Drawing.Point(0, 0);
             this.panelSearchCondition.Name = "panelSearchCondition";
-            this.panelSearchCondition.Size = new System.Drawing.Size(1264, 28);
+            this.panelSearchCondition.Size = new System.Drawing.Size(1264, 26);
             this.panelSearchCondition.TabIndex = 7;
             // 
             // labelSeperator
             // 
             this.labelSeperator.AutoSize = true;
-            this.labelSeperator.Location = new System.Drawing.Point(185, 7);
+            this.labelSeperator.Location = new System.Drawing.Point(185, 6);
             this.labelSeperator.Name = "labelSeperator";
-            this.labelSeperator.Size = new System.Drawing.Size(10, 13);
+            this.labelSeperator.Size = new System.Drawing.Size(11, 12);
             this.labelSeperator.TabIndex = 6;
             this.labelSeperator.Text = "-";
             // 
             // lablePeriod
             // 
             this.lablePeriod.AutoSize = true;
-            this.lablePeriod.Location = new System.Drawing.Point(12, 7);
+            this.lablePeriod.Location = new System.Drawing.Point(12, 6);
             this.lablePeriod.Name = "lablePeriod";
-            this.lablePeriod.Size = new System.Drawing.Size(37, 13);
+            this.lablePeriod.Size = new System.Drawing.Size(41, 12);
             this.lablePeriod.TabIndex = 5;
             this.lablePeriod.Text = "Period";
             // 
@@ -208,14 +208,14 @@
             // 
             this.dateTimePickerStart.Location = new System.Drawing.Point(53, 4);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
-            this.dateTimePickerStart.Size = new System.Drawing.Size(125, 20);
+            this.dateTimePickerStart.Size = new System.Drawing.Size(125, 21);
             this.dateTimePickerStart.TabIndex = 1;
             // 
             // buttonSearch
             // 
             this.buttonSearch.Location = new System.Drawing.Point(344, 4);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 21);
+            this.buttonSearch.Size = new System.Drawing.Size(75, 19);
             this.buttonSearch.TabIndex = 3;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -224,7 +224,7 @@
             // 
             this.dateTimePickerEnd.Location = new System.Drawing.Point(201, 4);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
-            this.dateTimePickerEnd.Size = new System.Drawing.Size(125, 20);
+            this.dateTimePickerEnd.Size = new System.Drawing.Size(125, 21);
             this.dateTimePickerEnd.TabIndex = 2;
             // 
             // toolStripMainMenu
@@ -237,12 +237,12 @@
             this.toolStripButtonPayer,
             this.toolStripButtonLocation,
             this.toolStripButtonProduct,
-            this.toolStripButtonSpecification,
-            this.toolStripButtonPaymentCategory,
+            this.toolStripButtonUnit,
+            this.toolStripButtonPaymentMode,
             this.toolStripButtonBeneficiary});
             this.toolStripMainMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMainMenu.Name = "toolStripMainMenu";
-            this.toolStripMainMenu.Size = new System.Drawing.Size(654, 86);
+            this.toolStripMainMenu.Size = new System.Drawing.Size(648, 88);
             this.toolStripMainMenu.TabIndex = 0;
             // 
             // toolStripButtonRecordInput
@@ -251,11 +251,96 @@
             this.toolStripButtonRecordInput.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonRecordInput.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRecordInput.Name = "toolStripButtonRecordInput";
-            this.toolStripButtonRecordInput.Size = new System.Drawing.Size(76, 83);
+            this.toolStripButtonRecordInput.Size = new System.Drawing.Size(84, 85);
             this.toolStripButtonRecordInput.Text = "RecordInput";
             this.toolStripButtonRecordInput.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonRecordInput.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonRecordInput.Click += new System.EventHandler(this.toolStripButtonRecordInput_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 88);
+            // 
+            // toolStripButtonCategory
+            // 
+            this.toolStripButtonCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.toolStripButtonCategory.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
+            this.toolStripButtonCategory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonCategory.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCategory.Name = "toolStripButtonCategory";
+            this.toolStripButtonCategory.Size = new System.Drawing.Size(68, 85);
+            this.toolStripButtonCategory.Text = "Category";
+            this.toolStripButtonCategory.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripButtonCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonCategory.Click += new System.EventHandler(this.toolStripButtonCategory_Click);
+            // 
+            // toolStripButtonPayer
+            // 
+            this.toolStripButtonPayer.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
+            this.toolStripButtonPayer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonPayer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPayer.Name = "toolStripButtonPayer";
+            this.toolStripButtonPayer.Size = new System.Drawing.Size(68, 85);
+            this.toolStripButtonPayer.Text = "Payer";
+            this.toolStripButtonPayer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripButtonPayer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonPayer.Click += new System.EventHandler(this.toolStripButtonPayer_Click);
+            // 
+            // toolStripButtonLocation
+            // 
+            this.toolStripButtonLocation.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
+            this.toolStripButtonLocation.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonLocation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLocation.Name = "toolStripButtonLocation";
+            this.toolStripButtonLocation.Size = new System.Drawing.Size(68, 85);
+            this.toolStripButtonLocation.Text = "Location";
+            this.toolStripButtonLocation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonLocation.Click += new System.EventHandler(this.toolStripButtonLocation_Click);
+            // 
+            // toolStripButtonProduct
+            // 
+            this.toolStripButtonProduct.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
+            this.toolStripButtonProduct.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonProduct.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonProduct.Name = "toolStripButtonProduct";
+            this.toolStripButtonProduct.Size = new System.Drawing.Size(68, 85);
+            this.toolStripButtonProduct.Text = "Product";
+            this.toolStripButtonProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonProduct.Click += new System.EventHandler(this.toolStripButtonProduct_Click);
+            // 
+            // toolStripButtonUnit
+            // 
+            this.toolStripButtonUnit.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
+            this.toolStripButtonUnit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonUnit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonUnit.Name = "toolStripButtonUnit";
+            this.toolStripButtonUnit.Size = new System.Drawing.Size(68, 85);
+            this.toolStripButtonUnit.Text = "Unit";
+            this.toolStripButtonUnit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonUnit.Click += new System.EventHandler(this.toolStripButtonUnit_Click);
+            // 
+            // toolStripButtonPaymentMode
+            // 
+            this.toolStripButtonPaymentMode.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
+            this.toolStripButtonPaymentMode.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonPaymentMode.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPaymentMode.Name = "toolStripButtonPaymentMode";
+            this.toolStripButtonPaymentMode.Size = new System.Drawing.Size(100, 85);
+            this.toolStripButtonPaymentMode.Text = "Payment Mode";
+            this.toolStripButtonPaymentMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonPaymentMode.Click += new System.EventHandler(this.toolStripButtonPaymentMode_Click);
+            // 
+            // toolStripButtonBeneficiary
+            // 
+            this.toolStripButtonBeneficiary.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
+            this.toolStripButtonBeneficiary.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonBeneficiary.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonBeneficiary.Name = "toolStripButtonBeneficiary";
+            this.toolStripButtonBeneficiary.Size = new System.Drawing.Size(75, 85);
+            this.toolStripButtonBeneficiary.Text = "Beneficiary";
+            this.toolStripButtonBeneficiary.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonBeneficiary.Click += new System.EventHandler(this.toolStripButtonBeneficiary_Click);
             // 
             // toolStripButton
             // 
@@ -280,96 +365,11 @@
             // 
             this.journal_recordTableAdapter.ClearBeforeFill = true;
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 86);
-            // 
-            // toolStripButtonCategory
-            // 
-            this.toolStripButtonCategory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.toolStripButtonCategory.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
-            this.toolStripButtonCategory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonCategory.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonCategory.Name = "toolStripButtonCategory";
-            this.toolStripButtonCategory.Size = new System.Drawing.Size(68, 83);
-            this.toolStripButtonCategory.Text = "Category";
-            this.toolStripButtonCategory.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripButtonCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonCategory.Click += new System.EventHandler(this.toolStripButtonCategory_Click);
-            // 
-            // toolStripButtonPayer
-            // 
-            this.toolStripButtonPayer.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
-            this.toolStripButtonPayer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonPayer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonPayer.Name = "toolStripButtonPayer";
-            this.toolStripButtonPayer.Size = new System.Drawing.Size(68, 83);
-            this.toolStripButtonPayer.Text = "Payer";
-            this.toolStripButtonPayer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripButtonPayer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonPayer.Click += new System.EventHandler(this.toolStripButtonPayer_Click);
-            // 
-            // toolStripButtonLocation
-            // 
-            this.toolStripButtonLocation.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
-            this.toolStripButtonLocation.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonLocation.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLocation.Name = "toolStripButtonLocation";
-            this.toolStripButtonLocation.Size = new System.Drawing.Size(68, 83);
-            this.toolStripButtonLocation.Text = "Location";
-            this.toolStripButtonLocation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonLocation.Click += new System.EventHandler(this.toolStripButtonLocation_Click);
-            // 
-            // toolStripButtonProduct
-            // 
-            this.toolStripButtonProduct.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
-            this.toolStripButtonProduct.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonProduct.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonProduct.Name = "toolStripButtonProduct";
-            this.toolStripButtonProduct.Size = new System.Drawing.Size(68, 83);
-            this.toolStripButtonProduct.Text = "Product";
-            this.toolStripButtonProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonProduct.Click += new System.EventHandler(this.toolStripButtonProduct_Click);
-            // 
-            // toolStripButtonSpecification
-            // 
-            this.toolStripButtonSpecification.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
-            this.toolStripButtonSpecification.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonSpecification.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSpecification.Name = "toolStripButtonSpecification";
-            this.toolStripButtonSpecification.Size = new System.Drawing.Size(79, 83);
-            this.toolStripButtonSpecification.Text = "Specification";
-            this.toolStripButtonSpecification.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonSpecification.Click += new System.EventHandler(this.toolStripButtonSpecification_Click);
-            // 
-            // toolStripButtonPaymentCategory
-            // 
-            this.toolStripButtonPaymentCategory.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
-            this.toolStripButtonPaymentCategory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonPaymentCategory.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonPaymentCategory.Name = "toolStripButtonPaymentCategory";
-            this.toolStripButtonPaymentCategory.Size = new System.Drawing.Size(109, 83);
-            this.toolStripButtonPaymentCategory.Text = "Payment Category";
-            this.toolStripButtonPaymentCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonPaymentCategory.Click += new System.EventHandler(this.toolStripButtonPaymentCategory_Click);
-            // 
-            // toolStripButtonBeneficiary
-            // 
-            this.toolStripButtonBeneficiary.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
-            this.toolStripButtonBeneficiary.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonBeneficiary.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonBeneficiary.Name = "toolStripButtonBeneficiary";
-            this.toolStripButtonBeneficiary.Size = new System.Drawing.Size(69, 83);
-            this.toolStripButtonBeneficiary.Text = "Beneficiary";
-            this.toolStripButtonBeneficiary.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonBeneficiary.Click += new System.EventHandler(this.toolStripButtonBeneficiary_Click);
-            // 
             // formMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.ClientSize = new System.Drawing.Size(1264, 630);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.statusStripMain);
             this.Name = "formMain";
@@ -422,8 +422,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonPayer;
         private System.Windows.Forms.ToolStripButton toolStripButtonLocation;
         private System.Windows.Forms.ToolStripButton toolStripButtonProduct;
-        private System.Windows.Forms.ToolStripButton toolStripButtonSpecification;
-        private System.Windows.Forms.ToolStripButton toolStripButtonPaymentCategory;
+        private System.Windows.Forms.ToolStripButton toolStripButtonUnit;
+        private System.Windows.Forms.ToolStripButton toolStripButtonPaymentMode;
         private System.Windows.Forms.ToolStripButton toolStripButtonBeneficiary;
     }
 }

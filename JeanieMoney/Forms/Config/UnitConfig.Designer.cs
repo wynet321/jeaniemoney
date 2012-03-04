@@ -1,7 +1,7 @@
 ﻿using JeanieMoney.Utility;
 namespace JeanieMoney.Forms.Config
 {
-    partial class SpecificationConfig:BaseConfigForm
+    partial class UnitConfig:BaseConfigForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,7 @@ namespace JeanieMoney.Forms.Config
             this.labelAbbr = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
-            this.listBoxSpecification = new System.Windows.Forms.ListBox();
+            this.listBoxUnit = new System.Windows.Forms.ListBox();
             this.textBoxKeyword = new System.Windows.Forms.TextBox();
             this.labelSearchAbbr = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
@@ -104,14 +104,14 @@ namespace JeanieMoney.Forms.Config
             this.labelName.TabIndex = 29;
             this.labelName.Text = "Name";
             // 
-            // listBoxSpecification
+            // listBoxUnit
             // 
-            this.listBoxSpecification.FormattingEnabled = true;
-            this.listBoxSpecification.Location = new System.Drawing.Point(20, 52);
-            this.listBoxSpecification.Name = "listBoxSpecification";
-            this.listBoxSpecification.Size = new System.Drawing.Size(199, 147);
-            this.listBoxSpecification.TabIndex = 28;
-            this.listBoxSpecification.SelectedIndexChanged += new System.EventHandler(this.listBoxSpecification_SelectedIndexChanged);
+            this.listBoxUnit.FormattingEnabled = true;
+            this.listBoxUnit.Location = new System.Drawing.Point(20, 52);
+            this.listBoxUnit.Name = "listBoxUnit";
+            this.listBoxUnit.Size = new System.Drawing.Size(199, 147);
+            this.listBoxUnit.TabIndex = 28;
+            this.listBoxUnit.SelectedIndexChanged += new System.EventHandler(this.listBoxUnit_SelectedIndexChanged);
             // 
             // textBoxKeyword
             // 
@@ -140,7 +140,7 @@ namespace JeanieMoney.Forms.Config
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // SpecificationConfig
+            // UnitConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -152,12 +152,12 @@ namespace JeanieMoney.Forms.Config
             this.Controls.Add(this.labelAbbr);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.listBoxSpecification);
+            this.Controls.Add(this.listBoxUnit);
             this.Controls.Add(this.textBoxKeyword);
             this.Controls.Add(this.labelSearchAbbr);
             this.Controls.Add(this.buttonOK);
-            this.Name = "SpecificationConfig";
-            this.Text = "SpecificationConfig";
+            this.Name = "UnitConfig";
+            this.Text = "UnitConfig";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,7 +172,7 @@ namespace JeanieMoney.Forms.Config
         private System.Windows.Forms.Label labelAbbr;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.ListBox listBoxSpecification;
+        private System.Windows.Forms.ListBox listBoxUnit;
         private System.Windows.Forms.TextBox textBoxKeyword;
         private System.Windows.Forms.Label labelSearchAbbr;
         private System.Windows.Forms.Button buttonOK;

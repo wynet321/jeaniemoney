@@ -45,8 +45,8 @@
             this.textBoxPayer = new System.Windows.Forms.TextBox();
             this.listBoxCategory = new System.Windows.Forms.ListBox();
             this.groupBoxSummary = new System.Windows.Forms.GroupBox();
-            this.labelSummaryPaymentCategory = new System.Windows.Forms.Label();
-            this.labelSummaryPaymentCategoryResult = new System.Windows.Forms.Label();
+            this.labelSummaryPaymentMode = new System.Windows.Forms.Label();
+            this.labelSummaryPaymentModeResult = new System.Windows.Forms.Label();
             this.listViewSummaryDetails = new System.Windows.Forms.ListView();
             this.labelSummaryPayerResult = new System.Windows.Forms.Label();
             this.labelSummaryPayer = new System.Windows.Forms.Label();
@@ -66,7 +66,7 @@
             this.listBoxLocation = new System.Windows.Forms.ListBox();
             this.listBoxDetailProduct = new System.Windows.Forms.ListBox();
             this.labelDetailManufactoryName = new System.Windows.Forms.Label();
-            this.labelDetailSpecification = new System.Windows.Forms.Label();
+            this.labelDetailUnit = new System.Windows.Forms.Label();
             this.buttonDetailRemoveFromSummary = new System.Windows.Forms.Button();
             this.buttonDetailAddToSummary = new System.Windows.Forms.Button();
             this.listBoxDetailBeneficiary = new System.Windows.Forms.ListBox();
@@ -87,11 +87,11 @@
             this.labelDetailProductResultTitle = new System.Windows.Forms.Label();
             this.labelDetailPriceAverageResult = new System.Windows.Forms.Label();
             this.labelDetailManufactoryResult = new System.Windows.Forms.Label();
-            this.labelDetailSpecificationResult = new System.Windows.Forms.Label();
+            this.labelDetailUnitResult = new System.Windows.Forms.Label();
             this.labelDetailProductResult = new System.Windows.Forms.Label();
-            this.listBoxPaymentCategory = new System.Windows.Forms.ListBox();
-            this.labelPaymentCategory = new System.Windows.Forms.Label();
-            this.textBoxPaymentCategory = new System.Windows.Forms.TextBox();
+            this.listBoxPaymentMode = new System.Windows.Forms.ListBox();
+            this.labelPaymentMode = new System.Windows.Forms.Label();
+            this.textBoxPaymentMode = new System.Windows.Forms.TextBox();
             this.groupBoxInOut.SuspendLayout();
             this.groupBoxSummary.SuspendLayout();
             this.panelDetails.SuspendLayout();
@@ -257,8 +257,8 @@
             // 
             // groupBoxSummary
             // 
-            this.groupBoxSummary.Controls.Add(this.labelSummaryPaymentCategory);
-            this.groupBoxSummary.Controls.Add(this.labelSummaryPaymentCategoryResult);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryPaymentMode);
+            this.groupBoxSummary.Controls.Add(this.labelSummaryPaymentModeResult);
             this.groupBoxSummary.Controls.Add(this.listViewSummaryDetails);
             this.groupBoxSummary.Controls.Add(this.labelSummaryPayerResult);
             this.groupBoxSummary.Controls.Add(this.labelSummaryPayer);
@@ -280,22 +280,22 @@
             this.groupBoxSummary.TabStop = false;
             this.groupBoxSummary.Text = "Summary";
             // 
-            // labelSummaryPaymentCategory
+            // labelSummaryPaymentMode
             // 
-            this.labelSummaryPaymentCategory.AutoSize = true;
-            this.labelSummaryPaymentCategory.Location = new System.Drawing.Point(146, 72);
-            this.labelSummaryPaymentCategory.Name = "labelSummaryPaymentCategory";
-            this.labelSummaryPaymentCategory.Size = new System.Drawing.Size(93, 13);
-            this.labelSummaryPaymentCategory.TabIndex = 16;
-            this.labelSummaryPaymentCategory.Text = "PaymentCategory:";
+            this.labelSummaryPaymentMode.AutoSize = true;
+            this.labelSummaryPaymentMode.Location = new System.Drawing.Point(146, 72);
+            this.labelSummaryPaymentMode.Name = "labelSummaryPaymentMode";
+            this.labelSummaryPaymentMode.Size = new System.Drawing.Size(93, 13);
+            this.labelSummaryPaymentMode.TabIndex = 16;
+            this.labelSummaryPaymentMode.Text = "PaymentMode:";
             // 
-            // labelSummaryPaymentCategoryResult
+            // labelSummaryPaymentModeResult
             // 
-            this.labelSummaryPaymentCategoryResult.AutoSize = true;
-            this.labelSummaryPaymentCategoryResult.Location = new System.Drawing.Point(253, 72);
-            this.labelSummaryPaymentCategoryResult.Name = "labelSummaryPaymentCategoryResult";
-            this.labelSummaryPaymentCategoryResult.Size = new System.Drawing.Size(0, 13);
-            this.labelSummaryPaymentCategoryResult.TabIndex = 15;
+            this.labelSummaryPaymentModeResult.AutoSize = true;
+            this.labelSummaryPaymentModeResult.Location = new System.Drawing.Point(253, 72);
+            this.labelSummaryPaymentModeResult.Name = "labelSummaryPaymentModeResult";
+            this.labelSummaryPaymentModeResult.Size = new System.Drawing.Size(0, 13);
+            this.labelSummaryPaymentModeResult.TabIndex = 15;
             // 
             // listViewSummaryDetails
             // 
@@ -474,14 +474,14 @@
             this.labelDetailManufactoryName.TabIndex = 42;
             this.labelDetailManufactoryName.Text = "ManufactoryName";
             // 
-            // labelDetailSpecification
+            // labelDetailUnit
             // 
-            this.labelDetailSpecification.AutoSize = true;
-            this.labelDetailSpecification.Location = new System.Drawing.Point(24, 57);
-            this.labelDetailSpecification.Name = "labelDetailSpecification";
-            this.labelDetailSpecification.Size = new System.Drawing.Size(68, 13);
-            this.labelDetailSpecification.TabIndex = 41;
-            this.labelDetailSpecification.Text = "Specification";
+            this.labelDetailUnit.AutoSize = true;
+            this.labelDetailUnit.Location = new System.Drawing.Point(24, 57);
+            this.labelDetailUnit.Name = "labelDetailUnit";
+            this.labelDetailUnit.Size = new System.Drawing.Size(68, 13);
+            this.labelDetailUnit.TabIndex = 41;
+            this.labelDetailUnit.Text = "Unit";
             // 
             // buttonDetailRemoveFromSummary
             // 
@@ -626,12 +626,12 @@
             this.panelDetails.Controls.Add(this.labelDetailProductResultTitle);
             this.panelDetails.Controls.Add(this.labelDetailPriceAverageResult);
             this.panelDetails.Controls.Add(this.labelDetailManufactoryResult);
-            this.panelDetails.Controls.Add(this.labelDetailSpecificationResult);
+            this.panelDetails.Controls.Add(this.labelDetailUnitResult);
             this.panelDetails.Controls.Add(this.labelDetailProductResult);
             this.panelDetails.Controls.Add(this.listBoxDetailProduct);
             this.panelDetails.Controls.Add(this.labelDetailManufactoryName);
             this.panelDetails.Controls.Add(this.textBoxDetailProduct);
-            this.panelDetails.Controls.Add(this.labelDetailSpecification);
+            this.panelDetails.Controls.Add(this.labelDetailUnit);
             this.panelDetails.Controls.Add(this.labelDetailProduct);
             this.panelDetails.Controls.Add(this.buttonDetailRemoveFromSummary);
             this.panelDetails.Controls.Add(this.buttonDetailAddToSummary);
@@ -690,13 +690,13 @@
             this.labelDetailManufactoryResult.Size = new System.Drawing.Size(0, 13);
             this.labelDetailManufactoryResult.TabIndex = 45;
             // 
-            // labelDetailSpecificationResult
+            // labelDetailUnitResult
             // 
-            this.labelDetailSpecificationResult.AutoSize = true;
-            this.labelDetailSpecificationResult.Location = new System.Drawing.Point(98, 57);
-            this.labelDetailSpecificationResult.Name = "labelDetailSpecificationResult";
-            this.labelDetailSpecificationResult.Size = new System.Drawing.Size(0, 13);
-            this.labelDetailSpecificationResult.TabIndex = 44;
+            this.labelDetailUnitResult.AutoSize = true;
+            this.labelDetailUnitResult.Location = new System.Drawing.Point(98, 57);
+            this.labelDetailUnitResult.Name = "labelDetailUnitResult";
+            this.labelDetailUnitResult.Size = new System.Drawing.Size(0, 13);
+            this.labelDetailUnitResult.TabIndex = 44;
             // 
             // labelDetailProductResult
             // 
@@ -706,44 +706,44 @@
             this.labelDetailProductResult.Size = new System.Drawing.Size(0, 13);
             this.labelDetailProductResult.TabIndex = 43;
             // 
-            // listBoxPaymentCategory
+            // listBoxPaymentMode
             // 
-            this.listBoxPaymentCategory.FormattingEnabled = true;
-            this.listBoxPaymentCategory.Location = new System.Drawing.Point(119, 118);
-            this.listBoxPaymentCategory.Name = "listBoxPaymentCategory";
-            this.listBoxPaymentCategory.Size = new System.Drawing.Size(184, 147);
-            this.listBoxPaymentCategory.TabIndex = 0;
-            this.listBoxPaymentCategory.TabStop = false;
-            this.listBoxPaymentCategory.Click += new System.EventHandler(this.listBoxPaymentCategory_Click);
+            this.listBoxPaymentMode.FormattingEnabled = true;
+            this.listBoxPaymentMode.Location = new System.Drawing.Point(119, 118);
+            this.listBoxPaymentMode.Name = "listBoxPaymentMode";
+            this.listBoxPaymentMode.Size = new System.Drawing.Size(184, 147);
+            this.listBoxPaymentMode.TabIndex = 0;
+            this.listBoxPaymentMode.TabStop = false;
+            this.listBoxPaymentMode.Click += new System.EventHandler(this.listBoxPaymentMode_Click);
             // 
-            // labelPaymentCategory
+            // labelPaymentMode
             // 
-            this.labelPaymentCategory.AutoSize = true;
-            this.labelPaymentCategory.Location = new System.Drawing.Point(18, 100);
-            this.labelPaymentCategory.Name = "labelPaymentCategory";
-            this.labelPaymentCategory.Size = new System.Drawing.Size(90, 13);
-            this.labelPaymentCategory.TabIndex = 44;
-            this.labelPaymentCategory.Text = "PaymentCategory";
+            this.labelPaymentMode.AutoSize = true;
+            this.labelPaymentMode.Location = new System.Drawing.Point(18, 100);
+            this.labelPaymentMode.Name = "labelPaymentMode";
+            this.labelPaymentMode.Size = new System.Drawing.Size(90, 13);
+            this.labelPaymentMode.TabIndex = 44;
+            this.labelPaymentMode.Text = "PaymentMode";
             // 
-            // textBoxPaymentCategory
+            // textBoxPaymentMode
             // 
-            this.textBoxPaymentCategory.Location = new System.Drawing.Point(119, 96);
-            this.textBoxPaymentCategory.Name = "textBoxPaymentCategory";
-            this.textBoxPaymentCategory.Size = new System.Drawing.Size(184, 20);
-            this.textBoxPaymentCategory.TabIndex = 8;
-            this.textBoxPaymentCategory.TextChanged += new System.EventHandler(this.textBoxPaymentCategory_TextChanged);
-            this.textBoxPaymentCategory.Enter += new System.EventHandler(this.textBoxPaymentCategory_TextChanged);
-            this.textBoxPaymentCategory.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPaymentCategory_KeyUp);
-            this.textBoxPaymentCategory.Leave += new System.EventHandler(this.textBoxPaymentCategory_Leave);
+            this.textBoxPaymentMode.Location = new System.Drawing.Point(119, 96);
+            this.textBoxPaymentMode.Name = "textBoxPaymentMode";
+            this.textBoxPaymentMode.Size = new System.Drawing.Size(184, 20);
+            this.textBoxPaymentMode.TabIndex = 8;
+            this.textBoxPaymentMode.TextChanged += new System.EventHandler(this.textBoxPaymentMode_TextChanged);
+            this.textBoxPaymentMode.Enter += new System.EventHandler(this.textBoxPaymentMode_TextChanged);
+            this.textBoxPaymentMode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPaymentMode_KeyUp);
+            this.textBoxPaymentMode.Leave += new System.EventHandler(this.textBoxPaymentMode_Leave);
             // 
             // RecordInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 553);
-            this.Controls.Add(this.listBoxPaymentCategory);
-            this.Controls.Add(this.labelPaymentCategory);
-            this.Controls.Add(this.textBoxPaymentCategory);
+            this.Controls.Add(this.listBoxPaymentMode);
+            this.Controls.Add(this.labelPaymentMode);
+            this.Controls.Add(this.textBoxPaymentMode);
             this.Controls.Add(this.listBoxLocation);
             this.Controls.Add(this.listBoxPayer);
             this.Controls.Add(this.groupBoxSummary);
@@ -816,7 +816,7 @@
         private System.Windows.Forms.ListBox listBoxLocation;
         private System.Windows.Forms.ListBox listBoxDetailProduct;
         private System.Windows.Forms.Label labelDetailManufactoryName;
-        private System.Windows.Forms.Label labelDetailSpecification;
+        private System.Windows.Forms.Label labelDetailUnit;
         private System.Windows.Forms.Button buttonDetailRemoveFromSummary;
         private System.Windows.Forms.Button buttonDetailAddToSummary;
         private System.Windows.Forms.ListBox listBoxDetailBeneficiary;
@@ -834,16 +834,16 @@
         private System.Windows.Forms.Panel panelDetails;
         private System.Windows.Forms.Label labelDetailPriceAverageResult;
         private System.Windows.Forms.Label labelDetailManufactoryResult;
-        private System.Windows.Forms.Label labelDetailSpecificationResult;
+        private System.Windows.Forms.Label labelDetailUnitResult;
         private System.Windows.Forms.Label labelDetailProductResult;
         private System.Windows.Forms.Label labelDetailProductResultTitle;
         private System.Windows.Forms.Label labelDetailBeneficiaryResult;
         private System.Windows.Forms.ListView listViewSummaryDetails;
         private System.Windows.Forms.Label labelDetailTotalResult;
-        private System.Windows.Forms.ListBox listBoxPaymentCategory;
-        private System.Windows.Forms.Label labelPaymentCategory;
-        private System.Windows.Forms.TextBox textBoxPaymentCategory;
-        private System.Windows.Forms.Label labelSummaryPaymentCategory;
-        private System.Windows.Forms.Label labelSummaryPaymentCategoryResult;
+        private System.Windows.Forms.ListBox listBoxPaymentMode;
+        private System.Windows.Forms.Label labelPaymentMode;
+        private System.Windows.Forms.TextBox textBoxPaymentMode;
+        private System.Windows.Forms.Label labelSummaryPaymentMode;
+        private System.Windows.Forms.Label labelSummaryPaymentModeResult;
     }
 }

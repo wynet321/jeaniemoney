@@ -5,13 +5,13 @@ using System.Text;
 
 namespace JeanieMoney.Entity
 {
-    class ProductSpecificationManufactory
+    class ProductUnitManufactory
     {
         private string id;
         public string Id { get { return id; } set { id = value; } }
 
-        private string specificationid;
-        public string SpecificationId { get { return specificationid; } set { specificationid = value; } }
+        private string unitid;
+        public string UnitId { get { return unitid; } set { unitid = value; } }
 
         private string manufactoryid;
         public string ManufactoryId { get { return manufactoryid; } set { manufactoryid = value; } }
@@ -22,11 +22,11 @@ namespace JeanieMoney.Entity
         private string abbr = "";
         public string Abbr { get { return abbr; } set { abbr = value; } }
 
-        private string specification = "";
-        public string Specification { get { return specification; } set { specification = value; } }
+        private string unit = "";
+        public string Unit { get { return unit; } set { unit = value; } }
 
-        private string namespecification = "";
-        public string NameSpecification { get { return namespecification; } set { namespecification = value; } }
+        private string nameunit = "";
+        public string NameUnit { get { return nameunit; } set { nameunit = value; } }
 
         private string manufactoryname = "";
         public string ManufactoryName { get { return manufactoryname; } set { manufactoryname = value; } }

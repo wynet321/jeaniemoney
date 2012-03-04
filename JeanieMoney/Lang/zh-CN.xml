@@ -19,10 +19,10 @@
       <Payer>Payer</Payer>
       <Location>Location</Location>
       <Category>Category</Category>
-      <PaymentCategory>Payment Category</PaymentCategory>
+      <PaymentMode>Payment Mode</PaymentMode>
       <Details>Details</Details>
       <Beneficiary>Beneficiary</Beneficiary>
-      <Specification>Specification</Specification>
+      <Unit>Unit</Unit>
       <Manufactory>Manufactory</Manufactory>
       <AveragePrice>Average Price</AveragePrice>
       <Price>Price</Price>
@@ -45,14 +45,14 @@
         <Name>Name</Name>
         <Location>Location</Location>
         <Payer>Payer</Payer>
-        <PaymentCategory>Payment Category</PaymentCategory>
+        <PaymentMode>Payment Mode</PaymentMode>
         <Money>Money</Money>
       </Column>
     </DataGridView>
     <ListView>
       <Column>
         <Name>Name</Name>
-        <Specification>Specification</Specification>
+        <Unit>Unit</Unit>
         <Manufactory>Manufactory</Manufactory>
         <Total>Total</Total>
         <Quantity>Quantity</Quantity>
@@ -67,9 +67,9 @@
       <Category>Category Configruation</Category>
       <Location>Location Configuration</Location>
       <Payer>Payer Configuration</Payer>
-      <PaymentCategory>Payment Category Configuration</PaymentCategory>
+      <PaymentMode>Payment Mode Configuration</PaymentMode>
       <Product>Product Configuration</Product>
-      <Specification>Specification Configuration</Specification>
+      <Unit>Unit Configuration</Unit>
     </Form>
   </Caption>
   <Message>
