@@ -29,7 +29,7 @@ namespace JeanieMoney.Forms
             this.nameDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/Name");
             this.locationnameDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/Location");
             this.payernameDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/Payer");
-            this.paymentcategorynameDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/PaymentCategory");
+            this.paymentcategorynameDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/PaymentMode");
             this.moneyDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/Money");
             
             this.lablePeriod.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Period");
@@ -78,15 +78,15 @@ namespace JeanieMoney.Forms
             pc.ShowDialog();
         }
 
-        private void toolStripButtonSpecification_Click(object sender, EventArgs e)
+        private void toolStripButtonUnit_Click(object sender, EventArgs e)
         {
-            SpecificationConfig sc = new SpecificationConfig();
+            UnitConfig sc = new UnitConfig();
             sc.ShowDialog();
         }
 
-        private void toolStripButtonPaymentCategory_Click(object sender, EventArgs e)
+        private void toolStripButtonPaymentMode_Click(object sender, EventArgs e)
         {
-            PaymentCategoryConfig pcc = new PaymentCategoryConfig();
+            PaymentModeConfig pcc = new PaymentModeConfig();
             pcc.ShowDialog();
         }
 

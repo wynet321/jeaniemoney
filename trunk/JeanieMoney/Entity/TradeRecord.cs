@@ -20,7 +20,7 @@ namespace JeanieMoney.Entity
         public string LocationId { get { return locationid; } set { locationid = value; } }
 
         private string paymentcategoryid = "";
-        public string PaymentCategoryId { get { return paymentcategoryid; } set { paymentcategoryid = value; } }
+        public string PaymentModeId { get { return paymentcategoryid; } set { paymentcategoryid = value; } }
 
         private string money = "";
         public string Money { get { return money; } set { money = value; } }

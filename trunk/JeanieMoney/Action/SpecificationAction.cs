@@ -8,70 +8,70 @@ using System.Data;
 
 namespace JeanieMoney.Action
 {
-    class SpecificationAction
+    class UnitAction
     {
-        public bool createSpecification(Specification specification)
+        public bool createUnit(Unit unit)
         {
-            string command = "insert into specification values('" + specification.Id + "','" + specification.Name + "','" + specification.Abbr + "')";
+            string command = "insert into unit values('" + unit.Id + "','" + unit.Name + "','" + unit.Abbr + "')";
             if (1== JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
 
-        public Specification retrieveSpecificationById(string id)
+        public Unit retrieveUnitById(string id)
         {
-            string command = "select * from specification where id='" + id + "'";
+            string command = "select * from unit where id='" + id + "'";
             DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
-            Specification specification = new Specification();
-            specification.Id = id;
-            specification.Name = dataTable.Rows[0]["name"].ToString();
-            specification.Abbr = dataTable.Rows[0]["abbr"].ToString();
-            return specification;
+            Unit unit = new Unit();
+            unit.Id = id;
+            unit.Name = dataTable.Rows[0]["name"].ToString();
+            unit.Abbr = dataTable.Rows[0]["abbr"].ToString();
+            return unit;
         }
 
-        public List<Specification> retrieveSpecificationList()
+        public List<Unit> retrieveUnitList()
         {
-            string command = "select id,name,abbr from specification";
-            List<Specification> specificationList = retrieveSpecificationListBySQL(command);
-            return specificationList;
+            string command = "select id,name,abbr from unit";
+            List<Unit> unitList = retrieveUnitListBySQL(command);
+            return unitList;
         }
 
-        public bool deleteSpecificationById(string id)
+        public bool deleteUnitById(string id)
         {
-            string command = "delete from specification where id='" + id + "'";
+            string command = "delete from unit where id='" + id + "'";
             if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
         }
-        public List<Specification> retrieveSpecificationListByAbbr(string abbr)
+        public List<Unit> retrieveUnitListByAbbr(string abbr)
         {
-            string command = "select * from specification where abbr like '" + abbr + "%'";
-            List<Specification> specificationList = retrieveSpecificationListBySQL(command);
-            return specificationList;
+            string command = "select * from unit where abbr like '" + abbr + "%'";
+            List<Unit> unitList = retrieveUnitListBySQL(command);
+            return unitList;
         }
 
-        public List<Specification> retrieveSpecificationListBySQL(string command)
+        public List<Unit> retrieveUnitListBySQL(string command)
         {
             DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
-            List<Specification> specificationList = new List<Specification>();
-            Specification specification;
+            List<Unit> unitList = new List<Unit>();
+            Unit unit;
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                specification = new Specification();
-                specification.Id = dataRow["id"].ToString();
-                specification.Name = dataRow["name"].ToString();
-                specification.Abbr = dataRow["abbr"].ToString();
-                specificationList.Add(specification);
+                unit = new Unit();
+                unit.Id = dataRow["id"].ToString();
+                unit.Name = dataRow["name"].ToString();
+                unit.Abbr = dataRow["abbr"].ToString();
+                unitList.Add(unit);
             }
-            return specificationList;
+            return unitList;
         }
 
-        public bool updateSpecificationById(Specification specification)
+        public bool updateUnitById(Unit unit)
         {
-            string command = "update specification set ";
-            if (0 > specification.Id.Length)
+            string command = "update unit set ";
+            if (0 > unit.Id.Length)
                 return false;
-            command += "name='" + specification.Name + "',abbr='" + specification.Abbr + "' Where id='" + specification.Id.Trim() + "'";
+            command += "name='" + unit.Name + "',abbr='" + unit.Abbr + "' Where id='" + unit.Id.Trim() + "'";
 
             if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;

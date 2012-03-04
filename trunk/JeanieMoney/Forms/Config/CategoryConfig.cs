@@ -183,5 +183,18 @@ namespace JeanieMoney.Forms
 
             }
         }
+
+        private void comboBoxParent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (0 != comboBoxParent.SelectedIndex)
+            {
+                Category category = new Category();
+                category=categoryAction.retrieveCategoryById(comboBoxParent.SelectedValue.ToString());
+                if('0' == category.InOrOut)
+                    radioButtonOut.Select();
+                else
+                    radioButtonIn.Select();
+            }
+        }
     }
 }

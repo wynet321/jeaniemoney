@@ -1,6 +1,6 @@
 ﻿namespace JeanieMoney.Forms.Config
 {
-    partial class PaymentCategoryConfig
+    partial class PaymentModeConfig
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@
             this.labelAbbr = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
-            this.listBoxPaymentCategory = new System.Windows.Forms.ListBox();
+            this.listBoxPaymentMode = new System.Windows.Forms.ListBox();
             this.textBoxKeyword = new System.Windows.Forms.TextBox();
             this.labelSearchAbbr = new System.Windows.Forms.Label();
             this.buttonOK = new System.Windows.Forms.Button();
@@ -103,15 +103,15 @@
             this.labelName.TabIndex = 18;
             this.labelName.Text = "Name";
             // 
-            // listBoxPaymentCategory
+            // listBoxPaymentMode
             // 
-            this.listBoxPaymentCategory.FormattingEnabled = true;
-            this.listBoxPaymentCategory.ItemHeight = 12;
-            this.listBoxPaymentCategory.Location = new System.Drawing.Point(20, 48);
-            this.listBoxPaymentCategory.Name = "listBoxPaymentCategory";
-            this.listBoxPaymentCategory.Size = new System.Drawing.Size(199, 136);
-            this.listBoxPaymentCategory.TabIndex = 17;
-            this.listBoxPaymentCategory.SelectedIndexChanged += new System.EventHandler(this.listBoxPaymentCategory_SelectedIndexChanged);
+            this.listBoxPaymentMode.FormattingEnabled = true;
+            this.listBoxPaymentMode.ItemHeight = 12;
+            this.listBoxPaymentMode.Location = new System.Drawing.Point(20, 48);
+            this.listBoxPaymentMode.Name = "listBoxPaymentMode";
+            this.listBoxPaymentMode.Size = new System.Drawing.Size(199, 136);
+            this.listBoxPaymentMode.TabIndex = 17;
+            this.listBoxPaymentMode.SelectedIndexChanged += new System.EventHandler(this.listBoxPaymentMode_SelectedIndexChanged);
             // 
             // textBoxKeyword
             // 
@@ -140,7 +140,7 @@
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // PaymentCategoryConfig
+            // PaymentModeConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(474, 244);
@@ -151,11 +151,11 @@
             this.Controls.Add(this.labelAbbr);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.listBoxPaymentCategory);
+            this.Controls.Add(this.listBoxPaymentMode);
             this.Controls.Add(this.textBoxKeyword);
             this.Controls.Add(this.labelSearchAbbr);
             this.Controls.Add(this.buttonOK);
-            this.Name = "PaymentCategoryConfig";
+            this.Name = "PaymentModeConfig";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,7 +170,7 @@
         private System.Windows.Forms.Label labelAbbr;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.ListBox listBoxPaymentCategory;
+        private System.Windows.Forms.ListBox listBoxPaymentMode;
         private System.Windows.Forms.TextBox textBoxKeyword;
         private System.Windows.Forms.Label labelSearchAbbr;
         private System.Windows.Forms.Button buttonOK;

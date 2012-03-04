@@ -20,10 +20,10 @@ namespace JeanieMoney.Forms
         List<Location> locationList;
         BeneficiaryAction beneficiaryAction;
         List<Beneficiary> beneficiaryList;
-        ProductSpecificationManufactoryAction productSpecificationManufactoryAction;
-        List<ProductSpecificationManufactory> productSpecificationManufactoryList;
-        PaymentCategoryAction paymentCategoryAction;
-        List<PaymentCategory> paymentCategoryList;
+        ProductUnitManufactoryAction productUnitManufactoryAction;
+        List<ProductUnitManufactory> productUnitManufactoryList;
+        PaymentModeAction paymentModeAction;
+        List<PaymentMode> paymentModeList;
         TradeRecordAction tradeRecordAction;
         TradeRecordDetailAction tradeRecordDetailAction;
         TradeRecordAndTradeRecordDetailAction tradeRecordAndTradeRecordDetailAction;
@@ -37,8 +37,8 @@ namespace JeanieMoney.Forms
             tradeRecordAction = new TradeRecordAction();
             tradeRecordDetailAction = new TradeRecordDetailAction();
             beneficiaryAction = new BeneficiaryAction();
-            productSpecificationManufactoryAction = new ProductSpecificationManufactoryAction();
-            paymentCategoryAction = new PaymentCategoryAction();
+            productUnitManufactoryAction = new ProductUnitManufactoryAction();
+            paymentModeAction = new PaymentModeAction();
             tradeRecordAndTradeRecordDetailAction = new TradeRecordAndTradeRecordDetailAction();
 
             init();
@@ -52,7 +52,7 @@ namespace JeanieMoney.Forms
             this.labelDate.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Label/Date");
             this.labelPayer.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Payer");
             this.labelLocation.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Location");
-            this.labelSummaryPaymentCategory.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/PaymentCategory");
+            this.labelSummaryPaymentMode.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/PaymentMode");
             this.labelSummaryPayer.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Payer");
             this.labelSummaryLocation.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Location");
             this.labelSummaryInOutResult.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Income");
@@ -62,7 +62,7 @@ namespace JeanieMoney.Forms
             this.labelSummaryDetails.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Details");
             this.labelSummaryInOut.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Group/InOut");
             this.labelDetailManufactoryName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Manufactory");
-            this.labelDetailSpecification.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Specification");
+            this.labelDetailUnit.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Unit");
             this.labelDetailAveragePrice.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/AveragePrice");
             this.labelDetailTotal.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Total");
             this.labelDetailQuantity.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Quantity");
@@ -70,7 +70,7 @@ namespace JeanieMoney.Forms
             this.labelDetailBeneficiaryName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Beneficiary");
             this.labelDetailProduct.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
             this.labelDetailProductResultTitle.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelPaymentCategory.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/PaymentCategory");
+            this.labelPaymentMode.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/PaymentMode");
 
             this.groupBoxInOut.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Group/InOut");
             this.radioButtonIn.Text =PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Income");
@@ -108,9 +108,9 @@ namespace JeanieMoney.Forms
             listBoxLocation.Visible = false;
 
             //paymentcategory
-            listBoxPaymentCategory.DisplayMember = "Name";
-            listBoxPaymentCategory.ValueMember = "Id";
-            listBoxPaymentCategory.Visible = false;
+            listBoxPaymentMode.DisplayMember = "Name";
+            listBoxPaymentMode.ValueMember = "Id";
+            listBoxPaymentMode.Visible = false;
 
             groupBoxSummaryInit();
             panelDetailInit();
@@ -119,7 +119,7 @@ namespace JeanieMoney.Forms
         private void panelDetailInit()
         {
             labelDetailTotalResult.ResetText();
-            labelDetailSpecificationResult.ResetText();
+            labelDetailUnitResult.ResetText();
             labelDetailProductResult.ResetText();
             labelDetailPriceAverageResult.ResetText();
             labelDetailManufactoryResult.ResetText();
@@ -147,10 +147,10 @@ namespace JeanieMoney.Forms
             labelSummaryCategoryResult.Text = "";
             labelSummaryLocationResult.Text = "";
             labelSummaryPayerResult.Text = "";
-            labelSummaryPaymentCategoryResult.Text = "";
+            labelSummaryPaymentModeResult.Text = "";
             listViewSummaryDetails.Clear();
             listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Name"));
-            listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Specification"));
+            listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Unit"));
             listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Manufactory"));
             listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Beneficiary"));
             listViewSummaryDetails.Columns.Add(PropertyHelper.GetValue("JeanieMoney/Caption/ListView/Column/Total"));
@@ -250,7 +250,7 @@ namespace JeanieMoney.Forms
                 tradeRecord.CategoryId = categoryList.ElementAt(listBoxCategory.SelectedIndex).Id;
                 tradeRecord.PayerId = payerList.ElementAt(listBoxPayer.SelectedIndex).Id;
                 tradeRecord.LocationId = locationList.ElementAt(listBoxLocation.SelectedIndex).Id;
-                tradeRecord.PaymentCategoryId = paymentCategoryList.ElementAt(listBoxPaymentCategory.SelectedIndex).Id;
+                tradeRecord.PaymentModeId = paymentModeList.ElementAt(listBoxPaymentMode.SelectedIndex).Id;
                 List<TradeRecordDetail> tradeRecordDetailList = new List<TradeRecordDetail>();
                 foreach (ListViewItem item in listViewSummaryDetails.Items)
                 {
@@ -401,7 +401,7 @@ namespace JeanieMoney.Forms
         {
             labelSummaryLocationResult.Text = locationList.ElementAt(listBoxLocation.SelectedIndex).Name;
             listBoxLocation.Visible = false;
-            textBoxPaymentCategory.Focus();
+            textBoxPaymentMode.Focus();
         }
 
         private void textBoxLocation_TextChanged(object sender, EventArgs e)
@@ -463,10 +463,10 @@ namespace JeanieMoney.Forms
         #region product
         private void refreshProductInfo()
         {
-            labelDetailProductResult.Text = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Name;
-            labelDetailSpecificationResult.Text = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Specification;
-            labelDetailManufactoryResult.Text = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).ManufactoryName;
-            string productId = productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Id;
+            labelDetailProductResult.Text = productUnitManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Name;
+            labelDetailUnitResult.Text = productUnitManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Unit;
+            labelDetailManufactoryResult.Text = productUnitManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).ManufactoryName;
+            string productId = productUnitManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Id;
             labelDetailPriceAverageResult.Text = tradeRecordDetailAction.getProductAveragePriceByProductId(productId);
         }
 
@@ -492,8 +492,8 @@ namespace JeanieMoney.Forms
         private void textBoxDetailProduct_TextChanged(object sender, EventArgs e)
         {
             String product = textBoxDetailProduct.Text.Trim();
-            productSpecificationManufactoryList = productSpecificationManufactoryAction.retrieveProductSpecificationListByAbbr(product);
-            listBoxDetailProduct.DataSource = productSpecificationManufactoryList;
+            productUnitManufactoryList = productUnitManufactoryAction.retrieveProductUnitListByAbbr(product);
+            listBoxDetailProduct.DataSource = productUnitManufactoryList;
             if (0 < listBoxDetailProduct.Items.Count)
             {
                 listBoxDetailProduct.SelectedIndex = 0;
@@ -503,7 +503,7 @@ namespace JeanieMoney.Forms
 
         private void textBoxDetailProduct_Leave(object sender, EventArgs e)
         {
-            if (0 == productSpecificationManufactoryList.Count)
+            if (0 == productUnitManufactoryList.Count)
             {
                 listBoxDetailProduct.Visible = false;
                 if (0 < textBoxDetailProduct.Text.Trim().Length)
@@ -512,10 +512,10 @@ namespace JeanieMoney.Forms
                     {
                         ProductConfig pc = new ProductConfig(textBoxDetailProduct.Text.Trim());
                         pc.ShowDialog();
-                        productSpecificationManufactoryList = productSpecificationManufactoryAction.retrieveProductSpecificationListByAbbr(textBoxDetailProduct.Text.Trim());
-                        if (0 < productSpecificationManufactoryList.Count)
+                        productUnitManufactoryList = productUnitManufactoryAction.retrieveProductUnitListByAbbr(textBoxDetailProduct.Text.Trim());
+                        if (0 < productUnitManufactoryList.Count)
                         {
-                            listBoxDetailProduct.DataSource = productSpecificationManufactoryList;
+                            listBoxDetailProduct.DataSource = productUnitManufactoryList;
                             listBoxDetailProduct.SelectedIndex = 0;
                             refreshProductInfo();
                         }
@@ -594,59 +594,59 @@ namespace JeanieMoney.Forms
         }
         #endregion beneficiary
         #region paymentcategory
-        private void textBoxPaymentCategory_KeyUp(object sender, KeyEventArgs e)
+        private void textBoxPaymentMode_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
                 case Keys.Enter:
-                    listBoxPaymentCategory.Visible = false;
-                    if (0 < listBoxPaymentCategory.Items.Count) labelSummaryPaymentCategoryResult.Text = paymentCategoryList.ElementAt(listBoxPaymentCategory.SelectedIndex).Name;
+                    listBoxPaymentMode.Visible = false;
+                    if (0 < listBoxPaymentMode.Items.Count) labelSummaryPaymentModeResult.Text = paymentModeList.ElementAt(listBoxPaymentMode.SelectedIndex).Name;
                     checkBoxDetails.Focus();
                     break;
-                case Keys.Up: if (0 < listBoxPaymentCategory.SelectedIndex) listBoxPaymentCategory.SelectedIndex--; break;
-                case Keys.Down: if (listBoxPaymentCategory.SelectedIndex < listBoxPaymentCategory.Items.Count - 1) listBoxPaymentCategory.SelectedIndex++; break;
+                case Keys.Up: if (0 < listBoxPaymentMode.SelectedIndex) listBoxPaymentMode.SelectedIndex--; break;
+                case Keys.Down: if (listBoxPaymentMode.SelectedIndex < listBoxPaymentMode.Items.Count - 1) listBoxPaymentMode.SelectedIndex++; break;
             }
         }
 
-        private void textBoxPaymentCategory_TextChanged(object sender, EventArgs e)
+        private void textBoxPaymentMode_TextChanged(object sender, EventArgs e)
         {
-            String paymentCategory = textBoxPaymentCategory.Text.Trim();
-            paymentCategoryList = paymentCategoryAction.retrievePaymentCategoryListByAbbr(paymentCategory);
-            listBoxPaymentCategory.DataSource = paymentCategoryList;
-            if (0 < listBoxPaymentCategory.Items.Count)
+            String paymentMode = textBoxPaymentMode.Text.Trim();
+            paymentModeList = paymentModeAction.retrievePaymentModeListByAbbr(paymentMode);
+            listBoxPaymentMode.DataSource = paymentModeList;
+            if (0 < listBoxPaymentMode.Items.Count)
             {
-                listBoxPaymentCategory.SelectedIndex = 0;
-                listBoxPaymentCategory.Visible = true;
+                listBoxPaymentMode.SelectedIndex = 0;
+                listBoxPaymentMode.Visible = true;
             }
         }
 
-        private void textBoxPaymentCategory_Leave(object sender, EventArgs e)
+        private void textBoxPaymentMode_Leave(object sender, EventArgs e)
         {
-            if (0 == paymentCategoryList.Count)
+            if (0 == paymentModeList.Count)
             {
-                listBoxPaymentCategory.Visible = false;
-                if (0 < textBoxPaymentCategory.Text.Trim().Length)
-                    //add paymentCategory
-                    if (DialogResult.Yes == MessageBox.Show("do you want to add new paymentCategory?", "?", MessageBoxButtons.YesNo))
+                listBoxPaymentMode.Visible = false;
+                if (0 < textBoxPaymentMode.Text.Trim().Length)
+                    //add paymentMode
+                    if (DialogResult.Yes == MessageBox.Show("do you want to add new paymentMode?", "?", MessageBoxButtons.YesNo))
                     {
-                        PaymentCategoryConfig pcc = new PaymentCategoryConfig(textBoxPaymentCategory.Text.Trim());
+                        PaymentModeConfig pcc = new PaymentModeConfig(textBoxPaymentMode.Text.Trim());
                         pcc.ShowDialog();
-                        paymentCategoryList = paymentCategoryAction.retrievePaymentCategoryListByAbbr(textBoxPaymentCategory.Text.Trim());
-                        if (0 < paymentCategoryList.Count)
+                        paymentModeList = paymentModeAction.retrievePaymentModeListByAbbr(textBoxPaymentMode.Text.Trim());
+                        if (0 < paymentModeList.Count)
                         {
-                            listBoxPaymentCategory.DataSource = paymentCategoryList;
-                            listBoxPaymentCategory.SelectedIndex = 0;
-                            labelSummaryPaymentCategoryResult.Text = paymentCategoryList.ElementAt(0).Name;
+                            listBoxPaymentMode.DataSource = paymentModeList;
+                            listBoxPaymentMode.SelectedIndex = 0;
+                            labelSummaryPaymentModeResult.Text = paymentModeList.ElementAt(0).Name;
                         }
                     }
             }
-            else if (!listBoxPaymentCategory.Focused)
-                listBoxPaymentCategory.Visible = false;
+            else if (!listBoxPaymentMode.Focused)
+                listBoxPaymentMode.Visible = false;
         }
-        private void listBoxPaymentCategory_Click(object sender, EventArgs e)
+        private void listBoxPaymentMode_Click(object sender, EventArgs e)
         {
-            labelSummaryPaymentCategoryResult.Text = paymentCategoryList.ElementAt(listBoxPaymentCategory.SelectedIndex).Name;
-            listBoxPaymentCategory.Visible = false;
+            labelSummaryPaymentModeResult.Text = paymentModeList.ElementAt(listBoxPaymentMode.SelectedIndex).Name;
+            listBoxPaymentMode.Visible = false;
             checkBoxDetails.Focus();
         }
 
@@ -658,13 +658,13 @@ namespace JeanieMoney.Forms
             {
                 ListViewItem listViewItemDetails = new ListViewItem();
                 listViewItemDetails.Text = labelDetailProductResult.Text;
-                listViewItemDetails.SubItems.Add(labelDetailSpecificationResult.Text);
+                listViewItemDetails.SubItems.Add(labelDetailUnitResult.Text);
                 listViewItemDetails.SubItems.Add(labelDetailManufactoryResult.Text);
                 listViewItemDetails.SubItems.Add(labelDetailBeneficiaryResult.Text);
                 listViewItemDetails.SubItems.Add(labelDetailTotalResult.Text);
                 listViewItemDetails.SubItems.Add(textBoxDetailPrice.Text);
                 listViewItemDetails.SubItems.Add(textBoxDetailQuantity.Text);
-                listViewItemDetails.SubItems.Add(productSpecificationManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Id);
+                listViewItemDetails.SubItems.Add(productUnitManufactoryList.ElementAt(listBoxDetailProduct.SelectedIndex).Id);
                 listViewItemDetails.SubItems.Add(beneficiaryList.ElementAt(listBoxDetailBeneficiary.SelectedIndex).Id);
                 listViewSummaryDetails.Items.Add(listViewItemDetails);
                 panelDetailInit();

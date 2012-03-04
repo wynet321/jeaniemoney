@@ -12,7 +12,7 @@ namespace JeanieMoney.Action
     {
         public bool createProduct(Product product)
         {
-            string command = "insert into product values('" + product.Id + "','" + product.Name + "','" + product.Abbr + "','" + product.SpecificationId + "','" + product.SpecificationQuantity + "','" + product.ManufactoryId + "')";
+            string command = "insert into product values('" + product.Id + "','" + product.Name + "','" + product.Abbr + "','" + product.UnitId + "','" + product.UnitQuantity + "','" + product.ManufactoryId + "')";
             if (1==JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
@@ -26,8 +26,8 @@ namespace JeanieMoney.Action
             product.Id = id;
             product.Name = dataTable.Rows[0]["name"].ToString();
             product.Abbr = dataTable.Rows[0]["abbr"].ToString();
-            product.SpecificationId = dataTable.Rows[0]["specification_id"].ToString();
-            product.SpecificationQuantity = dataTable.Rows[0]["specification_quantity"].ToString();
+            product.UnitId = dataTable.Rows[0]["unit_id"].ToString();
+            product.UnitQuantity = dataTable.Rows[0]["unit_quantity"].ToString();
             product.ManufactoryId = dataTable.Rows[0]["manufactory_id"].ToString();
             return product;
         }
@@ -64,8 +64,8 @@ namespace JeanieMoney.Action
                 product.Id = dataRow["id"].ToString();
                 product.Name = dataRow["name"].ToString();
                 product.Abbr = dataRow["abbr"].ToString();
-                product.SpecificationId = dataRow["specification_id"].ToString();
-                product.SpecificationQuantity = dataRow["specification_quantity"].ToString();
+                product.UnitId = dataRow["unit_id"].ToString();
+                product.UnitQuantity = dataRow["unit_quantity"].ToString();
                 product.ManufactoryId = dataRow["manufactory_id"].ToString();
                 productList.Add(product);
             }
@@ -77,7 +77,7 @@ namespace JeanieMoney.Action
             string command = "update product set ";
             if (0 > product.Id.Length)
                 return false;
-            command += "name='" + product.Name + "',abbr='" + product.Abbr + "'," + "specification_id='" + product.SpecificationId + "',specification_quantity='" + product.SpecificationQuantity + "',manufactory_id='" + product.ManufactoryId + "' Where id='" + product.Id.Trim() + "'";
+            command += "name='" + product.Name + "',abbr='" + product.Abbr + "'," + "unit_id='" + product.UnitId + "',unit_quantity='" + product.UnitQuantity + "',manufactory_id='" + product.ManufactoryId + "' Where id='" + product.Id.Trim() + "'";
 
             if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;

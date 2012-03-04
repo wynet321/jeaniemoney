@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JeanieMoney.Entity
 {
-    class PaymentCategory
+    class PaymentMode
     {
         private string id;
         public string Id { get { return id; } set { id = value; } }

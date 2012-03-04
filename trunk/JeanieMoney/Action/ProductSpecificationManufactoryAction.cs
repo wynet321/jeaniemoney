@@ -8,37 +8,37 @@ using JeanieMoney.Entity;
 
 namespace JeanieMoney.Action
 {
-    class ProductSpecificationManufactoryAction
+    class ProductUnitManufactoryAction
     {
         
-        public List<ProductSpecificationManufactory> retrieveProductSpecificationListByAbbr(string abbr)
+        public List<ProductUnitManufactory> retrieveProductUnitListByAbbr(string abbr)
         {
-            string command = "select * from product_specification_manufactory where abbr like'" + abbr + "%'";
-            List<ProductSpecificationManufactory> productSpecificationManufactoryList = retrieveProductListBySQL(command);
-            return productSpecificationManufactoryList;
+            string command = "select * from product_unit_manufactory where abbr like'" + abbr + "%'";
+            List<ProductUnitManufactory> productUnitManufactoryList = retrieveProductListBySQL(command);
+            return productUnitManufactoryList;
         }
 
-        public List<ProductSpecificationManufactory> retrieveProductListBySQL(string command)
+        public List<ProductUnitManufactory> retrieveProductListBySQL(string command)
         {
             DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
-            List<ProductSpecificationManufactory> productSpecificationManufactoryList = new List<ProductSpecificationManufactory>();
-            ProductSpecificationManufactory productSpecificationManufactory;
+            List<ProductUnitManufactory> productUnitManufactoryList = new List<ProductUnitManufactory>();
+            ProductUnitManufactory productUnitManufactory;
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                productSpecificationManufactory = new ProductSpecificationManufactory();
-                productSpecificationManufactory.Id = dataRow["id"].ToString();
-                productSpecificationManufactory.Name = dataRow["name"].ToString();
-                productSpecificationManufactory.Abbr = dataRow["abbr"].ToString();
-                productSpecificationManufactory.Specification = dataRow["specification_name"].ToString();
-                productSpecificationManufactory.SpecificationId = dataRow["specification_id"].ToString();
-                productSpecificationManufactory.NameSpecification = dataRow["name_specification"].ToString();
-                productSpecificationManufactory.ManufactoryId = dataRow["manufactory_id"].ToString();
-                productSpecificationManufactory.ManufactoryName = dataRow["manufactory_name"].ToString();
-                productSpecificationManufactory.Address = dataRow["address"].ToString();
-                productSpecificationManufactory.Tel = dataRow["tel"].ToString();
-                productSpecificationManufactoryList.Add(productSpecificationManufactory);
+                productUnitManufactory = new ProductUnitManufactory();
+                productUnitManufactory.Id = dataRow["id"].ToString();
+                productUnitManufactory.Name = dataRow["name"].ToString();
+                productUnitManufactory.Abbr = dataRow["abbr"].ToString();
+                productUnitManufactory.Unit = dataRow["unit_name"].ToString();
+                productUnitManufactory.UnitId = dataRow["unit_id"].ToString();
+                productUnitManufactory.NameUnit = dataRow["name_unit"].ToString();
+                productUnitManufactory.ManufactoryId = dataRow["manufactory_id"].ToString();
+                productUnitManufactory.ManufactoryName = dataRow["manufactory_name"].ToString();
+                productUnitManufactory.Address = dataRow["address"].ToString();
+                productUnitManufactory.Tel = dataRow["tel"].ToString();
+                productUnitManufactoryList.Add(productUnitManufactory);
             }
-            return productSpecificationManufactoryList;
+            return productUnitManufactoryList;
         }
     }
 }
