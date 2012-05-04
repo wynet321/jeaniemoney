@@ -15,8 +15,12 @@ namespace JeanieMoney.Forms
     {
         public formMain()
         {
+            Login login = new Login();
+            DialogResult result=login.ShowDialog();
+            if (DialogResult.OK != result)
+                Application.Exit();
             InitializeComponent();
-            setCaption();
+           
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -25,24 +29,20 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.idDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/Id");
-            this.nameDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/Name");
-            this.locationnameDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/Location");
-            this.payernameDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/Payer");
-            this.paymentcategorynameDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/PaymentMode");
-            this.moneyDataGridViewTextBoxColumn.HeaderText = PropertyHelper.GetValue("JeanieMoney/Caption/DataGridView/Column/Money");
-            
-            this.lablePeriod.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Period");
-
-            this.buttonSearch.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Search");
+            dataGridViewJournalRecord.Columns["id"].HeaderText = G18NHandler.GetValue("JeanieMoney/Caption/DataGridView/Column/Id");
+            dataGridViewJournalRecord.Columns["name"].HeaderText = G18NHandler.GetValue("JeanieMoney/Caption/DataGridView/Column/Name");
+            dataGridViewJournalRecord.Columns["location_name"].HeaderText = G18NHandler.GetValue("JeanieMoney/Caption/DataGridView/Column/Location");
+            dataGridViewJournalRecord.Columns["payer_name"].HeaderText = G18NHandler.GetValue("JeanieMoney/Caption/DataGridView/Column/Payer");
+            dataGridViewJournalRecord.Columns["payment_mode_name"].HeaderText = G18NHandler.GetValue("JeanieMoney/Caption/DataGridView/Column/PaymentMode");
+            dataGridViewJournalRecord.Columns["money"].HeaderText = G18NHandler.GetValue("JeanieMoney/Caption/DataGridView/Column/Money");
+            dataGridViewJournalRecord.Columns["date"].HeaderText = G18NHandler.GetValue("JeanieMoney/Caption/DataGridView/Column/Date");
+            this.lablePeriod.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Period");
+            this.buttonSearch.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Search");
         }
         private void formMain_Load(object sender, EventArgs e)
         {
-            
-            // TODO: This line of code loads data into the 'jeanieMoneyDataSet.journal_record' table. You can move, or remove it, as needed.
-            this.journal_recordTableAdapter.Fill(this.jeanieMoneyDataSet.journal_record);
-            // TODO: This line of code loads data into the 'jeanieMoneyDataSet.journal_record' table. You can move, or remove it, as needed.
-            this.journal_recordTableAdapter.Fill(this.jeanieMoneyDataSet.journal_record);
+            refreshDataGridView();
+            setCaption();
             
         }
 
@@ -94,6 +94,16 @@ namespace JeanieMoney.Forms
         {
             BeneficiaryConfig bc = new BeneficiaryConfig();
             bc.ShowDialog();
+        }
+        private void refreshDataGridView()
+        {
+            DataTable dt = DBHandler.getDataTable("select * from journal_record where date between '" + dateTimePickerStart.Value.ToShortDateString() + "' and '" + dateTimePickerEnd.Value.ToShortDateString() + "'");
+            dataGridViewJournalRecord.DataSource = dt;
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            refreshDataGridView();
         }
     }
 }

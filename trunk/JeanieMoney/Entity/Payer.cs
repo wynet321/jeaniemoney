@@ -15,5 +15,8 @@ namespace JeanieMoney.Entity
 
         private string abbr ="";
         public string Abbr { get { return abbr; } set { abbr = value; } }
+
+        private string password = "";
+        public string Password { get { return password; } set { password = value; } }
     }
 }

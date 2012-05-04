@@ -18,6 +18,7 @@
       <Money>Money</Money>
       <Date>Date</Date>
       <Payer>Payer</Payer>
+      <Password>Password</Password>
       <Location>Location</Location>
       <Category>Category</Category>
       <PaymentMode>Payment Mode</PaymentMode>
@@ -48,6 +49,7 @@
         <Payer>Payer</Payer>
         <PaymentMode>Payment Mode</PaymentMode>
         <Money>Money</Money>
+        <Date>Date</Date>
       </Column>
     </DataGridView>
     <ListView>

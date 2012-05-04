@@ -3,35 +3,50 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.Common;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.OleDb;
 
 namespace JeanieMoney.Utility
 {
-    class DBHelper
+    class DBHandler
     {
+        private static readonly List<KeyValuePair<String,String>> dbType=new List<KeyValuePair<String,String>>();
         private static DbProviderFactory dbProviderFactory;
         private static DbConnection connection;
-        private static string SQLSERVER = "System.Data.SqlClient";
-        private static string DB2 = "IBM.Data.DB2.iSeries";
-        private static string ORACLE = "Oracle.DataAccess.Client";
-        private static string OLEDB = "System.Data.OleDb";
-        private static string ODBC = "System.Data.ODBC";
-        private static string MYSQL = "MySql.Data.MySqlClient";
-        private static string SQLITE = "System.Data.SQLite";
-        private static string FIREBIRD = "FirebirdSql.Data.Firebird";
-        private static string POSTGRESQL = "Npgsql";
-        private static string INFORMIX = "IBM.Data.Informix";
-        private static string SQLSERVERCE = "System.Data.SqlServerCe";
+
+         public static List<KeyValuePair<String, String>> getDbType()
+        {
+            dbType.Add(new KeyValuePair<String,String>("SQLSERVER", "System.Data.SqlClient"));
+            dbType.Add(new KeyValuePair<string,string>("ODBC","System.Data.Odbc"));
+            dbType.Add(new KeyValuePair<string,string>("OLEDB","System.Data.OleDb"));
+            dbType.Add(new KeyValuePair<string,string>("ORACLE","System.Data.OracleClient"));
+            dbType.Add(new KeyValuePair<string,string>("SQLCE","System.Data.SqlServerCe"));
+            return dbType;
+        }
+
         private static DbConnection getConnection()
         {
-            if (null == connection)
+            if (connection.State == ConnectionState.Closed)
             {
-                //Todo: need add to config file.
-                dbProviderFactory = DbProviderFactories.GetFactory(SQLSERVER);
-                connection = dbProviderFactory.CreateConnection();
-                connection.ConnectionString = "Data Source=localhost\\sqlexpress;Initial Catalog=JeanieMoney;Integrated Security=True";
+                try
+                {
+                    connection.Open();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    Application.Exit();
+                }
             }
-            connection.Open();
             return connection;
+        }
+
+        public static void setConnection(String dbType, String connectionString)
+        {
+                //Todo: need add to config file.
+                dbProviderFactory = DbProviderFactories.GetFactory(dbType);
+                connection = dbProviderFactory.CreateConnection();
+                connection.ConnectionString = connectionString;
         }
 
         public static int execTranx(List<string> commandList)

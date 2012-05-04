@@ -39,6 +39,8 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.labelPassword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonOK
@@ -140,11 +142,31 @@
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(272, 81);
+            this.textBoxPassword.MaxLength = 16;
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(180, 21);
+            this.textBoxPassword.TabIndex = 15;
+            this.textBoxPassword.UseSystemPasswordChar = true;
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Location = new System.Drawing.Point(231, 84);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(53, 12);
+            this.labelPassword.TabIndex = 14;
+            this.labelPassword.Text = "Password";
+            // 
             // PayerConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 214);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonCancel);
@@ -157,7 +179,6 @@
             this.Controls.Add(this.labelSearchAbbr);
             this.Controls.Add(this.buttonOK);
             this.Name = "PayerConfig";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PayerConfig";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -177,5 +198,7 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Label labelPassword;
     }
 }

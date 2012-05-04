@@ -74,22 +74,24 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.buttonDelete.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Delete");
-            this.buttonReset.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonCancel.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Cancel");
-            this.buttonOK.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/OK");
+            this.buttonDelete.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Delete");
+            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
+            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
+            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
 
-            this.labelAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelSearchAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
+            this.labelSearchAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelPassword.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Password");
 
-            this.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Form/Payer");
+            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Payer");
         }
         private void init()
         {
             setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
+            textBoxPassword.Clear();
             listBoxPayer.DataSource = null;
             textBoxKeyword.Clear();
             payerList = payerAction.retrievePayerList();
@@ -111,27 +113,40 @@ namespace JeanieMoney.Forms
             
             textBoxName.Clear();
             textBoxAbbr.Clear();
+            textBoxPassword.Clear();
             textBoxKeyword_TextChanged(sender, e);
-
         }
 
+        private Boolean validateInput()
+        {
+            if (textBoxPassword.TextLength < 8 || 0 == textBoxName.TextLength || 0 == textBoxAbbr.TextLength)
+            {
+                MessageBox.Show("Validate Input failed!");
+                return false;
+            }
+            return true;
+        }
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            if (!validateInput())
+            {
+                return;
+            }
+            Payer payer = new Payer();
+            payer.Name = textBoxName.Text;
+            payer.Abbr = textBoxAbbr.Text;
+            payer.Password = textBoxPassword.Text;
             if (null != listBoxPayer.SelectedItem)
             {
                 //modify
-                Payer category = new Payer();
-                category.Id = payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Id;
-                category.Name = textBoxName.Text;
-                
-                category.Abbr = textBoxAbbr.Text;
-                if (payerAction.updatePayerById(category))
+                payer.Id = payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Id;
+                if (payerAction.updatePayerById(payer))
                 {
                     MessageBox.Show("OK");
                     payerList = payerAction.retrievePayerList();
-                   
                     textBoxName.Clear();
                     textBoxAbbr.Clear();
+                    textBoxPassword.Clear();
                     textBoxKeyword_TextChanged(sender, e);
                 }
                 else
@@ -143,12 +158,8 @@ namespace JeanieMoney.Forms
             else
             {
                 //insert
-                Payer category=new Payer();
-                category.Id=Guid.NewGuid().ToString();
-                category.Name=textBoxName.Text;
-                
-                category.Abbr=textBoxAbbr.Text;
-                if (payerAction.createPayer(category))
+                payer.Id=Guid.NewGuid().ToString();
+                if (payerAction.createPayer(payer))
                 {
                     MessageBox.Show("OK");
                     init();
