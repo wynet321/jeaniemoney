@@ -28,18 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.dataGridViewJournalRecord = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentcategorynameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moneyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.journalrecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.jeanieMoneyDataSet = new JeanieMoney.JeanieMoneyDataSet();
             this.panelSearchCondition = new System.Windows.Forms.Panel();
             this.labelSeperator = new System.Windows.Forms.Label();
             this.lablePeriod = new System.Windows.Forms.Label();
@@ -58,13 +49,10 @@
             this.toolStripButtonBeneficiary = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.journal_recordTableAdapter = new JeanieMoney.JeanieMoneyDataSetTableAdapters.journal_recordTableAdapter();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJournalRecord)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.journalrecordBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jeanieMoneyDataSet)).BeginInit();
             this.panelSearchCondition.SuspendLayout();
             this.toolStripMainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -103,75 +91,15 @@
             this.dataGridViewJournalRecord.AllowUserToAddRows = false;
             this.dataGridViewJournalRecord.AllowUserToDeleteRows = false;
             this.dataGridViewJournalRecord.AllowUserToOrderColumns = true;
-            this.dataGridViewJournalRecord.AutoGenerateColumns = false;
             this.dataGridViewJournalRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewJournalRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.locationnameDataGridViewTextBoxColumn,
-            this.payernameDataGridViewTextBoxColumn,
-            this.paymentcategorynameDataGridViewTextBoxColumn,
-            this.moneyDataGridViewTextBoxColumn});
-            this.dataGridViewJournalRecord.DataSource = this.journalrecordBindingSource;
             this.dataGridViewJournalRecord.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewJournalRecord.Location = new System.Drawing.Point(0, 26);
             this.dataGridViewJournalRecord.Name = "dataGridViewJournalRecord";
             this.dataGridViewJournalRecord.ReadOnly = true;
+            this.dataGridViewJournalRecord.RowTemplate.Height = 23;
             this.dataGridViewJournalRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewJournalRecord.Size = new System.Drawing.Size(1264, 362);
             this.dataGridViewJournalRecord.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // locationnameDataGridViewTextBoxColumn
-            // 
-            this.locationnameDataGridViewTextBoxColumn.DataPropertyName = "location_name";
-            this.locationnameDataGridViewTextBoxColumn.HeaderText = "location_name";
-            this.locationnameDataGridViewTextBoxColumn.Name = "locationnameDataGridViewTextBoxColumn";
-            this.locationnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // payernameDataGridViewTextBoxColumn
-            // 
-            this.payernameDataGridViewTextBoxColumn.DataPropertyName = "payer_name";
-            this.payernameDataGridViewTextBoxColumn.HeaderText = "payer_name";
-            this.payernameDataGridViewTextBoxColumn.Name = "payernameDataGridViewTextBoxColumn";
-            this.payernameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paymentcategorynameDataGridViewTextBoxColumn
-            // 
-            this.paymentcategorynameDataGridViewTextBoxColumn.DataPropertyName = "payment_mode_name";
-            this.paymentcategorynameDataGridViewTextBoxColumn.HeaderText = "payment_mode_name";
-            this.paymentcategorynameDataGridViewTextBoxColumn.Name = "paymentcategorynameDataGridViewTextBoxColumn";
-            this.paymentcategorynameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // moneyDataGridViewTextBoxColumn
-            // 
-            this.moneyDataGridViewTextBoxColumn.DataPropertyName = "money";
-            this.moneyDataGridViewTextBoxColumn.HeaderText = "money";
-            this.moneyDataGridViewTextBoxColumn.Name = "moneyDataGridViewTextBoxColumn";
-            this.moneyDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // journalrecordBindingSource
-            // 
-            this.journalrecordBindingSource.DataMember = "journal_record";
-            this.journalrecordBindingSource.DataSource = this.jeanieMoneyDataSet;
-            // 
-            // jeanieMoneyDataSet
-            // 
-            this.jeanieMoneyDataSet.DataSetName = "JeanieMoneyDataSet";
-            this.jeanieMoneyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panelSearchCondition
             // 
@@ -219,6 +147,7 @@
             this.buttonSearch.TabIndex = 3;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // dateTimePickerEnd
             // 
@@ -242,7 +171,7 @@
             this.toolStripButtonBeneficiary});
             this.toolStripMainMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMainMenu.Name = "toolStripMainMenu";
-            this.toolStripMainMenu.Size = new System.Drawing.Size(648, 88);
+            this.toolStripMainMenu.Size = new System.Drawing.Size(617, 88);
             this.toolStripMainMenu.TabIndex = 0;
             // 
             // toolStripButtonRecordInput
@@ -361,10 +290,6 @@
             this.toolStripButton1.Size = new System.Drawing.Size(64, 64);
             this.toolStripButton1.Text = "toolStripButton1";
             // 
-            // journal_recordTableAdapter
-            // 
-            this.journal_recordTableAdapter.ClearBeforeFill = true;
-            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -382,8 +307,6 @@
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewJournalRecord)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.journalrecordBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jeanieMoneyDataSet)).EndInit();
             this.panelSearchCondition.ResumeLayout(false);
             this.panelSearchCondition.PerformLayout();
             this.toolStripMainMenu.ResumeLayout(false);
@@ -408,15 +331,6 @@
         private System.Windows.Forms.Panel panelSearchCondition;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButtonRecordInput;
-        private JeanieMoneyDataSet jeanieMoneyDataSet;
-        private System.Windows.Forms.BindingSource journalrecordBindingSource;
-        private JeanieMoneyDataSetTableAdapters.journal_recordTableAdapter journal_recordTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn locationnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn payernameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymentcategorynameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn moneyDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButtonCategory;
         private System.Windows.Forms.ToolStripButton toolStripButtonPayer;

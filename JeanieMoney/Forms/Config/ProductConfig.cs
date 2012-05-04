@@ -79,17 +79,17 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.buttonDelete.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Delete");
-            this.buttonReset.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonCancel.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Cancel");
-            this.buttonOK.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/OK");
+            this.buttonDelete.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Delete");
+            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
+            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
+            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
 
-            this.labelAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelSearchAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelBarcode.Text = PropertyHelper.GetValue("jeanieMoney/Caption/Label/Barcode");
+            this.labelAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
+            this.labelSearchAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelBarcode.Text = G18NHandler.GetValue("jeanieMoney/Caption/Label/Barcode");
 
-            this.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Form/Product");
+            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Product");
         }
         private void init()
         {

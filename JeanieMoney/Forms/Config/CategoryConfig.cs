@@ -85,21 +85,21 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.buttonDelete.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Delete");
-            this.buttonReset.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonCancel.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/Cancel");
-            this.buttonOK.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Button/OK");
+            this.buttonDelete.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Delete");
+            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
+            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
+            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
 
-            this.labelAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelName.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelSearchAbbr.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelParent.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Label/Parent");
+            this.labelAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
+            this.labelSearchAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
+            this.labelParent.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Parent");
 
-            this.groupBoxInOut.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Group/InOut");
-            this.radioButtonIn.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Income");
-            this.radioButtonOut.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Radio/Outgoing");
+            this.groupBoxInOut.Text = G18NHandler.GetValue("JeanieMoney/Caption/Group/InOut");
+            this.radioButtonIn.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
+            this.radioButtonOut.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
 
-            this.Text = PropertyHelper.GetValue("JeanieMoney/Caption/Form/Category");
+            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Category");
         }
         private void init()
         {

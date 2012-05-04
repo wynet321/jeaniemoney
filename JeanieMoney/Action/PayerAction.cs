@@ -12,7 +12,7 @@ namespace JeanieMoney.Action
     {
         public bool createPayer(Payer payer)
         {
-            string command = "insert into payer values('" + payer.Id + "','" + payer.Name + "','" + payer.Abbr + "')";
+            string command = "insert into payer values('" + payer.Id + "','" + payer.Name + "','" + payer.Abbr + "','"+payer.Password+"')";
             if (1== JeanieMoneyDBHelper.execCommand(command))
                 return true;
             return false;
@@ -71,7 +71,7 @@ namespace JeanieMoney.Action
             string command = "update payer set ";
             if (0 > payer.Id.Length)
                 return false;
-            command += "name='" + payer.Name + "',abbr='" + payer.Abbr + "' Where id='" + payer.Id.Trim() + "'";
+            command += "name='" + payer.Name + "',abbr='" + payer.Abbr + "',password='"+payer.Password+"' Where id='" + payer.Id.Trim() + "'";
 
             if (0 < JeanieMoneyDBHelper.execCommand(command))
                 return true;
