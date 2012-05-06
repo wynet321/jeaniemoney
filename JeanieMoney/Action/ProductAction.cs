@@ -13,7 +13,7 @@ namespace JeanieMoney.Action
         public bool createProduct(Product product)
         {
             string command = "insert into product values('" + product.Id + "','" + product.Name + "','" + product.Abbr + "','" + product.Barcode + "','" + product.UnitId + "','" + product.UnitQuantity + "','" + product.ManufactoryId + "')";
-            if (1 == DBHandler.execCommand(command))
+            if (1 == DbHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -21,7 +21,7 @@ namespace JeanieMoney.Action
         public Product retrieveProductById(string id)
         {
             string command = "select * from product where id='" + id + "'";
-            DataTable dataTable = DBHandler.getDataTable(command);
+            DataTable dataTable = DbHandler.getDataTable(command);
             Product product = new Product();
             product.Id = id;
             product.Name = dataTable.Rows[0]["name"].ToString();
@@ -43,7 +43,7 @@ namespace JeanieMoney.Action
         public bool deleteProductById(string id)
         {
             string command = "delete from product where id='" + id + "'";
-            if (0 < DBHandler.execCommand(command))
+            if (0 < DbHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -56,7 +56,7 @@ namespace JeanieMoney.Action
 
         public List<Product> retrieveProductListBySQL(string command)
         {
-            DataTable dataTable = DBHandler.getDataTable(command);
+            DataTable dataTable = DbHandler.getDataTable(command);
             List<Product> productList = new List<Product>();
             Product product;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -81,7 +81,7 @@ namespace JeanieMoney.Action
                 return false;
             command += "name='" + product.Name + "',abbr='" + product.Abbr + "'," + product.Barcode + "','" + "unit_id='" + product.UnitId + "',unit_quantity='" + product.UnitQuantity + "',manufactory_id='" + product.ManufactoryId + "' Where id='" + product.Id.Trim() + "'";
 
-            if (0 < DBHandler.execCommand(command))
+            if (0 < DbHandler.execCommand(command))
                 return true;
             return false;
         }

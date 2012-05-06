@@ -13,7 +13,7 @@ namespace JeanieMoney.Action
         public bool createLocation(Location location)
         {
             string command = "insert into location values('" + location.Id + "','" + location.Name + "','" + location.Abbr + "')";
-            if (1==DBHandler.execCommand(command))
+            if (1==DbHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -21,7 +21,7 @@ namespace JeanieMoney.Action
         public Location retrieveLocationById(string id)
         {
             string command = "select * from location where id='" + id + "'";
-            DataTable dataTable = DBHandler.getDataTable(command);
+            DataTable dataTable = DbHandler.getDataTable(command);
             Location location = new Location();
             location.Id = id;
             location.Name = dataTable.Rows[0]["name"].ToString();
@@ -39,7 +39,7 @@ namespace JeanieMoney.Action
         public bool deleteLocationById(string id)
         {
             string command = "delete from location where id='" + id + "'";
-            if (0 < DBHandler.execCommand(command))
+            if (0 < DbHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -52,7 +52,7 @@ namespace JeanieMoney.Action
 
         public List<Location> retrieveLocationListBySQL(string command)
         {
-            DataTable dataTable = DBHandler.getDataTable(command);
+            DataTable dataTable = DbHandler.getDataTable(command);
             List<Location> locationList = new List<Location>();
             Location location;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -73,7 +73,7 @@ namespace JeanieMoney.Action
                 return false;
             command += "name='" + location.Name + "',abbr='" + location.Abbr + "' Where id='" + location.Id.Trim() + "'";
 
-            if (0 < DBHandler.execCommand(command))
+            if (0 < DbHandler.execCommand(command))
                 return true;
             return false;
         }

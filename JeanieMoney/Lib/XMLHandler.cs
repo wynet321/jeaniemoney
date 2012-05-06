@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace JeanieMoney.Utility
 {
-    class XMLHandler
+    class XmlHandler
     {
         private static XPathNavigator xPathNavigator;
         private static XmlDocument xmlDocument;

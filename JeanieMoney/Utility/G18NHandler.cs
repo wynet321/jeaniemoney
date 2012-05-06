@@ -6,7 +6,7 @@ using System.Globalization;
 
 namespace JeanieMoney.Utility
 {
-    class G18NHandler : XMLHandler
+    class G18NHandler : XmlHandler
     {
         private static string G18NURI = System.Windows.Forms.Application.StartupPath + "/Lang/" + CultureInfo.CurrentCulture.Name + ".xml";
         //Get Resource XML element value

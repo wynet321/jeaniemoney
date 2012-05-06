@@ -13,7 +13,7 @@ namespace JeanieMoney.Action
         public bool createPaymentMode(PaymentMode paymentMode)
         {
             string command = "insert into payment_mode values('" + paymentMode.Id + "','" + paymentMode.Name + "','" + paymentMode.Abbr + "')";
-            if (1 == DBHandler.execCommand(command))
+            if (1 == DbHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -21,7 +21,7 @@ namespace JeanieMoney.Action
         public PaymentMode retrievePaymentModeById(string id)
         {
             string command = "select * from payment_mode where id='" + id + "'";
-            DataTable dataTable = DBHandler.getDataTable(command);
+            DataTable dataTable = DbHandler.getDataTable(command);
             PaymentMode paymentMode = new PaymentMode();
             paymentMode.Id = id;
             paymentMode.Name = dataTable.Rows[0]["name"].ToString();
@@ -39,7 +39,7 @@ namespace JeanieMoney.Action
         public bool deletePaymentModeById(string id)
         {
             string command = "delete from payment_mode where id='" + id + "'";
-            if (0 < DBHandler.execCommand(command))
+            if (0 < DbHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -52,7 +52,7 @@ namespace JeanieMoney.Action
 
         public List<PaymentMode> retrievePaymentModeListByCommand(string command)
         {
-            DataTable dataTable = DBHandler.getDataTable(command);
+            DataTable dataTable = DbHandler.getDataTable(command);
             List<PaymentMode> paymentModeList = new List<PaymentMode>();
             PaymentMode paymentMode;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -73,7 +73,7 @@ namespace JeanieMoney.Action
                 return false;
             command += "name='" + paymentMode.Name + "',abbr='" + paymentMode.Abbr + "' Where id='" + paymentMode.Id.Trim() + "'";
 
-            if (0 < DBHandler.execCommand(command))
+            if (0 < DbHandler.execCommand(command))
                 return true;
             return false;
         }

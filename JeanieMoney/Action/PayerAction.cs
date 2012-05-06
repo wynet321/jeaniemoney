@@ -13,7 +13,7 @@ namespace JeanieMoney.Action
         public bool createPayer(Payer payer)
         {
             string command = "insert into payer values('" + payer.Id + "','" + payer.Name + "','" + payer.Abbr + "','"+payer.Password+"')";
-            if (1== DBHandler.execCommand(command))
+            if (1== DbHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -21,7 +21,7 @@ namespace JeanieMoney.Action
         public Payer retrievePayerById(string id)
         {
             string command = "select * from payer where id='" + id + "'";
-            DataTable dataTable = DBHandler.getDataTable(command);
+            DataTable dataTable = DbHandler.getDataTable(command);
             Payer payer = new Payer();
             payer.Id = id;
             payer.Name = dataTable.Rows[0]["name"].ToString();
@@ -39,7 +39,7 @@ namespace JeanieMoney.Action
         public bool deletePayerById(string id)
         {
             string command = "delete from payer where id='" + id + "'";
-            if (0 < DBHandler.execCommand(command))
+            if (0 < DbHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -52,7 +52,7 @@ namespace JeanieMoney.Action
 
         public List<Payer> retrievePayerListBySQL(string command)
         {
-            DataTable dataTable = DBHandler.getDataTable(command);
+            DataTable dataTable = DbHandler.getDataTable(command);
             List<Payer> payerList = new List<Payer>();
             Payer payer;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -73,7 +73,7 @@ namespace JeanieMoney.Action
                 return false;
             command += "name='" + payer.Name + "',abbr='" + payer.Abbr + "',password='"+payer.Password+"' Where id='" + payer.Id.Trim() + "'";
 
-            if (0 < DBHandler.execCommand(command))
+            if (0 < DbHandler.execCommand(command))
                 return true;
             return false;
         }

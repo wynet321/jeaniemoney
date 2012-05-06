@@ -2,7 +2,7 @@
 <JeanieMoney>
   <Profile Name="Localhost">
     <DbType>System.Data.SqlClient</DbType>
-    <ServerName>localhost\\sqlexpress</ServerName>
+    <ServerName>localhost\sqlexpress</ServerName>
     <DbName>JeanieMoney</DbName>
     <DbAdminName>dennis</DbAdminName>
     <DbAdminPassword>flhs1net</DbAdminPassword>

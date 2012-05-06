@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JeanieMoney.Utility
 {
-    class ConfigHandler : XMLHandler
+    class ConfigHandler : XmlHandler
     {
         private static readonly string CONFIGURI = System.Windows.Forms.Application.StartupPath + "/config.xml";
         public static String getServerName(String profileName)
