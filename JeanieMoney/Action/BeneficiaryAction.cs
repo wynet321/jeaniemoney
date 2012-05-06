@@ -13,7 +13,7 @@ namespace JeanieMoney.Action
         public bool createBeneficiary(Beneficiary beneficiary)
         {
             string command = "insert into beneficiary values('" + beneficiary.Id + "','" + beneficiary.Name + "','" + beneficiary.Abbr + "')";
-            if (1== JeanieMoneyDBHelper.execCommand(command))
+            if (1== DBHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -21,7 +21,7 @@ namespace JeanieMoney.Action
         public Beneficiary retrieveBeneficiaryById(string id)
         {
             string command = "select * from beneficiary where id='" + id + "'";
-            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
+            DataTable dataTable = DBHandler.getDataTable(command);
             Beneficiary beneficiary = new Beneficiary();
             beneficiary.Id = id;
             beneficiary.Name = dataTable.Rows[0]["name"].ToString();
@@ -39,7 +39,7 @@ namespace JeanieMoney.Action
         public bool deleteBeneficiaryById(string id)
         {
             string command = "delete from beneficiary where id='" + id + "'";
-            if (0 < JeanieMoneyDBHelper.execCommand(command))
+            if (0 < DBHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -52,7 +52,7 @@ namespace JeanieMoney.Action
 
         public List<Beneficiary> retrieveBeneficiaryListBySQL(string command)
         {
-            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
+            DataTable dataTable = DBHandler.getDataTable(command);
             List<Beneficiary> beneficiaryList = new List<Beneficiary>();
             Beneficiary beneficiary;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -73,7 +73,7 @@ namespace JeanieMoney.Action
                 return false;
             command += "name='" + beneficiary.Name + "',abbr='" + beneficiary.Abbr + "' Where id='" + beneficiary.Id.Trim() + "'";
 
-            if (0 < JeanieMoneyDBHelper.execCommand(command))
+            if (0 < DBHandler.execCommand(command))
                 return true;
             return false;
         }

@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <JeanieMoney>
-  <DbType>System.Data.SqlClient</DbType>
-  <ConnectionString>Data Source=localhost\\sqlexpress;Initial Catalog=JeanieMoney;Integrated Security=True</ConnectionString>
+  <Profile Name="Localhost">
+    <DbType>System.Data.SqlClient</DbType>
+    <ServerName>localhost\\sqlexpress</ServerName>
+    <DbName>JeanieMoney</DbName>
+    <DbAdminName>dennis</DbAdminName>
+    <DbAdminPassword>flhs1net</DbAdminPassword>
+  </Profile>
 </JeanieMoney>

@@ -15,12 +15,8 @@ namespace JeanieMoney.Forms
     {
         public formMain()
         {
-            Login login = new Login();
-            DialogResult result=login.ShowDialog();
-            if (DialogResult.OK != result)
-                Application.Exit();
             InitializeComponent();
-           
+
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -41,9 +37,16 @@ namespace JeanieMoney.Forms
         }
         private void formMain_Load(object sender, EventArgs e)
         {
+            Login login = new Login();
+            DialogResult result = login.ShowDialog();
+            if (DialogResult.OK != result)
+            {
+                //this.Close();
+                Application.Exit();
+            }
             refreshDataGridView();
             setCaption();
-            
+
         }
 
         private void toolStripButtonRecordInput_Click(object sender, EventArgs e)

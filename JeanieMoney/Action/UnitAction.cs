@@ -13,7 +13,7 @@ namespace JeanieMoney.Action
         public bool createUnit(Unit unit)
         {
             string command = "insert into unit values('" + unit.Id + "','" + unit.Name + "','" + unit.Abbr + "')";
-            if (1== JeanieMoneyDBHelper.execCommand(command))
+            if (1== DBHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -21,7 +21,7 @@ namespace JeanieMoney.Action
         public Unit retrieveUnitById(string id)
         {
             string command = "select * from unit where id='" + id + "'";
-            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
+            DataTable dataTable = DBHandler.getDataTable(command);
             Unit unit = new Unit();
             unit.Id = id;
             unit.Name = dataTable.Rows[0]["name"].ToString();
@@ -39,7 +39,7 @@ namespace JeanieMoney.Action
         public bool deleteUnitById(string id)
         {
             string command = "delete from unit where id='" + id + "'";
-            if (0 < JeanieMoneyDBHelper.execCommand(command))
+            if (0 < DBHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -52,7 +52,7 @@ namespace JeanieMoney.Action
 
         public List<Unit> retrieveUnitListBySQL(string command)
         {
-            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
+            DataTable dataTable = DBHandler.getDataTable(command);
             List<Unit> unitList = new List<Unit>();
             Unit unit;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -73,7 +73,7 @@ namespace JeanieMoney.Action
                 return false;
             command += "name='" + unit.Name + "',abbr='" + unit.Abbr + "' Where id='" + unit.Id.Trim() + "'";
 
-            if (0 < JeanieMoneyDBHelper.execCommand(command))
+            if (0 < DBHandler.execCommand(command))
                 return true;
             return false;
         }

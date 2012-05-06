@@ -19,7 +19,7 @@ namespace JeanieMoney.Action
             {
                 commandList.Add(tradeRecordDetailAction.createTradeRecordDetailCommand(tradeRecordDetail)); 
             }
-            if (JeanieMoneyDBHelper.execTranx(commandList)==commandList.Count)
+            if (DBHandler.execTranx(commandList)==commandList.Count)
                 return true;
             return false;
         }
