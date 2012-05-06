@@ -8,25 +8,64 @@ namespace JeanieMoney.Utility
     class ConfigHandler : XMLHandler
     {
         private static readonly string CONFIGURI = System.Windows.Forms.Application.StartupPath + "/config.xml";
-        //Get Resource XML element value
-        public static String getValue(String nodePath)
+        public static String getServerName(String profileName)
         {
-            return getValue(CONFIGURI, nodePath);
+            return getValue(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']/ServerName");
         }
-        //Get Resource XML element attribute
-        public static String getAttribute(String nodePath, String attributeName)
+        public static void setServerName(String profileName, String serverName)
         {
-            return GetAttribute(CONFIGURI, nodePath, attributeName);
+            setValue(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']/ServerName", serverName);
         }
-        //Set Resource XML element value
-        public static void setValue(String nodePath, String value)
+
+        public static String getDbName(String profileName)
         {
-            setValue(CONFIGURI, nodePath, value);
+            return getValue(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']/DbName");
         }
-        //Set Resource XML element attribute
-        public static void setAttribute(String nodePath, String attributeName,String attributeValue)
+        public static void setDbName(String profileName, String dbName)
         {
-            SetAttribute(CONFIGURI, nodePath, attributeName,attributeValue);
+            setValue(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']/DbName", dbName);
+        }
+        public static String getDbAdminName(String profileName)
+        {
+            return getValue(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']/DbAdminName");
+        }
+        public static void setDbAdminName(String profileName, String dbAdminName)
+        {
+            setValue(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']/DbAdminName", dbAdminName);
+        }
+        public static String getDbAdminPassword(String profileName)
+        {
+            return getValue(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']/DbAdminPassword");
+        }
+        public static void setDbAdminPassword(String profileName, String dbAdminPassword)
+        {
+            setValue(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']/DbAdminPassword", dbAdminPassword);
+        }
+        public static String getDbType(String profileName)
+        {
+            return getValue(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']/DbType");
+        }
+        public static void setDbType(String profileName, String dbType)
+        {
+            setValue(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']/DbType", dbType);
+        }
+
+        public static void addProfile(String profileName)
+        {
+            addNode(CONFIGURI, "JeanieMoney", "Profile", "Name");
+            addNode(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']", "ServerName", String.Empty);
+            addNode(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']", "DbName", String.Empty);
+            addNode(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']", "DbType", String.Empty);
+            addNode(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']", "DbAdminName", String.Empty);
+            addNode(CONFIGURI, "JeanieMoney/Profile[@Name='" + profileName + "']", "DbAdminPassword", String.Empty);
+        }
+        public static List<String> getProfileList()
+        {
+            return getAttributeValueListByNodePath(CONFIGURI, "JeanieMoney", "Name");
+        }
+        public static void reviseProfile(String OriginalProfileName, String newProfileName)
+        {
+            setAttribute(CONFIGURI, "JeanieMoney/Profile[@Name='" + OriginalProfileName + "']","Name", newProfileName);
         }
     }
 }

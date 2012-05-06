@@ -13,7 +13,7 @@ namespace JeanieMoney.Action
         public bool createTradeRecordDetail(TradeRecordDetail tradeRecordDetail)
         {
             string command = createTradeRecordDetailCommand(tradeRecordDetail);
-            if (0 < JeanieMoneyDBHelper.execCommand(command))
+            if (0 < DBHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -27,7 +27,7 @@ namespace JeanieMoney.Action
         public TradeRecordDetail retrieveTradeRecordDetailById(string id)
         {
             string command = "select * from trade_record_detail where id='" + id + "'";
-            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
+            DataTable dataTable = DBHandler.getDataTable(command);
             TradeRecordDetail tradeRecordDetail = new TradeRecordDetail();
             tradeRecordDetail.Id = id;
             tradeRecordDetail.TradeRecordId = dataTable.Rows[0]["trade_record_id"].ToString();
@@ -48,7 +48,7 @@ namespace JeanieMoney.Action
         public bool deleteTradeRecordDetailById(string id)
         {
             string command = "delete from tradeRecordDetail where id='" + id + "'";
-            if (0 < JeanieMoneyDBHelper.execCommand(command))
+            if (0 < DBHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -61,7 +61,7 @@ namespace JeanieMoney.Action
 
         public List<TradeRecordDetail> retrieveTradeRecordDetailListBySQL(string command)
         {
-            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
+            DataTable dataTable = DBHandler.getDataTable(command);
             List<TradeRecordDetail> tradeRecordDetailList = new List<TradeRecordDetail>();
             TradeRecordDetail tradeRecordDetail;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -84,7 +84,7 @@ namespace JeanieMoney.Action
             if (0 > tradeRecordDetail.Id.Length)
                 return false;
             command += "trade_record_id='" + tradeRecordDetail.TradeRecordId + "',product_id='" + tradeRecordDetail.ProductId + "',quantity='" + tradeRecordDetail.Quantity + "',price='" + tradeRecordDetail.Price + "',beneficiary_id='" + tradeRecordDetail.BeneficiaryId + "' Where id='" + tradeRecordDetail.Id.Trim() + "'";
-            if (0 < JeanieMoneyDBHelper.execCommand(command))
+            if (0 < DBHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -92,8 +92,8 @@ namespace JeanieMoney.Action
         public string getProductAveragePriceByProductId(string productId)
         {
             string command = "SELECT  AVG(price) AS average_price FROM trade_record_detail WHERE (product_id = '"+productId+"')";
-            string result = "";
-            DataTable dataTable = JeanieMoneyDBHelper.getDataTable(command);
+            string result = String.Empty;
+            DataTable dataTable = DBHandler.getDataTable(command);
             if (0 < dataTable.Rows.Count)
                 result = dataTable.Rows[0]["average_price"].ToString();
             return result;

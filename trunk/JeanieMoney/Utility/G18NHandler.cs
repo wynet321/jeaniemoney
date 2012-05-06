@@ -17,7 +17,7 @@ namespace JeanieMoney.Utility
         //Get Resource XML element attribute
         public static String GetAttribute(String NodePath, String AttributeName)
         {
-            return GetAttribute(G18NURI, NodePath, AttributeName);
+            return getAttribute(G18NURI, NodePath, AttributeName);
         }
 
 

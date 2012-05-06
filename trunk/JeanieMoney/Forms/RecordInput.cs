@@ -142,12 +142,12 @@ namespace JeanieMoney.Forms
         private void groupBoxSummaryInit()
         {
             labelSummaryInOutResult.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
-            labelSummaryMoneyResult.Text = "";
+            labelSummaryMoneyResult.Text = String.Empty;
             labelSummaryDateResult.Text = DateTime.Now.ToLongDateString();
-            labelSummaryCategoryResult.Text = "";
-            labelSummaryLocationResult.Text = "";
-            labelSummaryPayerResult.Text = "";
-            labelSummaryPaymentModeResult.Text = "";
+            labelSummaryCategoryResult.Text = String.Empty;
+            labelSummaryLocationResult.Text = String.Empty;
+            labelSummaryPayerResult.Text = String.Empty;
+            labelSummaryPaymentModeResult.Text = String.Empty;
             listViewSummaryDetails.Clear();
             listViewSummaryDetails.Columns.Add(G18NHandler.GetValue("JeanieMoney/Caption/ListView/Column/Name"));
             listViewSummaryDetails.Columns.Add(G18NHandler.GetValue("JeanieMoney/Caption/ListView/Column/Unit"));
@@ -266,11 +266,11 @@ namespace JeanieMoney.Forms
                 //insert into db;
                 if (tradeRecordAndTradeRecordDetailAction.createTrade(tradeRecord, tradeRecordDetailList))
                 {
-                    MessageBox.Show("Insert successfully!", "", MessageBoxButtons.OK);
+                    MessageBox.Show("Insert successfully!", String.Empty, MessageBoxButtons.OK);
                     init();
                 }
                 else
-                    MessageBox.Show("Insert failed!", "", MessageBoxButtons.OK);
+                    MessageBox.Show("Insert failed!", String.Empty, MessageBoxButtons.OK);
             }
         }
         #region category
@@ -712,7 +712,7 @@ namespace JeanieMoney.Forms
             if (0 < textBoxDetailPrice.Text.Length)
                 labelDetailTotalResult.Text = (decimal.Parse(textBoxDetailPrice.Text) * decimal.Parse(textBoxDetailQuantity.Text)).ToString();
             else
-                labelDetailTotalResult.Text = "";
+                labelDetailTotalResult.Text = String.Empty;
 
         }
 
@@ -726,7 +726,7 @@ namespace JeanieMoney.Forms
             if (0 < textBoxDetailQuantity.Text.Length)
                 labelDetailTotalResult.Text = (decimal.Parse(textBoxDetailPrice.Text) * decimal.Parse(textBoxDetailQuantity.Text)).ToString();
             else
-                labelDetailTotalResult.Text = "";
+                labelDetailTotalResult.Text = String.Empty;
         }
 
         private void textBoxDetailPrice_TextChanged(object sender, EventArgs e)
