@@ -176,8 +176,8 @@
     <Compile Include="Utility\BaseConfigForm.Designer.cs">
       <DependentUpon>BaseConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lib\DBHandler.cs" />
-    <Compile Include="Lib\XMLHandler.cs" />
+    <Compile Include="Lib\DbHandler.cs" />
+    <Compile Include="Lib\XmlHandler.cs" />
     <Compile Include="Utility\ConfigHandler.cs" />
     <Compile Include="Utility\G18NHandler.cs" />
     <EmbeddedResource Include="Forms\Config\BeneficiaryConfig.resx">

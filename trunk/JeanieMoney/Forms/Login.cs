@@ -17,7 +17,7 @@ namespace JeanieMoney.Forms
         public Login()
         {
             InitializeComponent();
-            comboBoxDbType.DataSource = DBHandler.getDbType();
+            comboBoxDbType.DataSource = DbHandler.getDbType();
             comboBoxDbType.DisplayMember = "Key";
             comboBoxDbType.ValueMember = "Value";
         }
@@ -29,8 +29,8 @@ namespace JeanieMoney.Forms
             {
                 if (textBoxUserName.Text == "Jeanie" && textBoxPassword.Text == "Money")
                     this.DialogResult = DialogResult.OK;
-                DBHandler.setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
-                int validUserCount = (int)DBHandler.getValue("select count(*) from payer where name='" + textBoxUserName.Text + "' and password='" + textBoxPassword.Text + "'");
+                DbHandler.setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
+                int validUserCount = (int)DbHandler.getValue("select count(*) from payer where name='" + textBoxUserName.Text + "' and password='" + textBoxPassword.Text + "'");
                 if (validUserCount > 0)
                     this.DialogResult = DialogResult.OK;
                 else
@@ -83,8 +83,8 @@ namespace JeanieMoney.Forms
         private void buttonTest_Click(object sender, EventArgs e)
         {
 
-            DBHandler.setConnection(comboBoxDbType.SelectedValue.ToString(), generateConnectionString(String.Empty));
-            if (DBHandler.canConnect())
+            DbHandler.setConnection(comboBoxDbType.SelectedValue.ToString(), generateConnectionString(String.Empty));
+            if (DbHandler.canConnect())
             {
                 if (isNew)
                 {

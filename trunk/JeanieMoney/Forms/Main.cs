@@ -100,7 +100,7 @@ namespace JeanieMoney.Forms
         }
         private void refreshDataGridView()
         {
-            DataTable dt = DBHandler.getDataTable("select * from journal_record where date between '" + dateTimePickerStart.Value.ToShortDateString() + "' and '" + dateTimePickerEnd.Value.ToShortDateString() + "'");
+            DataTable dt = DbHandler.getDataTable("select * from journal_record where date between '" + dateTimePickerStart.Value.ToShortDateString() + "' and '" + dateTimePickerEnd.Value.ToShortDateString() + "'");
             dataGridViewJournalRecord.DataSource = dt;
         }
 

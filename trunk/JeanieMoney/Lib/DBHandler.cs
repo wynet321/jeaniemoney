@@ -8,7 +8,7 @@ using System.Data.OleDb;
 
 namespace JeanieMoney.Utility
 {
-    class DBHandler
+    class DbHandler
     {
         private static readonly List<KeyValuePair<String, String>> dbType = new List<KeyValuePair<String, String>>();
         private static DbProviderFactory dbProviderFactory;
