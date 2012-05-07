@@ -30,14 +30,22 @@ namespace JeanieMoney.Forms
                 if (textBoxUserName.Text == "Jeanie" && textBoxPassword.Text == "Money")
                     this.DialogResult = DialogResult.OK;
                 DbHandler.setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
-                int validUserCount = (int)DbHandler.getValue("select count(*) from payer where name='" + textBoxUserName.Text + "' and password='" + textBoxPassword.Text + "'");
-                if (validUserCount > 0)
-                    this.DialogResult = DialogResult.OK;
-                else
+                try
                 {
-                    MessageBox.Show("User/Password are not correct!");
-                    textBoxUserName.Focus();
+                    int validUserCount = (int)DbHandler.getValue("select count(*) from payer where name='" + textBoxUserName.Text + "' and password='" + textBoxPassword.Text + "'");
+                    if (validUserCount > 0)
+                        this.DialogResult = DialogResult.OK;
+                    else
+                    {
+                        MessageBox.Show("User/Password are not correct!");
+                        textBoxUserName.Focus();
+                    }
                 }
+                catch 
+                {
+                    return;
+                }
+               
             }
             else
             {

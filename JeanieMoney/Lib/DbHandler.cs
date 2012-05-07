@@ -22,23 +22,6 @@ namespace JeanieMoney.Utility
             return dbType;
         }
 
-        private static DbConnection getConnection()
-        {
-            if (connection.State == ConnectionState.Closed)
-            {
-                try
-                {
-                    connection.Open();
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-
-                }
-            }
-            return connection;
-        }
-
         public static void setConnection(String dbType, String connectionString)
         {
             try
@@ -83,32 +66,35 @@ namespace JeanieMoney.Utility
             dbCommand = connection.CreateCommand();
             dbTranx = connection.BeginTransaction();
             dbCommand.Transaction = dbTranx;
-            try
+            if (connect())
             {
-
-                connection.Open();
-                foreach (string command in commandList)
-                {
-                    dbCommand.CommandText = command;
-                    affectedRows += dbCommand.ExecuteNonQuery();
-                }
-                dbTranx.Commit();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
                 try
                 {
-                    dbTranx.Rollback();
+                    foreach (string command in commandList)
+                    {
+                        dbCommand.CommandText = command;
+                        affectedRows += dbCommand.ExecuteNonQuery();
+                    }
+                    dbTranx.Commit();
                 }
-                catch (Exception ex)
+                catch (Exception e)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(e.Message);
+                    try
+                    {
+                        dbTranx.Rollback();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        throw ex;
+                    }
+                    throw e;
                 }
-            }
-            finally
-            {
-                connection.Close();
+                finally
+                {
+                    connection.Close();
+                }
             }
             return affectedRows;
         }
@@ -118,17 +104,21 @@ namespace JeanieMoney.Utility
             DbCommand dbCommand = connection.CreateCommand();
             int affectedRows = 0;
             dbCommand.CommandText = command;
-            try
+            if (connect())
             {
-                affectedRows = dbCommand.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-            finally
-            {
-                connection.Close();
+                try
+                {
+                    affectedRows = dbCommand.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    throw e;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             return affectedRows;
         }
@@ -139,41 +129,65 @@ namespace JeanieMoney.Utility
             DbDataAdapter dbDataAdapter = dbProviderFactory.CreateDataAdapter();
             dbDataAdapter.SelectCommand = dbCommand;
             DataTable dataTable = new DataTable();
-            try
+            if (connect())
             {
-                dbDataAdapter.Fill(dataTable);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
-            finally
-            {
-                connection.Close();
+                try
+                {
+                    dbDataAdapter.Fill(dataTable);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    throw e;
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
             return dataTable;
         }
 
         public static object getValue(string command)
         {
-            
             DbCommand dbCommand = connection.CreateCommand();
-            dbCommand.CommandText = command;
+            //dbCommand.CommandText = command;
             object result = new object();
+            if (connect())
+            {
+                try
+                {
+                    result = dbCommand.ExecuteScalar();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    throw e;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            else
+            {
+                result = null;
+            }
+            return result;
+        }
+
+        private static Boolean connect()
+        {
             try
             {
                 connection.Open();
-                result = dbCommand.ExecuteScalar();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
+                return false;
             }
-            finally
-            {
-                connection.Close();
-            }
-            return result;
+            return true;
         }
 
     }
