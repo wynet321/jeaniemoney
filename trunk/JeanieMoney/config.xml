@@ -4,7 +4,7 @@
     <DbType>System.Data.SqlClient</DbType>
     <ServerName>localhost\sqlexpress</ServerName>
     <DbName>JeanieMoney</DbName>
-    <DbAdminName>dennis</DbAdminName>
+    <DbAdminName>sa</DbAdminName>
     <DbAdminPassword>flhs1net</DbAdminPassword>
   </Profile>
 </JeanieMoney>
