@@ -41,21 +41,11 @@ namespace JeanieMoney.Utility
 
         public static Boolean canConnect()
         {
-            try
-            {
-                connection.Open();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
+            Boolean isConnected = connect();
+            if (!isConnected)
                 return false;
-            }
-            finally
-            {
-                connection.Close();
-            }
+            connection.Close();
             return true;
-
         }
 
         public static int execTranx(List<string> commandList)
@@ -151,7 +141,7 @@ namespace JeanieMoney.Utility
         public static object getValue(string command)
         {
             DbCommand dbCommand = connection.CreateCommand();
-            //dbCommand.CommandText = command;
+            dbCommand.CommandText = command;
             object result = new object();
             if (connect())
             {
