@@ -27,25 +27,31 @@ namespace JeanieMoney.Forms
             //verify user/pass to login
             if (validateInput(textBoxUserName.Text) && validateInput(textBoxPassword.Text))
             {
-                if (textBoxUserName.Text == "Jeanie" && textBoxPassword.Text == "Money")
-                    this.DialogResult = DialogResult.OK;
                 DbHandler.setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
+                if (textBoxUserName.Text == "Jeanie" && textBoxPassword.Text == "Money")
+                {
+                    this.DialogResult = DialogResult.OK;
+                    return;
+                }
                 try
                 {
                     int validUserCount = (int)DbHandler.getValue("select count(*) from payer where name='" + textBoxUserName.Text + "' and password='" + textBoxPassword.Text + "'");
                     if (validUserCount > 0)
-                        this.DialogResult = DialogResult.OK;
+                    {
+                        this.buttonOK.DialogResult = DialogResult.OK;
+                        return;
+                    }
                     else
                     {
                         MessageBox.Show("User/Password are not correct!");
                         textBoxUserName.Focus();
                     }
                 }
-                catch 
+                catch
                 {
                     return;
                 }
-               
+
             }
             else
             {
@@ -78,8 +84,11 @@ namespace JeanieMoney.Forms
         {
 
         }
-        private void groupBoxDbConnectionInit()
+        private void groupBoxDbConnectionShow()
         {
+            this.Width = 512;
+            buttonOK.Left = 145;
+            buttonCancel.Left = 277;
             textBoxDbName.Clear();
             textBoxServerName.Clear();
             textBoxDbAdminName.Clear();
@@ -90,50 +99,87 @@ namespace JeanieMoney.Forms
 
         private void buttonTest_Click(object sender, EventArgs e)
         {
-
-            DbHandler.setConnection(comboBoxDbType.SelectedValue.ToString(), generateConnectionString(String.Empty));
-            if (DbHandler.canConnect())
+            if (validateProfileInput())
             {
-                if (isNew)
+                DbHandler.setConnection(comboBoxDbType.SelectedValue.ToString(), generateConnectionString(String.Empty));
+                if (DbHandler.canConnect())
                 {
-                    if (comboBoxProfile.Items.Contains(textBoxProfileName.Text))
+                    if (isNew)
                     {
-                        MessageBox.Show("Profile Name should be unique. Please select another name!");
-                        textBoxProfileName.Focus();
-                        textBoxProfileName.SelectAll();
-                        return;
+                        if (comboBoxProfile.Items.Contains(textBoxProfileName.Text))
+                        {
+                            MessageBox.Show("Profile Name should be unique. Please select another name!");
+                            textBoxProfileName.Focus();
+                            textBoxProfileName.SelectAll();
+                            return;
+                        }
+                        else
+                        {
+                            //add xml profile
+                            ConfigHandler.addProfile(textBoxProfileName.Text);
+                            ConfigHandler.setDbType(textBoxProfileName.Text, comboBoxDbType.SelectedValue.ToString());
+                            ConfigHandler.setServerName(textBoxProfileName.Text, textBoxServerName.Text);
+                            ConfigHandler.setDbName(textBoxProfileName.Text, textBoxDbName.Text);
+                            ConfigHandler.setDbAdminName(textBoxProfileName.Text, textBoxDbAdminName.Text);
+                            ConfigHandler.setDbAdminPassword(textBoxProfileName.Text, textBoxDbAdminPassword.Text);
+                            //add profile combobox
+                            comboBoxProfile.Items.Add(textBoxProfileName.Text);
+                        }
                     }
                     else
                     {
-                        //add xml profile
-                        ConfigHandler.addProfile(textBoxProfileName.Text);
+                        //change xml
+                        ConfigHandler.reviseProfile(comboBoxProfile.Items[profileSelectedIndex].ToString(), textBoxProfileName.Text);
                         ConfigHandler.setDbType(textBoxProfileName.Text, comboBoxDbType.SelectedValue.ToString());
                         ConfigHandler.setServerName(textBoxProfileName.Text, textBoxServerName.Text);
                         ConfigHandler.setDbName(textBoxProfileName.Text, textBoxDbName.Text);
                         ConfigHandler.setDbAdminName(textBoxProfileName.Text, textBoxDbAdminName.Text);
                         ConfigHandler.setDbAdminPassword(textBoxProfileName.Text, textBoxDbAdminPassword.Text);
-                        //add profile combobox
-                        comboBoxProfile.Items.Add(textBoxProfileName.Text);
+                        //change profile selection
+                        comboBoxProfile.DataSource = ConfigHandler.getProfileList();
+                        comboBoxProfile.SelectedIndex = profileSelectedIndex;
                     }
+                    groupBoxDbConnection.Visible = !groupBoxDbConnection.Visible;
+                    //change OK enable
+                    buttonOK.Enabled = true;
                 }
-                else
-                {
-                    //change xml
-                    ConfigHandler.reviseProfile(comboBoxProfile.Items[profileSelectedIndex].ToString(), textBoxProfileName.Text);
-                    ConfigHandler.setDbType(textBoxProfileName.Text, comboBoxDbType.SelectedValue.ToString());
-                    ConfigHandler.setServerName(textBoxProfileName.Text, textBoxServerName.Text);
-                    ConfigHandler.setDbName(textBoxProfileName.Text, textBoxDbName.Text);
-                    ConfigHandler.setDbAdminName(textBoxProfileName.Text, textBoxDbAdminName.Text);
-                    ConfigHandler.setDbAdminPassword(textBoxProfileName.Text, textBoxDbAdminPassword.Text);
-                    //change profile selection
-                    comboBoxProfile.DataSource = ConfigHandler.getProfileList();
-                    comboBoxProfile.SelectedIndex = profileSelectedIndex;
-                }
-                groupBoxDbConnection.Visible = !groupBoxDbConnection.Visible;
-                //change OK enable
-                buttonOK.Enabled = true;
             }
 
+        }
+
+        private bool validateProfileInput()
+        {
+            if (!validateInput(textBoxProfileName.Text))
+            {
+                MessageBox.Show("Profile name is invalid.");
+                textBoxProfileName.Focus();
+                return false;
+            }
+            if (!validateInput(textBoxServerName.Text))
+            {
+                MessageBox.Show("Server name is invalid.");
+                textBoxServerName.Focus();
+                return false;
+            }
+            if (!validateInput(textBoxDbName.Text))
+            {
+                MessageBox.Show("DB name is invalid.");
+                textBoxDbName.Focus();
+                return false;
+            }
+            if (!validateInput(textBoxDbAdminName.Text))
+            {
+                MessageBox.Show("DB Admin name is invalid.");
+                textBoxDbAdminName.Focus();
+                return false;
+            }
+            if (!validateInput(textBoxDbAdminPassword.Text))
+            {
+                MessageBox.Show("DB Admin password is invalid.");
+                textBoxDbAdminPassword.Focus();
+                return false;
+            }
+            return true;
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -152,6 +198,7 @@ namespace JeanieMoney.Forms
             if (checkBoxModifyProfile.Checked)
             {
                 isNew = false;
+                groupBoxDbConnectionShow();
                 profileSelectedIndex = comboBoxProfile.SelectedIndex;
                 textBoxProfileName.Text = comboBoxProfile.SelectedItem.ToString();
                 comboBoxDbType.SelectedValue = ConfigHandler.getDbType(textBoxProfileName.Text);
@@ -159,6 +206,10 @@ namespace JeanieMoney.Forms
                 textBoxDbName.Text = ConfigHandler.getDbName(textBoxProfileName.Text);
                 textBoxDbAdminName.Text = ConfigHandler.getDbAdminName(textBoxProfileName.Text);
                 textBoxDbAdminPassword.Text = ConfigHandler.getDbAdminPassword(textBoxProfileName.Text);
+            }
+            else
+            {
+                groupBoxDbConnectionHide();
             }
             buttonOK.Enabled = !checkBoxModifyProfile.Checked;
             groupBoxDbConnection.Visible = checkBoxModifyProfile.Checked;
@@ -169,11 +220,22 @@ namespace JeanieMoney.Forms
             if (checkBoxNewProfile.Checked)
             {
                 isNew = true;
-                groupBoxDbConnectionInit();
+                groupBoxDbConnectionShow();
+            }
+            else
+            {
+                groupBoxDbConnectionHide();
             }
             buttonOK.Enabled = !checkBoxNewProfile.Checked;
             groupBoxDbConnection.Visible = checkBoxNewProfile.Checked;
 
+        }
+
+        private void groupBoxDbConnectionHide()
+        {
+            this.Width = 256;
+            buttonOK.Left=33;
+            buttonCancel.Left=141;
         }
     }
 }

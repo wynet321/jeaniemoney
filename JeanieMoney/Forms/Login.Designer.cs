@@ -57,7 +57,7 @@
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(145, 217);
+            this.buttonOK.Location = new System.Drawing.Point(33, 217);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 0;
@@ -67,7 +67,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(277, 217);
+            this.buttonCancel.Location = new System.Drawing.Point(141, 217);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 1;
@@ -259,7 +259,7 @@
             // checkBoxModifyProfile
             // 
             this.checkBoxModifyProfile.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxModifyProfile.Location = new System.Drawing.Point(136, 139);
+            this.checkBoxModifyProfile.Location = new System.Drawing.Point(136, 136);
             this.checkBoxModifyProfile.Name = "checkBoxModifyProfile";
             this.checkBoxModifyProfile.Size = new System.Drawing.Size(79, 24);
             this.checkBoxModifyProfile.TabIndex = 11;
@@ -285,7 +285,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 250);
+            this.ClientSize = new System.Drawing.Size(248, 261);
             this.Controls.Add(this.checkBoxNewProfile);
             this.Controls.Add(this.checkBoxModifyProfile);
             this.Controls.Add(this.comboBoxProfile);
