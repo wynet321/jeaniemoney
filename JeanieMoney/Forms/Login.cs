@@ -30,7 +30,14 @@ namespace JeanieMoney.Forms
                 DbHandler.setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
                 if (textBoxUserName.Text == "Jeanie" && textBoxPassword.Text == "Money")
                 {
-                    this.DialogResult = DialogResult.OK;
+                    if (DbHandler.canConnect())
+                    {
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Can't connect to DB");
+                    }
                     return;
                 }
                 try
@@ -234,8 +241,8 @@ namespace JeanieMoney.Forms
         private void groupBoxDbConnectionHide()
         {
             this.Width = 256;
-            buttonOK.Left=33;
-            buttonCancel.Left=141;
+            buttonOK.Left = 33;
+            buttonCancel.Left = 141;
         }
     }
 }
