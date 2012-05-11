@@ -5,6 +5,6 @@
     <ServerName>localhost\sqlexpress</ServerName>
     <DbName>JeanieMoney</DbName>
     <DbAdminName>sa</DbAdminName>
-    <DbAdminPassword>048321</DbAdminPassword>
+    <DbAdminPassword>flhs1net</DbAdminPassword>
   </Profile>
 </JeanieMoney>
