@@ -82,6 +82,11 @@ namespace JeanieMoney.Forms
                 locationList.Insert(0, category);
 
             }
+            else
+            {
+                textBoxName.Clear();
+                textBoxAbbr.Clear();
+            }
         }
 
         private void buttonReset_Click(object sender, EventArgs e)
@@ -109,11 +114,7 @@ namespace JeanieMoney.Forms
                 return;
             }
             MessageBox.Show("delete OK");
-            locationList = locationAction.retrieveLocationList();
-
-            textBoxName.Clear();
-            textBoxAbbr.Clear();
-            textBoxKeyword_TextChanged(sender, e);
+            init();
 
         }
 
@@ -125,16 +126,10 @@ namespace JeanieMoney.Forms
                 Location category = new Location();
                 category.Id = locationListByAbbr.ElementAt(listBoxLocation.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
-
                 category.Abbr = textBoxAbbr.Text;
                 if (locationAction.updateLocationById(category))
                 {
                     MessageBox.Show("OK");
-                    locationList = locationAction.retrieveLocationList();
-
-                    textBoxName.Clear();
-                    textBoxAbbr.Clear();
-                    textBoxKeyword_TextChanged(sender, e);
                 }
                 else
                 {
@@ -153,7 +148,7 @@ namespace JeanieMoney.Forms
                 if (locationAction.createLocation(category))
                 {
                     MessageBox.Show("OK");
-                    init();
+                    
                 }
                 else
                 {
@@ -161,6 +156,7 @@ namespace JeanieMoney.Forms
                     return;
                 }
             }
+            init();
         }
 
       
