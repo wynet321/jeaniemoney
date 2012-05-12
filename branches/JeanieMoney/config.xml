@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<JeanieMoney>
+  <Profile Name="Localhost">
+    <DbType>System.Data.SqlClient</DbType>
+    <ServerName>localhost\sqlexpress</ServerName>
+    <DbName>JeanieMoney</DbName>
+    <DbAdminName>sa</DbAdminName>
+    <DbAdminPassword>flhs1net</DbAdminPassword>
+  </Profile>
+</JeanieMoney>

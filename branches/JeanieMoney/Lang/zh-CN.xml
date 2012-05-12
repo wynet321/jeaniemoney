@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<JeanieMoney>
+  <Caption>
+    <Button>
+      <OK>OK</OK>
+      <Reset>Reset</Reset>
+      <Cancel>Cancel</Cancel>
+      <Delete>Delete</Delete>
+      <Search>Search</Search>
+      <Details>Details</Details>
+    </Button>
+    <Label>
+      <Name>Name</Name>
+      <Abbr>Abbreviation</Abbr>
+      <Barcode>Barcode</Barcode>
+      <Parent>Parent</Parent>
+      <Period>Period</Period>
+      <Money>Money</Money>
+      <Date>Date</Date>
+      <Payer>Payer</Payer>
+      <Password>Password</Password>
+      <Location>Location</Location>
+      <Category>Category</Category>
+      <PaymentMode>Payment Mode</PaymentMode>
+      <Details>Details</Details>
+      <Beneficiary>Beneficiary</Beneficiary>
+      <Unit>Unit</Unit>
+      <Manufactory>Manufactory</Manufactory>
+      <AveragePrice>Average Price</AveragePrice>
+      <Price>Price</Price>
+      <Quantity>Quantity</Quantity>
+      <Total>Total</Total>
+      <Abbr>Abbreviation</Abbr>
+      <Parent>Parent Category</Parent>
+    </Label>
+    <Group>
+      <InOut>Income/Outgoing</InOut>
+      <Summary>Summary</Summary>
+    </Group>
+    <Radio>
+      <Income>Income</Income>
+      <Outgoing>Outgoing</Outgoing>
+    </Radio>
+    <DataGridView>
+      <Column>
+        <Id>ID</Id>
+        <Name>Name</Name>
+        <Location>Location</Location>
+        <Payer>Payer</Payer>
+        <PaymentMode>Payment Mode</PaymentMode>
+        <Money>Money</Money>
+        <Date>Date</Date>
+      </Column>
+    </DataGridView>
+    <ListView>
+      <Column>
+        <Name>Name</Name>
+        <Unit>Unit</Unit>
+        <Manufactory>Manufactory</Manufactory>
+        <Total>Total</Total>
+        <Quantity>Quantity</Quantity>
+        <Price>Price</Price>
+        <Beneficiary>Beneficiary</Beneficiary>
+      </Column>
+    </ListView>
+    <Form>
+      <Main>Jeanie Money</Main>
+      <RecordInput>Record Input</RecordInput>
+      <Beneficiary>Beneficiary Configuration</Beneficiary>
+      <Category>Category Configruation</Category>
+      <Location>Location Configuration</Location>
+      <Payer>Payer Configuration</Payer>
+      <PaymentMode>Payment Mode Configuration</PaymentMode>
+      <Product>Product Configuration</Product>
+      <Unit>Unit Configuration</Unit>
+    </Form>
+  </Caption>
+  <Message>
+
+  </Message>
+</JeanieMoney>
