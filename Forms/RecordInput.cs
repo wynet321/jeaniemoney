@@ -48,8 +48,8 @@ namespace JeanieMoney.Forms
         {
             this.labelDetailProductResultTitle.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
             this.labelMoney.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Money");
-            this.labelCategory.Text =G18NHandler.GetValue("JeanieMoney/Caption/Label/Category");
-            this.labelDate.Text =G18NHandler.GetValue("JeanieMoney/Caption/Label/Date");
+            this.labelCategory.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Category");
+            this.labelDate.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Date");
             this.labelPayer.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Payer");
             this.labelLocation.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Location");
             this.labelSummaryPaymentMode.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/PaymentMode");
@@ -72,19 +72,19 @@ namespace JeanieMoney.Forms
             this.labelDetailProductResultTitle.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
             this.labelPaymentMode.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/PaymentMode");
 
-            this.groupBoxInOut.Text =G18NHandler.GetValue("JeanieMoney/Caption/Group/InOut");
-            this.radioButtonIn.Text =G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
-            this.radioButtonOut.Text =G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
+            this.groupBoxInOut.Text = G18NHandler.GetValue("JeanieMoney/Caption/Group/InOut");
+            this.radioButtonIn.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
+            this.radioButtonOut.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
             this.groupBoxSummary.Text = G18NHandler.GetValue("JeanieMoney/Caption/Group/Summary");
-            
-            this.buttonReset.Text =G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset"); 
-            this.buttonOK.Text =G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
-            this.buttonCancel.Text =G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
-            
-            
-            this.checkBoxDetails.Text =G18NHandler.GetValue("JeanieMoney/Caption/Button/Details")+"->";
-            
-            this.Text =G18NHandler.GetValue("JeanieMoney/Caption/Form/RecordInput");
+
+            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
+            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
+            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
+
+
+            this.checkBoxDetails.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Details") + "->";
+
+            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/RecordInput");
         }
         private void init()
         {
@@ -553,8 +553,9 @@ namespace JeanieMoney.Forms
 
         private void textBoxDetailBeneficiary_TextChanged(object sender, EventArgs e)
         {
-            String beneficiary = textBoxDetailBeneficiary.Text.Trim();
-            beneficiaryList = beneficiaryAction.retrieveBeneficiaryListByAbbr(beneficiary);
+            Beneficiary beneficiary = new Beneficiary();
+            beneficiary.Abbr = textBoxDetailBeneficiary.Text.Trim();
+            beneficiaryList = beneficiaryAction.retrieveList(beneficiary);
             listBoxDetailBeneficiary.DataSource = beneficiaryList;
             if (0 < listBoxDetailBeneficiary.Items.Count)
             {
@@ -574,7 +575,9 @@ namespace JeanieMoney.Forms
                     {
                         BeneficiaryConfig pc = new BeneficiaryConfig(textBoxDetailBeneficiary.Text.Trim());
                         pc.ShowDialog();
-                        beneficiaryList = beneficiaryAction.retrieveBeneficiaryListByAbbr(textBoxDetailBeneficiary.Text.Trim());
+                        Beneficiary beneficiary = new Beneficiary();
+                        beneficiary.Abbr = textBoxDetailBeneficiary.Text.Trim();
+                        beneficiaryList = beneficiaryAction.retrieveList(beneficiary);
                         if (0 < beneficiaryList.Count)
                         {
                             listBoxDetailBeneficiary.DataSource = beneficiaryList;
