@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using JeanieMoney.Utility;
-using JeanieMoney.Entity;
 using System.Data;
+using JeanieMoney.Entities;
 
-namespace JeanieMoney.Action
+namespace JeanieMoney.Actions
 {
-    class BeneficiaryAction
+    class BeneficiaryAction :IAction
     {
         private void antiSqlInjection(Beneficiary beneficiary)
         {
@@ -21,8 +19,9 @@ namespace JeanieMoney.Action
             if (!string.IsNullOrWhiteSpace(beneficiary.Abbr))
                 beneficiary.Abbr = beneficiary.Abbr.Replace("'", "''");
         }
-        public bool create(Beneficiary beneficiary)
+        public Boolean create(Entity entity)
         {
+            Beneficiary beneficiary = (Beneficiary)entity;
             antiSqlInjection(beneficiary);
             string command = "insert into beneficiary values('" + beneficiary.Id + "','" + beneficiary.Name + "','" + beneficiary.Abbr + "')";
             if (1 == DbHandler.execCommand(command))
@@ -30,8 +29,9 @@ namespace JeanieMoney.Action
             return false;
         }
 
-        public Beneficiary retrieve(Beneficiary beneficiary)
+        public Entity retrieve(Entity entity)
         {
+            Beneficiary beneficiary = (Beneficiary)entity;
             String command = "select * from beneficiary";
             if (beneficiary != null)
             {
@@ -53,8 +53,10 @@ namespace JeanieMoney.Action
             return beneficiaryResult;
         }
 
-        public List<Beneficiary> retrieveList(Beneficiary beneficiary)
+        public List<T> retrieveList<T>(Entity entity) where T:Entity,new()
         {
+            Beneficiary beneficiary = (Beneficiary)entity;
+            
             String command = "select * from beneficiary";
             if (beneficiary != null)
             {
@@ -70,6 +72,8 @@ namespace JeanieMoney.Action
             }
             DataTable dataTable = DbHandler.getDataTable(command);
             List<Beneficiary> beneficiaryResultList = new List<Beneficiary>();
+            List<T> a = new List<T>();
+            
             //Beneficiary beneficiaryResult;
             foreach (DataRow dataRow in dataTable.Rows)
             {
@@ -78,12 +82,16 @@ namespace JeanieMoney.Action
                 beneficiaryResult.Name = dataRow["name"].ToString();
                 beneficiaryResult.Abbr = dataRow["abbr"].ToString();
                 beneficiaryResultList.Add(beneficiaryResult);
+                T b = new T();
+                b.Id = dataRow["id"].ToString();
+                a.Add(b);
             }
-            return beneficiaryResultList;
+            return a;
         }
 
-        public bool update(Beneficiary beneficiary)
+        public Boolean update(Entity entity)
         {
+            Beneficiary beneficiary = (Beneficiary)entity;
             antiSqlInjection(beneficiary);
             string command = "update beneficiary set ";
             if (0 > beneficiary.Id.Length)
@@ -95,8 +103,9 @@ namespace JeanieMoney.Action
             return false;
         }
 
-        public bool delete(Beneficiary beneficiary)
+        public Boolean delete(Entity entity)
         {
+            Beneficiary beneficiary = (Beneficiary)entity;
             if (beneficiary == null)
                 return false;
             antiSqlInjection(beneficiary);
@@ -113,5 +122,7 @@ namespace JeanieMoney.Action
                 return true;
             return false;
         }
+
+        
     }
 }

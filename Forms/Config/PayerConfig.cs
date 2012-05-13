@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
-using JeanieMoney.Action;
-using JeanieMoney.Entity;
 using JeanieMoney.Utility;
+using JeanieMoney.Forms.Config;
+using JeanieMoney.Actions;
+using JeanieMoney.Entities;
 
 namespace JeanieMoney.Forms
 {
@@ -60,7 +60,7 @@ namespace JeanieMoney.Forms
             if (null != listBoxPayer.SelectedItem)
             {
                 textBoxName.Text = ((Payer)listBoxPayer.SelectedItem).Name;
-                textBoxAbbr.Text = payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Abbr;
+                //textBoxAbbr.Text = payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Abbr;
                 payerList = payerAction.retrievePayerList();
                 Payer category = new Payer();
                 payerList.Insert(0, category);
@@ -103,11 +103,11 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!payerAction.deletePayerById(payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Id))
-            {
-                MessageBox.Show("delete failed");
-                return;
-            }
+            //if (!payerAction.deletePayerById(payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Id))
+            //{
+            //    MessageBox.Show("delete failed");
+            //    return;
+            //}
             MessageBox.Show("delete OK");
             payerList = payerAction.retrievePayerList();
             
@@ -139,7 +139,7 @@ namespace JeanieMoney.Forms
             if (null != listBoxPayer.SelectedItem)
             {
                 //modify
-                payer.Id = payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Id;
+                //payer.Id = payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Id;
                 if (payerAction.updatePayerById(payer))
                 {
                     MessageBox.Show("OK");
