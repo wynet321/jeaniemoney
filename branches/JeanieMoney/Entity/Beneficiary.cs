@@ -7,13 +7,13 @@ namespace JeanieMoney.Entity
 {
     class Beneficiary
     {
-        private string id;
-        public string Id { get { return id; } set { id = value; } }
+        private String id;
+        public String Id { get { return id; } set { id = value; } }
 
-        private string name = String.Empty;
-        public string Name { get { return name; } set { name = value; } }
+        private String name = String.Empty;
+        public String Name { get { return name; } set { name = value; } }
 
-        private string abbr = String.Empty;
-        public string Abbr { get { return abbr; } set { abbr = value; } }
+        private String abbr = String.Empty;
+        public String Abbr { get { return abbr; } set { abbr = value; } }
     }
 }
