@@ -36,14 +36,14 @@ namespace JeanieMoney.Action
             if (beneficiary != null)
             {
                 antiSqlInjection(beneficiary);
-                command = " where 1=1 and ";
+                command += " where 1=1 and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Id))
                     command += "id='" + beneficiary.Id + "' and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Name))
                     command += "name='" + beneficiary.Name + "' and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Abbr))
                     command += "abbr='" + beneficiary.Abbr + "' and ";
-                command.Remove(command.Length - 5);
+                command=command.Remove(command.Length - 5);
             }
             DataTable dataTable = DbHandler.getDataTable(command);
             Beneficiary beneficiaryResult = new Beneficiary();
@@ -59,25 +59,25 @@ namespace JeanieMoney.Action
             if (beneficiary != null)
             {
                 antiSqlInjection(beneficiary);
-                command = " where 1=1 and ";
+                command += " where 1=1 and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Id))
                     command += "id like '" + beneficiary.Id + "%' and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Name))
                     command += "name like '" + beneficiary.Name + "%' and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Abbr))
                     command += "abbr like '" + beneficiary.Abbr + "%' and ";
-                command.Remove(command.Length - 5);
+                command=command.Remove(command.Length - 5);
             }
             DataTable dataTable = DbHandler.getDataTable(command);
             List<Beneficiary> beneficiaryResultList = new List<Beneficiary>();
-            Beneficiary beneficiaryResult;
+            //Beneficiary beneficiaryResult;
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                beneficiaryResult = new Beneficiary();
+                Beneficiary beneficiaryResult = new Beneficiary();
                 beneficiaryResult.Id = dataRow["id"].ToString();
                 beneficiaryResult.Name = dataRow["name"].ToString();
                 beneficiaryResult.Abbr = dataRow["abbr"].ToString();
-                beneficiaryResultList.Add(beneficiary);
+                beneficiaryResultList.Add(beneficiaryResult);
             }
             return beneficiaryResultList;
         }
@@ -107,7 +107,7 @@ namespace JeanieMoney.Action
                 command += "name='" + beneficiary.Name + "' and ";
             if (!string.IsNullOrWhiteSpace(beneficiary.Abbr))
                 command += "abbr='" + beneficiary.Abbr + "' and ";
-            command.Remove(command.Length - 5);
+            command=command.Remove(command.Length - 5);
 
             if (0 < DbHandler.execCommand(command))
                 return true;
