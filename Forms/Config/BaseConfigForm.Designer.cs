@@ -38,7 +38,7 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.labelAbbr = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
-            this.labelSearchAbbr = new System.Windows.Forms.Label();
+            this.labelKeyword = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxKeyword
@@ -47,7 +47,6 @@
             this.textBoxKeyword.Name = "textBoxKeyword";
             this.textBoxKeyword.Size = new System.Drawing.Size(148, 21);
             this.textBoxKeyword.TabIndex = 3;
-            this.textBoxKeyword.TextChanged += new System.EventHandler(this.textBoxKeyword_TextChanged);
             // 
             // buttonDelete
             // 
@@ -126,14 +125,14 @@
             this.labelName.TabIndex = 33;
             this.labelName.Text = "Name";
             // 
-            // labelSearchAbbr
+            // labelKeyword
             // 
-            this.labelSearchAbbr.AutoSize = true;
-            this.labelSearchAbbr.Location = new System.Drawing.Point(17, 13);
-            this.labelSearchAbbr.Name = "labelSearchAbbr";
-            this.labelSearchAbbr.Size = new System.Drawing.Size(47, 12);
-            this.labelSearchAbbr.TabIndex = 32;
-            this.labelSearchAbbr.Text = "Keyword";
+            this.labelKeyword.AutoSize = true;
+            this.labelKeyword.Location = new System.Drawing.Point(17, 13);
+            this.labelKeyword.Name = "labelKeyword";
+            this.labelKeyword.Size = new System.Drawing.Size(47, 12);
+            this.labelKeyword.TabIndex = 32;
+            this.labelKeyword.Text = "Keyword";
             // 
             // BaseConfigForm
             // 
@@ -142,7 +141,7 @@
             this.ClientSize = new System.Drawing.Size(474, 244);
             this.Controls.Add(this.labelAbbr);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.labelSearchAbbr);
+            this.Controls.Add(this.labelKeyword);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonCancel);
@@ -173,6 +172,6 @@
         protected System.Windows.Forms.Button buttonOK;
         protected System.Windows.Forms.Label labelAbbr;
         protected System.Windows.Forms.Label labelName;
-        protected System.Windows.Forms.Label labelSearchAbbr;
+        protected System.Windows.Forms.Label labelKeyword;
     }
 }

@@ -1,5 +1,4 @@
-﻿using JeanieMoney.Forms.Config;
-namespace JeanieMoney.Forms.Config
+﻿namespace JeanieMoney.Forms.Config
 {
     partial class BeneficiaryConfig:BaseConfigForm
     {
@@ -33,6 +32,13 @@ namespace JeanieMoney.Forms.Config
             // 
             // BeneficiaryConfig
             // 
+            buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
+            buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            textBoxKeyword.TextChanged += new System.EventHandler(this.textBoxKeyword_TextChanged);
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 214);

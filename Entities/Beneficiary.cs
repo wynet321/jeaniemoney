@@ -5,7 +5,7 @@ using System.Text;
 
 namespace JeanieMoney.Entities
 {
-    class Beneficiary:Entity
+    class Beneficiary
     {
         private String id;
         public String Id { get { return id; } set { id = value; } }
