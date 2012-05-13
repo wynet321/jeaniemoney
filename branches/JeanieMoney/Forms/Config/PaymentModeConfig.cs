@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using JeanieMoney.Utility;
-using JeanieMoney.Action;
-using JeanieMoney.Entity;
+using JeanieMoney.Actions;
+using JeanieMoney.Entities;
 using System.Collections.Generic;
 using System.Linq;
 

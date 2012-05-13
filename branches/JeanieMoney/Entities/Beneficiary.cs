@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace JeanieMoney.Entity
+namespace JeanieMoney.Entities
 {
-    class Beneficiary
+    class Beneficiary:Entity
     {
         private String id;
         public String Id { get { return id; } set { id = value; } }

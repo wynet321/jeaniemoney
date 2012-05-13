@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JeanieMoney.Entity;
+﻿using System.Collections.Generic;
+using JeanieMoney.Entities;
 using JeanieMoney.Utility;
 using System.Data;
+using System;
 
-namespace JeanieMoney.Action
+namespace JeanieMoney.Actions
 {
-    class PayerAction
+    class PayerAction:IAction
     {
-        public bool createPayer(Payer payer)
+        public Boolean createPayer(Payer payer)
         {
             string command = "insert into payer values('" + payer.Id + "','" + payer.Name + "','" + payer.Abbr + "','"+payer.Password+"')";
             if (1== DbHandler.execCommand(command))
@@ -76,6 +74,34 @@ namespace JeanieMoney.Action
             if (0 < DbHandler.execCommand(command))
                 return true;
             return false;
+        }
+
+        bool IAction.create(Entity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        Entity IAction.retrieve(Entity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+       
+
+        bool IAction.update(Entity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IAction.delete(Entity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+
+       List<T> IAction.retrieveList<T>(Entity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

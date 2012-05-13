@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using JeanieMoney.Entity;
-using JeanieMoney.Action;
+using JeanieMoney.Entities;
+using JeanieMoney.Actions;
 using JeanieMoney.Forms.Config;
 using JeanieMoney.Utility;
 using System.Drawing;
@@ -555,7 +555,7 @@ namespace JeanieMoney.Forms
         {
             Beneficiary beneficiary = new Beneficiary();
             beneficiary.Abbr = textBoxDetailBeneficiary.Text.Trim();
-            beneficiaryList = beneficiaryAction.retrieveList(beneficiary);
+            beneficiaryList = beneficiaryAction.retrieveList<Beneficiary>(beneficiary);
             listBoxDetailBeneficiary.DataSource = beneficiaryList;
             if (0 < listBoxDetailBeneficiary.Items.Count)
             {
@@ -577,7 +577,7 @@ namespace JeanieMoney.Forms
                         pc.ShowDialog();
                         Beneficiary beneficiary = new Beneficiary();
                         beneficiary.Abbr = textBoxDetailBeneficiary.Text.Trim();
-                        beneficiaryList = beneficiaryAction.retrieveList(beneficiary);
+                        beneficiaryList = beneficiaryAction.retrieveList<Beneficiary>(beneficiary);
                         if (0 < beneficiaryList.Count)
                         {
                             listBoxDetailBeneficiary.DataSource = beneficiaryList;

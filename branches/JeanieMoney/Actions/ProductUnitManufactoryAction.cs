@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using JeanieMoney.Utility;
 using System.Data;
-using JeanieMoney.Entity;
+using JeanieMoney.Entities;
 
-namespace JeanieMoney.Action
+namespace JeanieMoney.Actions
 {
     class ProductUnitManufactoryAction
     {

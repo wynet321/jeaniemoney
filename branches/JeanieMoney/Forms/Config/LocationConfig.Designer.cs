@@ -1,6 +1,7 @@
-﻿namespace JeanieMoney.Forms
+﻿using JeanieMoney.Forms.Config;
+namespace JeanieMoney.Forms
 {
-    partial class LocationConfig
+    partial class LocationConfig:BaseConfigForm
     {
         /// <summary>
         /// Required designer variable.
