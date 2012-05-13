@@ -30,7 +30,7 @@
       <Price>Price</Price>
       <Quantity>Quantity</Quantity>
       <Total>Total</Total>
-      <Abbr>Abbreviation</Abbr>
+      <Keyword>Keyword</Keyword>
       <Parent>Parent Category</Parent>
     </Label>
     <Group>

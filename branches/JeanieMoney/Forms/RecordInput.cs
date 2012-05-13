@@ -555,7 +555,7 @@ namespace JeanieMoney.Forms
         {
             Beneficiary beneficiary = new Beneficiary();
             beneficiary.Abbr = textBoxDetailBeneficiary.Text.Trim();
-            beneficiaryList = beneficiaryAction.retrieveList<Beneficiary>(beneficiary);
+            beneficiaryList = beneficiaryAction.retrieveList(beneficiary);
             listBoxDetailBeneficiary.DataSource = beneficiaryList;
             if (0 < listBoxDetailBeneficiary.Items.Count)
             {
@@ -577,7 +577,7 @@ namespace JeanieMoney.Forms
                         pc.ShowDialog();
                         Beneficiary beneficiary = new Beneficiary();
                         beneficiary.Abbr = textBoxDetailBeneficiary.Text.Trim();
-                        beneficiaryList = beneficiaryAction.retrieveList<Beneficiary>(beneficiary);
+                        beneficiaryList = beneficiaryAction.retrieveList(beneficiary);
                         if (0 < beneficiaryList.Count)
                         {
                             listBoxDetailBeneficiary.DataSource = beneficiaryList;

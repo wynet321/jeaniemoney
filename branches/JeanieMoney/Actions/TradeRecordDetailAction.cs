@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using JeanieMoney.Entities;
 using JeanieMoney.Utility;
 using System.Data;

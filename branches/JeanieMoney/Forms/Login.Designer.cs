@@ -67,6 +67,7 @@
             // 
             // buttonCancel
             // 
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Location = new System.Drawing.Point(141, 217);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
@@ -283,8 +284,10 @@
             // 
             // Login
             // 
+            this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(248, 261);
             this.Controls.Add(this.checkBoxNewProfile);
             this.Controls.Add(this.checkBoxModifyProfile);
