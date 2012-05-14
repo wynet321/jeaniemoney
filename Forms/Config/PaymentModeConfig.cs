@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
-using JeanieMoney.Utility;
 using JeanieMoney.Actions;
 using JeanieMoney.Entities;
-using System.Collections.Generic;
+using JeanieMoney.Utility;
 
 namespace JeanieMoney.Forms.Config
 {
