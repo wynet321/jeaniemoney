@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using JeanieMoney.Utility;
 using JeanieMoney.Forms.Config;
 
 namespace JeanieMoney.Forms
 {
-    public partial class formMain : Form
+    public partial class Main : Form
     {
-        public formMain()
+        public Main()
         {
             InitializeComponent();
 
@@ -35,26 +30,16 @@ namespace JeanieMoney.Forms
             this.lablePeriod.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Period");
             this.buttonSearch.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Search");
         }
-        private void formMain_Load(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
-            Login login = new Login();
-            DialogResult result = login.ShowDialog();
-            if (DialogResult.OK != result)
-            {
-                //this.Close();
-                Application.Exit();
-            }
             refreshDataGridView();
             setCaption();
-
         }
 
         private void toolStripButtonRecordInput_Click(object sender, EventArgs e)
         {
             RecordInput ri = new RecordInput();
             ri.ShowDialog();
-            //CategoryConfig cc = new CategoryConfig();
-            //cc.ShowDialog();
         }
 
         private void toolStripButtonCategory_Click(object sender, EventArgs e)

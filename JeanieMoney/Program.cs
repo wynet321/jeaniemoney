@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using JeanieMoney.Forms;
 
 namespace JeanieMoney
 {
@@ -15,7 +16,13 @@ namespace JeanieMoney
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.formMain());
+            Login login = new Login();
+            login.ShowDialog();
+            if (login.DialogResult == DialogResult.OK)
+            {
+                Main main = new Main();
+                Application.Run(main);
+            }
         }
     }
 }
