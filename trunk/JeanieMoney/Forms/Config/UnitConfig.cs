@@ -12,7 +12,6 @@ namespace JeanieMoney.Forms.Config
     {
         UnitAction unitAction;
         List<Unit> unitListByAbbr;
-        List<Unit> unitList;
 
         public UnitConfig()
         {
@@ -61,10 +60,6 @@ namespace JeanieMoney.Forms.Config
             {
                 textBoxName.Text = ((Unit)listBox.SelectedItem).Name;
                 textBoxAbbr.Text = unitListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
-                unitList = unitAction.retrieveUnitList();
-                Unit category = new Unit();
-                unitList.Insert(0, category);
-               
             }
         }
 
@@ -74,7 +69,7 @@ namespace JeanieMoney.Forms.Config
         }
         private void setCaption()
         {
-            
+
             this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Unit");
         }
 
@@ -85,11 +80,6 @@ namespace JeanieMoney.Forms.Config
             textBoxAbbr.Clear();
             listBox.DataSource = null;
             textBoxKeyword.Clear();
-            unitList = unitAction.retrieveUnitList();
-            Unit unit = new Unit();
-            unitList.Insert(0, unit);
-           
-
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -100,32 +90,28 @@ namespace JeanieMoney.Forms.Config
                 return;
             }
             MessageBox.Show("delete OK");
-            unitList = unitAction.retrieveUnitList();
-            
             textBoxName.Clear();
             textBoxAbbr.Clear();
             textBoxKeyword_TextChanged(sender, e);
-
         }
-
+        private Boolean validateInput()
+        {
+            return true;
+        }
         private void buttonOK_Click(object sender, EventArgs e)
         {
+
+            Unit category = new Unit();
+            category.Name = textBoxName.Text;
+            category.Abbr = textBoxAbbr.Text;
             if (null != listBox.SelectedItem)
             {
                 //modify
-                Unit category = new Unit();
                 category.Id = unitListByAbbr.ElementAt(listBox.SelectedIndex).Id;
-                category.Name = textBoxName.Text;
-                
-                category.Abbr = textBoxAbbr.Text;
                 if (unitAction.updateUnitById(category))
                 {
                     MessageBox.Show("OK");
-                    unitList = unitAction.retrieveUnitList();
-                   
-                    textBoxName.Clear();
-                    textBoxAbbr.Clear();
-                    textBoxKeyword_TextChanged(sender, e);
+                    init();
                 }
                 else
                 {
@@ -136,11 +122,7 @@ namespace JeanieMoney.Forms.Config
             else
             {
                 //insert
-                Unit category=new Unit();
-                category.Id=Guid.NewGuid().ToString();
-                category.Name=textBoxName.Text;
-                
-                category.Abbr=textBoxAbbr.Text;
+                category.Id = Guid.NewGuid().ToString();
                 if (unitAction.createUnit(category))
                 {
                     MessageBox.Show("OK");

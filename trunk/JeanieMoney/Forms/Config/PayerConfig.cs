@@ -12,7 +12,6 @@ namespace JeanieMoney.Forms
     public partial class PayerConfig : BaseConfigForm
     {
         PayerAction payerAction;
-        List<Payer> payerListByAbbr;
         List<Payer> payerList;
 
         public PayerConfig()
@@ -48,10 +47,10 @@ namespace JeanieMoney.Forms
                 listBox.DataSource = null;
                 return;
             }
-            payerListByAbbr = payerAction.retrievePayerListByAbbr(textBoxKeyword.Text);
+            payerList = payerAction.retrievePayerListByAbbr(textBoxKeyword.Text);
             listBox.DisplayMember = "Name";
             listBox.ValueMember = "Id";
-            listBox.DataSource = payerListByAbbr;
+            listBox.DataSource = payerList;
             if (0 < listBox.Items.Count)
                 listBox.SelectedIndex = 0;
         }
@@ -61,11 +60,7 @@ namespace JeanieMoney.Forms
             if (null != listBox.SelectedItem)
             {
                 textBoxName.Text = ((Payer)listBox.SelectedItem).Name;
-                textBoxAbbr.Text = payerListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
-                payerList = payerAction.retrievePayerList();
-                Payer category = new Payer();
-                payerList.Insert(0, category);
-               
+                textBoxAbbr.Text = payerList.ElementAt(listBox.SelectedIndex).Abbr;
             }
         }
 
@@ -87,23 +82,16 @@ namespace JeanieMoney.Forms
             textBoxPassword.Clear();
             listBox.DataSource = null;
             textBoxKeyword.Clear();
-            payerList = payerAction.retrievePayerList();
-            Payer payer = new Payer();
-            payerList.Insert(0, payer);
-           
-
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!payerAction.deletePayerById(payerListByAbbr.ElementAt(listBox.SelectedIndex).Id))
+            if (!payerAction.deletePayerById(payerList.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
             }
             MessageBox.Show("delete OK");
-            payerList = payerAction.retrievePayerList();
-            
             textBoxName.Clear();
             textBoxAbbr.Clear();
             textBoxPassword.Clear();
@@ -132,15 +120,11 @@ namespace JeanieMoney.Forms
             if (null != listBox.SelectedItem)
             {
                 //modify
-                payer.Id = payerListByAbbr.ElementAt(listBox.SelectedIndex).Id;
+                payer.Id = payerList.ElementAt(listBox.SelectedIndex).Id;
                 if (payerAction.updatePayerById(payer))
                 {
                     MessageBox.Show("OK");
-                    payerList = payerAction.retrievePayerList();
-                    textBoxName.Clear();
-                    textBoxAbbr.Clear();
-                    textBoxPassword.Clear();
-                    textBoxKeyword_TextChanged(sender, e);
+                    init();
                 }
                 else
                 {
@@ -151,7 +135,7 @@ namespace JeanieMoney.Forms
             else
             {
                 //insert
-                payer.Id=Guid.NewGuid().ToString();
+                payer.Id = Guid.NewGuid().ToString();
                 if (payerAction.createPayer(payer))
                 {
                     MessageBox.Show("OK");

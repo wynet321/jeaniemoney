@@ -9,10 +9,9 @@ using JeanieMoney.Forms.Config;
 
 namespace JeanieMoney.Forms
 {
-    public partial class LocationConfig :BaseConfigForm
+    public partial class LocationConfig : BaseConfigForm
     {
         LocationAction locationAction;
-        List<Location> locationListByAbbr;
         List<Location> locationList;
 
         public LocationConfig()
@@ -23,7 +22,7 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-                       this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Location");
+            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Location");
         }
         public LocationConfig(string abbr)
         {
@@ -51,10 +50,10 @@ namespace JeanieMoney.Forms
                 listBox.DataSource = null;
                 return;
             }
-            locationListByAbbr = locationAction.retrieveLocationListByAbbr(textBoxKeyword.Text);
+            locationList = locationAction.retrieveLocationListByAbbr(textBoxKeyword.Text);
             listBox.DisplayMember = "Name";
             listBox.ValueMember = "Id";
-            listBox.DataSource = locationListByAbbr;
+            listBox.DataSource = locationList;
             if (0 < listBox.Items.Count)
                 listBox.SelectedIndex = 0;
         }
@@ -64,11 +63,7 @@ namespace JeanieMoney.Forms
             if (null != listBox.SelectedItem)
             {
                 textBoxName.Text = ((Location)listBox.SelectedItem).Name;
-                textBoxAbbr.Text = locationListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
-                locationList = locationAction.retrieveLocationList();
-                Location category = new Location();
-                locationList.Insert(0, category);
-
+                textBoxAbbr.Text = locationList.ElementAt(listBox.SelectedIndex).Abbr;
             }
             else
             {
@@ -89,14 +84,11 @@ namespace JeanieMoney.Forms
             textBoxAbbr.Clear();
             listBox.DataSource = null;
             textBoxKeyword.Clear();
-            locationList = locationAction.retrieveLocationList();
-            Location category = new Location();
-            locationList.Insert(0, category);
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!locationAction.deleteLocationById(locationListByAbbr.ElementAt(listBox.SelectedIndex).Id))
+            if (!locationAction.deleteLocationById(locationList.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -105,19 +97,29 @@ namespace JeanieMoney.Forms
             init();
 
         }
+        private Boolean validateInput()
+        {
 
+            return true;
+        }
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            if (!validateInput())
+            {
+                return;
+            }
+            Location category = new Location();
+
+            category.Name = textBoxName.Text;
+            category.Abbr = textBoxAbbr.Text;
             if (null != listBox.SelectedItem)
             {
                 //modify
-                Location category = new Location();
-                category.Id = locationListByAbbr.ElementAt(listBox.SelectedIndex).Id;
-                category.Name = textBoxName.Text;
-                category.Abbr = textBoxAbbr.Text;
+                category.Id = locationList.ElementAt(listBox.SelectedIndex).Id;
                 if (locationAction.updateLocationById(category))
                 {
                     MessageBox.Show("OK");
+                    init();
                 }
                 else
                 {
@@ -128,15 +130,13 @@ namespace JeanieMoney.Forms
             else
             {
                 //insert
-                Location category = new Location();
-                category.Id = Guid.NewGuid().ToString();
-                category.Name = textBoxName.Text;
 
-                category.Abbr = textBoxAbbr.Text;
+                category.Id = Guid.NewGuid().ToString();
+
                 if (locationAction.createLocation(category))
                 {
                     MessageBox.Show("OK");
-                    
+                    init();
                 }
                 else
                 {
@@ -144,10 +144,10 @@ namespace JeanieMoney.Forms
                     return;
                 }
             }
-            init();
+
         }
 
-      
+
 
     }
 }
