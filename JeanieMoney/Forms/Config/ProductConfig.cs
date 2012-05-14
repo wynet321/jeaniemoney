@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using JeanieMoney.Utility;
-using JeanieMoney.Action;
-using JeanieMoney.Entity;
+using JeanieMoney.Actions;
+using JeanieMoney.Entities;
+using JeanieMoney.Forms.Config;
 
 namespace JeanieMoney.Forms
 {
@@ -33,7 +30,7 @@ namespace JeanieMoney.Forms
             textBoxAbbr.Text = abbr;
             textBoxAbbr.Enabled = false;
             textBoxKeyword.Enabled = false;
-            listBoxProduct.Enabled = false;
+            listBox.Enabled = false;
             buttonDelete.Enabled = false;
             buttonReset.Enabled = false;
             textBoxName.Select();
@@ -48,24 +45,24 @@ namespace JeanieMoney.Forms
         {
             if (0 == textBoxKeyword.Text.Length)
             {
-                listBoxProduct.DataSource = null;
+                listBox.DataSource = null;
                 return;
             }
             productListByAbbr = productAction.retrieveProductListByAbbr(textBoxKeyword.Text);
-            listBoxProduct.DisplayMember = "Name";
-            listBoxProduct.ValueMember = "Id";
-            listBoxProduct.DataSource = productListByAbbr;
-            if (0 < listBoxProduct.Items.Count)
-                listBoxProduct.SelectedIndex = 0;
+            listBox.DisplayMember = "Name";
+            listBox.ValueMember = "Id";
+            listBox.DataSource = productListByAbbr;
+            if (0 < listBox.Items.Count)
+                listBox.SelectedIndex = 0;
         }
 
-        private void listBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (null != listBoxProduct.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
-                textBoxName.Text = ((Product)listBoxProduct.SelectedItem).Name;
-                textBoxAbbr.Text = productListByAbbr.ElementAt(listBoxProduct.SelectedIndex).Abbr;
-                textBoxBarcode.Text = productListByAbbr.ElementAt(listBoxProduct.SelectedIndex).Barcode;
+                textBoxName.Text = ((Product)listBox.SelectedItem).Name;
+                textBoxAbbr.Text = productListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
+                textBoxBarcode.Text = productListByAbbr.ElementAt(listBox.SelectedIndex).Barcode;
                 productList = productAction.retrieveProductList();
                 Product category = new Product();
                 productList.Insert(0, category);
@@ -79,15 +76,7 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.buttonDelete.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Delete");
-            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
-            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
-
-            this.labelAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelSearchAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelBarcode.Text = G18NHandler.GetValue("jeanieMoney/Caption/Label/Barcode");
+           this.labelBarcode.Text = G18NHandler.GetValue("jeanieMoney/Caption/Label/Barcode");
 
             this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Product");
         }
@@ -96,7 +85,7 @@ namespace JeanieMoney.Forms
             setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
-            listBoxProduct.DataSource = null;
+            listBox.DataSource = null;
             textBoxKeyword.Clear();
             productList = productAction.retrieveProductList();
             Product product = new Product();
@@ -107,7 +96,7 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!productAction.deleteProductById(productListByAbbr.ElementAt(listBoxProduct.SelectedIndex).Id))
+            if (!productAction.deleteProductById(productListByAbbr.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -123,11 +112,11 @@ namespace JeanieMoney.Forms
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (null != listBoxProduct.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
                 //modify
                 Product category = new Product();
-                category.Id = productListByAbbr.ElementAt(listBoxProduct.SelectedIndex).Id;
+                category.Id = productListByAbbr.ElementAt(listBox.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
                 category.Abbr = textBoxAbbr.Text;
                 category.Barcode = textBoxBarcode.Text;

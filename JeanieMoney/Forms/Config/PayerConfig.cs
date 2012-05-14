@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using JeanieMoney.Action;
-using JeanieMoney.Entity;
+using JeanieMoney.Actions;
+using JeanieMoney.Entities;
 using JeanieMoney.Utility;
+using JeanieMoney.Forms.Config;
 
 namespace JeanieMoney.Forms
 {
@@ -29,7 +30,7 @@ namespace JeanieMoney.Forms
             textBoxAbbr.Text = abbr;
             textBoxAbbr.Enabled = false;
             textBoxKeyword.Enabled = false;
-            listBoxPayer.Enabled = false;
+            listBox.Enabled = false;
             buttonDelete.Enabled = false;
             buttonReset.Enabled = false;
             textBoxName.Select();
@@ -44,23 +45,23 @@ namespace JeanieMoney.Forms
         {
             if (0 == textBoxKeyword.Text.Length)
             {
-                listBoxPayer.DataSource = null;
+                listBox.DataSource = null;
                 return;
             }
             payerListByAbbr = payerAction.retrievePayerListByAbbr(textBoxKeyword.Text);
-            listBoxPayer.DisplayMember = "Name";
-            listBoxPayer.ValueMember = "Id";
-            listBoxPayer.DataSource = payerListByAbbr;
-            if (0 < listBoxPayer.Items.Count)
-                listBoxPayer.SelectedIndex = 0;
+            listBox.DisplayMember = "Name";
+            listBox.ValueMember = "Id";
+            listBox.DataSource = payerListByAbbr;
+            if (0 < listBox.Items.Count)
+                listBox.SelectedIndex = 0;
         }
 
-        private void listBoxPayer_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (null != listBoxPayer.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
-                textBoxName.Text = ((Payer)listBoxPayer.SelectedItem).Name;
-                textBoxAbbr.Text = payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Abbr;
+                textBoxName.Text = ((Payer)listBox.SelectedItem).Name;
+                textBoxAbbr.Text = payerListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
                 payerList = payerAction.retrievePayerList();
                 Payer category = new Payer();
                 payerList.Insert(0, category);
@@ -74,14 +75,6 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.buttonDelete.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Delete");
-            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
-            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
-
-            this.labelAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelSearchAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
             this.labelPassword.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Password");
 
             this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Payer");
@@ -92,7 +85,7 @@ namespace JeanieMoney.Forms
             textBoxName.Clear();
             textBoxAbbr.Clear();
             textBoxPassword.Clear();
-            listBoxPayer.DataSource = null;
+            listBox.DataSource = null;
             textBoxKeyword.Clear();
             payerList = payerAction.retrievePayerList();
             Payer payer = new Payer();
@@ -103,7 +96,7 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!payerAction.deletePayerById(payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Id))
+            if (!payerAction.deletePayerById(payerListByAbbr.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -136,10 +129,10 @@ namespace JeanieMoney.Forms
             payer.Name = textBoxName.Text;
             payer.Abbr = textBoxAbbr.Text;
             payer.Password = textBoxPassword.Text;
-            if (null != listBoxPayer.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
                 //modify
-                payer.Id = payerListByAbbr.ElementAt(listBoxPayer.SelectedIndex).Id;
+                payer.Id = payerListByAbbr.ElementAt(listBox.SelectedIndex).Id;
                 if (payerAction.updatePayerById(payer))
                 {
                     MessageBox.Show("OK");

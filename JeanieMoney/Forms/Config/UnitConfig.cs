@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using JeanieMoney.Utility;
-using JeanieMoney.Action;
-using JeanieMoney.Entity;
+using JeanieMoney.Actions;
+using JeanieMoney.Entities;
 
 namespace JeanieMoney.Forms.Config
 {
@@ -33,7 +29,7 @@ namespace JeanieMoney.Forms.Config
             textBoxAbbr.Text = abbr;
             textBoxAbbr.Enabled = false;
             textBoxKeyword.Enabled = false;
-            listBoxUnit.Enabled = false;
+            listBox.Enabled = false;
             buttonDelete.Enabled = false;
             buttonReset.Enabled = false;
             textBoxName.Select();
@@ -48,23 +44,23 @@ namespace JeanieMoney.Forms.Config
         {
             if (0 == textBoxKeyword.Text.Length)
             {
-                listBoxUnit.DataSource = null;
+                listBox.DataSource = null;
                 return;
             }
             unitListByAbbr = unitAction.retrieveUnitListByAbbr(textBoxKeyword.Text);
-            listBoxUnit.DisplayMember = "Name";
-            listBoxUnit.ValueMember = "Id";
-            listBoxUnit.DataSource = unitListByAbbr;
-            if (0 < listBoxUnit.Items.Count)
-                listBoxUnit.SelectedIndex = 0;
+            listBox.DisplayMember = "Name";
+            listBox.ValueMember = "Id";
+            listBox.DataSource = unitListByAbbr;
+            if (0 < listBox.Items.Count)
+                listBox.SelectedIndex = 0;
         }
 
-        private void listBoxUnit_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (null != listBoxUnit.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
-                textBoxName.Text = ((Unit)listBoxUnit.SelectedItem).Name;
-                textBoxAbbr.Text = unitListByAbbr.ElementAt(listBoxUnit.SelectedIndex).Abbr;
+                textBoxName.Text = ((Unit)listBox.SelectedItem).Name;
+                textBoxAbbr.Text = unitListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
                 unitList = unitAction.retrieveUnitList();
                 Unit category = new Unit();
                 unitList.Insert(0, category);
@@ -78,15 +74,7 @@ namespace JeanieMoney.Forms.Config
         }
         private void setCaption()
         {
-            this.buttonDelete.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Delete");
-            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
-            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
-
-            this.labelAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelSearchAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-
+            
             this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Unit");
         }
 
@@ -95,7 +83,7 @@ namespace JeanieMoney.Forms.Config
             setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
-            listBoxUnit.DataSource = null;
+            listBox.DataSource = null;
             textBoxKeyword.Clear();
             unitList = unitAction.retrieveUnitList();
             Unit unit = new Unit();
@@ -106,7 +94,7 @@ namespace JeanieMoney.Forms.Config
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!unitAction.deleteUnitById(unitListByAbbr.ElementAt(listBoxUnit.SelectedIndex).Id))
+            if (!unitAction.deleteUnitById(unitListByAbbr.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -122,11 +110,11 @@ namespace JeanieMoney.Forms.Config
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (null != listBoxUnit.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
                 //modify
                 Unit category = new Unit();
-                category.Id = unitListByAbbr.ElementAt(listBoxUnit.SelectedIndex).Id;
+                category.Id = unitListByAbbr.ElementAt(listBox.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
                 
                 category.Abbr = textBoxAbbr.Text;

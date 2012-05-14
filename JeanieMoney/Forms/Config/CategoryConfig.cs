@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using JeanieMoney.Action;
-using JeanieMoney.Entity;
+using JeanieMoney.Actions;
+using JeanieMoney.Entities;
 using JeanieMoney.Utility;
+using JeanieMoney.Forms.Config;
 
 namespace JeanieMoney.Forms
 {
@@ -16,7 +13,7 @@ namespace JeanieMoney.Forms
     {
         CategoryAction categoryAction;
         List<Category> categoryListByAbbr;
-        List<Category> categoryList;
+        List<Category> categoryListAll;
 
         public CategoryConfig()
         {
@@ -33,7 +30,7 @@ namespace JeanieMoney.Forms
             textBoxAbbr.Text = abbr;
             textBoxAbbr.Enabled = false;
             textBoxKeyword.Enabled = false;
-            listBoxCategory.Enabled = false;
+            listBox.Enabled = false;
             buttonDelete.Enabled = false;
             buttonReset.Enabled = false;
             textBoxName.Select();
@@ -48,32 +45,32 @@ namespace JeanieMoney.Forms
         {
             if (0 == textBoxKeyword.Text.Length)
             {
-                listBoxCategory.DataSource = null;
+                listBox.DataSource = null;
                 return;
             }
             categoryListByAbbr = categoryAction.retrieveCategoryListByAbbr(textBoxKeyword.Text);
-            listBoxCategory.DisplayMember = "Name";
-            listBoxCategory.ValueMember = "Id";
-            listBoxCategory.DataSource = categoryListByAbbr;
-            if (0 < listBoxCategory.Items.Count)
-                listBoxCategory.SelectedIndex = 0;
+            listBox.DisplayMember = "Name";
+            listBox.ValueMember = "Id";
+            listBox.DataSource = categoryListByAbbr;
+            if (0 < listBox.Items.Count)
+                listBox.SelectedIndex = 0;
         }
 
-        private void listBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (null != listBoxCategory.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
-                textBoxName.Text = ((Category)listBoxCategory.SelectedItem).Name;
-                textBoxAbbr.Text = categoryListByAbbr.ElementAt(listBoxCategory.SelectedIndex).Abbr;
-                radioButtonIn.Checked=((Category)listBoxCategory.SelectedItem).InOrOut=='1'?true:false;
+                textBoxName.Text = ((Category)listBox.SelectedItem).Name;
+                textBoxAbbr.Text = categoryListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
+                radioButtonIn.Checked=((Category)listBox.SelectedItem).InOrOut=='1'?true:false;
                 radioButtonOut.Checked = !radioButtonIn.Checked;
-                categoryList = categoryAction.retrieveCategoryList();
+                categoryListAll = categoryAction.retrieveCategoryList();
                 Category category = new Category();
-                categoryList.Insert(0, category);
+                categoryListAll.Insert(0, category);
                 comboBoxParent.DisplayMember = "Name";
                 comboBoxParent.ValueMember = "Id";
-                comboBoxParent.DataSource = categoryList;
-                comboBoxParent.SelectedValue = categoryListByAbbr.ElementAt(listBoxCategory.SelectedIndex).ParentId;
+                comboBoxParent.DataSource = categoryListAll;
+                comboBoxParent.SelectedValue = categoryListByAbbr.ElementAt(listBox.SelectedIndex).ParentId;
                 if (null == comboBoxParent.SelectedValue)
                     comboBoxParent.SelectedIndex = 0;
             }
@@ -85,14 +82,7 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.buttonDelete.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Delete");
-            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
-            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
-
-            this.labelAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelSearchAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
+           
             this.labelParent.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Parent");
 
             this.groupBoxInOut.Text = G18NHandler.GetValue("JeanieMoney/Caption/Group/InOut");
@@ -106,28 +96,28 @@ namespace JeanieMoney.Forms
             setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
-            listBoxCategory.DataSource = null;
+            listBox.DataSource = null;
             textBoxKeyword.Clear();
-            categoryList = categoryAction.retrieveCategoryList();
+            categoryListAll = categoryAction.retrieveCategoryList();
             Category category = new Category();
-            categoryList.Insert(0, category);
+            categoryListAll.Insert(0, category);
             comboBoxParent.DisplayMember = "Name";
             comboBoxParent.ValueMember = "Id";
-            comboBoxParent.DataSource = categoryList;
+            comboBoxParent.DataSource = categoryListAll;
             radioButtonIn.Checked = true;
 
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!categoryAction.deleteCategoryById(categoryListByAbbr.ElementAt(listBoxCategory.SelectedIndex).Id))
+            if (!categoryAction.deleteCategoryById(categoryListByAbbr.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
             }
             MessageBox.Show("delete OK");
-            categoryList = categoryAction.retrieveCategoryList();
-            comboBoxParent.DataSource = categoryList;
+            categoryListAll = categoryAction.retrieveCategoryList();
+            comboBoxParent.DataSource = categoryListAll;
             textBoxName.Clear();
             textBoxAbbr.Clear();
             textBoxKeyword_TextChanged(sender, e);
@@ -136,20 +126,20 @@ namespace JeanieMoney.Forms
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (null != listBoxCategory.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
                 //modify
                 Category category = new Category();
-                category.Id = categoryListByAbbr.ElementAt(listBoxCategory.SelectedIndex).Id;
+                category.Id = categoryListByAbbr.ElementAt(listBox.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
-                category.ParentId = categoryList.ElementAt(comboBoxParent.SelectedIndex).Id;
+                category.ParentId = categoryListAll.ElementAt(comboBoxParent.SelectedIndex).Id;
                 category.Abbr = textBoxAbbr.Text;
                 category.InOrOut = radioButtonIn.Checked ? '1' : '0';
                 if (categoryAction.updateCategoryById(category))
                 {
                     MessageBox.Show("OK");
-                    categoryList = categoryAction.retrieveCategoryList();
-                    comboBoxParent.DataSource = categoryList;
+                    categoryListAll = categoryAction.retrieveCategoryList();
+                    comboBoxParent.DataSource = categoryListAll;
                     textBoxName.Clear();
                     textBoxAbbr.Clear();
                     textBoxKeyword_TextChanged(sender, e);
@@ -166,7 +156,7 @@ namespace JeanieMoney.Forms
                 Category category=new Category();
                 category.Id=Guid.NewGuid().ToString();
                 category.Name=textBoxName.Text;
-                category.ParentId=categoryList.ElementAt(comboBoxParent.SelectedIndex).Id;
+                category.ParentId=categoryListAll.ElementAt(comboBoxParent.SelectedIndex).Id;
                 category.Abbr=textBoxAbbr.Text;
                 category.InOrOut = radioButtonIn.Checked?'1':'0';
                 if (categoryAction.createCategory(category))

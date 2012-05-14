@@ -1,44 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using JeanieMoney.Action;
-using JeanieMoney.Entity;
+using JeanieMoney.Actions;
+using JeanieMoney.Entities;
 using JeanieMoney.Utility;
 
 namespace JeanieMoney.Forms.Config
 {
     public partial class BeneficiaryConfig : BaseConfigForm
     {
-        BeneficiaryAction BeneficiaryAction;
-        List<Beneficiary> BeneficiaryListByAbbr;
-        List<Beneficiary> BeneficiaryList;
+        BeneficiaryAction beneficiaryAction;
+        List<Beneficiary> beneficiaryList;
 
         public BeneficiaryConfig()
         {
             InitializeComponent();
-            BeneficiaryAction = new BeneficiaryAction();
+            beneficiaryAction = new BeneficiaryAction();
             init();
         }
 
         public BeneficiaryConfig(string abbr)
         {
             InitializeComponent();
-            BeneficiaryAction = new BeneficiaryAction();
+            beneficiaryAction = new BeneficiaryAction();
             init();
             textBoxAbbr.Text = abbr;
             textBoxAbbr.Enabled = false;
             textBoxKeyword.Enabled = false;
-            listBoxBeneficiary.Enabled = false;
+            listBox.Enabled = false;
             buttonDelete.Enabled = false;
             buttonReset.Enabled = false;
             textBoxName.Select();
         }
-
+        private void setCaption()
+        {
+            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Beneficiary");
+        }
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -48,27 +46,29 @@ namespace JeanieMoney.Forms.Config
         {
             if (0 == textBoxKeyword.Text.Length)
             {
-                listBoxBeneficiary.DataSource = null;
+                listBox.DataSource = null;
                 return;
             }
-            BeneficiaryListByAbbr = BeneficiaryAction.retrieveBeneficiaryListByAbbr(textBoxKeyword.Text);
-            listBoxBeneficiary.DisplayMember = "Name";
-            listBoxBeneficiary.ValueMember = "Id";
-            listBoxBeneficiary.DataSource = BeneficiaryListByAbbr;
-            if (0 < listBoxBeneficiary.Items.Count)
-                listBoxBeneficiary.SelectedIndex = 0;
+            Beneficiary beneficiary = new Beneficiary();
+            beneficiary.Abbr = textBoxKeyword.Text;
+            beneficiaryList = beneficiaryAction.retrieveList(beneficiary);
+            listBox.DisplayMember = "Name";
+            listBox.ValueMember = "Id";
+            listBox.DataSource = beneficiaryList;
+            if (0 < listBox.Items.Count)
+                listBox.SelectedIndex = 0;
         }
 
-        private void listBoxBeneficiary_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (null != listBoxBeneficiary.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
-                textBoxName.Text = ((Beneficiary)listBoxBeneficiary.SelectedItem).Name;
-                textBoxAbbr.Text = BeneficiaryListByAbbr.ElementAt(listBoxBeneficiary.SelectedIndex).Abbr;
-                BeneficiaryList = BeneficiaryAction.retrieveBeneficiaryList();
-                Beneficiary category = new Beneficiary();
-                BeneficiaryList.Insert(0, category);
-               
+                textBoxName.Text = ((Beneficiary)listBox.SelectedItem).Name;
+                textBoxAbbr.Text = beneficiaryList.ElementAt(listBox.SelectedIndex).Abbr;
+                //beneficiaryList = beneficiaryAction.retrieveList(null);
+                //Beneficiary category = new Beneficiary();
+                //beneficiaryList.Insert(0, category);
+
             }
         }
 
@@ -82,58 +82,47 @@ namespace JeanieMoney.Forms.Config
             setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
-            listBoxBeneficiary.DataSource = null;
             textBoxKeyword.Clear();
-            BeneficiaryList = BeneficiaryAction.retrieveBeneficiaryList();
-            Beneficiary category = new Beneficiary();
-            BeneficiaryList.Insert(0, category);
-        }
-        private void setCaption()
-        {
-            this.buttonDelete.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Delete");
-            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
-            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
 
-            this.labelAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelSearchAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-
-            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Beneficiary");
+            listBox.DataSource = null;
+            //beneficiaryList = beneficiaryAction.retrieveList(null);
+            //Beneficiary category = new Beneficiary();
+            //beneficiaryList.Insert(0, category);
         }
+        
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!BeneficiaryAction.deleteBeneficiaryById(BeneficiaryListByAbbr.ElementAt(listBoxBeneficiary.SelectedIndex).Id))
+            Beneficiary beneficiary = new Beneficiary();
+            beneficiary.Id=beneficiaryList.ElementAt(listBox.SelectedIndex).Id;
+            if (!beneficiaryAction.delete(beneficiary))
             {
                 MessageBox.Show("delete failed");
                 return;
             }
             MessageBox.Show("delete OK");
-            BeneficiaryList = BeneficiaryAction.retrieveBeneficiaryList();
             
+            refresh(sender,e);
+        }
+        private void refresh(object sender, EventArgs e)
+        {
+            //beneficiaryList = beneficiaryAction.retrieveList(null);
             textBoxName.Clear();
             textBoxAbbr.Clear();
             textBoxKeyword_TextChanged(sender, e);
-
         }
-
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (null != listBoxBeneficiary.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
                 //modify
-                Beneficiary category = new Beneficiary();
-                category.Id = BeneficiaryListByAbbr.ElementAt(listBoxBeneficiary.SelectedIndex).Id;
-                category.Name = textBoxName.Text;
-                
-                category.Abbr = textBoxAbbr.Text;
-                if (BeneficiaryAction.updateBeneficiaryById(category))
+                Beneficiary beneficiary = new Beneficiary();
+                beneficiary.Id = beneficiaryList.ElementAt(listBox.SelectedIndex).Id;
+                beneficiary.Name = textBoxName.Text;
+                beneficiary.Abbr = textBoxAbbr.Text;
+                if (beneficiaryAction.update(beneficiary))
                 {
                     MessageBox.Show("OK");
-                    BeneficiaryList = BeneficiaryAction.retrieveBeneficiaryList();
-                    textBoxName.Clear();
-                    textBoxAbbr.Clear();
-                    textBoxKeyword_TextChanged(sender, e);
+                    refresh(sender, e);
                 }
                 else
                 {
@@ -144,12 +133,11 @@ namespace JeanieMoney.Forms.Config
             else
             {
                 //insert
-                Beneficiary category=new Beneficiary();
-                category.Id=Guid.NewGuid().ToString();
-                category.Name=textBoxName.Text;
-                
-                category.Abbr=textBoxAbbr.Text;
-                if (BeneficiaryAction.createBeneficiary(category))
+                Beneficiary beneficiary = new Beneficiary();
+                beneficiary.Id = Guid.NewGuid().ToString();
+                beneficiary.Name = textBoxName.Text;
+                beneficiary.Abbr = textBoxAbbr.Text;
+                if (beneficiaryAction.create(beneficiary))
                 {
                     MessageBox.Show("OK");
                     init();
