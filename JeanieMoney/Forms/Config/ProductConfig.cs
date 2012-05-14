@@ -12,7 +12,6 @@ namespace JeanieMoney.Forms
     public partial class ProductConfig : BaseConfigForm
     {
         ProductAction productAction;
-        List<Product> productListByAbbr;
         List<Product> productList;
 
         public ProductConfig()
@@ -48,10 +47,10 @@ namespace JeanieMoney.Forms
                 listBox.DataSource = null;
                 return;
             }
-            productListByAbbr = productAction.retrieveProductListByAbbr(textBoxKeyword.Text);
+            productList = productAction.retrieveProductListByAbbr(textBoxKeyword.Text);
             listBox.DisplayMember = "Name";
             listBox.ValueMember = "Id";
-            listBox.DataSource = productListByAbbr;
+            listBox.DataSource = productList;
             if (0 < listBox.Items.Count)
                 listBox.SelectedIndex = 0;
         }
@@ -61,12 +60,8 @@ namespace JeanieMoney.Forms
             if (null != listBox.SelectedItem)
             {
                 textBoxName.Text = ((Product)listBox.SelectedItem).Name;
-                textBoxAbbr.Text = productListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
-                textBoxBarcode.Text = productListByAbbr.ElementAt(listBox.SelectedIndex).Barcode;
-                productList = productAction.retrieveProductList();
-                Product category = new Product();
-                productList.Insert(0, category);
-               
+                textBoxAbbr.Text = productList.ElementAt(listBox.SelectedIndex).Abbr;
+                textBoxBarcode.Text = productList.ElementAt(listBox.SelectedIndex).Barcode;
             }
         }
 
@@ -76,7 +71,7 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-           this.labelBarcode.Text = G18NHandler.GetValue("jeanieMoney/Caption/Label/Barcode");
+            this.labelBarcode.Text = G18NHandler.GetValue("jeanieMoney/Caption/Label/Barcode");
 
             this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Product");
         }
@@ -87,47 +82,42 @@ namespace JeanieMoney.Forms
             textBoxAbbr.Clear();
             listBox.DataSource = null;
             textBoxKeyword.Clear();
-            productList = productAction.retrieveProductList();
-            Product product = new Product();
-            productList.Insert(0, product);
-           
-
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!productAction.deleteProductById(productListByAbbr.ElementAt(listBox.SelectedIndex).Id))
+            if (!productAction.deleteProductById(productList.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
             }
             MessageBox.Show("delete OK");
-            productList = productAction.retrieveProductList();
-            
             textBoxName.Clear();
             textBoxAbbr.Clear();
             textBoxKeyword_TextChanged(sender, e);
-
         }
-
+        private Boolean validateInput()
+        {
+            return true;
+        }
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            if (!validateInput())
+            {
+                return;
+            }
+            Product category = new Product();
+            category.Name = textBoxName.Text;
+            category.Abbr = textBoxAbbr.Text;
+            category.Barcode = textBoxBarcode.Text;
             if (null != listBox.SelectedItem)
             {
                 //modify
-                Product category = new Product();
-                category.Id = productListByAbbr.ElementAt(listBox.SelectedIndex).Id;
-                category.Name = textBoxName.Text;
-                category.Abbr = textBoxAbbr.Text;
-                category.Barcode = textBoxBarcode.Text;
+                category.Id = productList.ElementAt(listBox.SelectedIndex).Id;
                 if (productAction.updateProductById(category))
                 {
                     MessageBox.Show("OK");
-                    productList = productAction.retrieveProductList();
-                   
-                    textBoxName.Clear();
-                    textBoxAbbr.Clear();
-                    textBoxKeyword_TextChanged(sender, e);
+                    init();
                 }
                 else
                 {
@@ -138,11 +128,7 @@ namespace JeanieMoney.Forms
             else
             {
                 //insert
-                Product category=new Product();
-                category.Id=Guid.NewGuid().ToString();
-                category.Name=textBoxName.Text;
-                category.Abbr=textBoxAbbr.Text;
-                category.Barcode = textBoxBarcode.Text;
+                category.Id = Guid.NewGuid().ToString();
                 if (productAction.createProduct(category))
                 {
                     MessageBox.Show("OK");
