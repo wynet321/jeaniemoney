@@ -80,29 +80,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\BeneficiaryAction.cs" />
-    <Compile Include="Action\CategoryAction.cs" />
-    <Compile Include="Action\PaymentModeAction.cs" />
-    <Compile Include="Action\ProductUnitManufactoryAction.cs" />
-    <Compile Include="Action\TradeRecordAction.cs" />
-    <Compile Include="Action\TradeRecordAndTradeRecordDetailAction.cs" />
-    <Compile Include="Action\TradeRecordDetailAction.cs" />
-    <Compile Include="Action\LocationAction.cs" />
-    <Compile Include="Action\ManufactoryAction.cs" />
-    <Compile Include="Action\PayerAction.cs" />
-    <Compile Include="Action\ProductAction.cs" />
-    <Compile Include="Action\UnitAction.cs" />
-    <Compile Include="Entity\Beneficiary.cs" />
-    <Compile Include="Entity\Category.cs" />
-    <Compile Include="Entity\PaymentCategory.cs" />
-    <Compile Include="Entity\ProductSpecificationManufactory.cs" />
-    <Compile Include="Entity\TradeRecord.cs" />
-    <Compile Include="Entity\TradeRecordDetail.cs" />
-    <Compile Include="Entity\Location.cs" />
-    <Compile Include="Entity\Manufactory.cs" />
-    <Compile Include="Entity\Payer.cs" />
-    <Compile Include="Entity\Product.cs" />
-    <Compile Include="Entity\Specification.cs" />
+    <Compile Include="Actions\BeneficiaryAction.cs" />
+    <Compile Include="Actions\CategoryAction.cs" />
+    <Compile Include="Actions\PaymentModeAction.cs" />
+    <Compile Include="Actions\ProductUnitManufactoryAction.cs" />
+    <Compile Include="Actions\TradeRecordAction.cs" />
+    <Compile Include="Actions\TradeRecordAndTradeRecordDetailAction.cs" />
+    <Compile Include="Actions\TradeRecordDetailAction.cs" />
+    <Compile Include="Actions\LocationAction.cs" />
+    <Compile Include="Actions\ManufactoryAction.cs" />
+    <Compile Include="Actions\PayerAction.cs" />
+    <Compile Include="Actions\ProductAction.cs" />
+    <Compile Include="Actions\UnitAction.cs" />
+    <Compile Include="Entities\Beneficiary.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\PaymentMode.cs" />
+    <Compile Include="Entities\ProductSpecificationManufactory.cs" />
+    <Compile Include="Entities\TradeRecord.cs" />
+    <Compile Include="Entities\TradeRecordDetail.cs" />
+    <Compile Include="Entities\Location.cs" />
+    <Compile Include="Entities\Manufactory.cs" />
+    <Compile Include="Entities\Payer.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Specification.cs" />
     <Compile Include="Forms\Config\BeneficiaryConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,10 +172,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Utility\BaseConfigForm.cs">
+    <Compile Include="Forms\Config\BaseConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utility\BaseConfigForm.Designer.cs">
+    <Compile Include="Forms\Config\BaseConfigForm.Designer.cs">
       <DependentUpon>BaseConfigForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\ConfigHandler.cs" />
@@ -217,9 +217,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utility\BaseConfigForm.resx">
+    <EmbeddedResource Include="Forms\Config\BaseConfigForm.resx">
       <DependentUpon>BaseConfigForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

@@ -57,53 +57,54 @@
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(33, 217);
+            this.buttonOK.Location = new System.Drawing.Point(33, 235);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOK.TabIndex = 0;
+            this.buttonOK.Size = new System.Drawing.Size(75, 25);
+            this.buttonOK.TabIndex = 4;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(141, 217);
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(141, 235);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 1;
+            this.buttonCancel.Size = new System.Drawing.Size(75, 25);
+            this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // textBoxUserName
             // 
-            this.textBoxUserName.Location = new System.Drawing.Point(72, 27);
+            this.textBoxUserName.Location = new System.Drawing.Point(72, 29);
             this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(143, 21);
-            this.textBoxUserName.TabIndex = 2;
+            this.textBoxUserName.Size = new System.Drawing.Size(143, 20);
+            this.textBoxUserName.TabIndex = 1;
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(72, 54);
+            this.textBoxPassword.Location = new System.Drawing.Point(72, 59);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(143, 21);
-            this.textBoxPassword.TabIndex = 3;
+            this.textBoxPassword.Size = new System.Drawing.Size(143, 20);
+            this.textBoxPassword.TabIndex = 2;
             // 
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(14, 30);
+            this.lblUserName.Location = new System.Drawing.Point(14, 33);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(53, 12);
+            this.lblUserName.Size = new System.Drawing.Size(57, 13);
             this.lblUserName.TabIndex = 4;
             this.lblUserName.Text = "UserName";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(14, 57);
+            this.lblPassword.Location = new System.Drawing.Point(14, 62);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(53, 12);
+            this.lblPassword.Size = new System.Drawing.Size(53, 13);
             this.lblPassword.TabIndex = 5;
             this.lblPassword.Text = "Password";
             // 
@@ -124,7 +125,7 @@
             this.groupBoxDbConnection.Controls.Add(this.textBoxServerName);
             this.groupBoxDbConnection.Location = new System.Drawing.Point(230, 3);
             this.groupBoxDbConnection.Name = "groupBoxDbConnection";
-            this.groupBoxDbConnection.Size = new System.Drawing.Size(254, 205);
+            this.groupBoxDbConnection.Size = new System.Drawing.Size(254, 222);
             this.groupBoxDbConnection.TabIndex = 0;
             this.groupBoxDbConnection.TabStop = false;
             this.groupBoxDbConnection.Visible = false;
@@ -132,42 +133,42 @@
             // labelProfileName
             // 
             this.labelProfileName.AutoSize = true;
-            this.labelProfileName.Location = new System.Drawing.Point(20, 17);
+            this.labelProfileName.Location = new System.Drawing.Point(20, 18);
             this.labelProfileName.Name = "labelProfileName";
-            this.labelProfileName.Size = new System.Drawing.Size(47, 12);
+            this.labelProfileName.Size = new System.Drawing.Size(36, 13);
             this.labelProfileName.TabIndex = 17;
             this.labelProfileName.Text = "Profile";
             // 
             // textBoxProfileName
             // 
-            this.textBoxProfileName.Location = new System.Drawing.Point(79, 14);
+            this.textBoxProfileName.Location = new System.Drawing.Point(79, 15);
             this.textBoxProfileName.Name = "textBoxProfileName";
-            this.textBoxProfileName.Size = new System.Drawing.Size(143, 21);
+            this.textBoxProfileName.Size = new System.Drawing.Size(143, 20);
             this.textBoxProfileName.TabIndex = 16;
             // 
             // comboBoxDbType
             // 
             this.comboBoxDbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDbType.FormattingEnabled = true;
-            this.comboBoxDbType.Location = new System.Drawing.Point(79, 38);
+            this.comboBoxDbType.Location = new System.Drawing.Point(79, 41);
             this.comboBoxDbType.Name = "comboBoxDbType";
-            this.comboBoxDbType.Size = new System.Drawing.Size(143, 20);
+            this.comboBoxDbType.Size = new System.Drawing.Size(143, 21);
             this.comboBoxDbType.TabIndex = 15;
             // 
             // labelDbType
             // 
             this.labelDbType.AutoSize = true;
-            this.labelDbType.Location = new System.Drawing.Point(20, 38);
+            this.labelDbType.Location = new System.Drawing.Point(20, 41);
             this.labelDbType.Name = "labelDbType";
-            this.labelDbType.Size = new System.Drawing.Size(29, 12);
+            this.labelDbType.Size = new System.Drawing.Size(31, 13);
             this.labelDbType.TabIndex = 14;
             this.labelDbType.Text = "Type";
             // 
             // buttonTest
             // 
-            this.buttonTest.Location = new System.Drawing.Point(147, 176);
+            this.buttonTest.Location = new System.Drawing.Point(147, 191);
             this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(75, 23);
+            this.buttonTest.Size = new System.Drawing.Size(75, 25);
             this.buttonTest.TabIndex = 13;
             this.buttonTest.Text = "Test";
             this.buttonTest.UseVisualStyleBackColor = true;
@@ -176,74 +177,74 @@
             // labelDbAdminPassword
             // 
             this.labelDbAdminPassword.AutoSize = true;
-            this.labelDbAdminPassword.Location = new System.Drawing.Point(20, 145);
+            this.labelDbAdminPassword.Location = new System.Drawing.Point(20, 157);
             this.labelDbAdminPassword.Name = "labelDbAdminPassword";
-            this.labelDbAdminPassword.Size = new System.Drawing.Size(53, 12);
+            this.labelDbAdminPassword.Size = new System.Drawing.Size(53, 13);
             this.labelDbAdminPassword.TabIndex = 12;
             this.labelDbAdminPassword.Text = "Password";
             // 
             // textBoxDbAdminPassword
             // 
-            this.textBoxDbAdminPassword.Location = new System.Drawing.Point(79, 142);
+            this.textBoxDbAdminPassword.Location = new System.Drawing.Point(79, 154);
             this.textBoxDbAdminPassword.Name = "textBoxDbAdminPassword";
-            this.textBoxDbAdminPassword.Size = new System.Drawing.Size(143, 21);
+            this.textBoxDbAdminPassword.Size = new System.Drawing.Size(143, 20);
             this.textBoxDbAdminPassword.TabIndex = 11;
             this.textBoxDbAdminPassword.UseSystemPasswordChar = true;
             // 
             // labelDbAdminName
             // 
             this.labelDbAdminName.AutoSize = true;
-            this.labelDbAdminName.Location = new System.Drawing.Point(20, 118);
+            this.labelDbAdminName.Location = new System.Drawing.Point(20, 128);
             this.labelDbAdminName.Name = "labelDbAdminName";
-            this.labelDbAdminName.Size = new System.Drawing.Size(53, 12);
+            this.labelDbAdminName.Size = new System.Drawing.Size(57, 13);
             this.labelDbAdminName.TabIndex = 10;
             this.labelDbAdminName.Text = "UserName";
             // 
             // textBoxDbAdminName
             // 
-            this.textBoxDbAdminName.Location = new System.Drawing.Point(79, 115);
+            this.textBoxDbAdminName.Location = new System.Drawing.Point(79, 125);
             this.textBoxDbAdminName.Name = "textBoxDbAdminName";
-            this.textBoxDbAdminName.Size = new System.Drawing.Size(143, 21);
+            this.textBoxDbAdminName.Size = new System.Drawing.Size(143, 20);
             this.textBoxDbAdminName.TabIndex = 9;
             // 
             // labelDBName
             // 
             this.labelDBName.AutoSize = true;
-            this.labelDBName.Location = new System.Drawing.Point(20, 91);
+            this.labelDBName.Location = new System.Drawing.Point(20, 99);
             this.labelDBName.Name = "labelDBName";
-            this.labelDBName.Size = new System.Drawing.Size(17, 12);
+            this.labelDBName.Size = new System.Drawing.Size(22, 13);
             this.labelDBName.TabIndex = 8;
             this.labelDBName.Text = "DB";
             // 
             // textBoxDbName
             // 
-            this.textBoxDbName.Location = new System.Drawing.Point(79, 88);
+            this.textBoxDbName.Location = new System.Drawing.Point(79, 95);
             this.textBoxDbName.Name = "textBoxDbName";
-            this.textBoxDbName.Size = new System.Drawing.Size(143, 21);
+            this.textBoxDbName.Size = new System.Drawing.Size(143, 20);
             this.textBoxDbName.TabIndex = 7;
             // 
             // labelServerName
             // 
             this.labelServerName.AutoSize = true;
-            this.labelServerName.Location = new System.Drawing.Point(20, 64);
+            this.labelServerName.Location = new System.Drawing.Point(20, 69);
             this.labelServerName.Name = "labelServerName";
-            this.labelServerName.Size = new System.Drawing.Size(41, 12);
+            this.labelServerName.Size = new System.Drawing.Size(38, 13);
             this.labelServerName.TabIndex = 6;
             this.labelServerName.Text = "Server";
             // 
             // textBoxServerName
             // 
-            this.textBoxServerName.Location = new System.Drawing.Point(79, 61);
+            this.textBoxServerName.Location = new System.Drawing.Point(79, 66);
             this.textBoxServerName.Name = "textBoxServerName";
-            this.textBoxServerName.Size = new System.Drawing.Size(143, 21);
+            this.textBoxServerName.Size = new System.Drawing.Size(143, 20);
             this.textBoxServerName.TabIndex = 5;
             // 
             // labelProfile
             // 
             this.labelProfile.AutoSize = true;
-            this.labelProfile.Location = new System.Drawing.Point(19, 85);
+            this.labelProfile.Location = new System.Drawing.Point(19, 92);
             this.labelProfile.Name = "labelProfile";
-            this.labelProfile.Size = new System.Drawing.Size(47, 12);
+            this.labelProfile.Size = new System.Drawing.Size(36, 13);
             this.labelProfile.TabIndex = 8;
             this.labelProfile.Text = "Profile";
             // 
@@ -251,18 +252,18 @@
             // 
             this.comboBoxProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxProfile.FormattingEnabled = true;
-            this.comboBoxProfile.Location = new System.Drawing.Point(72, 82);
+            this.comboBoxProfile.Location = new System.Drawing.Point(72, 89);
             this.comboBoxProfile.Name = "comboBoxProfile";
-            this.comboBoxProfile.Size = new System.Drawing.Size(143, 20);
-            this.comboBoxProfile.TabIndex = 9;
+            this.comboBoxProfile.Size = new System.Drawing.Size(143, 21);
+            this.comboBoxProfile.TabIndex = 3;
             // 
             // checkBoxModifyProfile
             // 
             this.checkBoxModifyProfile.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxModifyProfile.Location = new System.Drawing.Point(136, 136);
+            this.checkBoxModifyProfile.Location = new System.Drawing.Point(136, 147);
             this.checkBoxModifyProfile.Name = "checkBoxModifyProfile";
-            this.checkBoxModifyProfile.Size = new System.Drawing.Size(79, 24);
-            this.checkBoxModifyProfile.TabIndex = 11;
+            this.checkBoxModifyProfile.Size = new System.Drawing.Size(79, 26);
+            this.checkBoxModifyProfile.TabIndex = 7;
             this.checkBoxModifyProfile.Text = "Modify(F3)";
             this.checkBoxModifyProfile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxModifyProfile.UseVisualStyleBackColor = true;
@@ -272,10 +273,10 @@
             // 
             this.checkBoxNewProfile.Appearance = System.Windows.Forms.Appearance.Button;
             this.checkBoxNewProfile.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBoxNewProfile.Location = new System.Drawing.Point(136, 108);
+            this.checkBoxNewProfile.Location = new System.Drawing.Point(136, 117);
             this.checkBoxNewProfile.Name = "checkBoxNewProfile";
-            this.checkBoxNewProfile.Size = new System.Drawing.Size(79, 22);
-            this.checkBoxNewProfile.TabIndex = 12;
+            this.checkBoxNewProfile.Size = new System.Drawing.Size(79, 24);
+            this.checkBoxNewProfile.TabIndex = 6;
             this.checkBoxNewProfile.Text = "New(F2)";
             this.checkBoxNewProfile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxNewProfile.UseVisualStyleBackColor = true;
@@ -283,9 +284,11 @@
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AcceptButton = this.buttonOK;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 261);
+            this.CancelButton = this.buttonCancel;
+            this.ClientSize = new System.Drawing.Size(248, 283);
             this.Controls.Add(this.checkBoxNewProfile);
             this.Controls.Add(this.checkBoxModifyProfile);
             this.Controls.Add(this.comboBoxProfile);
@@ -298,6 +301,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.groupBoxDbConnection.ResumeLayout(false);

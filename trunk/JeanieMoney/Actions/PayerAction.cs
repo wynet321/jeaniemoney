@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JeanieMoney.Entity;
+using JeanieMoney.Entities;
 using JeanieMoney.Utility;
 using System.Data;
 
-namespace JeanieMoney.Action
+namespace JeanieMoney.Actions
 {
     class PayerAction
     {

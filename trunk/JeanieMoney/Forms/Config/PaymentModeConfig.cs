@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Windows.Forms;
-using JeanieMoney.Utility;
-using JeanieMoney.Action;
-using JeanieMoney.Entity;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
+using JeanieMoney.Actions;
+using JeanieMoney.Entities;
+using JeanieMoney.Utility;
 
 namespace JeanieMoney.Forms.Config
 {
@@ -29,7 +29,7 @@ namespace JeanieMoney.Forms.Config
             textBoxAbbr.Text = abbr;
             textBoxAbbr.Enabled = false;
             textBoxKeyword.Enabled = false;
-            listBoxPaymentMode.Enabled = false;
+            listBox.Enabled = false;
             buttonDelete.Enabled = false;
             buttonReset.Enabled = false;
             textBoxName.Select();
@@ -44,23 +44,23 @@ namespace JeanieMoney.Forms.Config
         {
             if (0 == textBoxKeyword.Text.Length)
             {
-                listBoxPaymentMode.DataSource = null;
+                listBox.DataSource = null;
                 return;
             }
             paymentModeListByAbbr = paymentModeAction.retrievePaymentModeListByAbbr(textBoxKeyword.Text);
-            listBoxPaymentMode.DisplayMember = "Name";
-            listBoxPaymentMode.ValueMember = "Id";
-            listBoxPaymentMode.DataSource = paymentModeListByAbbr;
-            if (0 < listBoxPaymentMode.Items.Count)
-                listBoxPaymentMode.SelectedIndex = 0;
+            listBox.DisplayMember = "Name";
+            listBox.ValueMember = "Id";
+            listBox.DataSource = paymentModeListByAbbr;
+            if (0 < listBox.Items.Count)
+                listBox.SelectedIndex = 0;
         }
 
-        private void listBoxPaymentMode_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (null != listBoxPaymentMode.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
-                textBoxName.Text = ((PaymentMode)listBoxPaymentMode.SelectedItem).Name;
-                textBoxAbbr.Text = paymentModeListByAbbr.ElementAt(listBoxPaymentMode.SelectedIndex).Abbr;
+                textBoxName.Text = ((PaymentMode)listBox.SelectedItem).Name;
+                textBoxAbbr.Text = paymentModeListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
                 paymentModeList = paymentModeAction.retrievePaymentModeList();
                 PaymentMode category = new PaymentMode();
                 paymentModeList.Insert(0, category);
@@ -74,15 +74,7 @@ namespace JeanieMoney.Forms.Config
         }
         private void setCaption()
         {
-            this.buttonDelete.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Delete");
-            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
-            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
-
-            this.labelAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelSearchAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-
+            
             this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/PaymentMode");
         }
         private void init()
@@ -90,7 +82,7 @@ namespace JeanieMoney.Forms.Config
             setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
-            listBoxPaymentMode.DataSource = null;
+            listBox.DataSource = null;
             textBoxKeyword.Clear();
             paymentModeList = paymentModeAction.retrievePaymentModeList();
             PaymentMode paymentMode = new PaymentMode();
@@ -101,7 +93,7 @@ namespace JeanieMoney.Forms.Config
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!paymentModeAction.deletePaymentModeById(paymentModeListByAbbr.ElementAt(listBoxPaymentMode.SelectedIndex).Id))
+            if (!paymentModeAction.deletePaymentModeById(paymentModeListByAbbr.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -117,11 +109,11 @@ namespace JeanieMoney.Forms.Config
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (null != listBoxPaymentMode.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
                 //modify
                 PaymentMode category = new PaymentMode();
-                category.Id = paymentModeListByAbbr.ElementAt(listBoxPaymentMode.SelectedIndex).Id;
+                category.Id = paymentModeListByAbbr.ElementAt(listBox.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
 
                 category.Abbr = textBoxAbbr.Text;

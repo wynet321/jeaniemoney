@@ -28,16 +28,14 @@ namespace JeanieMoney.Forms
             if (validateInput(textBoxUserName.Text) && validateInput(textBoxPassword.Text))
             {
                 DbHandler.setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
+                if (!DbHandler.canConnect())
+                {
+                    MessageBox.Show("Can't connect to DB");
+                    return;
+                }
                 if (textBoxUserName.Text == "Jeanie" && textBoxPassword.Text == "Money")
                 {
-                    if (DbHandler.canConnect())
-                    {
-                        this.DialogResult = DialogResult.OK;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Can't connect to DB");
-                    }
+                    buttonOK.DialogResult = DialogResult.OK;
                     return;
                 }
                 try
@@ -45,7 +43,7 @@ namespace JeanieMoney.Forms
                     int validUserCount = (int)DbHandler.getValue("select count(*) from payer where name='" + textBoxUserName.Text + "' and password='" + textBoxPassword.Text + "'");
                     if (validUserCount > 0)
                     {
-                        this.buttonOK.DialogResult = DialogResult.OK;
+                        buttonOK.DialogResult = DialogResult.OK;
                         return;
                     }
                     else
@@ -56,6 +54,7 @@ namespace JeanieMoney.Forms
                 }
                 catch
                 {
+                    MessageBox.Show("DB Connection issue!");
                     return;
                 }
 

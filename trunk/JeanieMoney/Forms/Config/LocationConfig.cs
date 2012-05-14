@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using JeanieMoney.Action;
-using JeanieMoney.Entity;
+using JeanieMoney.Actions;
+using JeanieMoney.Entities;
 using JeanieMoney.Utility;
+using JeanieMoney.Forms.Config;
 
 namespace JeanieMoney.Forms
 {
-    public partial class LocationConfig : BaseConfigForm
+    public partial class LocationConfig :BaseConfigForm
     {
         LocationAction locationAction;
         List<Location> locationListByAbbr;
@@ -26,16 +23,7 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.buttonDelete.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Delete");
-            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
-            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
-
-            this.labelAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelSearchAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-
-            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Location");
+                       this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Location");
         }
         public LocationConfig(string abbr)
         {
@@ -45,7 +33,7 @@ namespace JeanieMoney.Forms
             textBoxAbbr.Text = abbr;
             textBoxAbbr.Enabled = false;
             textBoxKeyword.Enabled = false;
-            listBoxLocation.Enabled = false;
+            listBox.Enabled = false;
             buttonDelete.Enabled = false;
             buttonReset.Enabled = false;
             textBoxName.Select();
@@ -60,23 +48,23 @@ namespace JeanieMoney.Forms
         {
             if (0 == textBoxKeyword.Text.Length)
             {
-                listBoxLocation.DataSource = null;
+                listBox.DataSource = null;
                 return;
             }
             locationListByAbbr = locationAction.retrieveLocationListByAbbr(textBoxKeyword.Text);
-            listBoxLocation.DisplayMember = "Name";
-            listBoxLocation.ValueMember = "Id";
-            listBoxLocation.DataSource = locationListByAbbr;
-            if (0 < listBoxLocation.Items.Count)
-                listBoxLocation.SelectedIndex = 0;
+            listBox.DisplayMember = "Name";
+            listBox.ValueMember = "Id";
+            listBox.DataSource = locationListByAbbr;
+            if (0 < listBox.Items.Count)
+                listBox.SelectedIndex = 0;
         }
 
-        private void listBoxLocation_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (null != listBoxLocation.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
-                textBoxName.Text = ((Location)listBoxLocation.SelectedItem).Name;
-                textBoxAbbr.Text = locationListByAbbr.ElementAt(listBoxLocation.SelectedIndex).Abbr;
+                textBoxName.Text = ((Location)listBox.SelectedItem).Name;
+                textBoxAbbr.Text = locationListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
                 locationList = locationAction.retrieveLocationList();
                 Location category = new Location();
                 locationList.Insert(0, category);
@@ -99,7 +87,7 @@ namespace JeanieMoney.Forms
             setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
-            listBoxLocation.DataSource = null;
+            listBox.DataSource = null;
             textBoxKeyword.Clear();
             locationList = locationAction.retrieveLocationList();
             Location category = new Location();
@@ -108,7 +96,7 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!locationAction.deleteLocationById(locationListByAbbr.ElementAt(listBoxLocation.SelectedIndex).Id))
+            if (!locationAction.deleteLocationById(locationListByAbbr.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -120,11 +108,11 @@ namespace JeanieMoney.Forms
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            if (null != listBoxLocation.SelectedItem)
+            if (null != listBox.SelectedItem)
             {
                 //modify
                 Location category = new Location();
-                category.Id = locationListByAbbr.ElementAt(listBoxLocation.SelectedIndex).Id;
+                category.Id = locationListByAbbr.ElementAt(listBox.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
                 category.Abbr = textBoxAbbr.Text;
                 if (locationAction.updateLocationById(category))
