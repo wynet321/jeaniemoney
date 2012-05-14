@@ -12,7 +12,6 @@ namespace JeanieMoney.Forms.Config
     {
         BeneficiaryAction beneficiaryAction;
         List<Beneficiary> beneficiaryList;
-        //List<Beneficiary> beneficiaryList;
 
         public BeneficiaryConfig()
         {
