@@ -24,40 +24,36 @@ namespace JeanieMoney.Forms
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            //verify user/pass to login
+            //verify user/pass value
             if (validateInput(textBoxUserName.Text) && validateInput(textBoxPassword.Text))
             {
+                //Check DB Connection valid
                 DbHandler.setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
                 if (!DbHandler.canConnect())
                 {
                     MessageBox.Show("Can't connect to DB");
                     return;
                 }
+
+                //Super admin validation
                 if (textBoxUserName.Text == "Jeanie" && textBoxPassword.Text == "Money")
                 {
-                    buttonOK.DialogResult = DialogResult.OK;
-                    return;
-                }
-                try
-                {
-                    int validUserCount = (int)DbHandler.getValue("select count(*) from payer where name='" + textBoxUserName.Text + "' and password='" + textBoxPassword.Text + "'");
-                    if (validUserCount > 0)
-                    {
-                        buttonOK.DialogResult = DialogResult.OK;
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("User/Password are not correct!");
-                        textBoxUserName.Focus();
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("DB Connection issue!");
+                    this.DialogResult = DialogResult.OK;
                     return;
                 }
 
+                //check user/password
+                int validUserCount = (int)DbHandler.getValue("select count(*) from payer where name='" + textBoxUserName.Text + "' and password='" + textBoxPassword.Text + "'");
+                if (validUserCount > 0)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("User/Password are not correct!");
+                    textBoxUserName.Focus();
+                }
             }
             else
             {
@@ -65,6 +61,8 @@ namespace JeanieMoney.Forms
             }
 
         }
+
+        
         private Boolean validateInput(String stringToValidate)
         {
             if (null == stringToValidate || stringToValidate.Length == 0)
