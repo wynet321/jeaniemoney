@@ -13,7 +13,7 @@ namespace JeanieMoney.Forms
     {
         CategoryAction categoryAction;
         List<Category> categoryListByAbbr;
-        List<Category> categoryList;
+        List<Category> categoryListAll;
 
         public CategoryConfig()
         {
@@ -64,12 +64,12 @@ namespace JeanieMoney.Forms
                 textBoxAbbr.Text = categoryListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
                 radioButtonIn.Checked=((Category)listBox.SelectedItem).InOrOut=='1'?true:false;
                 radioButtonOut.Checked = !radioButtonIn.Checked;
-                categoryList = categoryAction.retrieveCategoryList();
+                categoryListAll = categoryAction.retrieveCategoryList();
                 Category category = new Category();
-                categoryList.Insert(0, category);
+                categoryListAll.Insert(0, category);
                 comboBoxParent.DisplayMember = "Name";
                 comboBoxParent.ValueMember = "Id";
-                comboBoxParent.DataSource = categoryList;
+                comboBoxParent.DataSource = categoryListAll;
                 comboBoxParent.SelectedValue = categoryListByAbbr.ElementAt(listBox.SelectedIndex).ParentId;
                 if (null == comboBoxParent.SelectedValue)
                     comboBoxParent.SelectedIndex = 0;
@@ -98,12 +98,12 @@ namespace JeanieMoney.Forms
             textBoxAbbr.Clear();
             listBox.DataSource = null;
             textBoxKeyword.Clear();
-            categoryList = categoryAction.retrieveCategoryList();
+            categoryListAll = categoryAction.retrieveCategoryList();
             Category category = new Category();
-            categoryList.Insert(0, category);
+            categoryListAll.Insert(0, category);
             comboBoxParent.DisplayMember = "Name";
             comboBoxParent.ValueMember = "Id";
-            comboBoxParent.DataSource = categoryList;
+            comboBoxParent.DataSource = categoryListAll;
             radioButtonIn.Checked = true;
 
         }
@@ -116,8 +116,8 @@ namespace JeanieMoney.Forms
                 return;
             }
             MessageBox.Show("delete OK");
-            categoryList = categoryAction.retrieveCategoryList();
-            comboBoxParent.DataSource = categoryList;
+            categoryListAll = categoryAction.retrieveCategoryList();
+            comboBoxParent.DataSource = categoryListAll;
             textBoxName.Clear();
             textBoxAbbr.Clear();
             textBoxKeyword_TextChanged(sender, e);
@@ -132,14 +132,14 @@ namespace JeanieMoney.Forms
                 Category category = new Category();
                 category.Id = categoryListByAbbr.ElementAt(listBox.SelectedIndex).Id;
                 category.Name = textBoxName.Text;
-                category.ParentId = categoryList.ElementAt(comboBoxParent.SelectedIndex).Id;
+                category.ParentId = categoryListAll.ElementAt(comboBoxParent.SelectedIndex).Id;
                 category.Abbr = textBoxAbbr.Text;
                 category.InOrOut = radioButtonIn.Checked ? '1' : '0';
                 if (categoryAction.updateCategoryById(category))
                 {
                     MessageBox.Show("OK");
-                    categoryList = categoryAction.retrieveCategoryList();
-                    comboBoxParent.DataSource = categoryList;
+                    categoryListAll = categoryAction.retrieveCategoryList();
+                    comboBoxParent.DataSource = categoryListAll;
                     textBoxName.Clear();
                     textBoxAbbr.Clear();
                     textBoxKeyword_TextChanged(sender, e);
@@ -156,7 +156,7 @@ namespace JeanieMoney.Forms
                 Category category=new Category();
                 category.Id=Guid.NewGuid().ToString();
                 category.Name=textBoxName.Text;
-                category.ParentId=categoryList.ElementAt(comboBoxParent.SelectedIndex).Id;
+                category.ParentId=categoryListAll.ElementAt(comboBoxParent.SelectedIndex).Id;
                 category.Abbr=textBoxAbbr.Text;
                 category.InOrOut = radioButtonIn.Checked?'1':'0';
                 if (categoryAction.createCategory(category))
