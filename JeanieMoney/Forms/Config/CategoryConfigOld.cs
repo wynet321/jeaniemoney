@@ -9,20 +9,20 @@ using JeanieMoney.Forms.Config;
 
 namespace JeanieMoney.Forms
 {
-    public partial class CategoryConfig : BaseConfigForm
+    public partial class CategoryConfigOld : BaseConfigForm
     {
         CategoryAction categoryAction;
         List<Category> categoryListByAbbr;
         List<Category> categoryListAll;
 
-        public CategoryConfig()
+        public CategoryConfigOld()
         {
             InitializeComponent();
             categoryAction = new CategoryAction();
             init();
         }
 
-        public CategoryConfig(string abbr)
+        public CategoryConfigOld(string abbr)
         {
             InitializeComponent();
             categoryAction = new CategoryAction();
@@ -78,7 +78,9 @@ namespace JeanieMoney.Forms
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            init();
+            //init();
+            CategoryConfig a = new CategoryConfig();
+            a.ShowDialog();
         }
         private void setCaption()
         {
