@@ -1,7 +1,7 @@
 ﻿using JeanieMoney.Forms.Config;
 namespace JeanieMoney.Forms
 {
-    partial class CategoryConfig:BaseConfigForm
+    partial class CategoryConfigOld:BaseConfigForm
     {
         /// <summary>
         /// Required designer variable.

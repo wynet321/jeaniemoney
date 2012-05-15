@@ -44,7 +44,7 @@ namespace JeanieMoney.Forms
 
         private void toolStripButtonCategory_Click(object sender, EventArgs e)
         {
-            CategoryConfig cc = new CategoryConfig();
+            CategoryConfigOld cc = new CategoryConfigOld();
             cc.ShowDialog();
         }
 

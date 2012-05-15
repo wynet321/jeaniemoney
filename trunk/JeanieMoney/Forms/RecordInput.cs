@@ -309,7 +309,7 @@ namespace JeanieMoney.Forms
                     //add category
                     if (DialogResult.Yes == MessageBox.Show("do you want to add new category?", "?", MessageBoxButtons.YesNo))
                     {
-                        CategoryConfig cc = new CategoryConfig(textBoxCategory.Text.Trim());
+                        CategoryConfigOld cc = new CategoryConfigOld(textBoxCategory.Text.Trim());
 
                         cc.ShowDialog();
                         categoryList = categoryAction.retrieveCategoryListOfLeafNodeByAbbr(textBoxCategory.Text.Trim(), radioButtonIn.Checked ? '1' : '0');

@@ -73,6 +73,9 @@ namespace JeanieMoney.Actions
                 category = new Category();
                 category.Id = dataRow["id"].ToString();
                 category.Name = dataRow["name"].ToString();
+                category.InOrOut = ((bool)dataRow["flag_in_out"]) ? '1' : '0';
+                category.Abbr = dataRow["abbr"].ToString();
+                category.ParentId = dataRow["parent_id"].ToString();
                 categoryList.Add(category);
             }
             return categoryList;
