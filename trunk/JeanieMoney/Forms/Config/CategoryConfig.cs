@@ -8,76 +8,38 @@ using System.Text;
 using System.Windows.Forms;
 using JeanieMoney.Actions;
 using JeanieMoney.Entities;
+using JeanieMoney.Utility;
 
 namespace JeanieMoney.Forms.Config
 {
     public partial class CategoryConfig : Form
     {
-        CategoryAction categoryAction = new CategoryAction();
+        private CategoryAction categoryAction;
 
         List<Category> categoryListAll;
         public CategoryConfig()
         {
             InitializeComponent();
+            categoryAction = new CategoryAction();
             categoryListAll = categoryAction.retrieveCategoryList();
-            buildupTreeView(categoryListAll, null);
+            ControlHandler.buildupCategoryTreeView(treeViewCategory,categoryListAll);
         }
         private void init()
         {
             setCaption();
             textBoxName.Clear();
             textBoxAbbr.Clear();
-            listBox.DataSource = null;
-            textBoxKeyword.Clear();
             categoryListAll = categoryAction.retrieveCategoryList();
-            Category category = new Category();
-            categoryListAll.Insert(0, category);
-            comboBoxParent.DisplayMember = "Name";
-            comboBoxParent.ValueMember = "Id";
-            comboBoxParent.DataSource = categoryListAll;
-            radioButtonIn.Checked = true;
+            radioButtonIncome.Checked = true;
         }
         private void setCaption()
         {
-
-            this.labelParent.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Parent");
-
-            this.groupBoxInOut.Text = G18NHandler.GetValue("JeanieMoney/Caption/Group/InOut");
-            this.radioButtonIn.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
-            this.radioButtonOut.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
+            this.radioButtonIncome.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
+            this.radioButtonOutgoing.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
 
             this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Category");
         }
-        private void buildupTreeView(List<Category> list, TreeNode parent)
-        {
-            if (parent == null)
-            {
-                foreach (Category category in list)
-                {
-                    if (category.ParentId == String.Empty)
-                    {
-                        TreeNode temp = new TreeNode();
-                        temp.Name = category.Id;
-                        temp.Text = category.Name;
-                        temp.ToolTipText = category.Abbr;
-                        treeViewCategory.Nodes.Add(temp);
-                        buildupTreeView(list, temp);
-                    }
-                }
-            }
-            else
-            {
-                foreach (Category category in list)
-                {
-                    if (category.ParentId == parent.Name)
-                    {
-                        TreeNode temp = parent.Nodes.Add(category.Id, category.Name);
-                        temp.ToolTipText = category.Abbr;
-                        buildupTreeView(list, temp);
-                    }
-                }
-            }
-        }
+        
 
         private void treeViewCategory_MouseDown(object sender, MouseEventArgs e)
         {
@@ -85,7 +47,7 @@ namespace JeanieMoney.Forms.Config
                 contextMenuStripCategory.Show(e.Location);
             else
             {
-                treeViewCategory.SelectedNode=treeViewCategory.GetNodeAt(e.X, e.Y);
+                treeViewCategory.SelectedNode = treeViewCategory.GetNodeAt(e.X, e.Y);
             }
         }
 
@@ -132,6 +94,7 @@ namespace JeanieMoney.Forms.Config
                 DoDragDrop(e.Item, DragDropEffects.Move);
             }
         }
+
         private TreeNode dropTargetNode = new TreeNode();
         private void treeViewCategory_DragEnter(object sender, DragEventArgs e)
         {
@@ -159,8 +122,6 @@ namespace JeanieMoney.Forms.Config
                 {
                     dropTargetNode.BackColor = Color.DarkBlue;
                     dropTargetNode.ForeColor = Color.White;
-                    //dropTargetNode.Expand();
-                    //ystem.Console.WriteLine(dropTargetNode.Text + e.X.ToString() + "," + e.Y.ToString());
                 }
             }
         }

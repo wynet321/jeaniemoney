@@ -11,7 +11,7 @@
     </Button>
     <Label>
       <Name>Name</Name>
-      <Abbr>Abbreviation</Abbr>
+      <Abbr>Abbr.</Abbr>
       <Barcode>Barcode</Barcode>
       <Parent>Parent</Parent>
       <Period>Period</Period>
@@ -31,10 +31,8 @@
       <Quantity>Quantity</Quantity>
       <Total>Total</Total>
       <Keyword>Keyword</Keyword>
-      <Parent>Parent Category</Parent>
     </Label>
     <Group>
-      <InOut>Income/Outgoing</InOut>
       <Summary>Summary</Summary>
     </Group>
     <Radio>
