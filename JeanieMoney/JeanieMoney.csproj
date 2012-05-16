@@ -185,6 +185,7 @@
       <DependentUpon>BaseConfigForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\ConfigHandler.cs" />
+    <Compile Include="Utility\ControlHandler.cs" />
     <Compile Include="Utility\G18NHandler.cs" />
     <EmbeddedResource Include="Forms\Config\BeneficiaryConfig.resx">
       <DependentUpon>BeneficiaryConfig.cs</DependentUpon>

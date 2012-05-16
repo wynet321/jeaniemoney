@@ -60,7 +60,6 @@ namespace JeanieMoney.Forms
             this.labelSummaryDate.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Date");
             this.labelSummaryCategory.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Category");
             this.labelSummaryDetails.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Details");
-            this.labelSummaryInOut.Text = G18NHandler.GetValue("JeanieMoney/Caption/Group/InOut");
             this.labelDetailManufactoryName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Manufactory");
             this.labelDetailUnit.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Unit");
             this.labelDetailAveragePrice.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/AveragePrice");
@@ -71,8 +70,6 @@ namespace JeanieMoney.Forms
             this.labelDetailProduct.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
             this.labelDetailProductResultTitle.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
             this.labelPaymentMode.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/PaymentMode");
-
-            this.groupBoxInOut.Text = G18NHandler.GetValue("JeanieMoney/Caption/Group/InOut");
             this.radioButtonIn.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
             this.radioButtonOut.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
             this.groupBoxSummary.Text = G18NHandler.GetValue("JeanieMoney/Caption/Group/Summary");
@@ -96,7 +93,9 @@ namespace JeanieMoney.Forms
             listBoxCategory.DisplayMember = "Name";
             listBoxCategory.ValueMember = "Id";
             listBoxCategory.Visible = false;
-
+            categoryList = categoryAction.retrieveCategoryList();
+            treeViewCategory.Nodes.Clear();
+            ControlHandler.buildupCategoryTreeView(treeViewCategory, categoryList);
             //payer
             listBoxPayer.DisplayMember = "Name";
             listBoxPayer.ValueMember = "Id";
@@ -283,6 +282,8 @@ namespace JeanieMoney.Forms
             {
                 listBoxCategory.SelectedIndex = 0;
                 listBoxCategory.Visible = true;
+                treeViewCategory.Nodes.Clear();
+                ControlHandler.buildupCategoryTreeView(treeViewCategory, categoryList);
             }
         }
 
@@ -764,6 +765,11 @@ namespace JeanieMoney.Forms
                     labelDetailTotalResult.ResetText();
                 }
             }
+        }
+
+        private void RecordInput_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
