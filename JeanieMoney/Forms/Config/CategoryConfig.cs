@@ -15,48 +15,44 @@ namespace JeanieMoney.Forms.Config
     public partial class CategoryConfig : Form
     {
         private CategoryAction categoryAction;
-
-        List<Category> categoryListAll;
+        List<Category> categoryListOutgoing;
+        List<Category> categoryListIncome;
         public CategoryConfig()
         {
             InitializeComponent();
             categoryAction = new CategoryAction();
-            categoryListAll = categoryAction.retrieveCategoryList();
-            ControlHandler.buildupCategoryTreeView(treeViewCategory,categoryListAll);
+            init();
         }
         private void init()
         {
             setCaption();
-            textBoxName.Clear();
-            textBoxAbbr.Clear();
-            categoryListAll = categoryAction.retrieveCategoryList();
-            radioButtonIncome.Checked = true;
+            textBoxIncomeName.Clear();
+            textBoxIncomeAbbr.Clear();
+            categoryListIncome = categoryAction.retrieveCategoryList(true);
+            categoryListOutgoing = categoryAction.retrieveCategoryList(false);
+            ControlHandler.buildupCategoryTreeView(treeViewIncome, categoryListIncome);
+            ControlHandler.buildupCategoryTreeView(treeViewOutgoing, categoryListOutgoing);
         }
         private void setCaption()
         {
-            this.radioButtonIncome.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
-            this.radioButtonOutgoing.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
+            this.tabPageIncome.Text = G18NHandler.GetValue("JeanieMoney/Caption/Tab/Income");
+            this.tabPageOutgoing.Text = G18NHandler.GetValue("JeanieMoney/Caption/Tab/Outgoing");
+            this.buttonClose.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Close");
 
             this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Category");
         }
-        
 
-        private void treeViewCategory_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-                contextMenuStripCategory.Show(e.Location);
-            else
-            {
-                treeViewCategory.SelectedNode = treeViewCategory.GetNodeAt(e.X, e.Y);
-            }
-        }
 
         private void toolStripMenuItemNew_Click(object sender, EventArgs e)
         {
-            groupBoxCategory.Show();
+            groupBoxIncome.Show();
         }
 
-        private void treeViewCategory_DragDrop(object sender, DragEventArgs e)
+        private void treeViewIncome_DragDrop(object sender, DragEventArgs e)
+        {
+            dragDropNode(sender, e, treeViewIncome);
+        }
+        private void dragDropNode(object sender, DragEventArgs e, TreeView treeView)
         {
             //获得拖放中的节点
             TreeNode moveNode = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
@@ -65,11 +61,11 @@ namespace JeanieMoney.Forms.Config
             Point pt;
             TreeNode targeNode;
             pt = ((TreeView)(sender)).PointToClient(new Point(e.X, e.Y));
-            targeNode = treeViewCategory.GetNodeAt(pt);
+            targeNode = treeView.GetNodeAt(pt);
             if (targeNode == null)
             {
                 TreeNode NewMoveNode = (TreeNode)moveNode.Clone();
-                treeViewCategory.Nodes.Add(NewMoveNode);
+                treeView.Nodes.Add(NewMoveNode);
             }
             else
             {
@@ -78,16 +74,19 @@ namespace JeanieMoney.Forms.Config
                 targeNode.BackColor = Color.White;
                 targeNode.ForeColor = Color.Black;
                 //更新当前拖动的节点选择
-                treeViewCategory.SelectedNode = NewMoveNode;
+                treeView.SelectedNode = NewMoveNode;
                 //展开目标节点,便于显示拖放效果
                 // targeNode.Expand();
+                targeNode.BackColor = Color.White;
+                targeNode.ForeColor = Color.Black;
             }
 
-            //移除拖放的节点
+            //remove the original node
             moveNode.Remove();
+            
         }
 
-        private void treeViewCategory_ItemDrag(object sender, ItemDragEventArgs e)
+        private void treeView_ItemDrag(object sender, ItemDragEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -95,8 +94,8 @@ namespace JeanieMoney.Forms.Config
             }
         }
 
-        private TreeNode dropTargetNode = new TreeNode();
-        private void treeViewCategory_DragEnter(object sender, DragEventArgs e)
+
+        private void treeView_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("System.Windows.Forms.TreeNode"))
                 e.Effect = DragDropEffects.Move;
@@ -104,17 +103,23 @@ namespace JeanieMoney.Forms.Config
                 e.Effect = DragDropEffects.None;
         }
 
-        private void treeViewCategory_DragOver(object sender, DragEventArgs e)
+
+        private void treeViewIncome_DragOver(object sender, DragEventArgs e)
+        {
+            tragOver(sender, e, treeViewIncome);
+        }
+        private TreeNode dropTargetNode = new TreeNode();
+        private void tragOver(object sender, DragEventArgs e, TreeView treeView)
         {
             Point pt;
             pt = ((TreeView)(sender)).PointToClient(new Point(e.X, e.Y));
-            if (treeViewCategory.GetNodeAt(pt) != null)
+            if (treeView.GetNodeAt(pt) != null)
             {
-                if (!dropTargetNode.Equals(treeViewCategory.GetNodeAt(pt)))
+                if (!dropTargetNode.Equals(treeView.GetNodeAt(pt)))
                 {
                     dropTargetNode.BackColor = Color.White;
                     dropTargetNode.ForeColor = Color.Black;
-                    dropTargetNode = treeViewCategory.GetNodeAt(pt);
+                    dropTargetNode = treeView.GetNodeAt(pt);
                     timerDelay.Start();
 
                 }
@@ -125,11 +130,155 @@ namespace JeanieMoney.Forms.Config
                 }
             }
         }
-
         private void timerDelay_Tick(object sender, EventArgs e)
         {
             dropTargetNode.Expand();
             timerDelay.Stop();
         }
+
+        private void showIncomeGroup()
+        {
+            groupBoxIncome.Visible = true;
+            this.Width = 460;
+            buttonClose.Left = 156;
+            tabControl.Width = 430;
+            treeViewIncome.Enabled = false;
+
+            textBoxIncomeAbbr.Clear();
+            textBoxIncomeName.Clear();
+        }
+
+        private void hideIncomeGroup()
+        {
+            groupBoxIncome.Visible = false;
+            this.Width = 250;
+            buttonClose.Left = 85;
+            tabControl.Width = 222;
+            treeViewIncome.Enabled = true;
+        }
+
+        private void treeViewIncome_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            //Modify node
+            showIncomeGroup();
+            textBoxIncomeName.Text = e.Node.Text;
+            textBoxIncomeAbbr.Text = e.Node.ToolTipText;
+
+        }
+
+        private void buttonIncomeOK_Click(object sender, EventArgs e)
+        {
+            Category category = new Category();
+            category.Id = treeViewIncome.SelectedNode.Name;
+            category.Name = textBoxIncomeName.Text;
+            category.Abbr = textBoxIncomeAbbr.Text;
+            if (treeViewIncome.SelectedNode.Parent!=null)
+                category.ParentId = treeViewIncome.SelectedNode.Parent.Name;
+            category.InOrOut = '1';
+            if (categoryAction.updateCategoryById(category))
+            {
+                hideIncomeGroup();
+                treeViewIncome.SelectedNode.Text = category.Name;
+                treeViewIncome.SelectedNode.ToolTipText = category.Abbr;
+            }
+            else
+            {
+                MessageBox.Show("Fail modify!");
+                return;
+            }
+        }
+
+        private void buttonIncomeCancel_Click(object sender, EventArgs e)
+        {
+            hideIncomeGroup();
+        }
+
+        private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStripCategory.Show(e.X, e.Y);
+            }
+        }
+
+        private void treeViewOutgoing_DragDrop(object sender, DragEventArgs e)
+        {
+            dragDropNode(sender, e, treeViewOutgoing);
+        }
+
+
+
+        private void treeViewOutgoing_DragOver(object sender, DragEventArgs e)
+        {
+            tragOver(sender, e, treeViewOutgoing);
+        }
+
+        private void treeViewOutgoing_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            //Modify node
+            showOutgoingGroup();
+            textBoxOutgoingName.Text = e.Node.Text;
+            textBoxOutgoingAbbr.Text = e.Node.ToolTipText;
+        }
+
+        private void showOutgoingGroup()
+        {
+            groupBoxOutgoing.Visible = true;
+            this.Width = 460;
+            buttonClose.Left = 156;
+            tabControl.Width = 430;
+            treeViewOutgoing.Enabled = false;
+
+            textBoxOutgoingAbbr.Clear();
+            textBoxOutgoingName.Clear();
+        }
+        private void hideOutgoingGroup()
+        {
+            groupBoxOutgoing.Visible = false;
+            this.Width = 250;
+            buttonClose.Left = 85;
+            tabControl.Width = 222;
+            treeViewOutgoing.Enabled = true;
+        }
+
+        private void buttonOutgoingOK_Click(object sender, EventArgs e)
+        {
+            Category category = new Category();
+            category.Id = treeViewOutgoing.SelectedNode.Name;
+            category.Name = textBoxOutgoingName.Text;
+            category.Abbr = textBoxOutgoingAbbr.Text;
+            if (treeViewOutgoing.SelectedNode.Parent!=null)
+                category.ParentId = treeViewOutgoing.SelectedNode.Parent.Name;
+            category.InOrOut = '1';
+            if (categoryAction.updateCategoryById(category))
+            {
+                hideOutgoingGroup();
+                treeViewOutgoing.SelectedNode.Text = category.Name;
+                treeViewOutgoing.SelectedNode.ToolTipText = category.Abbr;
+            }
+            else
+            {
+                MessageBox.Show("Fail modify!");
+                return;
+            }
+        }
+
+        private void buttonOutgoingCancel_Click(object sender, EventArgs e)
+        {
+            hideOutgoingGroup();
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            hideIncomeGroup();
+            hideOutgoingGroup();
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 }

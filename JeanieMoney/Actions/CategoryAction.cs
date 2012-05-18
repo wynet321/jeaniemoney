@@ -17,7 +17,7 @@ namespace JeanieMoney.Actions
                 command = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Abbr + "','" + category.InOrOut + "',null)";
             else
                 command = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Abbr + "','" + category.InOrOut + "','" + category.ParentId.Trim() + "')";
-            if (1== DbHandler.execCommand(command))
+            if (1 == DbHandler.execCommand(command))
                 return true;
             return false;
         }
@@ -25,11 +25,13 @@ namespace JeanieMoney.Actions
         public bool updateCategoryById(Category category)
         {
             string command = "update category set ";
-            if (0 > category.Id.Length)
+            if (category.Id != null && 0 > category.Id.Length)
                 return false;
-            command += "name='" + category.Name + "',abbr='" + category.Abbr + "',flag_in_out='" + category.InOrOut + "',";
-
-            if (null != category.ParentId)
+            if (category.Name != null && 0 < category.Name.Length)
+                command += "name='" + category.Name + "',";
+            if (category.Abbr != null && 0 < category.Abbr.Length)
+                command += "abbr='" + category.Abbr + "',";
+            if (category.ParentId != null && 0 < category.ParentId.Length)
                 command += "parent_id='" + category.ParentId.Trim() + "'";
             else
                 command += "parent_id=null";
@@ -65,6 +67,29 @@ namespace JeanieMoney.Actions
         public List<Category> retrieveCategoryList()
         {
             string command = "select * from category";
+            DataTable dataTable = DbHandler.getDataTable(command);
+            List<Category> categoryList = new List<Category>();
+            Category category;
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                category = new Category();
+                category.Id = dataRow["id"].ToString();
+                category.Name = dataRow["name"].ToString();
+                category.InOrOut = ((bool)dataRow["flag_in_out"]) ? '1' : '0';
+                category.Abbr = dataRow["abbr"].ToString();
+                category.ParentId = dataRow["parent_id"].ToString();
+                categoryList.Add(category);
+            }
+            return categoryList;
+        }
+
+        public List<Category> retrieveCategoryList(Boolean isIncome)
+        {
+            string command = "select * from category";
+            if (isIncome)
+                command += " where flag_in_out='1'";
+            else
+                command += " where flag_in_out='0'";
             DataTable dataTable = DbHandler.getDataTable(command);
             List<Category> categoryList = new List<Category>();
             Category category;

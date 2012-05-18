@@ -29,42 +29,53 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.treeViewCategory = new System.Windows.Forms.TreeView();
+            this.treeViewIncome = new System.Windows.Forms.TreeView();
             this.contextMenuStripCategory = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemModify = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBoxCategory = new System.Windows.Forms.GroupBox();
-            this.groupBoxInOrOut = new System.Windows.Forms.GroupBox();
-            this.radioButtonOutgoing = new System.Windows.Forms.RadioButton();
-            this.radioButtonIncome = new System.Windows.Forms.RadioButton();
-            this.buttonGroupCancel = new System.Windows.Forms.Button();
-            this.labelAbbr = new System.Windows.Forms.Label();
-            this.textBoxAbbr = new System.Windows.Forms.TextBox();
-            this.labelName = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.buttonGroupOK = new System.Windows.Forms.Button();
+            this.groupBoxIncome = new System.Windows.Forms.GroupBox();
+            this.buttonIncomeCancel = new System.Windows.Forms.Button();
+            this.labelIncomeAbbr = new System.Windows.Forms.Label();
+            this.textBoxIncomeAbbr = new System.Windows.Forms.TextBox();
+            this.labelIncomeName = new System.Windows.Forms.Label();
+            this.textBoxIncomeName = new System.Windows.Forms.TextBox();
+            this.buttonIncomeOK = new System.Windows.Forms.Button();
             this.timerDelay = new System.Windows.Forms.Timer(this.components);
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonOK = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPageIncome = new System.Windows.Forms.TabPage();
+            this.tabPageOutgoing = new System.Windows.Forms.TabPage();
+            this.groupBoxOutgoing = new System.Windows.Forms.GroupBox();
+            this.buttonOutgoingCancel = new System.Windows.Forms.Button();
+            this.labelOutgoingAbbr = new System.Windows.Forms.Label();
+            this.textBoxOutgoingAbbr = new System.Windows.Forms.TextBox();
+            this.labelOutgoingName = new System.Windows.Forms.Label();
+            this.textBoxOutgoingName = new System.Windows.Forms.TextBox();
+            this.buttonOutgoingOK = new System.Windows.Forms.Button();
+            this.treeViewOutgoing = new System.Windows.Forms.TreeView();
             this.contextMenuStripCategory.SuspendLayout();
-            this.groupBoxCategory.SuspendLayout();
-            this.groupBoxInOrOut.SuspendLayout();
+            this.groupBoxIncome.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tabPageIncome.SuspendLayout();
+            this.tabPageOutgoing.SuspendLayout();
+            this.groupBoxOutgoing.SuspendLayout();
             this.SuspendLayout();
             // 
-            // treeViewCategory
+            // treeViewIncome
             // 
-            this.treeViewCategory.AllowDrop = true;
-            this.treeViewCategory.Location = new System.Drawing.Point(12, 13);
-            this.treeViewCategory.Name = "treeViewCategory";
-            this.treeViewCategory.ShowNodeToolTips = true;
-            this.treeViewCategory.Size = new System.Drawing.Size(187, 324);
-            this.treeViewCategory.TabIndex = 0;
-            this.treeViewCategory.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeViewCategory_ItemDrag);
-            this.treeViewCategory.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeViewCategory_DragDrop);
-            this.treeViewCategory.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeViewCategory_DragEnter);
-            this.treeViewCategory.DragOver += new System.Windows.Forms.DragEventHandler(this.treeViewCategory_DragOver);
-            this.treeViewCategory.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeViewCategory_MouseDown);
+            this.treeViewIncome.AllowDrop = true;
+            this.treeViewIncome.Location = new System.Drawing.Point(6, 11);
+            this.treeViewIncome.Name = "treeViewIncome";
+            this.treeViewIncome.ShowNodeToolTips = true;
+            this.treeViewIncome.Size = new System.Drawing.Size(200, 272);
+            this.treeViewIncome.TabIndex = 0;
+            this.treeViewIncome.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView_ItemDrag);
+            this.treeViewIncome.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
+            this.treeViewIncome.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewIncome_NodeMouseDoubleClick);
+            this.treeViewIncome.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeViewIncome_DragDrop);
+            this.treeViewIncome.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView_DragEnter);
+            this.treeViewIncome.DragOver += new System.Windows.Forms.DragEventHandler(this.treeViewIncome_DragOver);
             // 
             // contextMenuStripCategory
             // 
@@ -94,167 +105,254 @@
             this.toolStripMenuItemDelete.Size = new System.Drawing.Size(106, 22);
             this.toolStripMenuItemDelete.Text = "&Delete";
             // 
-            // groupBoxCategory
+            // groupBoxIncome
             // 
-            this.groupBoxCategory.Controls.Add(this.groupBoxInOrOut);
-            this.groupBoxCategory.Controls.Add(this.buttonGroupCancel);
-            this.groupBoxCategory.Controls.Add(this.labelAbbr);
-            this.groupBoxCategory.Controls.Add(this.textBoxAbbr);
-            this.groupBoxCategory.Controls.Add(this.labelName);
-            this.groupBoxCategory.Controls.Add(this.textBoxName);
-            this.groupBoxCategory.Controls.Add(this.buttonGroupOK);
-            this.groupBoxCategory.Location = new System.Drawing.Point(205, 13);
-            this.groupBoxCategory.Name = "groupBoxCategory";
-            this.groupBoxCategory.Size = new System.Drawing.Size(230, 197);
-            this.groupBoxCategory.TabIndex = 2;
-            this.groupBoxCategory.TabStop = false;
-            this.groupBoxCategory.Visible = false;
+            this.groupBoxIncome.Controls.Add(this.buttonIncomeCancel);
+            this.groupBoxIncome.Controls.Add(this.labelIncomeAbbr);
+            this.groupBoxIncome.Controls.Add(this.textBoxIncomeAbbr);
+            this.groupBoxIncome.Controls.Add(this.labelIncomeName);
+            this.groupBoxIncome.Controls.Add(this.textBoxIncomeName);
+            this.groupBoxIncome.Controls.Add(this.buttonIncomeOK);
+            this.groupBoxIncome.Location = new System.Drawing.Point(215, 6);
+            this.groupBoxIncome.Name = "groupBoxIncome";
+            this.groupBoxIncome.Size = new System.Drawing.Size(200, 126);
+            this.groupBoxIncome.TabIndex = 2;
+            this.groupBoxIncome.TabStop = false;
+            this.groupBoxIncome.Visible = false;
             // 
-            // groupBoxInOrOut
+            // buttonIncomeCancel
             // 
-            this.groupBoxInOrOut.Controls.Add(this.radioButtonOutgoing);
-            this.groupBoxInOrOut.Controls.Add(this.radioButtonIncome);
-            this.groupBoxInOrOut.Location = new System.Drawing.Point(25, 15);
-            this.groupBoxInOrOut.Name = "groupBoxInOrOut";
-            this.groupBoxInOrOut.Size = new System.Drawing.Size(179, 53);
-            this.groupBoxInOrOut.TabIndex = 6;
-            this.groupBoxInOrOut.TabStop = false;
+            this.buttonIncomeCancel.Location = new System.Drawing.Point(109, 84);
+            this.buttonIncomeCancel.Name = "buttonIncomeCancel";
+            this.buttonIncomeCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonIncomeCancel.TabIndex = 5;
+            this.buttonIncomeCancel.Text = "Cancel";
+            this.buttonIncomeCancel.UseVisualStyleBackColor = true;
+            this.buttonIncomeCancel.Click += new System.EventHandler(this.buttonIncomeCancel_Click);
             // 
-            // radioButtonOutgoing
+            // labelIncomeAbbr
             // 
-            this.radioButtonOutgoing.AutoSize = true;
-            this.radioButtonOutgoing.Location = new System.Drawing.Point(93, 22);
-            this.radioButtonOutgoing.Name = "radioButtonOutgoing";
-            this.radioButtonOutgoing.Size = new System.Drawing.Size(68, 18);
-            this.radioButtonOutgoing.TabIndex = 1;
-            this.radioButtonOutgoing.TabStop = true;
-            this.radioButtonOutgoing.Text = "Outgoing";
-            this.radioButtonOutgoing.UseVisualStyleBackColor = true;
+            this.labelIncomeAbbr.AutoSize = true;
+            this.labelIncomeAbbr.Location = new System.Drawing.Point(6, 52);
+            this.labelIncomeAbbr.Name = "labelIncomeAbbr";
+            this.labelIncomeAbbr.Size = new System.Drawing.Size(29, 13);
+            this.labelIncomeAbbr.TabIndex = 4;
+            this.labelIncomeAbbr.Text = "Abbr";
             // 
-            // radioButtonIncome
+            // textBoxIncomeAbbr
             // 
-            this.radioButtonIncome.AutoSize = true;
-            this.radioButtonIncome.Location = new System.Drawing.Point(16, 22);
-            this.radioButtonIncome.Name = "radioButtonIncome";
-            this.radioButtonIncome.Size = new System.Drawing.Size(60, 18);
-            this.radioButtonIncome.TabIndex = 0;
-            this.radioButtonIncome.TabStop = true;
-            this.radioButtonIncome.Text = "Income";
-            this.radioButtonIncome.UseVisualStyleBackColor = true;
+            this.textBoxIncomeAbbr.Location = new System.Drawing.Point(41, 48);
+            this.textBoxIncomeAbbr.Name = "textBoxIncomeAbbr";
+            this.textBoxIncomeAbbr.Size = new System.Drawing.Size(144, 20);
+            this.textBoxIncomeAbbr.TabIndex = 3;
             // 
-            // buttonGroupCancel
+            // labelIncomeName
             // 
-            this.buttonGroupCancel.Location = new System.Drawing.Point(124, 154);
-            this.buttonGroupCancel.Name = "buttonGroupCancel";
-            this.buttonGroupCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonGroupCancel.TabIndex = 5;
-            this.buttonGroupCancel.Text = "Cancel";
-            this.buttonGroupCancel.UseVisualStyleBackColor = true;
+            this.labelIncomeName.AutoSize = true;
+            this.labelIncomeName.Location = new System.Drawing.Point(6, 22);
+            this.labelIncomeName.Name = "labelIncomeName";
+            this.labelIncomeName.Size = new System.Drawing.Size(35, 13);
+            this.labelIncomeName.TabIndex = 2;
+            this.labelIncomeName.Text = "Name";
             // 
-            // labelAbbr
+            // textBoxIncomeName
             // 
-            this.labelAbbr.AutoSize = true;
-            this.labelAbbr.Location = new System.Drawing.Point(6, 112);
-            this.labelAbbr.Name = "labelAbbr";
-            this.labelAbbr.Size = new System.Drawing.Size(29, 13);
-            this.labelAbbr.TabIndex = 4;
-            this.labelAbbr.Text = "Abbr";
+            this.textBoxIncomeName.Location = new System.Drawing.Point(41, 19);
+            this.textBoxIncomeName.Name = "textBoxIncomeName";
+            this.textBoxIncomeName.Size = new System.Drawing.Size(144, 20);
+            this.textBoxIncomeName.TabIndex = 1;
             // 
-            // textBoxAbbr
+            // buttonIncomeOK
             // 
-            this.textBoxAbbr.Location = new System.Drawing.Point(41, 108);
-            this.textBoxAbbr.Name = "textBoxAbbr";
-            this.textBoxAbbr.Size = new System.Drawing.Size(183, 20);
-            this.textBoxAbbr.TabIndex = 3;
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(6, 82);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(35, 13);
-            this.labelName.TabIndex = 2;
-            this.labelName.Text = "Name";
-            // 
-            // textBoxName
-            // 
-            this.textBoxName.Location = new System.Drawing.Point(41, 79);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(183, 20);
-            this.textBoxName.TabIndex = 1;
-            // 
-            // buttonGroupOK
-            // 
-            this.buttonGroupOK.Location = new System.Drawing.Point(31, 154);
-            this.buttonGroupOK.Name = "buttonGroupOK";
-            this.buttonGroupOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonGroupOK.TabIndex = 0;
-            this.buttonGroupOK.Text = "OK";
-            this.buttonGroupOK.UseVisualStyleBackColor = true;
+            this.buttonIncomeOK.Location = new System.Drawing.Point(16, 84);
+            this.buttonIncomeOK.Name = "buttonIncomeOK";
+            this.buttonIncomeOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonIncomeOK.TabIndex = 0;
+            this.buttonIncomeOK.Text = "OK";
+            this.buttonIncomeOK.UseVisualStyleBackColor = true;
+            this.buttonIncomeOK.Click += new System.EventHandler(this.buttonIncomeOK_Click);
             // 
             // timerDelay
             // 
             this.timerDelay.Interval = 2000;
             this.timerDelay.Tick += new System.EventHandler(this.timerDelay_Tick);
             // 
-            // buttonCancel
+            // buttonClose
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(301, 366);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 7;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonClose.Location = new System.Drawing.Point(85, 341);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonClose.TabIndex = 7;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // buttonOK
+            // tabControl
             // 
-            this.buttonOK.Location = new System.Drawing.Point(124, 366);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOK.TabIndex = 6;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.UseVisualStyleBackColor = true;
+            this.tabControl.Controls.Add(this.tabPageIncome);
+            this.tabControl.Controls.Add(this.tabPageOutgoing);
+            this.tabControl.Location = new System.Drawing.Point(12, 12);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(222, 315);
+            this.tabControl.TabIndex = 8;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            // 
+            // tabPageIncome
+            // 
+            this.tabPageIncome.Controls.Add(this.treeViewIncome);
+            this.tabPageIncome.Controls.Add(this.groupBoxIncome);
+            this.tabPageIncome.Location = new System.Drawing.Point(4, 22);
+            this.tabPageIncome.Name = "tabPageIncome";
+            this.tabPageIncome.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageIncome.Size = new System.Drawing.Size(214, 289);
+            this.tabPageIncome.TabIndex = 0;
+            this.tabPageIncome.Text = "Income";
+            this.tabPageIncome.UseVisualStyleBackColor = true;
+            // 
+            // tabPageOutgoing
+            // 
+            this.tabPageOutgoing.Controls.Add(this.groupBoxOutgoing);
+            this.tabPageOutgoing.Controls.Add(this.treeViewOutgoing);
+            this.tabPageOutgoing.Location = new System.Drawing.Point(4, 22);
+            this.tabPageOutgoing.Name = "tabPageOutgoing";
+            this.tabPageOutgoing.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageOutgoing.Size = new System.Drawing.Size(421, 289);
+            this.tabPageOutgoing.TabIndex = 1;
+            this.tabPageOutgoing.Text = "Outgoing";
+            this.tabPageOutgoing.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxOutgoing
+            // 
+            this.groupBoxOutgoing.Controls.Add(this.buttonOutgoingCancel);
+            this.groupBoxOutgoing.Controls.Add(this.labelOutgoingAbbr);
+            this.groupBoxOutgoing.Controls.Add(this.textBoxOutgoingAbbr);
+            this.groupBoxOutgoing.Controls.Add(this.labelOutgoingName);
+            this.groupBoxOutgoing.Controls.Add(this.textBoxOutgoingName);
+            this.groupBoxOutgoing.Controls.Add(this.buttonOutgoingOK);
+            this.groupBoxOutgoing.Location = new System.Drawing.Point(215, 6);
+            this.groupBoxOutgoing.Name = "groupBoxOutgoing";
+            this.groupBoxOutgoing.Size = new System.Drawing.Size(200, 126);
+            this.groupBoxOutgoing.TabIndex = 3;
+            this.groupBoxOutgoing.TabStop = false;
+            this.groupBoxOutgoing.Visible = false;
+            // 
+            // buttonOutgoingCancel
+            // 
+            this.buttonOutgoingCancel.Location = new System.Drawing.Point(109, 84);
+            this.buttonOutgoingCancel.Name = "buttonOutgoingCancel";
+            this.buttonOutgoingCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonOutgoingCancel.TabIndex = 5;
+            this.buttonOutgoingCancel.Text = "Cancel";
+            this.buttonOutgoingCancel.UseVisualStyleBackColor = true;
+            this.buttonOutgoingCancel.Click += new System.EventHandler(this.buttonOutgoingCancel_Click);
+            // 
+            // labelOutgoingAbbr
+            // 
+            this.labelOutgoingAbbr.AutoSize = true;
+            this.labelOutgoingAbbr.Location = new System.Drawing.Point(6, 52);
+            this.labelOutgoingAbbr.Name = "labelOutgoingAbbr";
+            this.labelOutgoingAbbr.Size = new System.Drawing.Size(29, 13);
+            this.labelOutgoingAbbr.TabIndex = 4;
+            this.labelOutgoingAbbr.Text = "Abbr";
+            // 
+            // textBoxOutgoingAbbr
+            // 
+            this.textBoxOutgoingAbbr.Location = new System.Drawing.Point(41, 48);
+            this.textBoxOutgoingAbbr.Name = "textBoxOutgoingAbbr";
+            this.textBoxOutgoingAbbr.Size = new System.Drawing.Size(144, 20);
+            this.textBoxOutgoingAbbr.TabIndex = 3;
+            // 
+            // labelOutgoingName
+            // 
+            this.labelOutgoingName.AutoSize = true;
+            this.labelOutgoingName.Location = new System.Drawing.Point(6, 22);
+            this.labelOutgoingName.Name = "labelOutgoingName";
+            this.labelOutgoingName.Size = new System.Drawing.Size(35, 13);
+            this.labelOutgoingName.TabIndex = 2;
+            this.labelOutgoingName.Text = "Name";
+            // 
+            // textBoxOutgoingName
+            // 
+            this.textBoxOutgoingName.Location = new System.Drawing.Point(41, 19);
+            this.textBoxOutgoingName.Name = "textBoxOutgoingName";
+            this.textBoxOutgoingName.Size = new System.Drawing.Size(144, 20);
+            this.textBoxOutgoingName.TabIndex = 1;
+            // 
+            // buttonOutgoingOK
+            // 
+            this.buttonOutgoingOK.Location = new System.Drawing.Point(16, 84);
+            this.buttonOutgoingOK.Name = "buttonOutgoingOK";
+            this.buttonOutgoingOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonOutgoingOK.TabIndex = 0;
+            this.buttonOutgoingOK.Text = "OK";
+            this.buttonOutgoingOK.UseVisualStyleBackColor = true;
+            this.buttonOutgoingOK.Click += new System.EventHandler(this.buttonOutgoingOK_Click);
+            // 
+            // treeViewOutgoing
+            // 
+            this.treeViewOutgoing.AllowDrop = true;
+            this.treeViewOutgoing.Location = new System.Drawing.Point(6, 11);
+            this.treeViewOutgoing.Name = "treeViewOutgoing";
+            this.treeViewOutgoing.ShowNodeToolTips = true;
+            this.treeViewOutgoing.Size = new System.Drawing.Size(200, 272);
+            this.treeViewOutgoing.TabIndex = 1;
+            this.treeViewOutgoing.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView_ItemDrag);
+            this.treeViewOutgoing.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
+            this.treeViewOutgoing.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewOutgoing_NodeMouseDoubleClick);
+            this.treeViewOutgoing.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeViewOutgoing_DragDrop);
+            this.treeViewOutgoing.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView_DragEnter);
+            this.treeViewOutgoing.DragOver += new System.Windows.Forms.DragEventHandler(this.treeViewOutgoing_DragOver);
             // 
             // CategoryConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 401);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonOK);
-            this.Controls.Add(this.groupBoxCategory);
-            this.Controls.Add(this.treeViewCategory);
+            this.ClientSize = new System.Drawing.Size(244, 376);
+            this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.buttonClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CategoryConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Category";
             this.contextMenuStripCategory.ResumeLayout(false);
-            this.groupBoxCategory.ResumeLayout(false);
-            this.groupBoxCategory.PerformLayout();
-            this.groupBoxInOrOut.ResumeLayout(false);
-            this.groupBoxInOrOut.PerformLayout();
+            this.groupBoxIncome.ResumeLayout(false);
+            this.groupBoxIncome.PerformLayout();
+            this.tabControl.ResumeLayout(false);
+            this.tabPageIncome.ResumeLayout(false);
+            this.tabPageOutgoing.ResumeLayout(false);
+            this.groupBoxOutgoing.ResumeLayout(false);
+            this.groupBoxOutgoing.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeViewCategory;
+        private System.Windows.Forms.TreeView treeViewIncome;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripCategory;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNew;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemModify;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelete;
-        private System.Windows.Forms.GroupBox groupBoxCategory;
-        private System.Windows.Forms.GroupBox groupBoxInOrOut;
-        private System.Windows.Forms.RadioButton radioButtonOutgoing;
-        private System.Windows.Forms.RadioButton radioButtonIncome;
-        private System.Windows.Forms.Button buttonGroupCancel;
-        private System.Windows.Forms.Label labelAbbr;
-        private System.Windows.Forms.TextBox textBoxAbbr;
-        private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.Button buttonGroupOK;
+        private System.Windows.Forms.GroupBox groupBoxIncome;
+        private System.Windows.Forms.Button buttonIncomeCancel;
+        private System.Windows.Forms.Label labelIncomeAbbr;
+        private System.Windows.Forms.TextBox textBoxIncomeAbbr;
+        private System.Windows.Forms.Label labelIncomeName;
+        private System.Windows.Forms.TextBox textBoxIncomeName;
+        private System.Windows.Forms.Button buttonIncomeOK;
         private System.Windows.Forms.Timer timerDelay;
-        private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPageIncome;
+        private System.Windows.Forms.TabPage tabPageOutgoing;
+        private System.Windows.Forms.GroupBox groupBoxOutgoing;
+        private System.Windows.Forms.Button buttonOutgoingCancel;
+        private System.Windows.Forms.Label labelOutgoingAbbr;
+        private System.Windows.Forms.TextBox textBoxOutgoingAbbr;
+        private System.Windows.Forms.Label labelOutgoingName;
+        private System.Windows.Forms.TextBox textBoxOutgoingName;
+        private System.Windows.Forms.Button buttonOutgoingOK;
+        private System.Windows.Forms.TreeView treeViewOutgoing;
     }
 }

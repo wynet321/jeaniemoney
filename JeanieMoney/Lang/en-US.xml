@@ -5,6 +5,7 @@
       <OK>OK</OK>
       <Reset>Reset</Reset>
       <Cancel>Cancel</Cancel>
+      <Close>Close</Close>
       <Delete>Delete</Delete>
       <Search>Search</Search>
       <Details>Details</Details>
@@ -61,6 +62,10 @@
         <Beneficiary>Beneficiary</Beneficiary>
       </Column>
     </ListView>
+    <Tab>
+      <Income>Income</Income>
+      <Outgoing>Outgoing</Outgoing>
+    </Tab>
     <Form>
       <Main>Jeanie Money</Main>
       <RecordInput>Record Input</RecordInput>
