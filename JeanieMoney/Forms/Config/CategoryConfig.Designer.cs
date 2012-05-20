@@ -32,7 +32,6 @@
             this.treeViewIncome = new System.Windows.Forms.TreeView();
             this.contextMenuStripCategory = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemModify = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxIncome = new System.Windows.Forms.GroupBox();
             this.buttonIncomeCancel = new System.Windows.Forms.Button();
@@ -65,10 +64,10 @@
             // treeViewIncome
             // 
             this.treeViewIncome.AllowDrop = true;
-            this.treeViewIncome.Location = new System.Drawing.Point(6, 11);
+            this.treeViewIncome.Location = new System.Drawing.Point(6, 10);
             this.treeViewIncome.Name = "treeViewIncome";
             this.treeViewIncome.ShowNodeToolTips = true;
-            this.treeViewIncome.Size = new System.Drawing.Size(200, 272);
+            this.treeViewIncome.Size = new System.Drawing.Size(200, 251);
             this.treeViewIncome.TabIndex = 0;
             this.treeViewIncome.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView_ItemDrag);
             this.treeViewIncome.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
@@ -81,29 +80,23 @@
             // 
             this.contextMenuStripCategory.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemNew,
-            this.toolStripMenuItemModify,
             this.toolStripMenuItemDelete});
             this.contextMenuStripCategory.Name = "contextMenuStripCategory";
-            this.contextMenuStripCategory.Size = new System.Drawing.Size(107, 70);
+            this.contextMenuStripCategory.Size = new System.Drawing.Size(153, 70);
             // 
             // toolStripMenuItemNew
             // 
             this.toolStripMenuItemNew.Name = "toolStripMenuItemNew";
-            this.toolStripMenuItemNew.Size = new System.Drawing.Size(106, 22);
+            this.toolStripMenuItemNew.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemNew.Text = "&New";
             this.toolStripMenuItemNew.Click += new System.EventHandler(this.toolStripMenuItemNew_Click);
-            // 
-            // toolStripMenuItemModify
-            // 
-            this.toolStripMenuItemModify.Name = "toolStripMenuItemModify";
-            this.toolStripMenuItemModify.Size = new System.Drawing.Size(106, 22);
-            this.toolStripMenuItemModify.Text = "&Modify";
             // 
             // toolStripMenuItemDelete
             // 
             this.toolStripMenuItemDelete.Name = "toolStripMenuItemDelete";
-            this.toolStripMenuItemDelete.Size = new System.Drawing.Size(106, 22);
+            this.toolStripMenuItemDelete.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItemDelete.Text = "&Delete";
+            this.toolStripMenuItemDelete.Click += new System.EventHandler(this.toolStripMenuItemDelete_Click);
             // 
             // groupBoxIncome
             // 
@@ -115,16 +108,16 @@
             this.groupBoxIncome.Controls.Add(this.buttonIncomeOK);
             this.groupBoxIncome.Location = new System.Drawing.Point(215, 6);
             this.groupBoxIncome.Name = "groupBoxIncome";
-            this.groupBoxIncome.Size = new System.Drawing.Size(200, 126);
+            this.groupBoxIncome.Size = new System.Drawing.Size(200, 116);
             this.groupBoxIncome.TabIndex = 2;
             this.groupBoxIncome.TabStop = false;
             this.groupBoxIncome.Visible = false;
             // 
             // buttonIncomeCancel
             // 
-            this.buttonIncomeCancel.Location = new System.Drawing.Point(109, 84);
+            this.buttonIncomeCancel.Location = new System.Drawing.Point(109, 78);
             this.buttonIncomeCancel.Name = "buttonIncomeCancel";
-            this.buttonIncomeCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonIncomeCancel.Size = new System.Drawing.Size(75, 21);
             this.buttonIncomeCancel.TabIndex = 5;
             this.buttonIncomeCancel.Text = "Cancel";
             this.buttonIncomeCancel.UseVisualStyleBackColor = true;
@@ -133,40 +126,40 @@
             // labelIncomeAbbr
             // 
             this.labelIncomeAbbr.AutoSize = true;
-            this.labelIncomeAbbr.Location = new System.Drawing.Point(6, 52);
+            this.labelIncomeAbbr.Location = new System.Drawing.Point(6, 48);
             this.labelIncomeAbbr.Name = "labelIncomeAbbr";
-            this.labelIncomeAbbr.Size = new System.Drawing.Size(29, 13);
+            this.labelIncomeAbbr.Size = new System.Drawing.Size(29, 12);
             this.labelIncomeAbbr.TabIndex = 4;
             this.labelIncomeAbbr.Text = "Abbr";
             // 
             // textBoxIncomeAbbr
             // 
-            this.textBoxIncomeAbbr.Location = new System.Drawing.Point(41, 48);
+            this.textBoxIncomeAbbr.Location = new System.Drawing.Point(41, 44);
             this.textBoxIncomeAbbr.Name = "textBoxIncomeAbbr";
-            this.textBoxIncomeAbbr.Size = new System.Drawing.Size(144, 20);
+            this.textBoxIncomeAbbr.Size = new System.Drawing.Size(144, 21);
             this.textBoxIncomeAbbr.TabIndex = 3;
             // 
             // labelIncomeName
             // 
             this.labelIncomeName.AutoSize = true;
-            this.labelIncomeName.Location = new System.Drawing.Point(6, 22);
+            this.labelIncomeName.Location = new System.Drawing.Point(6, 20);
             this.labelIncomeName.Name = "labelIncomeName";
-            this.labelIncomeName.Size = new System.Drawing.Size(35, 13);
+            this.labelIncomeName.Size = new System.Drawing.Size(29, 12);
             this.labelIncomeName.TabIndex = 2;
             this.labelIncomeName.Text = "Name";
             // 
             // textBoxIncomeName
             // 
-            this.textBoxIncomeName.Location = new System.Drawing.Point(41, 19);
+            this.textBoxIncomeName.Location = new System.Drawing.Point(41, 18);
             this.textBoxIncomeName.Name = "textBoxIncomeName";
-            this.textBoxIncomeName.Size = new System.Drawing.Size(144, 20);
+            this.textBoxIncomeName.Size = new System.Drawing.Size(144, 21);
             this.textBoxIncomeName.TabIndex = 1;
             // 
             // buttonIncomeOK
             // 
-            this.buttonIncomeOK.Location = new System.Drawing.Point(16, 84);
+            this.buttonIncomeOK.Location = new System.Drawing.Point(16, 78);
             this.buttonIncomeOK.Name = "buttonIncomeOK";
-            this.buttonIncomeOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonIncomeOK.Size = new System.Drawing.Size(75, 21);
             this.buttonIncomeOK.TabIndex = 0;
             this.buttonIncomeOK.Text = "OK";
             this.buttonIncomeOK.UseVisualStyleBackColor = true;
@@ -179,9 +172,9 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(85, 341);
+            this.buttonClose.Location = new System.Drawing.Point(85, 315);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonClose.Size = new System.Drawing.Size(75, 21);
             this.buttonClose.TabIndex = 7;
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -191,10 +184,10 @@
             // 
             this.tabControl.Controls.Add(this.tabPageIncome);
             this.tabControl.Controls.Add(this.tabPageOutgoing);
-            this.tabControl.Location = new System.Drawing.Point(12, 12);
+            this.tabControl.Location = new System.Drawing.Point(12, 11);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(222, 315);
+            this.tabControl.Size = new System.Drawing.Size(222, 291);
             this.tabControl.TabIndex = 8;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
@@ -205,7 +198,7 @@
             this.tabPageIncome.Location = new System.Drawing.Point(4, 22);
             this.tabPageIncome.Name = "tabPageIncome";
             this.tabPageIncome.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageIncome.Size = new System.Drawing.Size(214, 289);
+            this.tabPageIncome.Size = new System.Drawing.Size(214, 265);
             this.tabPageIncome.TabIndex = 0;
             this.tabPageIncome.Text = "Income";
             this.tabPageIncome.UseVisualStyleBackColor = true;
@@ -217,7 +210,7 @@
             this.tabPageOutgoing.Location = new System.Drawing.Point(4, 22);
             this.tabPageOutgoing.Name = "tabPageOutgoing";
             this.tabPageOutgoing.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageOutgoing.Size = new System.Drawing.Size(421, 289);
+            this.tabPageOutgoing.Size = new System.Drawing.Size(214, 265);
             this.tabPageOutgoing.TabIndex = 1;
             this.tabPageOutgoing.Text = "Outgoing";
             this.tabPageOutgoing.UseVisualStyleBackColor = true;
@@ -232,16 +225,16 @@
             this.groupBoxOutgoing.Controls.Add(this.buttonOutgoingOK);
             this.groupBoxOutgoing.Location = new System.Drawing.Point(215, 6);
             this.groupBoxOutgoing.Name = "groupBoxOutgoing";
-            this.groupBoxOutgoing.Size = new System.Drawing.Size(200, 126);
+            this.groupBoxOutgoing.Size = new System.Drawing.Size(200, 116);
             this.groupBoxOutgoing.TabIndex = 3;
             this.groupBoxOutgoing.TabStop = false;
             this.groupBoxOutgoing.Visible = false;
             // 
             // buttonOutgoingCancel
             // 
-            this.buttonOutgoingCancel.Location = new System.Drawing.Point(109, 84);
+            this.buttonOutgoingCancel.Location = new System.Drawing.Point(109, 78);
             this.buttonOutgoingCancel.Name = "buttonOutgoingCancel";
-            this.buttonOutgoingCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonOutgoingCancel.Size = new System.Drawing.Size(75, 21);
             this.buttonOutgoingCancel.TabIndex = 5;
             this.buttonOutgoingCancel.Text = "Cancel";
             this.buttonOutgoingCancel.UseVisualStyleBackColor = true;
@@ -250,40 +243,40 @@
             // labelOutgoingAbbr
             // 
             this.labelOutgoingAbbr.AutoSize = true;
-            this.labelOutgoingAbbr.Location = new System.Drawing.Point(6, 52);
+            this.labelOutgoingAbbr.Location = new System.Drawing.Point(6, 48);
             this.labelOutgoingAbbr.Name = "labelOutgoingAbbr";
-            this.labelOutgoingAbbr.Size = new System.Drawing.Size(29, 13);
+            this.labelOutgoingAbbr.Size = new System.Drawing.Size(29, 12);
             this.labelOutgoingAbbr.TabIndex = 4;
             this.labelOutgoingAbbr.Text = "Abbr";
             // 
             // textBoxOutgoingAbbr
             // 
-            this.textBoxOutgoingAbbr.Location = new System.Drawing.Point(41, 48);
+            this.textBoxOutgoingAbbr.Location = new System.Drawing.Point(41, 44);
             this.textBoxOutgoingAbbr.Name = "textBoxOutgoingAbbr";
-            this.textBoxOutgoingAbbr.Size = new System.Drawing.Size(144, 20);
+            this.textBoxOutgoingAbbr.Size = new System.Drawing.Size(144, 21);
             this.textBoxOutgoingAbbr.TabIndex = 3;
             // 
             // labelOutgoingName
             // 
             this.labelOutgoingName.AutoSize = true;
-            this.labelOutgoingName.Location = new System.Drawing.Point(6, 22);
+            this.labelOutgoingName.Location = new System.Drawing.Point(6, 20);
             this.labelOutgoingName.Name = "labelOutgoingName";
-            this.labelOutgoingName.Size = new System.Drawing.Size(35, 13);
+            this.labelOutgoingName.Size = new System.Drawing.Size(29, 12);
             this.labelOutgoingName.TabIndex = 2;
             this.labelOutgoingName.Text = "Name";
             // 
             // textBoxOutgoingName
             // 
-            this.textBoxOutgoingName.Location = new System.Drawing.Point(41, 19);
+            this.textBoxOutgoingName.Location = new System.Drawing.Point(41, 18);
             this.textBoxOutgoingName.Name = "textBoxOutgoingName";
-            this.textBoxOutgoingName.Size = new System.Drawing.Size(144, 20);
+            this.textBoxOutgoingName.Size = new System.Drawing.Size(144, 21);
             this.textBoxOutgoingName.TabIndex = 1;
             // 
             // buttonOutgoingOK
             // 
-            this.buttonOutgoingOK.Location = new System.Drawing.Point(16, 84);
+            this.buttonOutgoingOK.Location = new System.Drawing.Point(16, 78);
             this.buttonOutgoingOK.Name = "buttonOutgoingOK";
-            this.buttonOutgoingOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonOutgoingOK.Size = new System.Drawing.Size(75, 21);
             this.buttonOutgoingOK.TabIndex = 0;
             this.buttonOutgoingOK.Text = "OK";
             this.buttonOutgoingOK.UseVisualStyleBackColor = true;
@@ -292,10 +285,10 @@
             // treeViewOutgoing
             // 
             this.treeViewOutgoing.AllowDrop = true;
-            this.treeViewOutgoing.Location = new System.Drawing.Point(6, 11);
+            this.treeViewOutgoing.Location = new System.Drawing.Point(6, 10);
             this.treeViewOutgoing.Name = "treeViewOutgoing";
             this.treeViewOutgoing.ShowNodeToolTips = true;
-            this.treeViewOutgoing.Size = new System.Drawing.Size(200, 272);
+            this.treeViewOutgoing.Size = new System.Drawing.Size(200, 251);
             this.treeViewOutgoing.TabIndex = 1;
             this.treeViewOutgoing.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView_ItemDrag);
             this.treeViewOutgoing.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
@@ -306,9 +299,9 @@
             // 
             // CategoryConfig
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(244, 376);
+            this.ClientSize = new System.Drawing.Size(244, 347);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.buttonClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -332,7 +325,6 @@
         private System.Windows.Forms.TreeView treeViewIncome;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripCategory;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNew;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemModify;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelete;
         private System.Windows.Forms.GroupBox groupBoxIncome;
         private System.Windows.Forms.Button buttonIncomeCancel;

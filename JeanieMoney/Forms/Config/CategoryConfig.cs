@@ -43,11 +43,6 @@ namespace JeanieMoney.Forms.Config
         }
 
 
-        private void toolStripMenuItemNew_Click(object sender, EventArgs e)
-        {
-            groupBoxIncome.Show();
-        }
-
         private void treeViewIncome_DragDrop(object sender, DragEventArgs e)
         {
             dragDropNode(sender, e, treeViewIncome);
@@ -75,15 +70,14 @@ namespace JeanieMoney.Forms.Config
                 targeNode.ForeColor = Color.Black;
                 //更新当前拖动的节点选择
                 treeView.SelectedNode = NewMoveNode;
-                //展开目标节点,便于显示拖放效果
-                // targeNode.Expand();
+
                 targeNode.BackColor = Color.White;
                 targeNode.ForeColor = Color.Black;
             }
 
             //remove the original node
             moveNode.Remove();
-            
+
         }
 
         private void treeView_ItemDrag(object sender, ItemDragEventArgs e)
@@ -136,31 +130,12 @@ namespace JeanieMoney.Forms.Config
             timerDelay.Stop();
         }
 
-        private void showIncomeGroup()
-        {
-            groupBoxIncome.Visible = true;
-            this.Width = 460;
-            buttonClose.Left = 156;
-            tabControl.Width = 430;
-            treeViewIncome.Enabled = false;
 
-            textBoxIncomeAbbr.Clear();
-            textBoxIncomeName.Clear();
-        }
-
-        private void hideIncomeGroup()
-        {
-            groupBoxIncome.Visible = false;
-            this.Width = 250;
-            buttonClose.Left = 85;
-            tabControl.Width = 222;
-            treeViewIncome.Enabled = true;
-        }
 
         private void treeViewIncome_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             //Modify node
-            showIncomeGroup();
+            showGroup(treeViewIncome);
             textBoxIncomeName.Text = e.Node.Text;
             textBoxIncomeAbbr.Text = e.Node.ToolTipText;
 
@@ -172,12 +147,12 @@ namespace JeanieMoney.Forms.Config
             category.Id = treeViewIncome.SelectedNode.Name;
             category.Name = textBoxIncomeName.Text;
             category.Abbr = textBoxIncomeAbbr.Text;
-            if (treeViewIncome.SelectedNode.Parent!=null)
+            if (treeViewIncome.SelectedNode.Parent != null)
                 category.ParentId = treeViewIncome.SelectedNode.Parent.Name;
             category.InOrOut = '1';
             if (categoryAction.updateCategoryById(category))
             {
-                hideIncomeGroup();
+                hideGroup(treeViewIncome);
                 treeViewIncome.SelectedNode.Text = category.Name;
                 treeViewIncome.SelectedNode.ToolTipText = category.Abbr;
             }
@@ -190,16 +165,10 @@ namespace JeanieMoney.Forms.Config
 
         private void buttonIncomeCancel_Click(object sender, EventArgs e)
         {
-            hideIncomeGroup();
+            buttonCancelClick(treeViewIncome);
         }
 
-        private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                contextMenuStripCategory.Show(e.X, e.Y);
-            }
-        }
+
 
         private void treeViewOutgoing_DragDrop(object sender, DragEventArgs e)
         {
@@ -216,69 +185,171 @@ namespace JeanieMoney.Forms.Config
         private void treeViewOutgoing_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             //Modify node
-            showOutgoingGroup();
+            showGroup(treeViewOutgoing);
             textBoxOutgoingName.Text = e.Node.Text;
             textBoxOutgoingAbbr.Text = e.Node.ToolTipText;
         }
 
-        private void showOutgoingGroup()
-        {
-            groupBoxOutgoing.Visible = true;
-            this.Width = 460;
-            buttonClose.Left = 156;
-            tabControl.Width = 430;
-            treeViewOutgoing.Enabled = false;
 
-            textBoxOutgoingAbbr.Clear();
-            textBoxOutgoingName.Clear();
-        }
-        private void hideOutgoingGroup()
-        {
-            groupBoxOutgoing.Visible = false;
-            this.Width = 250;
-            buttonClose.Left = 85;
-            tabControl.Width = 222;
-            treeViewOutgoing.Enabled = true;
-        }
 
         private void buttonOutgoingOK_Click(object sender, EventArgs e)
         {
-            Category category = new Category();
-            category.Id = treeViewOutgoing.SelectedNode.Name;
-            category.Name = textBoxOutgoingName.Text;
-            category.Abbr = textBoxOutgoingAbbr.Text;
-            if (treeViewOutgoing.SelectedNode.Parent!=null)
-                category.ParentId = treeViewOutgoing.SelectedNode.Parent.Name;
-            category.InOrOut = '1';
-            if (categoryAction.updateCategoryById(category))
+            if (String.IsNullOrEmpty(treeViewOutgoing.SelectedNode.Name))
             {
-                hideOutgoingGroup();
-                treeViewOutgoing.SelectedNode.Text = category.Name;
-                treeViewOutgoing.SelectedNode.ToolTipText = category.Abbr;
+                //new
+
             }
             else
             {
-                MessageBox.Show("Fail modify!");
-                return;
+                //modify
+                Category category = new Category();
+                category.Id = treeViewOutgoing.SelectedNode.Name;
+                category.Name = textBoxOutgoingName.Text;
+                category.Abbr = textBoxOutgoingAbbr.Text;
+                if (treeViewOutgoing.SelectedNode.Parent != null)
+                    category.ParentId = treeViewOutgoing.SelectedNode.Parent.Name;
+                category.InOrOut = '1';
+                if (categoryAction.updateCategoryById(category))
+                {
+                    hideGroup(treeViewOutgoing);
+                    treeViewOutgoing.SelectedNode.Text = category.Name;
+                    treeViewOutgoing.SelectedNode.ToolTipText = category.Abbr;
+                }
+                else
+                {
+                    MessageBox.Show("Fail modify!");
+                    return;
+                }
             }
         }
 
         private void buttonOutgoingCancel_Click(object sender, EventArgs e)
         {
-            hideOutgoingGroup();
+            buttonCancelClick(treeViewOutgoing);
+        }
+        private void buttonCancelClick(TreeView treeView)
+        {
+            if (String.IsNullOrEmpty(treeView.SelectedNode.Name))
+            {
+                //new
+                if (treeView.SelectedNode.Parent != null)
+                {
+                    treeView.SelectedNode.Parent.Collapse();
+                }
+                treeView.SelectedNode.Remove();
+            }
+            hideGroup(treeView);
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            hideIncomeGroup();
-            hideOutgoingGroup();
+            hideGroup(treeViewOutgoing);
+            hideGroup(treeViewIncome);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+        #region toolStripMenu
+        private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (e.Node != null)
+                {
+                    toolStripMenuItemDelete.Visible = true;
+                    ((TreeView)sender).SelectedNode = e.Node;
+                    contextMenuStripCategory.Show(((TreeView)sender).PointToScreen(e.Location));
+                }
+                else
+                {
+                    toolStripMenuItemDelete.Visible = false;
+                    ((TreeView)sender).SelectedNode = null;
+                    contextMenuStripCategory.Show(((TreeView)sender).PointToScreen(e.Location));
+                }
+            }
+        }
+        private void toolStripMenuItemNew_Click(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedTab == tabPageIncome)
+            {
+                if (treeViewIncome.SelectedNode == null)
+                {
+                    //root node
+                    treeViewIncome.SelectedNode = treeViewIncome.Nodes.Add("");
+                }
+                else
+                {
+                    treeViewIncome.SelectedNode.Expand();
+                    treeViewIncome.SelectedNode = treeViewIncome.SelectedNode.Nodes.Add("");
+                }
+                showGroup(treeViewIncome);
+            }
+            else
+            {
+                if (treeViewOutgoing.SelectedNode == null)
+                {
+                    //root node
+                    treeViewOutgoing.SelectedNode = treeViewOutgoing.Nodes.Add("");
+                }
+                else
+                {
+                    treeViewOutgoing.SelectedNode.Expand();
+                    treeViewOutgoing.SelectedNode = treeViewOutgoing.SelectedNode.Nodes.Add("");
+                }
+                showGroup(treeViewOutgoing);
+            }
+        }
+        private void toolStripMenuItemDelete_Click(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedTab == tabPageIncome)
+                treeViewIncome.SelectedNode.Remove();
+            else
+                treeViewOutgoing.SelectedNode.Remove();
+        }
 
+        #endregion
+        #region groupoperation
+        private void showGroup(TreeView treeView)
+        {
+            if (treeView == treeViewIncome)
+            {
+                groupBoxIncome.Visible = true;
+                treeViewIncome.Enabled = false;
 
+                textBoxIncomeAbbr.Clear();
+                textBoxIncomeName.Clear();
+            }
+            else
+            {
+                groupBoxOutgoing.Visible = true;
+                treeViewOutgoing.Enabled = false;
+
+                textBoxOutgoingAbbr.Clear();
+                textBoxOutgoingName.Clear();
+            }
+            this.Width = 460;
+            buttonClose.Left = 156;
+            tabControl.Width = 430;
+        }
+        private void hideGroup(TreeView treeView)
+        {
+            if (treeView == treeViewIncome)
+            {
+                groupBoxIncome.Visible = false;
+                treeViewIncome.Enabled = true;
+            }
+            else
+            {
+                groupBoxOutgoing.Visible = false;
+                treeViewOutgoing.Enabled = true;
+            }
+            this.Width = 250;
+            buttonClose.Left = 85;
+            tabControl.Width = 222;
+
+        }
+        #endregion
     }
 }
