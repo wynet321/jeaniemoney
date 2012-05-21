@@ -71,11 +71,11 @@
             this.treeViewIncome.Size = new System.Drawing.Size(200, 272);
             this.treeViewIncome.TabIndex = 0;
             this.treeViewIncome.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView_ItemDrag);
-            this.treeViewIncome.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
             this.treeViewIncome.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewIncome_NodeMouseDoubleClick);
             this.treeViewIncome.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeViewIncome_DragDrop);
             this.treeViewIncome.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView_DragEnter);
             this.treeViewIncome.DragOver += new System.Windows.Forms.DragEventHandler(this.treeViewIncome_DragOver);
+            this.treeViewIncome.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeViewIncome_MouseUp);
             // 
             // contextMenuStripCategory
             // 
@@ -292,11 +292,11 @@
             this.treeViewOutgoing.Size = new System.Drawing.Size(200, 272);
             this.treeViewOutgoing.TabIndex = 1;
             this.treeViewOutgoing.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView_ItemDrag);
-            this.treeViewOutgoing.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
             this.treeViewOutgoing.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewOutgoing_NodeMouseDoubleClick);
             this.treeViewOutgoing.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeViewOutgoing_DragDrop);
             this.treeViewOutgoing.DragEnter += new System.Windows.Forms.DragEventHandler(this.treeView_DragEnter);
             this.treeViewOutgoing.DragOver += new System.Windows.Forms.DragEventHandler(this.treeViewOutgoing_DragOver);
+            this.treeViewOutgoing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeViewOutgoing_MouseUp);
             // 
             // CategoryConfig
             // 

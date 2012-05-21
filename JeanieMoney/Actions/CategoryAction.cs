@@ -13,10 +13,10 @@ namespace JeanieMoney.Actions
         public bool createCategory(Category category)
         {
             string command;
-            if (null == category.ParentId)
-                command = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Abbr + "','" + category.InOrOut + "',null)";
+            if (String.IsNullOrEmpty(category.ParentId))
+                command = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Abbr + "','" + category.IncomeOrOutgoing + "',null)";
             else
-                command = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Abbr + "','" + category.InOrOut + "','" + category.ParentId.Trim() + "')";
+                command = "insert into category values('" + category.Id + "','" + category.Name + "','" + category.Abbr + "','" + category.IncomeOrOutgoing + "','" + category.ParentId.Trim() + "')";
             if (1 == DbHandler.execCommand(command))
                 return true;
             return false;
@@ -25,13 +25,13 @@ namespace JeanieMoney.Actions
         public bool updateCategoryById(Category category)
         {
             string command = "update category set ";
-            if (category.Id != null && 0 > category.Id.Length)
+            if (!String.IsNullOrEmpty(category.Id))
                 return false;
-            if (category.Name != null && 0 < category.Name.Length)
+            if (!String.IsNullOrEmpty(category.Name))
                 command += "name='" + category.Name + "',";
-            if (category.Abbr != null && 0 < category.Abbr.Length)
+            if (!String.IsNullOrEmpty(category.Abbr))
                 command += "abbr='" + category.Abbr + "',";
-            if (category.ParentId != null && 0 < category.ParentId.Length)
+            if (!String.IsNullOrEmpty(category.ParentId))
                 command += "parent_id='" + category.ParentId.Trim() + "'";
             else
                 command += "parent_id=null";
@@ -60,7 +60,7 @@ namespace JeanieMoney.Actions
             category.Name = dataTable.Rows[0]["name"].ToString();
             category.ParentId = dataTable.Rows[0]["parent_id"].ToString();
             category.Abbr = dataTable.Rows[0]["abbr"].ToString();
-            category.InOrOut = ((bool)dataTable.Rows[0]["flag_in_out"]) ? '1' : '0';
+            category.IncomeOrOutgoing = ((bool)dataTable.Rows[0]["flag_in_out"]) ? '1' : '0';
             return category;
         }
 
@@ -75,7 +75,7 @@ namespace JeanieMoney.Actions
                 category = new Category();
                 category.Id = dataRow["id"].ToString();
                 category.Name = dataRow["name"].ToString();
-                category.InOrOut = ((bool)dataRow["flag_in_out"]) ? '1' : '0';
+                category.IncomeOrOutgoing = ((bool)dataRow["flag_in_out"]) ? '1' : '0';
                 category.Abbr = dataRow["abbr"].ToString();
                 category.ParentId = dataRow["parent_id"].ToString();
                 categoryList.Add(category);
@@ -98,7 +98,7 @@ namespace JeanieMoney.Actions
                 category = new Category();
                 category.Id = dataRow["id"].ToString();
                 category.Name = dataRow["name"].ToString();
-                category.InOrOut = ((bool)dataRow["flag_in_out"]) ? '1' : '0';
+                category.IncomeOrOutgoing = ((bool)dataRow["flag_in_out"]) ? '1' : '0';
                 category.Abbr = dataRow["abbr"].ToString();
                 category.ParentId = dataRow["parent_id"].ToString();
                 categoryList.Add(category);
@@ -119,7 +119,7 @@ namespace JeanieMoney.Actions
                 category.Name = dataRow["name"].ToString();
                 category.ParentId = parentId;
                 category.Abbr = dataRow["abbr"].ToString();
-                category.InOrOut = ((bool)dataTable.Rows[0]["flag_in_out"]) ? '1' : '0';
+                category.IncomeOrOutgoing = ((bool)dataTable.Rows[0]["flag_in_out"]) ? '1' : '0';
                 categoryList.Add(category);
             }
             return categoryList;
@@ -138,7 +138,7 @@ namespace JeanieMoney.Actions
                 category.Name = dataRow["name"].ToString();
                 category.ParentId = dataRow["parent_id"].ToString();
                 category.Abbr = dataRow["abbr"].ToString();
-                category.InOrOut = ((bool)dataRow["flag_in_out"]) ? '1' : '0';
+                category.IncomeOrOutgoing = ((bool)dataRow["flag_in_out"]) ? '1' : '0';
                 categoryList.Add(category);
             }
             return categoryList;
