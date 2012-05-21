@@ -109,12 +109,6 @@
     <Compile Include="Forms\Config\BeneficiaryConfig.Designer.cs">
       <DependentUpon>BeneficiaryConfig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Config\CategoryConfigOld.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Config\CategoryConfigOld.Designer.cs">
-      <DependentUpon>CategoryConfigOld.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Config\CategoryConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,9 +182,6 @@
     <Compile Include="Utility\G18NHandler.cs" />
     <EmbeddedResource Include="Forms\Config\BeneficiaryConfig.resx">
       <DependentUpon>BeneficiaryConfig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Config\CategoryConfigOld.resx">
-      <DependentUpon>CategoryConfigOld.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Config\CategoryConfig.resx">
       <DependentUpon>CategoryConfig.cs</DependentUpon>
