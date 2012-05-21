@@ -13,6 +13,7 @@ namespace JeanieMoney.Forms.Config
         private CategoryAction categoryAction;
         List<Category> categoryListOutgoing;
         List<Category> categoryListIncome;
+
         public CategoryConfig()
         {
             InitializeComponent();
@@ -24,17 +25,28 @@ namespace JeanieMoney.Forms.Config
             categoryAction = new CategoryAction();
 
             categoryListIncome = categoryAction.retrieveCategoryList(true);
-            ControlHandler.buildupCategoryTreeView(treeViewIncome, categoryListIncome);
+            buildupCategoryTreeView(treeViewIncome, categoryListIncome);
             categoryListOutgoing = categoryAction.retrieveCategoryList(false);
-            ControlHandler.buildupCategoryTreeView(treeViewOutgoing, categoryListOutgoing);
+            buildupCategoryTreeView(treeViewOutgoing, categoryListOutgoing);
         }
+
         private void setCaption()
         {
-            this.tabPageIncome.Text = G18NHandler.GetValue("JeanieMoney/Caption/Tab/Income");
-            this.tabPageOutgoing.Text = G18NHandler.GetValue("JeanieMoney/Caption/Tab/Outgoing");
-            this.buttonClose.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Close");
+            tabPageIncome.Text = G18NHandler.GetValue("JeanieMoney/Caption/Tab/Income");
+            tabPageOutgoing.Text = G18NHandler.GetValue("JeanieMoney/Caption/Tab/Outgoing");
 
-            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Category");
+            labelIncomeAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
+            labelIncomeName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
+            labelOutgoingAbbr.Text = this.labelIncomeAbbr.Text;
+            labelOutgoingName.Text = this.labelIncomeName.Text;
+
+            buttonIncomeCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
+            buttonIncomeOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
+            buttonOutgoingCancel.Text = buttonIncomeCancel.Text;
+            buttonOutgoingOK.Text = buttonIncomeOK.Text;
+            buttonClose.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Close");
+
+            Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Category");
         }
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -63,8 +75,34 @@ namespace JeanieMoney.Forms.Config
             textBoxIncomeAbbr.Text = e.Node.ToolTipText;
 
         }
+        #region Buildup Treeview
+        private void buildupCategoryTreeView(TreeView treeView, List<Category> list)
+        {
+            foreach (Category category in list)
+            {
+                if (String.IsNullOrEmpty(category.ParentId))
+                {
+                    TreeNode temp = treeView.Nodes.Add(category.Id, category.Name);
+                    temp.ToolTipText = category.Abbr;
+                    buildupCategoryTreeViewChild(treeView, list, temp);
+                }
+            }
+        }
+        private void buildupCategoryTreeViewChild(TreeView treeView, List<Category> list, TreeNode parent)
+        {
+            foreach (Category category in list)
+            {
+                if (category.ParentId == parent.Name)
+                {
+                    TreeNode temp = parent.Nodes.Add(category.Id, category.Name);
+                    temp.ToolTipText = category.Abbr;
+                    buildupCategoryTreeViewChild(treeView, list, temp);
+                }
 
-        #region drag&drop
+            }
+        }
+        #endregion
+        #region Drag&drop
         private void treeView_ItemDrag(object sender, ItemDragEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -145,11 +183,10 @@ namespace JeanieMoney.Forms.Config
                 targetNode.BackColor = Color.White;
                 targetNode.ForeColor = Color.Black;
 
-
                 if (newTargetNode != null)
                 {
                     //point to new target node
-                    targetNode = treeView.GetNodeAt(pt);
+                    targetNode = newTargetNode;
                     targetNode.BackColor = Color.DarkBlue;
                     targetNode.ForeColor = Color.White;
 
@@ -172,21 +209,42 @@ namespace JeanieMoney.Forms.Config
         #region OK
         private void buttonOKClick(object sender, EventArgs e, TreeView treeView)
         {
+            Category category = new Category();
+            if (treeView.Equals(treeViewOutgoing))
+            {
+                category.Name = textBoxOutgoingName.Text;
+                category.Abbr = textBoxOutgoingAbbr.Text;
+                category.IncomeOrOutgoing = Category.OUTGOING;
+            }
+            else
+            {
+                category.Name = textBoxIncomeName.Text;
+                category.Abbr = textBoxIncomeAbbr.Text;
+                category.IncomeOrOutgoing = Category.INCOME;
+            }
             if (String.IsNullOrEmpty(treeView.SelectedNode.Name))
             {
-                //new
-
+                //create
+                category.Id = Guid.NewGuid().ToString();
+                if (categoryAction.createCategory(category))
+                {
+                    hideGroup(treeView);
+                    treeView.SelectedNode.Name = category.Id;
+                    treeView.SelectedNode.Text = category.Name;
+                    treeView.SelectedNode.ToolTipText = category.Abbr;
+                }
+                else
+                {
+                    MessageBox.Show("Fail create!");
+                    return;
+                }
             }
             else
             {
                 //modify
-                Category category = new Category();
                 category.Id = treeView.SelectedNode.Name;
-                category.Name = textBoxOutgoingName.Text;
-                category.Abbr = textBoxOutgoingAbbr.Text;
                 if (treeView.SelectedNode.Parent != null)
                     category.ParentId = treeView.SelectedNode.Parent.Name;
-                category.InOrOut = '1';
                 if (categoryAction.updateCategoryById(category))
                 {
                     hideGroup(treeView);
@@ -236,14 +294,15 @@ namespace JeanieMoney.Forms.Config
         }
         #endregion
         #region toolStripMenu
-        private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void treeViewMouseUp(object sender, MouseEventArgs e, TreeView treeView)
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (e.Node != null)
+                TreeNode targetNode = treeView.GetNodeAt(new Point(e.X, e.Y));
+                if (targetNode != null)
                 {
                     toolStripMenuItemDelete.Visible = true;
-                    ((TreeView)sender).SelectedNode = e.Node;
+                    ((TreeView)sender).SelectedNode = targetNode;
                     contextMenuStripCategory.Show(((TreeView)sender).PointToScreen(e.Location));
                 }
                 else
@@ -254,6 +313,16 @@ namespace JeanieMoney.Forms.Config
                 }
             }
         }
+
+        private void treeViewIncome_MouseUp(object sender, MouseEventArgs e)
+        {
+            treeViewMouseUp(sender, e, treeViewIncome);
+        }
+        private void treeViewOutgoing_MouseUp(object sender, MouseEventArgs e)
+        {
+            treeViewMouseUp(sender, e, treeViewOutgoing);
+        }
+
         private void toolStripMenuItemNew_Click(object sender, EventArgs e)
         {
             if (tabControl.SelectedTab == tabPageIncome)
@@ -287,10 +356,22 @@ namespace JeanieMoney.Forms.Config
         }
         private void toolStripMenuItemDelete_Click(object sender, EventArgs e)
         {
-            if (tabControl.SelectedTab == tabPageIncome)
-                treeViewIncome.SelectedNode.Remove();
-            else
-                treeViewOutgoing.SelectedNode.Remove();
+            deleteNode();
+        }
+        private void deleteNode()
+        {
+            if (DialogResult.Yes == MessageBox.Show("really delete?", "", MessageBoxButtons.YesNo))
+            {
+                TreeView treeView = (tabControl.SelectedTab == tabPageIncome) ? treeViewIncome : treeViewOutgoing;
+                if (categoryAction.deleteCategoryById(treeView.SelectedNode.Name))
+                {
+                    treeView.SelectedNode.Remove();
+                }
+                else
+                {
+                    MessageBox.Show("Failed delete!");
+                }
+            }
         }
 
         #endregion
@@ -335,5 +416,6 @@ namespace JeanieMoney.Forms.Config
 
         }
         #endregion
+
     }
 }

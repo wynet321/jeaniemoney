@@ -62,7 +62,7 @@ namespace JeanieMoney.Forms
             {
                 textBoxName.Text = ((Category)listBox.SelectedItem).Name;
                 textBoxAbbr.Text = categoryListByAbbr.ElementAt(listBox.SelectedIndex).Abbr;
-                radioButtonIn.Checked=((Category)listBox.SelectedItem).InOrOut=='1'?true:false;
+                radioButtonIn.Checked=((Category)listBox.SelectedItem).IncomeOrOutgoing=='1'?true:false;
                 radioButtonOut.Checked = !radioButtonIn.Checked;
                 categoryListAll = categoryAction.retrieveCategoryList();
                 Category category = new Category();
@@ -136,7 +136,7 @@ namespace JeanieMoney.Forms
                 category.Name = textBoxName.Text;
                 category.ParentId = categoryListAll.ElementAt(comboBoxParent.SelectedIndex).Id;
                 category.Abbr = textBoxAbbr.Text;
-                category.InOrOut = radioButtonIn.Checked ? '1' : '0';
+                category.IncomeOrOutgoing = radioButtonIn.Checked ? '1' : '0';
                 if (categoryAction.updateCategoryById(category))
                 {
                     MessageBox.Show("OK");
@@ -160,7 +160,7 @@ namespace JeanieMoney.Forms
                 category.Name=textBoxName.Text;
                 category.ParentId=categoryListAll.ElementAt(comboBoxParent.SelectedIndex).Id;
                 category.Abbr=textBoxAbbr.Text;
-                category.InOrOut = radioButtonIn.Checked?'1':'0';
+                category.IncomeOrOutgoing = radioButtonIn.Checked?'1':'0';
                 if (categoryAction.createCategory(category))
                 {
                     MessageBox.Show("OK");
@@ -182,7 +182,7 @@ namespace JeanieMoney.Forms
             {
                 Category category = new Category();
                 category=categoryAction.retrieveCategoryById(comboBoxParent.SelectedValue.ToString());
-                if('0' == category.InOrOut)
+                if('0' == category.IncomeOrOutgoing)
                     radioButtonOut.Select();
                 else
                     radioButtonIn.Select();

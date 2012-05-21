@@ -24,19 +24,9 @@ namespace JeanieMoney.Utility
 
         public static void setConnection(String dbType, String connectionString)
         {
-            try
-            {
-                dbProviderFactory = DbProviderFactories.GetFactory(dbType);
-                connection = dbProviderFactory.CreateConnection();
-                connection.ConnectionString = connectionString;
-                //connection.Open();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-                Application.Exit();
-            }
-
+            dbProviderFactory = DbProviderFactories.GetFactory(dbType);
+            connection = dbProviderFactory.CreateConnection();
+            connection.ConnectionString = connectionString;
         }
 
         public static Boolean canConnect()
@@ -69,16 +59,6 @@ namespace JeanieMoney.Utility
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
-                    try
-                    {
-                        dbTranx.Rollback();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                        throw ex;
-                    }
                     throw e;
                 }
                 finally
@@ -102,7 +82,6 @@ namespace JeanieMoney.Utility
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
                     throw e;
                 }
                 finally
@@ -127,7 +106,6 @@ namespace JeanieMoney.Utility
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
                     throw e;
                 }
                 finally
@@ -151,7 +129,6 @@ namespace JeanieMoney.Utility
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
                     throw e;
                 }
                 finally
@@ -174,8 +151,8 @@ namespace JeanieMoney.Utility
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
                 return false;
+                throw e;
             }
             return true;
         }
