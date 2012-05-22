@@ -83,19 +83,19 @@
             this.toolStripMenuItemNew,
             this.toolStripMenuItemDelete});
             this.contextMenuStripCategory.Name = "contextMenuStripCategory";
-            this.contextMenuStripCategory.Size = new System.Drawing.Size(153, 70);
+            this.contextMenuStripCategory.Size = new System.Drawing.Size(108, 48);
             // 
             // toolStripMenuItemNew
             // 
             this.toolStripMenuItemNew.Name = "toolStripMenuItemNew";
-            this.toolStripMenuItemNew.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemNew.Size = new System.Drawing.Size(107, 22);
             this.toolStripMenuItemNew.Text = "&New";
             this.toolStripMenuItemNew.Click += new System.EventHandler(this.toolStripMenuItemNew_Click);
             // 
             // toolStripMenuItemDelete
             // 
             this.toolStripMenuItemDelete.Name = "toolStripMenuItemDelete";
-            this.toolStripMenuItemDelete.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItemDelete.Size = new System.Drawing.Size(107, 22);
             this.toolStripMenuItemDelete.Text = "&Delete";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.toolStripMenuItemDelete_Click);
             // 
@@ -110,7 +110,7 @@
             this.groupBoxIncome.Location = new System.Drawing.Point(215, 7);
             this.groupBoxIncome.Name = "groupBoxIncome";
             this.groupBoxIncome.Size = new System.Drawing.Size(200, 126);
-            this.groupBoxIncome.TabIndex = 2;
+            this.groupBoxIncome.TabIndex = 0;
             this.groupBoxIncome.TabStop = false;
             this.groupBoxIncome.Visible = false;
             // 
@@ -119,7 +119,7 @@
             this.buttonIncomeCancel.Location = new System.Drawing.Point(109, 85);
             this.buttonIncomeCancel.Name = "buttonIncomeCancel";
             this.buttonIncomeCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonIncomeCancel.TabIndex = 5;
+            this.buttonIncomeCancel.TabIndex = 4;
             this.buttonIncomeCancel.Text = "Cancel";
             this.buttonIncomeCancel.UseVisualStyleBackColor = true;
             this.buttonIncomeCancel.Click += new System.EventHandler(this.buttonIncomeCancel_Click);
@@ -138,7 +138,7 @@
             this.textBoxIncomeAbbr.Location = new System.Drawing.Point(41, 48);
             this.textBoxIncomeAbbr.Name = "textBoxIncomeAbbr";
             this.textBoxIncomeAbbr.Size = new System.Drawing.Size(144, 20);
-            this.textBoxIncomeAbbr.TabIndex = 3;
+            this.textBoxIncomeAbbr.TabIndex = 2;
             // 
             // labelIncomeName
             // 
@@ -161,7 +161,7 @@
             this.buttonIncomeOK.Location = new System.Drawing.Point(16, 85);
             this.buttonIncomeOK.Name = "buttonIncomeOK";
             this.buttonIncomeOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonIncomeOK.TabIndex = 0;
+            this.buttonIncomeOK.TabIndex = 3;
             this.buttonIncomeOK.Text = "OK";
             this.buttonIncomeOK.UseVisualStyleBackColor = true;
             this.buttonIncomeOK.Click += new System.EventHandler(this.buttonIncomeOK_Click);
@@ -189,7 +189,7 @@
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(222, 315);
-            this.tabControl.TabIndex = 8;
+            this.tabControl.TabIndex = 0;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabPageIncome
@@ -227,7 +227,7 @@
             this.groupBoxOutgoing.Location = new System.Drawing.Point(215, 7);
             this.groupBoxOutgoing.Name = "groupBoxOutgoing";
             this.groupBoxOutgoing.Size = new System.Drawing.Size(200, 126);
-            this.groupBoxOutgoing.TabIndex = 3;
+            this.groupBoxOutgoing.TabIndex = 0;
             this.groupBoxOutgoing.TabStop = false;
             this.groupBoxOutgoing.Visible = false;
             // 
@@ -236,7 +236,7 @@
             this.buttonOutgoingCancel.Location = new System.Drawing.Point(109, 85);
             this.buttonOutgoingCancel.Name = "buttonOutgoingCancel";
             this.buttonOutgoingCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonOutgoingCancel.TabIndex = 5;
+            this.buttonOutgoingCancel.TabIndex = 4;
             this.buttonOutgoingCancel.Text = "Cancel";
             this.buttonOutgoingCancel.UseVisualStyleBackColor = true;
             this.buttonOutgoingCancel.Click += new System.EventHandler(this.buttonOutgoingCancel_Click);
@@ -255,7 +255,7 @@
             this.textBoxOutgoingAbbr.Location = new System.Drawing.Point(41, 48);
             this.textBoxOutgoingAbbr.Name = "textBoxOutgoingAbbr";
             this.textBoxOutgoingAbbr.Size = new System.Drawing.Size(144, 20);
-            this.textBoxOutgoingAbbr.TabIndex = 3;
+            this.textBoxOutgoingAbbr.TabIndex = 2;
             // 
             // labelOutgoingName
             // 
@@ -263,7 +263,7 @@
             this.labelOutgoingName.Location = new System.Drawing.Point(6, 22);
             this.labelOutgoingName.Name = "labelOutgoingName";
             this.labelOutgoingName.Size = new System.Drawing.Size(35, 13);
-            this.labelOutgoingName.TabIndex = 2;
+            this.labelOutgoingName.TabIndex = 0;
             this.labelOutgoingName.Text = "Name";
             // 
             // textBoxOutgoingName
@@ -278,7 +278,7 @@
             this.buttonOutgoingOK.Location = new System.Drawing.Point(16, 85);
             this.buttonOutgoingOK.Name = "buttonOutgoingOK";
             this.buttonOutgoingOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOutgoingOK.TabIndex = 0;
+            this.buttonOutgoingOK.TabIndex = 3;
             this.buttonOutgoingOK.Text = "OK";
             this.buttonOutgoingOK.UseVisualStyleBackColor = true;
             this.buttonOutgoingOK.Click += new System.EventHandler(this.buttonOutgoingOK_Click);

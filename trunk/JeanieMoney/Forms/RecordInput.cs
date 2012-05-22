@@ -70,8 +70,8 @@ namespace JeanieMoney.Forms
             this.labelDetailProduct.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
             this.labelDetailProductResultTitle.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
             this.labelPaymentMode.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/PaymentMode");
-            this.radioButtonIn.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
-            this.radioButtonOut.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
+            this.radioButtonIncome.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
+            this.radioButtonOutgoing.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
             this.groupBoxSummary.Text = G18NHandler.GetValue("JeanieMoney/Caption/Group/Summary");
 
             this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
@@ -87,15 +87,13 @@ namespace JeanieMoney.Forms
         {
             setCaption();
             dateTimePickerRecordInput.Value = DateTime.Now;
-            radioButtonOut.Select();
+            radioButtonOutgoing.Select();
             textBoxMoney.Clear();
             //category
             listBoxCategory.DisplayMember = "Name";
             listBoxCategory.ValueMember = "Id";
             listBoxCategory.Visible = false;
-            categoryList = categoryAction.retrieveCategoryList();
-            treeViewCategory.Nodes.Clear();
-            ControlHandler.buildupCategoryTreeView(treeViewCategory, categoryList);
+
             //payer
             listBoxPayer.DisplayMember = "Name";
             listBoxPayer.ValueMember = "Id";
@@ -209,7 +207,7 @@ namespace JeanieMoney.Forms
 
         private void radioButtonOut_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonOut.Checked)
+            if (radioButtonOutgoing.Checked)
                 labelSummaryInOutResult.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
             else
                 labelSummaryInOutResult.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
@@ -276,14 +274,12 @@ namespace JeanieMoney.Forms
         private void textBoxCategory_TextChanged(object sender, EventArgs e)
         {
             String category = textBoxCategory.Text.Trim();
-            categoryList = categoryAction.retrieveCategoryListOfLeafNodeByAbbr(category, radioButtonIn.Checked ? '1' : '0');
+            categoryList = categoryAction.retrieveCategoryListOfLeafNodeByAbbr(category, radioButtonIncome.Checked ?Category.INCOME : Category.OUTGOING);
             listBoxCategory.DataSource = categoryList;
             if (0 < listBoxCategory.Items.Count)
             {
                 listBoxCategory.SelectedIndex = 0;
                 listBoxCategory.Visible = true;
-                treeViewCategory.Nodes.Clear();
-                ControlHandler.buildupCategoryTreeView(treeViewCategory, categoryList);
             }
         }
 
@@ -310,15 +306,19 @@ namespace JeanieMoney.Forms
                     //add category
                     if (DialogResult.Yes == MessageBox.Show("do you want to add new category?", "?", MessageBoxButtons.YesNo))
                     {
-                        CategoryConfigOld cc = new CategoryConfigOld(textBoxCategory.Text.Trim());
-
+                        CategoryConfig cc = new CategoryConfig(textBoxCategory.Text.Trim(), radioButtonIncome.Checked ? Category.INCOME : Category.OUTGOING);
                         cc.ShowDialog();
-                        categoryList = categoryAction.retrieveCategoryListOfLeafNodeByAbbr(textBoxCategory.Text.Trim(), radioButtonIn.Checked ? '1' : '0');
+                        categoryList = categoryAction.retrieveCategoryListOfLeafNodeByAbbr(textBoxCategory.Text.Trim(), radioButtonIncome.Checked ? Category.INCOME : Category.OUTGOING);
                         if (0 < categoryList.Count)
                         {
                             listBoxCategory.DataSource = categoryList;
                             listBoxCategory.SelectedIndex = 0;
                             labelSummaryCategoryResult.Text = categoryList.ElementAt(0).Name;
+                        }
+                        else
+                        {
+                            textBoxCategory.Clear();
+                            textBoxCategory.Focus();
                         }
                     }
             }

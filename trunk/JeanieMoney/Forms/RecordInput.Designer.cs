@@ -33,8 +33,8 @@
             this.labelCategory = new System.Windows.Forms.Label();
             this.labelDate = new System.Windows.Forms.Label();
             this.groupBoxInOut = new System.Windows.Forms.GroupBox();
-            this.radioButtonIn = new System.Windows.Forms.RadioButton();
-            this.radioButtonOut = new System.Windows.Forms.RadioButton();
+            this.radioButtonIncome = new System.Windows.Forms.RadioButton();
+            this.radioButtonOutgoing = new System.Windows.Forms.RadioButton();
             this.dateTimePickerRecordInput = new System.Windows.Forms.DateTimePicker();
             this.labelPayer = new System.Windows.Forms.Label();
             this.labelLocation = new System.Windows.Forms.Label();
@@ -92,7 +92,6 @@
             this.listBoxPaymentMode = new System.Windows.Forms.ListBox();
             this.labelPaymentMode = new System.Windows.Forms.Label();
             this.textBoxPaymentMode = new System.Windows.Forms.TextBox();
-            this.treeViewCategory = new System.Windows.Forms.TreeView();
             this.groupBoxInOut.SuspendLayout();
             this.groupBoxSummary.SuspendLayout();
             this.panelDetails.SuspendLayout();
@@ -135,36 +134,36 @@
             // 
             // groupBoxInOut
             // 
-            this.groupBoxInOut.Controls.Add(this.radioButtonIn);
-            this.groupBoxInOut.Controls.Add(this.radioButtonOut);
+            this.groupBoxInOut.Controls.Add(this.radioButtonIncome);
+            this.groupBoxInOut.Controls.Add(this.radioButtonOutgoing);
             this.groupBoxInOut.Location = new System.Drawing.Point(20, 7);
             this.groupBoxInOut.Name = "groupBoxInOut";
             this.groupBoxInOut.Size = new System.Drawing.Size(116, 46);
             this.groupBoxInOut.TabIndex = 0;
             this.groupBoxInOut.TabStop = false;
             // 
-            // radioButtonIn
+            // radioButtonIncome
             // 
-            this.radioButtonIn.AutoSize = true;
-            this.radioButtonIn.Location = new System.Drawing.Point(66, 20);
-            this.radioButtonIn.Name = "radioButtonIn";
-            this.radioButtonIn.Size = new System.Drawing.Size(34, 17);
-            this.radioButtonIn.TabIndex = 2;
-            this.radioButtonIn.Text = "In";
-            this.radioButtonIn.UseVisualStyleBackColor = true;
+            this.radioButtonIncome.AutoSize = true;
+            this.radioButtonIncome.Location = new System.Drawing.Point(66, 20);
+            this.radioButtonIncome.Name = "radioButtonIncome";
+            this.radioButtonIncome.Size = new System.Drawing.Size(34, 17);
+            this.radioButtonIncome.TabIndex = 2;
+            this.radioButtonIncome.Text = "In";
+            this.radioButtonIncome.UseVisualStyleBackColor = true;
             // 
-            // radioButtonOut
+            // radioButtonOutgoing
             // 
-            this.radioButtonOut.AutoSize = true;
-            this.radioButtonOut.Checked = true;
-            this.radioButtonOut.Location = new System.Drawing.Point(6, 20);
-            this.radioButtonOut.Name = "radioButtonOut";
-            this.radioButtonOut.Size = new System.Drawing.Size(42, 17);
-            this.radioButtonOut.TabIndex = 1;
-            this.radioButtonOut.TabStop = true;
-            this.radioButtonOut.Text = "Out";
-            this.radioButtonOut.UseVisualStyleBackColor = true;
-            this.radioButtonOut.CheckedChanged += new System.EventHandler(this.radioButtonOut_CheckedChanged);
+            this.radioButtonOutgoing.AutoSize = true;
+            this.radioButtonOutgoing.Checked = true;
+            this.radioButtonOutgoing.Location = new System.Drawing.Point(6, 20);
+            this.radioButtonOutgoing.Name = "radioButtonOutgoing";
+            this.radioButtonOutgoing.Size = new System.Drawing.Size(42, 17);
+            this.radioButtonOutgoing.TabIndex = 1;
+            this.radioButtonOutgoing.TabStop = true;
+            this.radioButtonOutgoing.Text = "Out";
+            this.radioButtonOutgoing.UseVisualStyleBackColor = true;
+            this.radioButtonOutgoing.CheckedChanged += new System.EventHandler(this.radioButtonOut_CheckedChanged);
             // 
             // dateTimePickerRecordInput
             // 
@@ -736,26 +735,18 @@
             this.textBoxPaymentMode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPaymentMode_KeyUp);
             this.textBoxPaymentMode.Leave += new System.EventHandler(this.textBoxPaymentMode_Leave);
             // 
-            // treeViewCategory
-            // 
-            this.treeViewCategory.Location = new System.Drawing.Point(73, 87);
-            this.treeViewCategory.Name = "treeViewCategory";
-            this.treeViewCategory.Size = new System.Drawing.Size(115, 266);
-            this.treeViewCategory.TabIndex = 45;
-            // 
             // RecordInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 553);
-            this.Controls.Add(this.treeViewCategory);
+            this.Controls.Add(this.listBoxCategory);
             this.Controls.Add(this.listBoxPaymentMode);
             this.Controls.Add(this.labelPaymentMode);
             this.Controls.Add(this.textBoxPaymentMode);
             this.Controls.Add(this.listBoxLocation);
             this.Controls.Add(this.listBoxPayer);
             this.Controls.Add(this.groupBoxSummary);
-            this.Controls.Add(this.listBoxCategory);
             this.Controls.Add(this.textBoxPayer);
             this.Controls.Add(this.textBoxCategory);
             this.Controls.Add(this.buttonCancel);
@@ -795,8 +786,8 @@
         private System.Windows.Forms.Label labelCategory;
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.GroupBox groupBoxInOut;
-        private System.Windows.Forms.RadioButton radioButtonIn;
-        private System.Windows.Forms.RadioButton radioButtonOut;
+        private System.Windows.Forms.RadioButton radioButtonIncome;
+        private System.Windows.Forms.RadioButton radioButtonOutgoing;
         private System.Windows.Forms.DateTimePicker dateTimePickerRecordInput;
         private System.Windows.Forms.Label labelPayer;
         private System.Windows.Forms.Label labelLocation;
@@ -854,6 +845,5 @@
         private System.Windows.Forms.TextBox textBoxPaymentMode;
         private System.Windows.Forms.Label labelSummaryPaymentMode;
         private System.Windows.Forms.Label labelSummaryPaymentModeResult;
-        private System.Windows.Forms.TreeView treeViewCategory;
     }
 }
