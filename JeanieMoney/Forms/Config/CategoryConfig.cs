@@ -19,6 +19,29 @@ namespace JeanieMoney.Forms.Config
             InitializeComponent();
             init();
         }
+
+        public CategoryConfig(String abbr, char IncomeOrOutgoing)
+        {
+            InitializeComponent();
+            init();
+            if (IncomeOrOutgoing == Category.INCOME)
+            {
+                tabControl.SelectedTab = tabPageIncome;
+                createNodeByTreeView(treeViewIncome);
+                textBoxIncomeAbbr.Text = abbr;
+                textBoxIncomeName.Select();
+                textBoxIncomeName.Focus();
+            }
+            else
+            {
+                tabControl.SelectedTab = tabPageOutgoing;
+                createNodeByTreeView(treeViewOutgoing);
+                textBoxOutgoingAbbr.Text = abbr;
+                textBoxOutgoingName.Select();
+                textBoxOutgoingName.Focus();
+            }
+        }
+
         private void init()
         {
             setCaption();
@@ -325,35 +348,34 @@ namespace JeanieMoney.Forms.Config
 
         private void toolStripMenuItemNew_Click(object sender, EventArgs e)
         {
+            createNode();
+        }
+        private void createNode()
+        {
             if (tabControl.SelectedTab == tabPageIncome)
             {
-                if (treeViewIncome.SelectedNode == null)
-                {
-                    //root node
-                    treeViewIncome.SelectedNode = treeViewIncome.Nodes.Add("");
-                }
-                else
-                {
-                    treeViewIncome.SelectedNode.Expand();
-                    treeViewIncome.SelectedNode = treeViewIncome.SelectedNode.Nodes.Add("");
-                }
-                showGroup(treeViewIncome);
+                createNodeByTreeView(treeViewIncome);
             }
             else
             {
-                if (treeViewOutgoing.SelectedNode == null)
-                {
-                    //root node
-                    treeViewOutgoing.SelectedNode = treeViewOutgoing.Nodes.Add("");
-                }
-                else
-                {
-                    treeViewOutgoing.SelectedNode.Expand();
-                    treeViewOutgoing.SelectedNode = treeViewOutgoing.SelectedNode.Nodes.Add("");
-                }
-                showGroup(treeViewOutgoing);
+                createNodeByTreeView(treeViewOutgoing);
             }
         }
+        private void createNodeByTreeView(TreeView treeView)
+        {
+            if (treeView.SelectedNode == null)
+            {
+                //root node
+                treeView.SelectedNode = treeView.Nodes.Add("");
+            }
+            else
+            {
+                treeView.SelectedNode.Expand();
+                treeView.SelectedNode = treeView.SelectedNode.Nodes.Add("");
+            }
+            showGroup(treeView);
+        }
+
         private void toolStripMenuItemDelete_Click(object sender, EventArgs e)
         {
             deleteNode();
@@ -395,8 +417,9 @@ namespace JeanieMoney.Forms.Config
                 textBoxOutgoingName.Clear();
             }
             this.Width = 460;
-            buttonClose.Left = 156;
             tabControl.Width = 430;
+            buttonClose.Left = 156;
+            buttonClose.Enabled = false;
         }
         private void hideGroup(TreeView treeView)
         {
@@ -411,9 +434,9 @@ namespace JeanieMoney.Forms.Config
                 treeViewOutgoing.Enabled = true;
             }
             this.Width = 250;
-            buttonClose.Left = 85;
             tabControl.Width = 222;
-
+            buttonClose.Left = 85;
+            buttonClose.Enabled = true;
         }
         #endregion
 
