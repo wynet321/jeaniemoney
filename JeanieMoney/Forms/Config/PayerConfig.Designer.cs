@@ -1,7 +1,7 @@
 ﻿using JeanieMoney.Forms.Config;
 namespace JeanieMoney.Forms
 {
-    partial class PayerConfig:BaseConfigForm
+    partial class PayerConfig : BaseConfigForm
     {
         /// <summary>
         /// Required designer variable.
@@ -49,13 +49,12 @@ namespace JeanieMoney.Forms
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(53, 12);
             this.labelPassword.TabIndex = 14;
-            this.labelPassword.Text = "Password";
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click); this.textBoxKeyword.TextChanged += new System.EventHandler(this.textBoxKeyword_TextChanged);
             this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
-           
+
             // 
             // PayerConfig
             // 
@@ -65,7 +64,6 @@ namespace JeanieMoney.Forms
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.labelPassword);
             this.Name = "PayerConfig";
-            this.Text = "PayerConfig";
             this.ResumeLayout(false);
             this.PerformLayout();
 

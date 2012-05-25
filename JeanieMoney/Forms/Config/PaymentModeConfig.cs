@@ -69,7 +69,7 @@ namespace JeanieMoney.Forms.Config
         }
         private void setCaption()
         {
-            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/PaymentMode");
+            this.Text = G18NHandler.GetValue(Constant.CAPTION_FORM_PAYMENTMODE);
         }
         private void init()
         {

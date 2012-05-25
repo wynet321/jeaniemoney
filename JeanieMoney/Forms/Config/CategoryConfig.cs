@@ -55,21 +55,24 @@ namespace JeanieMoney.Forms.Config
 
         private void setCaption()
         {
-            tabPageIncome.Text = G18NHandler.GetValue("JeanieMoney/Caption/Tab/Income");
-            tabPageOutgoing.Text = G18NHandler.GetValue("JeanieMoney/Caption/Tab/Outgoing");
+            tabPageIncome.Text = G18NHandler.GetValue(Constant.CAPTION_TAB_INCOME);
+            tabPageOutgoing.Text = G18NHandler.GetValue(Constant.CAPTION_TAB_OUTGOING);
 
-            labelIncomeAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-            labelIncomeName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
+            labelIncomeAbbr.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_ABBR);
+            labelIncomeName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_NAME);
             labelOutgoingAbbr.Text = this.labelIncomeAbbr.Text;
             labelOutgoingName.Text = this.labelIncomeName.Text;
 
-            buttonIncomeCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
-            buttonIncomeOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
+            buttonIncomeCancel.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_CANCEL);
+            buttonIncomeOK.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_OK);
             buttonOutgoingCancel.Text = buttonIncomeCancel.Text;
             buttonOutgoingOK.Text = buttonIncomeOK.Text;
-            buttonClose.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Close");
+            buttonClose.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_CLOSE);
 
-            Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Category");
+            toolStripMenuItemNew.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPMENU_NEW);
+            toolStripMenuItemDelete.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPMENU_DELETE);
+
+            Text = G18NHandler.GetValue(Constant.CAPTION_FORM_CATEGORY);
         }
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {

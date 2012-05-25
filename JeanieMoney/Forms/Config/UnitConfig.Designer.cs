@@ -1,7 +1,7 @@
 ﻿using JeanieMoney.Utility;
 namespace JeanieMoney.Forms.Config
 {
-    partial class UnitConfig:BaseConfigForm
+    partial class UnitConfig : BaseConfigForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@ namespace JeanieMoney.Forms.Config
             this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             this.textBoxKeyword.TextChanged += new System.EventHandler(this.textBoxKeyword_TextChanged);
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-            
+
             // 
             // UnitConfig
             // 
@@ -43,7 +43,6 @@ namespace JeanieMoney.Forms.Config
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 244);
             this.Name = "UnitConfig";
-            this.Text = "UnitConfig";
             this.ResumeLayout(false);
 
         }

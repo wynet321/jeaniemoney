@@ -22,7 +22,7 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Location");
+            this.Text = G18NHandler.GetValue(Constant.CAPTION_FORM_LOCATION);
         }
         public LocationConfig(string abbr)
         {

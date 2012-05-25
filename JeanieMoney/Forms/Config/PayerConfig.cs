@@ -70,9 +70,9 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.labelPassword.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Password");
+            this.labelPassword.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PASSWORD);
 
-            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Payer");
+            this.Text = G18NHandler.GetValue(Constant.CAPTION_FORM_PAYER);
         }
         private void init()
         {

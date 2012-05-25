@@ -89,14 +89,12 @@
             // 
             this.toolStripMenuItemNew.Name = "toolStripMenuItemNew";
             this.toolStripMenuItemNew.Size = new System.Drawing.Size(107, 22);
-            this.toolStripMenuItemNew.Text = "&New";
             this.toolStripMenuItemNew.Click += new System.EventHandler(this.toolStripMenuItemNew_Click);
             // 
             // toolStripMenuItemDelete
             // 
             this.toolStripMenuItemDelete.Name = "toolStripMenuItemDelete";
             this.toolStripMenuItemDelete.Size = new System.Drawing.Size(107, 22);
-            this.toolStripMenuItemDelete.Text = "&Delete";
             this.toolStripMenuItemDelete.Click += new System.EventHandler(this.toolStripMenuItemDelete_Click);
             // 
             // groupBoxIncome
@@ -120,7 +118,6 @@
             this.buttonIncomeCancel.Name = "buttonIncomeCancel";
             this.buttonIncomeCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonIncomeCancel.TabIndex = 4;
-            this.buttonIncomeCancel.Text = "Cancel";
             this.buttonIncomeCancel.UseVisualStyleBackColor = true;
             this.buttonIncomeCancel.Click += new System.EventHandler(this.buttonIncomeCancel_Click);
             // 
@@ -131,7 +128,6 @@
             this.labelIncomeAbbr.Name = "labelIncomeAbbr";
             this.labelIncomeAbbr.Size = new System.Drawing.Size(29, 13);
             this.labelIncomeAbbr.TabIndex = 4;
-            this.labelIncomeAbbr.Text = "Abbr";
             // 
             // textBoxIncomeAbbr
             // 
@@ -147,7 +143,6 @@
             this.labelIncomeName.Name = "labelIncomeName";
             this.labelIncomeName.Size = new System.Drawing.Size(35, 13);
             this.labelIncomeName.TabIndex = 2;
-            this.labelIncomeName.Text = "Name";
             // 
             // textBoxIncomeName
             // 
@@ -162,7 +157,6 @@
             this.buttonIncomeOK.Name = "buttonIncomeOK";
             this.buttonIncomeOK.Size = new System.Drawing.Size(75, 23);
             this.buttonIncomeOK.TabIndex = 3;
-            this.buttonIncomeOK.Text = "OK";
             this.buttonIncomeOK.UseVisualStyleBackColor = true;
             this.buttonIncomeOK.Click += new System.EventHandler(this.buttonIncomeOK_Click);
             // 
@@ -177,7 +171,6 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.TabIndex = 7;
-            this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -201,7 +194,6 @@
             this.tabPageIncome.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageIncome.Size = new System.Drawing.Size(214, 289);
             this.tabPageIncome.TabIndex = 0;
-            this.tabPageIncome.Text = "Income";
             this.tabPageIncome.UseVisualStyleBackColor = true;
             // 
             // tabPageOutgoing
@@ -213,7 +205,6 @@
             this.tabPageOutgoing.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageOutgoing.Size = new System.Drawing.Size(214, 289);
             this.tabPageOutgoing.TabIndex = 1;
-            this.tabPageOutgoing.Text = "Outgoing";
             this.tabPageOutgoing.UseVisualStyleBackColor = true;
             // 
             // groupBoxOutgoing
@@ -237,7 +228,6 @@
             this.buttonOutgoingCancel.Name = "buttonOutgoingCancel";
             this.buttonOutgoingCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonOutgoingCancel.TabIndex = 4;
-            this.buttonOutgoingCancel.Text = "Cancel";
             this.buttonOutgoingCancel.UseVisualStyleBackColor = true;
             this.buttonOutgoingCancel.Click += new System.EventHandler(this.buttonOutgoingCancel_Click);
             // 
@@ -248,7 +238,6 @@
             this.labelOutgoingAbbr.Name = "labelOutgoingAbbr";
             this.labelOutgoingAbbr.Size = new System.Drawing.Size(29, 13);
             this.labelOutgoingAbbr.TabIndex = 4;
-            this.labelOutgoingAbbr.Text = "Abbr";
             // 
             // textBoxOutgoingAbbr
             // 
@@ -264,7 +253,6 @@
             this.labelOutgoingName.Name = "labelOutgoingName";
             this.labelOutgoingName.Size = new System.Drawing.Size(35, 13);
             this.labelOutgoingName.TabIndex = 0;
-            this.labelOutgoingName.Text = "Name";
             // 
             // textBoxOutgoingName
             // 
@@ -279,7 +267,6 @@
             this.buttonOutgoingOK.Name = "buttonOutgoingOK";
             this.buttonOutgoingOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOutgoingOK.TabIndex = 3;
-            this.buttonOutgoingOK.Text = "OK";
             this.buttonOutgoingOK.UseVisualStyleBackColor = true;
             this.buttonOutgoingOK.Click += new System.EventHandler(this.buttonOutgoingOK_Click);
             // 
@@ -308,7 +295,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CategoryConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Category";
             this.contextMenuStripCategory.ResumeLayout(false);
             this.groupBoxIncome.ResumeLayout(false);
             this.groupBoxIncome.PerformLayout();

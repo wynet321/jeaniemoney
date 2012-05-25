@@ -16,16 +16,15 @@ namespace JeanieMoney.Forms.Config
         }
         private void setCaption()
         {
-            this.buttonDelete.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Delete");
-            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
-            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
+            this.buttonDelete.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_DELETE);
+            this.buttonReset.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_RESET);
+            this.buttonCancel.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_CANCEL);
+            this.buttonOK.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_OK);
 
-            this.labelAbbr.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Abbr");
-            this.labelName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelKeyword.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Keyword");
+            this.labelAbbr.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_ABBR);
+            this.labelName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_NAME);
+            this.labelKeyword.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_KEYWORD);
 
-            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Beneficiary");
         }
     }
 }
