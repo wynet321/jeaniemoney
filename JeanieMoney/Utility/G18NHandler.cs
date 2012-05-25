@@ -10,12 +10,12 @@ namespace JeanieMoney.Utility
     {
         private static string G18NURI = System.Windows.Forms.Application.StartupPath + "/Lang/" + CultureInfo.CurrentCulture.Name + ".xml";
         //Get Resource XML element value
-        public static String GetValue(String NodePath)
+        public static String getValue(String NodePath)
         {
             return getValue(G18NURI, NodePath);
         }
         //Get Resource XML element attribute
-        public static String GetAttribute(String NodePath, String AttributeName)
+        public static String getAttribute(String NodePath, String AttributeName)
         {
             return getAttribute(G18NURI, NodePath, AttributeName);
         }

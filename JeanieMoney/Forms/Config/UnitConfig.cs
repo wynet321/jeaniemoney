@@ -70,7 +70,7 @@ namespace JeanieMoney.Forms.Config
         private void setCaption()
         {
 
-            this.Text = G18NHandler.GetValue(Constant.CAPTION_FORM_UNIT);
+            this.Text = G18NHandler.getValue(Constant.CAPTION_FORM_UNIT);
         }
 
         private void init()

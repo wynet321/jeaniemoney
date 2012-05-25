@@ -39,7 +39,6 @@
             // 
             // PaymentModeConfig
             // 
-            this.ClientSize = new System.Drawing.Size(474, 244);
             this.Name = "PaymentModeConfig";
             this.ResumeLayout(false);
 

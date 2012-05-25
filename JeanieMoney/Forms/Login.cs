@@ -24,25 +24,25 @@ namespace JeanieMoney.Forms
         }
         public void setCaption()
         {
-            labelDbOperatorName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DB_OPERATOR_NAME);
-            labelDbOperatorPassword.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DB_OPERATOR_PASSWORD);
-            labelDBName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DB_NAME);
-            labelDbType.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DB_TYPE);
-            labelProfileName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PROFILE_NAME);
-            labelDbServerHostName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DB_SERVER_HOSTNAME);
+            labelDbOperatorName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_OPERATOR_NAME);
+            labelDbOperatorPassword.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_OPERATOR_PASSWORD);
+            labelDBName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_NAME);
+            labelDbType.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_TYPE);
+            labelProfileName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PROFILE_NAME);
+            labelDbServerHostName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_SERVER_HOSTNAME);
 
-            labelUserName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_USERNAME);
-            labelPassword.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PASSWORD);
-            labelProfile.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PROFILE_NAME);
+            labelUserName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_USERNAME);
+            labelPassword.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PASSWORD);
+            labelProfile.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PROFILE_NAME);
 
-            buttonCancel.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_CANCEL);
-            buttonOK.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_OK);
-            buttonTest.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_TEST);
+            buttonCancel.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_CANCEL);
+            buttonOK.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_OK);
+            buttonTest.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_TEST);
 
-            checkBoxModifyProfile.Text = G18NHandler.GetValue(Constant.CAPTION_CHECKBOX_MODIFY) + "(F3)";
-            checkBoxNewProfile.Text = G18NHandler.GetValue(Constant.CAPTION_CHECKBOX_NEW)+"(F2)";
+            checkBoxModifyProfile.Text = G18NHandler.getValue(Constant.CAPTION_CHECKBOX_MODIFY) + "(F3)";
+            checkBoxNewProfile.Text = G18NHandler.getValue(Constant.CAPTION_CHECKBOX_NEW)+"(F2)";
 
-            Text=G18NHandler.GetValue(Constant.CAPTION_FORM_LOGIN);
+            Text=G18NHandler.getValue(Constant.CAPTION_FORM_LOGIN);
 
         }
 
