@@ -11,36 +11,39 @@ namespace JeanieMoney.Forms
         public Main()
         {
             InitializeComponent();
-
+            init();
         }
-
-        private void setCaption()
-        {
-            dataGridViewJournalRecord.Columns["id"].HeaderText = G18NHandler.GetValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_ID);
-            dataGridViewJournalRecord.Columns["name"].HeaderText = G18NHandler.GetValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_NAME);
-            dataGridViewJournalRecord.Columns["location_name"].HeaderText = G18NHandler.GetValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_LOCATION);
-            dataGridViewJournalRecord.Columns["payer_name"].HeaderText = G18NHandler.GetValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYER);
-            dataGridViewJournalRecord.Columns["payment_mode_name"].HeaderText = G18NHandler.GetValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYMENTMODE);
-            dataGridViewJournalRecord.Columns["money"].HeaderText = G18NHandler.GetValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_MONEY);
-            dataGridViewJournalRecord.Columns["date"].HeaderText = G18NHandler.GetValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_DATE);
-
-            toolStripButtonRecordInput.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPBUTTON_RECORDINPUT);
-            toolStripButtonBeneficiary.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPBUTTON_BENEFICIARY);
-            toolStripButtonCategory.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPBUTTON_CATEGORY);
-            toolStripButtonLocation.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPBUTTON_LOCATION);
-            toolStripButtonPayer.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPBUTTON_PAYER);
-            toolStripButtonPaymentMode.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPBUTTON_PAYMENTMODE);
-            toolStripButtonProduct.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPBUTTON_PRODUCT);
-            toolStripButtonUnit.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPBUTTON_UNIT);
-
-            this.lablePeriod.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PERIOD);
-            this.buttonSearch.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_SEARCH);
-            Text = G18NHandler.GetValue(Constant.CAPTION_FORM_MAIN);
-        }
-        private void Main_Load(object sender, EventArgs e)
+        private void init()
         {
             refreshDataGridView();
             setCaption();
+        }
+        private void setCaption()
+        {
+            dataGridViewJournalRecord.Columns["id"].HeaderText = G18NHandler.getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_ID);
+            dataGridViewJournalRecord.Columns["name"].HeaderText = G18NHandler.getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_NAME);
+            dataGridViewJournalRecord.Columns["location_name"].HeaderText = G18NHandler.getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_LOCATION);
+            dataGridViewJournalRecord.Columns["payer_name"].HeaderText = G18NHandler.getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYER);
+            dataGridViewJournalRecord.Columns["payment_mode_name"].HeaderText = G18NHandler.getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYMENTMODE);
+            dataGridViewJournalRecord.Columns["money"].HeaderText = G18NHandler.getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_MONEY);
+            dataGridViewJournalRecord.Columns["date"].HeaderText = G18NHandler.getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_DATE);
+
+            toolStripButtonRecordInput.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPBUTTON_RECORDINPUT);
+            toolStripButtonBeneficiary.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPBUTTON_BENEFICIARY);
+            toolStripButtonCategory.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPBUTTON_CATEGORY);
+            toolStripButtonLocation.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPBUTTON_LOCATION);
+            toolStripButtonPayer.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PAYER);
+            toolStripButtonPaymentMode.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PAYMENTMODE);
+            toolStripButtonProduct.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PRODUCT);
+            toolStripButtonUnit.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPBUTTON_UNIT);
+
+            this.lablePeriod.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PERIOD);
+            this.buttonSearch.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_SEARCH);
+            Text = G18NHandler.getValue(Constant.CAPTION_FORM_MAIN);
+        }
+        private void Main_Load(object sender, EventArgs e)
+        {
+            
         }
 
         private void toolStripButtonRecordInput_Click(object sender, EventArgs e)

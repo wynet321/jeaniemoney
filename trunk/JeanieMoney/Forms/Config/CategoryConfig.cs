@@ -55,24 +55,24 @@ namespace JeanieMoney.Forms.Config
 
         private void setCaption()
         {
-            tabPageIncome.Text = G18NHandler.GetValue(Constant.CAPTION_TAB_INCOME);
-            tabPageOutgoing.Text = G18NHandler.GetValue(Constant.CAPTION_TAB_OUTGOING);
+            tabPageIncome.Text = G18NHandler.getValue(Constant.CAPTION_TAB_INCOME);
+            tabPageOutgoing.Text = G18NHandler.getValue(Constant.CAPTION_TAB_OUTGOING);
 
-            labelIncomeAbbr.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_ABBR);
-            labelIncomeName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_NAME);
+            labelIncomeAbbr.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_ABBR);
+            labelIncomeName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_NAME);
             labelOutgoingAbbr.Text = this.labelIncomeAbbr.Text;
             labelOutgoingName.Text = this.labelIncomeName.Text;
 
-            buttonIncomeCancel.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_CANCEL);
-            buttonIncomeOK.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_OK);
+            buttonIncomeCancel.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_CANCEL);
+            buttonIncomeOK.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_OK);
             buttonOutgoingCancel.Text = buttonIncomeCancel.Text;
             buttonOutgoingOK.Text = buttonIncomeOK.Text;
-            buttonClose.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_CLOSE);
+            buttonClose.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_CLOSE);
 
-            toolStripMenuItemNew.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPMENU_NEW);
-            toolStripMenuItemDelete.Text = G18NHandler.GetValue(Constant.CAPTION_TOOLSTRIPMENU_DELETE);
+            toolStripMenuItemNew.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPMENU_NEW);
+            toolStripMenuItemDelete.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPMENU_DELETE);
 
-            Text = G18NHandler.GetValue(Constant.CAPTION_FORM_CATEGORY);
+            Text = G18NHandler.getValue(Constant.CAPTION_FORM_CATEGORY);
         }
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {

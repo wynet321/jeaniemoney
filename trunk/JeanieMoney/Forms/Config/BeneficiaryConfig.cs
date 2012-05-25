@@ -35,7 +35,7 @@ namespace JeanieMoney.Forms.Config
         }
         private void setCaption()
         {
-            this.Text = G18NHandler.GetValue(Constant.CAPTION_FORM_BENEFICIARY);
+            this.Text = G18NHandler.getValue(Constant.CAPTION_FORM_BENEFICIARY);
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {
