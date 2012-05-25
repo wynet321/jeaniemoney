@@ -12,14 +12,38 @@ namespace JeanieMoney.Forms
 {
     public partial class Login : Form
     {
-        private Boolean isNew;
+        private Boolean isNewProfile;
         private int profileSelectedIndex;
         public Login()
         {
             InitializeComponent();
+            setCaption();
             comboBoxDbType.DataSource = DbHandler.getDbType();
             comboBoxDbType.DisplayMember = "Key";
             comboBoxDbType.ValueMember = "Value";
+        }
+        public void setCaption()
+        {
+            labelDbOperatorName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DB_OPERATOR_NAME);
+            labelDbOperatorPassword.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DB_OPERATOR_PASSWORD);
+            labelDBName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DB_NAME);
+            labelDbType.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DB_TYPE);
+            labelProfileName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PROFILE_NAME);
+            labelDbServerHostName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DB_SERVER_HOSTNAME);
+
+            labelUserName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_USERNAME);
+            labelPassword.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PASSWORD);
+            labelProfile.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PROFILE_NAME);
+
+            buttonCancel.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_CANCEL);
+            buttonOK.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_OK);
+            buttonTest.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_TEST);
+
+            checkBoxModifyProfile.Text = G18NHandler.GetValue(Constant.CAPTION_CHECKBOX_MODIFY) + "(F3)";
+            checkBoxNewProfile.Text = G18NHandler.GetValue(Constant.CAPTION_CHECKBOX_NEW)+"(F2)";
+
+            Text=G18NHandler.GetValue(Constant.CAPTION_FORM_LOGIN);
+
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -36,7 +60,7 @@ namespace JeanieMoney.Forms
                 }
 
                 //Super admin validation
-                if (textBoxUserName.Text == "Jeanie" && textBoxPassword.Text == "Money")
+                if (textBoxUserName.Text == Constant.SUPER_ADMIN_USER_NAME && textBoxPassword.Text == Constant.SUPER_ADMIN_PASSWORD)
                 {
                     this.DialogResult = DialogResult.OK;
                     return;
@@ -62,15 +86,17 @@ namespace JeanieMoney.Forms
 
         }
 
-        
+
         private Boolean validateInput(String stringToValidate)
         {
             if (null == stringToValidate || stringToValidate.Length == 0)
                 return false;
-            //Todo: defence sql attack
+            //Todo: validation
 
             return true;
+            throw new NotImplementedException();
         }
+
         private String generateConnectionString(String profileName)
         {
             String connectionString = "Data Source=";
@@ -108,7 +134,7 @@ namespace JeanieMoney.Forms
                 DbHandler.setConnection(comboBoxDbType.SelectedValue.ToString(), generateConnectionString(String.Empty));
                 if (DbHandler.canConnect())
                 {
-                    if (isNew)
+                    if (isNewProfile)
                     {
                         if (comboBoxProfile.Items.Contains(textBoxProfileName.Text))
                         {
@@ -201,7 +227,7 @@ namespace JeanieMoney.Forms
         {
             if (checkBoxModifyProfile.Checked)
             {
-                isNew = false;
+                isNewProfile = false;
                 groupBoxDbConnectionShow();
                 profileSelectedIndex = comboBoxProfile.SelectedIndex;
                 textBoxProfileName.Text = comboBoxProfile.SelectedItem.ToString();
@@ -223,7 +249,7 @@ namespace JeanieMoney.Forms
         {
             if (checkBoxNewProfile.Checked)
             {
-                isNew = true;
+                isNewProfile = true;
                 groupBoxDbConnectionShow();
             }
             else

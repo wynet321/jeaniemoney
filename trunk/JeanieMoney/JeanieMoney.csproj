@@ -11,7 +11,8 @@
     <RootNamespace>JeanieMoney</RootNamespace>
     <AssemblyName>JeanieMoney</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -62,6 +63,9 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Synchronization, Version=1.0.0.0" />
     <Reference Include="Microsoft.Synchronization.Data, Version=2.0.0.0" />
     <Reference Include="Microsoft.Synchronization.Data.Server, Version=2.0.0.0" />
@@ -92,6 +96,13 @@
     <Compile Include="Actions\PayerAction.cs" />
     <Compile Include="Actions\ProductAction.cs" />
     <Compile Include="Actions\UnitAction.cs" />
+    <Compile Include="Constant.cs" />
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Entities\Beneficiary.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\PaymentMode.cs" />
@@ -180,6 +191,10 @@
     </Compile>
     <Compile Include="Utility\ConfigHandler.cs" />
     <Compile Include="Utility\G18NHandler.cs" />
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Config\BeneficiaryConfig.resx">
       <DependentUpon>BeneficiaryConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +236,7 @@
       <DependentUpon>BaseConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="CrystalReport1.mht" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -274,6 +290,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\creation.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

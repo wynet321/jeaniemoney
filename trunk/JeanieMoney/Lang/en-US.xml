@@ -9,6 +9,7 @@
       <Delete>Delete</Delete>
       <Search>Search</Search>
       <Details>Details</Details>
+      <Test>Test</Test>
     </Button>
     <Label>
       <Name>Name</Name>
@@ -32,10 +33,21 @@
       <Quantity>Quantity</Quantity>
       <Total>Total</Total>
       <Keyword>Keyword</Keyword>
+      <DbOperatorName>DB Operator Name</DbOperatorName>
+      <DbOperatorPassword>DB Operator Password</DbOperatorPassword>
+      <DbName>DB Name</DbName>
+      <DbServerHostName>DB Server Hostname</DbServerHostName>
+      <ProfileName>Profile Name</ProfileName>
+      <DbType>Type</DbType>
+      <UserName>User Name</UserName>
     </Label>
-    <Group>
+    <CheckBox>
+      <Modify>Mondify</Modify>
+      <New>New</New>
+    </CheckBox>
+    <GroupBox>
       <Summary>Summary</Summary>
-    </Group>
+    </GroupBox>
     <Radio>
       <Income>Income</Income>
       <Outgoing>Outgoing</Outgoing>
@@ -76,7 +88,25 @@
       <PaymentMode>Payment Mode Configuration</PaymentMode>
       <Product>Product Configuration</Product>
       <Unit>Unit Configuration</Unit>
+      <Login>Login...</Login>
     </Form>
+    <Menu>
+      
+    </Menu>
+    <ToolStripMenu>
+      <New>&amp;New</New>
+      <Delete>&amp;Delete</Delete>
+    </ToolStripMenu>
+    <ToolStripButton>
+      <RecordInput>Record Input</RecordInput>
+      <Beneficiary>Beneficiary Configuration</Beneficiary>
+      <Category>Category Configruation</Category>
+      <Location>Location Configuration</Location>
+      <Payer>Payer Configuration</Payer>
+      <PaymentMode>Payment Mode Configuration</PaymentMode>
+      <Product>Product Configuration</Product>
+      <Unit>Unit Configuration</Unit>
+    </ToolStripButton>
   </Caption>
   <Message>
 

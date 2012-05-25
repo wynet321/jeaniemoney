@@ -32,21 +32,21 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.lblUserName = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
+            this.labelUserName = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
             this.groupBoxDbConnection = new System.Windows.Forms.GroupBox();
             this.labelProfileName = new System.Windows.Forms.Label();
             this.textBoxProfileName = new System.Windows.Forms.TextBox();
             this.comboBoxDbType = new System.Windows.Forms.ComboBox();
             this.labelDbType = new System.Windows.Forms.Label();
             this.buttonTest = new System.Windows.Forms.Button();
-            this.labelDbAdminPassword = new System.Windows.Forms.Label();
+            this.labelDbOperatorPassword = new System.Windows.Forms.Label();
             this.textBoxDbAdminPassword = new System.Windows.Forms.TextBox();
-            this.labelDbAdminName = new System.Windows.Forms.Label();
+            this.labelDbOperatorName = new System.Windows.Forms.Label();
             this.textBoxDbAdminName = new System.Windows.Forms.TextBox();
             this.labelDBName = new System.Windows.Forms.Label();
             this.textBoxDbName = new System.Windows.Forms.TextBox();
-            this.labelServerName = new System.Windows.Forms.Label();
+            this.labelDbServerHostName = new System.Windows.Forms.Label();
             this.textBoxServerName = new System.Windows.Forms.TextBox();
             this.labelProfile = new System.Windows.Forms.Label();
             this.comboBoxProfile = new System.Windows.Forms.ComboBox();
@@ -61,7 +61,6 @@
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 25);
             this.buttonOK.TabIndex = 4;
-            this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
@@ -72,7 +71,6 @@
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 25);
             this.buttonCancel.TabIndex = 5;
-            this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
@@ -90,23 +88,21 @@
             this.textBoxPassword.Size = new System.Drawing.Size(143, 20);
             this.textBoxPassword.TabIndex = 2;
             // 
-            // lblUserName
+            // labelUserName
             // 
-            this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(14, 33);
-            this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(57, 13);
-            this.lblUserName.TabIndex = 4;
-            this.lblUserName.Text = "UserName";
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.Location = new System.Drawing.Point(14, 33);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(57, 13);
+            this.labelUserName.TabIndex = 4;
             // 
-            // lblPassword
+            // labelPassword
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(14, 62);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(53, 13);
-            this.lblPassword.TabIndex = 5;
-            this.lblPassword.Text = "Password";
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Location = new System.Drawing.Point(14, 62);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(53, 13);
+            this.labelPassword.TabIndex = 5;
             // 
             // groupBoxDbConnection
             // 
@@ -115,13 +111,13 @@
             this.groupBoxDbConnection.Controls.Add(this.comboBoxDbType);
             this.groupBoxDbConnection.Controls.Add(this.labelDbType);
             this.groupBoxDbConnection.Controls.Add(this.buttonTest);
-            this.groupBoxDbConnection.Controls.Add(this.labelDbAdminPassword);
+            this.groupBoxDbConnection.Controls.Add(this.labelDbOperatorPassword);
             this.groupBoxDbConnection.Controls.Add(this.textBoxDbAdminPassword);
-            this.groupBoxDbConnection.Controls.Add(this.labelDbAdminName);
+            this.groupBoxDbConnection.Controls.Add(this.labelDbOperatorName);
             this.groupBoxDbConnection.Controls.Add(this.textBoxDbAdminName);
             this.groupBoxDbConnection.Controls.Add(this.labelDBName);
             this.groupBoxDbConnection.Controls.Add(this.textBoxDbName);
-            this.groupBoxDbConnection.Controls.Add(this.labelServerName);
+            this.groupBoxDbConnection.Controls.Add(this.labelDbServerHostName);
             this.groupBoxDbConnection.Controls.Add(this.textBoxServerName);
             this.groupBoxDbConnection.Location = new System.Drawing.Point(230, 3);
             this.groupBoxDbConnection.Name = "groupBoxDbConnection";
@@ -137,7 +133,6 @@
             this.labelProfileName.Name = "labelProfileName";
             this.labelProfileName.Size = new System.Drawing.Size(36, 13);
             this.labelProfileName.TabIndex = 17;
-            this.labelProfileName.Text = "Profile";
             // 
             // textBoxProfileName
             // 
@@ -162,7 +157,6 @@
             this.labelDbType.Name = "labelDbType";
             this.labelDbType.Size = new System.Drawing.Size(31, 13);
             this.labelDbType.TabIndex = 14;
-            this.labelDbType.Text = "Type";
             // 
             // buttonTest
             // 
@@ -170,18 +164,16 @@
             this.buttonTest.Name = "buttonTest";
             this.buttonTest.Size = new System.Drawing.Size(75, 25);
             this.buttonTest.TabIndex = 13;
-            this.buttonTest.Text = "Test";
             this.buttonTest.UseVisualStyleBackColor = true;
             this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
             // labelDbAdminPassword
             // 
-            this.labelDbAdminPassword.AutoSize = true;
-            this.labelDbAdminPassword.Location = new System.Drawing.Point(20, 157);
-            this.labelDbAdminPassword.Name = "labelDbAdminPassword";
-            this.labelDbAdminPassword.Size = new System.Drawing.Size(53, 13);
-            this.labelDbAdminPassword.TabIndex = 12;
-            this.labelDbAdminPassword.Text = "Password";
+            this.labelDbOperatorPassword.AutoSize = true;
+            this.labelDbOperatorPassword.Location = new System.Drawing.Point(20, 157);
+            this.labelDbOperatorPassword.Name = "labelDbAdminPassword";
+            this.labelDbOperatorPassword.Size = new System.Drawing.Size(53, 13);
+            this.labelDbOperatorPassword.TabIndex = 12;
             // 
             // textBoxDbAdminPassword
             // 
@@ -193,12 +185,11 @@
             // 
             // labelDbAdminName
             // 
-            this.labelDbAdminName.AutoSize = true;
-            this.labelDbAdminName.Location = new System.Drawing.Point(20, 128);
-            this.labelDbAdminName.Name = "labelDbAdminName";
-            this.labelDbAdminName.Size = new System.Drawing.Size(57, 13);
-            this.labelDbAdminName.TabIndex = 10;
-            this.labelDbAdminName.Text = "UserName";
+            this.labelDbOperatorName.AutoSize = true;
+            this.labelDbOperatorName.Location = new System.Drawing.Point(20, 128);
+            this.labelDbOperatorName.Name = "labelDbAdminName";
+            this.labelDbOperatorName.Size = new System.Drawing.Size(57, 13);
+            this.labelDbOperatorName.TabIndex = 10;
             // 
             // textBoxDbAdminName
             // 
@@ -214,7 +205,6 @@
             this.labelDBName.Name = "labelDBName";
             this.labelDBName.Size = new System.Drawing.Size(22, 13);
             this.labelDBName.TabIndex = 8;
-            this.labelDBName.Text = "DB";
             // 
             // textBoxDbName
             // 
@@ -225,12 +215,11 @@
             // 
             // labelServerName
             // 
-            this.labelServerName.AutoSize = true;
-            this.labelServerName.Location = new System.Drawing.Point(20, 69);
-            this.labelServerName.Name = "labelServerName";
-            this.labelServerName.Size = new System.Drawing.Size(38, 13);
-            this.labelServerName.TabIndex = 6;
-            this.labelServerName.Text = "Server";
+            this.labelDbServerHostName.AutoSize = true;
+            this.labelDbServerHostName.Location = new System.Drawing.Point(20, 69);
+            this.labelDbServerHostName.Name = "labelServerName";
+            this.labelDbServerHostName.Size = new System.Drawing.Size(38, 13);
+            this.labelDbServerHostName.TabIndex = 6;
             // 
             // textBoxServerName
             // 
@@ -246,7 +235,6 @@
             this.labelProfile.Name = "labelProfile";
             this.labelProfile.Size = new System.Drawing.Size(36, 13);
             this.labelProfile.TabIndex = 8;
-            this.labelProfile.Text = "Profile";
             // 
             // comboBoxProfile
             // 
@@ -264,7 +252,6 @@
             this.checkBoxModifyProfile.Name = "checkBoxModifyProfile";
             this.checkBoxModifyProfile.Size = new System.Drawing.Size(79, 26);
             this.checkBoxModifyProfile.TabIndex = 7;
-            this.checkBoxModifyProfile.Text = "Modify(F3)";
             this.checkBoxModifyProfile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxModifyProfile.UseVisualStyleBackColor = true;
             this.checkBoxModifyProfile.CheckedChanged += new System.EventHandler(this.checkBoxModifyProfile_CheckedChanged);
@@ -277,7 +264,6 @@
             this.checkBoxNewProfile.Name = "checkBoxNewProfile";
             this.checkBoxNewProfile.Size = new System.Drawing.Size(79, 24);
             this.checkBoxNewProfile.TabIndex = 6;
-            this.checkBoxNewProfile.Text = "New(F2)";
             this.checkBoxNewProfile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxNewProfile.UseVisualStyleBackColor = true;
             this.checkBoxNewProfile.CheckedChanged += new System.EventHandler(this.checkBoxNewProfile_CheckedChanged);
@@ -293,15 +279,14 @@
             this.Controls.Add(this.comboBoxProfile);
             this.Controls.Add(this.labelProfile);
             this.Controls.Add(this.groupBoxDbConnection);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.lblUserName);
+            this.Controls.Add(this.labelPassword);
+            this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUserName);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.groupBoxDbConnection.ResumeLayout(false);
             this.groupBoxDbConnection.PerformLayout();
@@ -316,17 +301,17 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.Label lblUserName;
-        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label labelUserName;
+        private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.GroupBox groupBoxDbConnection;
         private System.Windows.Forms.Label labelDBName;
         private System.Windows.Forms.TextBox textBoxDbName;
-        private System.Windows.Forms.Label labelServerName;
+        private System.Windows.Forms.Label labelDbServerHostName;
         private System.Windows.Forms.TextBox textBoxServerName;
         private System.Windows.Forms.Button buttonTest;
-        private System.Windows.Forms.Label labelDbAdminPassword;
+        private System.Windows.Forms.Label labelDbOperatorPassword;
         private System.Windows.Forms.TextBox textBoxDbAdminPassword;
-        private System.Windows.Forms.Label labelDbAdminName;
+        private System.Windows.Forms.Label labelDbOperatorName;
         private System.Windows.Forms.TextBox textBoxDbAdminName;
         private System.Windows.Forms.ComboBox comboBoxDbType;
         private System.Windows.Forms.Label labelDbType;

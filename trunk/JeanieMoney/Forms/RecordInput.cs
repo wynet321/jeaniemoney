@@ -12,21 +12,21 @@ namespace JeanieMoney.Forms
 {
     public partial class RecordInput : Form
     {
-        CategoryAction categoryAction;
-        List<Category> categoryList;
-        PayerAction payerAction;
-        List<Payer> payerList;
-        LocationAction locationAction;
-        List<Location> locationList;
-        BeneficiaryAction beneficiaryAction;
-        List<Beneficiary> beneficiaryList;
-        ProductUnitManufactoryAction productUnitManufactoryAction;
-        List<ProductUnitManufactory> productUnitManufactoryList;
-        PaymentModeAction paymentModeAction;
-        List<PaymentMode> paymentModeList;
-        TradeRecordAction tradeRecordAction;
-        TradeRecordDetailAction tradeRecordDetailAction;
-        TradeRecordAndTradeRecordDetailAction tradeRecordAndTradeRecordDetailAction;
+        private CategoryAction categoryAction;
+        private List<Category> categoryList;
+        private PayerAction payerAction;
+        private List<Payer> payerList;
+        private LocationAction locationAction;
+        private List<Location> locationList;
+        private BeneficiaryAction beneficiaryAction;
+        private List<Beneficiary> beneficiaryList;
+        private ProductUnitManufactoryAction productUnitManufactoryAction;
+        private List<ProductUnitManufactory> productUnitManufactoryList;
+        private PaymentModeAction paymentModeAction;
+        private List<PaymentMode> paymentModeList;
+        private TradeRecordAction tradeRecordAction;
+        private TradeRecordDetailAction tradeRecordDetailAction;
+        private TradeRecordAndTradeRecordDetailAction tradeRecordAndTradeRecordDetailAction;
 
         public RecordInput()
         {
@@ -46,42 +46,42 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.labelDetailProductResultTitle.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelMoney.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Money");
-            this.labelCategory.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Category");
-            this.labelDate.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Date");
-            this.labelPayer.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Payer");
-            this.labelLocation.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Location");
-            this.labelSummaryPaymentMode.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/PaymentMode");
-            this.labelSummaryPayer.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Payer");
-            this.labelSummaryLocation.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Location");
-            this.labelSummaryInOutResult.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
-            this.labelSummaryMoney.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Money");
-            this.labelSummaryDate.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Date");
-            this.labelSummaryCategory.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Category");
-            this.labelSummaryDetails.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Details");
-            this.labelDetailManufactoryName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Manufactory");
-            this.labelDetailUnit.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Unit");
-            this.labelDetailAveragePrice.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/AveragePrice");
-            this.labelDetailTotal.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Total");
-            this.labelDetailQuantity.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Quantity");
-            this.labelDetailPrice.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Price");
-            this.labelDetailBeneficiaryName.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Beneficiary");
-            this.labelDetailProduct.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelDetailProductResultTitle.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/Name");
-            this.labelPaymentMode.Text = G18NHandler.GetValue("JeanieMoney/Caption/Label/PaymentMode");
-            this.radioButtonIncome.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Income");
-            this.radioButtonOutgoing.Text = G18NHandler.GetValue("JeanieMoney/Caption/Radio/Outgoing");
-            this.groupBoxSummary.Text = G18NHandler.GetValue("JeanieMoney/Caption/Group/Summary");
+            this.labelDetailProductResultTitle.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_NAME);
+            this.labelMoney.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_MONEY);
+            this.labelCategory.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_CATEGORY);
+            this.labelDate.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DATE);
+            this.labelPayer.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PAYER);
+            this.labelLocation.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_LOCATION);
+            this.labelSummaryPaymentMode.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PAYMENTMODE);
+            this.labelSummaryPayer.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PAYER);
+            this.labelSummaryLocation.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_LOCATION);
+            this.labelSummaryInOutResult.Text = G18NHandler.GetValue(Constant.CAPTION_RADIO_INCOME);
+            this.labelSummaryMoney.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_MONEY);
+            this.labelSummaryDate.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DATE);
+            this.labelSummaryCategory.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_CATEGORY);
+            this.labelSummaryDetails.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_DETAILS);
+            this.labelDetailManufactoryName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_MANUFACTORY);
+            this.labelDetailUnit.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_UNIT);
+            this.labelDetailAveragePrice.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_AVERAGEPRICE);
+            this.labelDetailTotal.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_TOTAL);
+            this.labelDetailQuantity.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_QUANTITY);
+            this.labelDetailPrice.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PRICE);
+            this.labelDetailBeneficiaryName.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_BENEFICIARY);
+            this.labelDetailProduct.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_NAME);
+            this.labelDetailProductResultTitle.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_NAME);
+            this.labelPaymentMode.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_PAYMENTMODE);
+            this.radioButtonIncome.Text = G18NHandler.GetValue(Constant.CAPTION_RADIO_INCOME);
+            this.radioButtonOutgoing.Text = G18NHandler.GetValue(Constant.CAPTION_RADIO_OUTGOING);
+            this.groupBoxSummary.Text = G18NHandler.GetValue(Constant.CAPTION_GROUPBOX_SUMMARY);
 
-            this.buttonReset.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Reset");
-            this.buttonOK.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/OK");
-            this.buttonCancel.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Cancel");
+            this.buttonReset.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_RESET);
+            this.buttonOK.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_OK);
+            this.buttonCancel.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_CANCEL);
 
 
-            this.checkBoxDetails.Text = G18NHandler.GetValue("JeanieMoney/Caption/Button/Details") + "->";
+            this.checkBoxDetails.Text = G18NHandler.GetValue(Constant.CAPTION_BUTTON_DETAILS) + "->";
 
-            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/RecordInput");
+            this.Text = G18NHandler.GetValue(Constant.CAPTION_FORM_RECORDINPUT);
         }
         private void init()
         {

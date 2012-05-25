@@ -44,7 +44,6 @@ namespace JeanieMoney.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 214);
             this.Name = "LocationConfig";
-            this.Text = "LocationConfig";
             this.ResumeLayout(false);
 
         }

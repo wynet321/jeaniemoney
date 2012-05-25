@@ -44,7 +44,6 @@
             this.ClientSize = new System.Drawing.Size(464, 214);
             this.Name = "BeneficiaryConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "BeneficiaryConfig";
             this.ResumeLayout(false);
 
         }

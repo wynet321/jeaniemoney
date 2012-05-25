@@ -71,9 +71,9 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.labelBarcode.Text = G18NHandler.GetValue("jeanieMoney/Caption/Label/Barcode");
+            this.labelBarcode.Text = G18NHandler.GetValue(Constant.CAPTION_LABEL_BARCODE);
 
-            this.Text = G18NHandler.GetValue("JeanieMoney/Caption/Form/Product");
+            this.Text = G18NHandler.GetValue(Constant.CAPTION_FORM_PRODUCT);
         }
         private void init()
         {

@@ -54,7 +54,6 @@
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 21);
             this.buttonDelete.TabIndex = 31;
-            this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
             // 
             // buttonReset
@@ -63,7 +62,6 @@
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 21);
             this.buttonReset.TabIndex = 30;
-            this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
             // 
             // buttonCancel
@@ -72,7 +70,6 @@
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 21);
             this.buttonCancel.TabIndex = 29;
-            this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // textBoxAbbr
@@ -104,7 +101,6 @@
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 21);
             this.buttonOK.TabIndex = 25;
-            this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             // 
             // labelAbbr
@@ -114,7 +110,6 @@
             this.labelAbbr.Name = "labelAbbr";
             this.labelAbbr.Size = new System.Drawing.Size(29, 12);
             this.labelAbbr.TabIndex = 34;
-            this.labelAbbr.Text = "Abbr";
             // 
             // labelName
             // 
@@ -123,7 +118,6 @@
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(29, 12);
             this.labelName.TabIndex = 33;
-            this.labelName.Text = "Name";
             // 
             // labelKeyword
             // 
@@ -132,7 +126,6 @@
             this.labelKeyword.Name = "labelKeyword";
             this.labelKeyword.Size = new System.Drawing.Size(47, 12);
             this.labelKeyword.TabIndex = 32;
-            this.labelKeyword.Text = "Keyword";
             // 
             // BaseConfigForm
             // 

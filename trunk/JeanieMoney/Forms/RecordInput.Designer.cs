@@ -102,9 +102,8 @@
             this.labelMoney.AutoSize = true;
             this.labelMoney.Location = new System.Drawing.Point(142, 15);
             this.labelMoney.Name = "labelMoney";
-            this.labelMoney.Size = new System.Drawing.Size(39, 13);
+            this.labelMoney.Size = new System.Drawing.Size(0, 13);
             this.labelMoney.TabIndex = 0;
-            this.labelMoney.Text = "Money";
             // 
             // textBoxMoney
             // 
@@ -119,18 +118,16 @@
             this.labelCategory.AutoSize = true;
             this.labelCategory.Location = new System.Drawing.Point(18, 67);
             this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(49, 13);
+            this.labelCategory.Size = new System.Drawing.Size(0, 13);
             this.labelCategory.TabIndex = 6;
-            this.labelCategory.Text = "Category";
             // 
             // labelDate
             // 
             this.labelDate.AutoSize = true;
             this.labelDate.Location = new System.Drawing.Point(143, 42);
             this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(30, 13);
+            this.labelDate.Size = new System.Drawing.Size(0, 13);
             this.labelDate.TabIndex = 20;
-            this.labelDate.Text = "Date";
             // 
             // groupBoxInOut
             // 
@@ -147,9 +144,8 @@
             this.radioButtonIncome.AutoSize = true;
             this.radioButtonIncome.Location = new System.Drawing.Point(66, 20);
             this.radioButtonIncome.Name = "radioButtonIncome";
-            this.radioButtonIncome.Size = new System.Drawing.Size(34, 17);
+            this.radioButtonIncome.Size = new System.Drawing.Size(14, 13);
             this.radioButtonIncome.TabIndex = 2;
-            this.radioButtonIncome.Text = "In";
             this.radioButtonIncome.UseVisualStyleBackColor = true;
             // 
             // radioButtonOutgoing
@@ -158,10 +154,9 @@
             this.radioButtonOutgoing.Checked = true;
             this.radioButtonOutgoing.Location = new System.Drawing.Point(6, 20);
             this.radioButtonOutgoing.Name = "radioButtonOutgoing";
-            this.radioButtonOutgoing.Size = new System.Drawing.Size(42, 17);
+            this.radioButtonOutgoing.Size = new System.Drawing.Size(14, 13);
             this.radioButtonOutgoing.TabIndex = 1;
             this.radioButtonOutgoing.TabStop = true;
-            this.radioButtonOutgoing.Text = "Out";
             this.radioButtonOutgoing.UseVisualStyleBackColor = true;
             this.radioButtonOutgoing.CheckedChanged += new System.EventHandler(this.radioButtonOut_CheckedChanged);
             // 
@@ -179,18 +174,16 @@
             this.labelPayer.AutoSize = true;
             this.labelPayer.Location = new System.Drawing.Point(306, 15);
             this.labelPayer.Name = "labelPayer";
-            this.labelPayer.Size = new System.Drawing.Size(34, 13);
+            this.labelPayer.Size = new System.Drawing.Size(0, 13);
             this.labelPayer.TabIndex = 25;
-            this.labelPayer.Text = "Payer";
             // 
             // labelLocation
             // 
             this.labelLocation.AutoSize = true;
             this.labelLocation.Location = new System.Drawing.Point(200, 69);
             this.labelLocation.Name = "labelLocation";
-            this.labelLocation.Size = new System.Drawing.Size(48, 13);
+            this.labelLocation.Size = new System.Drawing.Size(0, 13);
             this.labelLocation.TabIndex = 27;
-            this.labelLocation.Text = "Location";
             // 
             // buttonReset
             // 
@@ -198,7 +191,6 @@
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 23);
             this.buttonReset.TabIndex = 17;
-            this.buttonReset.Text = "Reset";
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
@@ -208,7 +200,6 @@
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 16;
-            this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
@@ -218,7 +209,6 @@
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 18;
-            this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
@@ -277,16 +267,14 @@
             this.groupBoxSummary.Size = new System.Drawing.Size(545, 491);
             this.groupBoxSummary.TabIndex = 32;
             this.groupBoxSummary.TabStop = false;
-            this.groupBoxSummary.Text = "Summary";
             // 
             // labelSummaryPaymentMode
             // 
             this.labelSummaryPaymentMode.AutoSize = true;
             this.labelSummaryPaymentMode.Location = new System.Drawing.Point(146, 72);
             this.labelSummaryPaymentMode.Name = "labelSummaryPaymentMode";
-            this.labelSummaryPaymentMode.Size = new System.Drawing.Size(78, 13);
+            this.labelSummaryPaymentMode.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryPaymentMode.TabIndex = 16;
-            this.labelSummaryPaymentMode.Text = "PaymentMode:";
             // 
             // labelSummaryPaymentModeResult
             // 
@@ -322,18 +310,16 @@
             this.labelSummaryPayer.AutoSize = true;
             this.labelSummaryPayer.Location = new System.Drawing.Point(146, 51);
             this.labelSummaryPayer.Name = "labelSummaryPayer";
-            this.labelSummaryPayer.Size = new System.Drawing.Size(37, 13);
+            this.labelSummaryPayer.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryPayer.TabIndex = 11;
-            this.labelSummaryPayer.Text = "Payer:";
             // 
             // labelSummaryLocation
             // 
             this.labelSummaryLocation.AutoSize = true;
             this.labelSummaryLocation.Location = new System.Drawing.Point(22, 72);
             this.labelSummaryLocation.Name = "labelSummaryLocation";
-            this.labelSummaryLocation.Size = new System.Drawing.Size(49, 13);
+            this.labelSummaryLocation.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryLocation.TabIndex = 10;
-            this.labelSummaryLocation.Text = "Locaton:";
             // 
             // labelSummaryLocationResult
             // 
@@ -348,45 +334,40 @@
             this.labelSummaryInOutResult.AutoSize = true;
             this.labelSummaryInOutResult.Location = new System.Drawing.Point(63, 26);
             this.labelSummaryInOutResult.Name = "labelSummaryInOutResult";
-            this.labelSummaryInOutResult.Size = new System.Drawing.Size(42, 13);
+            this.labelSummaryInOutResult.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryInOutResult.TabIndex = 8;
-            this.labelSummaryInOutResult.Text = "Income";
             // 
             // labelSummaryMoney
             // 
             this.labelSummaryMoney.AutoSize = true;
             this.labelSummaryMoney.Location = new System.Drawing.Point(120, 26);
             this.labelSummaryMoney.Name = "labelSummaryMoney";
-            this.labelSummaryMoney.Size = new System.Drawing.Size(42, 13);
+            this.labelSummaryMoney.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryMoney.TabIndex = 7;
-            this.labelSummaryMoney.Text = "Money:";
             // 
             // labelSummaryMoneyResult
             // 
             this.labelSummaryMoneyResult.AutoSize = true;
             this.labelSummaryMoneyResult.Location = new System.Drawing.Point(168, 26);
             this.labelSummaryMoneyResult.Name = "labelSummaryMoneyResult";
-            this.labelSummaryMoneyResult.Size = new System.Drawing.Size(31, 13);
+            this.labelSummaryMoneyResult.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryMoneyResult.TabIndex = 6;
-            this.labelSummaryMoneyResult.Text = "1000";
             // 
             // labelSummaryDate
             // 
             this.labelSummaryDate.AutoSize = true;
             this.labelSummaryDate.Location = new System.Drawing.Point(253, 26);
             this.labelSummaryDate.Name = "labelSummaryDate";
-            this.labelSummaryDate.Size = new System.Drawing.Size(33, 13);
+            this.labelSummaryDate.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryDate.TabIndex = 5;
-            this.labelSummaryDate.Text = "Date:";
             // 
             // labelSummaryDateResult
             // 
             this.labelSummaryDateResult.AutoSize = true;
             this.labelSummaryDateResult.Location = new System.Drawing.Point(289, 26);
             this.labelSummaryDateResult.Name = "labelSummaryDateResult";
-            this.labelSummaryDateResult.Size = new System.Drawing.Size(65, 13);
+            this.labelSummaryDateResult.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryDateResult.TabIndex = 4;
-            this.labelSummaryDateResult.Text = "2011/12/12";
             // 
             // labelSummaryCategoryResult
             // 
@@ -401,27 +382,24 @@
             this.labelSummaryCategory.AutoSize = true;
             this.labelSummaryCategory.Location = new System.Drawing.Point(22, 51);
             this.labelSummaryCategory.Name = "labelSummaryCategory";
-            this.labelSummaryCategory.Size = new System.Drawing.Size(52, 13);
+            this.labelSummaryCategory.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryCategory.TabIndex = 2;
-            this.labelSummaryCategory.Text = "Category:";
             // 
             // labelSummaryDetails
             // 
             this.labelSummaryDetails.AutoSize = true;
             this.labelSummaryDetails.Location = new System.Drawing.Point(22, 96);
             this.labelSummaryDetails.Name = "labelSummaryDetails";
-            this.labelSummaryDetails.Size = new System.Drawing.Size(39, 13);
+            this.labelSummaryDetails.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryDetails.TabIndex = 1;
-            this.labelSummaryDetails.Text = "Details";
             // 
             // labelSummaryInOut
             // 
             this.labelSummaryInOut.AutoSize = true;
             this.labelSummaryInOut.Location = new System.Drawing.Point(22, 26);
             this.labelSummaryInOut.Name = "labelSummaryInOut";
-            this.labelSummaryInOut.Size = new System.Drawing.Size(36, 13);
+            this.labelSummaryInOut.Size = new System.Drawing.Size(0, 13);
             this.labelSummaryInOut.TabIndex = 0;
-            this.labelSummaryInOut.Text = "InOut:";
             // 
             // listBoxPayer
             // 
@@ -469,18 +447,16 @@
             this.labelDetailManufactoryName.AutoSize = true;
             this.labelDetailManufactoryName.Location = new System.Drawing.Point(24, 79);
             this.labelDetailManufactoryName.Name = "labelDetailManufactoryName";
-            this.labelDetailManufactoryName.Size = new System.Drawing.Size(94, 13);
+            this.labelDetailManufactoryName.Size = new System.Drawing.Size(0, 13);
             this.labelDetailManufactoryName.TabIndex = 42;
-            this.labelDetailManufactoryName.Text = "ManufactoryName";
             // 
             // labelDetailUnit
             // 
             this.labelDetailUnit.AutoSize = true;
             this.labelDetailUnit.Location = new System.Drawing.Point(24, 57);
             this.labelDetailUnit.Name = "labelDetailUnit";
-            this.labelDetailUnit.Size = new System.Drawing.Size(26, 13);
+            this.labelDetailUnit.Size = new System.Drawing.Size(0, 13);
             this.labelDetailUnit.TabIndex = 41;
-            this.labelDetailUnit.Text = "Unit";
             // 
             // buttonDetailRemoveFromSummary
             // 
@@ -516,27 +492,24 @@
             this.labelDetailAveragePrice.AutoSize = true;
             this.labelDetailAveragePrice.Location = new System.Drawing.Point(24, 103);
             this.labelDetailAveragePrice.Name = "labelDetailAveragePrice";
-            this.labelDetailAveragePrice.Size = new System.Drawing.Size(71, 13);
+            this.labelDetailAveragePrice.Size = new System.Drawing.Size(0, 13);
             this.labelDetailAveragePrice.TabIndex = 36;
-            this.labelDetailAveragePrice.Text = "PriceAverage";
             // 
             // labelDetailTotal
             // 
             this.labelDetailTotal.AutoSize = true;
             this.labelDetailTotal.Location = new System.Drawing.Point(222, 249);
             this.labelDetailTotal.Name = "labelDetailTotal";
-            this.labelDetailTotal.Size = new System.Drawing.Size(31, 13);
+            this.labelDetailTotal.Size = new System.Drawing.Size(0, 13);
             this.labelDetailTotal.TabIndex = 35;
-            this.labelDetailTotal.Text = "Total";
             // 
             // labelDetailQuantity
             // 
             this.labelDetailQuantity.AutoSize = true;
             this.labelDetailQuantity.Location = new System.Drawing.Point(204, 216);
             this.labelDetailQuantity.Name = "labelDetailQuantity";
-            this.labelDetailQuantity.Size = new System.Drawing.Size(46, 13);
+            this.labelDetailQuantity.Size = new System.Drawing.Size(0, 13);
             this.labelDetailQuantity.TabIndex = 34;
-            this.labelDetailQuantity.Text = "Quantity";
             // 
             // textBoxDetailQuantity
             // 
@@ -552,9 +525,8 @@
             this.labelDetailPrice.AutoSize = true;
             this.labelDetailPrice.Location = new System.Drawing.Point(219, 185);
             this.labelDetailPrice.Name = "labelDetailPrice";
-            this.labelDetailPrice.Size = new System.Drawing.Size(31, 13);
+            this.labelDetailPrice.Size = new System.Drawing.Size(0, 13);
             this.labelDetailPrice.TabIndex = 32;
-            this.labelDetailPrice.Text = "Price";
             // 
             // textBoxDetailPrice
             // 
@@ -570,9 +542,8 @@
             this.labelDetailBeneficiaryName.AutoSize = true;
             this.labelDetailBeneficiaryName.Location = new System.Drawing.Point(11, 185);
             this.labelDetailBeneficiaryName.Name = "labelDetailBeneficiaryName";
-            this.labelDetailBeneficiaryName.Size = new System.Drawing.Size(58, 13);
+            this.labelDetailBeneficiaryName.Size = new System.Drawing.Size(0, 13);
             this.labelDetailBeneficiaryName.TabIndex = 29;
-            this.labelDetailBeneficiaryName.Text = "beneficiary";
             // 
             // textBoxDetailBeneficiary
             // 
@@ -590,9 +561,8 @@
             this.labelDetailProduct.AutoSize = true;
             this.labelDetailProduct.Location = new System.Drawing.Point(24, 15);
             this.labelDetailProduct.Name = "labelDetailProduct";
-            this.labelDetailProduct.Size = new System.Drawing.Size(35, 13);
+            this.labelDetailProduct.Size = new System.Drawing.Size(0, 13);
             this.labelDetailProduct.TabIndex = 25;
-            this.labelDetailProduct.Text = "Name";
             // 
             // textBoxDetailProduct
             // 
@@ -611,9 +581,8 @@
             this.checkBoxDetails.AutoSize = true;
             this.checkBoxDetails.Location = new System.Drawing.Point(11, 138);
             this.checkBoxDetails.Name = "checkBoxDetails";
-            this.checkBoxDetails.Size = new System.Drawing.Size(58, 23);
+            this.checkBoxDetails.Size = new System.Drawing.Size(6, 6);
             this.checkBoxDetails.TabIndex = 9;
-            this.checkBoxDetails.Text = "Details->";
             this.checkBoxDetails.UseVisualStyleBackColor = true;
             this.checkBoxDetails.CheckedChanged += new System.EventHandler(this.checkBoxDetails_CheckedChanged);
             // 
@@ -669,9 +638,8 @@
             this.labelDetailProductResultTitle.AutoSize = true;
             this.labelDetailProductResultTitle.Location = new System.Drawing.Point(29, 35);
             this.labelDetailProductResultTitle.Name = "labelDetailProductResultTitle";
-            this.labelDetailProductResultTitle.Size = new System.Drawing.Size(35, 13);
+            this.labelDetailProductResultTitle.Size = new System.Drawing.Size(0, 13);
             this.labelDetailProductResultTitle.TabIndex = 47;
-            this.labelDetailProductResultTitle.Text = "Name";
             // 
             // labelDetailPriceAverageResult
             // 
@@ -720,9 +688,8 @@
             this.labelPaymentMode.AutoSize = true;
             this.labelPaymentMode.Location = new System.Drawing.Point(18, 100);
             this.labelPaymentMode.Name = "labelPaymentMode";
-            this.labelPaymentMode.Size = new System.Drawing.Size(75, 13);
+            this.labelPaymentMode.Size = new System.Drawing.Size(0, 13);
             this.labelPaymentMode.TabIndex = 44;
-            this.labelPaymentMode.Text = "PaymentMode";
             // 
             // textBoxPaymentMode
             // 
@@ -766,7 +733,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "RecordInput";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "RecordInput";
             this.Load += new System.EventHandler(this.RecordInput_Load);
             this.groupBoxInOut.ResumeLayout(false);
             this.groupBoxInOut.PerformLayout();

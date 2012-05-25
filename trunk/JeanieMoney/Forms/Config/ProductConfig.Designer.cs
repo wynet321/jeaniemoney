@@ -1,7 +1,7 @@
 ﻿using JeanieMoney.Forms.Config;
 namespace JeanieMoney.Forms
 {
-    partial class ProductConfig:BaseConfigForm
+    partial class ProductConfig : BaseConfigForm
     {
         /// <summary>
         /// Required designer variable.
@@ -47,14 +47,13 @@ namespace JeanieMoney.Forms
             this.labelBarcode.Name = "labelBarcode";
             this.labelBarcode.Size = new System.Drawing.Size(47, 12);
             this.labelBarcode.TabIndex = 25;
-            this.labelBarcode.Text = "Barcode";
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
             this.textBoxKeyword.TextChanged += new System.EventHandler(this.textBoxKeyword_TextChanged);
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-          
+
             // 
             // ProductConfig
             // 
@@ -64,7 +63,6 @@ namespace JeanieMoney.Forms
             this.Controls.Add(this.textBoxBarcode);
             this.Controls.Add(this.labelBarcode);
             this.Name = "ProductConfig";
-            this.Text = "ProductConfig";
             this.ResumeLayout(false);
             this.PerformLayout();
 
