@@ -97,12 +97,6 @@
     <Compile Include="Actions\ProductAction.cs" />
     <Compile Include="Actions\UnitAction.cs" />
     <Compile Include="Constant.cs" />
-    <Compile Include="CrystalReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Entities\Beneficiary.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\PaymentMode.cs" />
@@ -191,10 +185,6 @@
     </Compile>
     <Compile Include="Utility\ConfigHandler.cs" />
     <Compile Include="Utility\G18NHandler.cs" />
-    <EmbeddedResource Include="CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Config\BeneficiaryConfig.resx">
       <DependentUpon>BeneficiaryConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,7 +226,6 @@
       <DependentUpon>BaseConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="CrystalReport1.mht" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
