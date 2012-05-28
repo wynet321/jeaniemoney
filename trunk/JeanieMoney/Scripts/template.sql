@@ -1,4 +1,5 @@
-﻿use JeanieMoney
+﻿use JeanieMoneyDev
+Go
 
 INSERT [dbo].[category] ([id], [name], [abbr], [flag_in_out], [parent_id]) VALUES (N'0bc06ef2-c5e2-482f-87e3-f6ab87db5eb2', N'有线电视', N'yxds', 0, N'de28d316-eb2c-42cf-a390-e2ff2cd3eb81')
 INSERT [dbo].[category] ([id], [name], [abbr], [flag_in_out], [parent_id]) VALUES (N'127f5693-c341-4aca-ae12-11b58db0fd79', N'服装', N'fz', 0, N'ea0131a2-7f6e-46f6-a03b-0fccd320e05c')

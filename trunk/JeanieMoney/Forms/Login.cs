@@ -17,12 +17,21 @@ namespace JeanieMoney.Forms
         public Login()
         {
             InitializeComponent();
+            init();
+        }
+
+        private void init()
+        {
             setCaption();
+
+
+
             comboBoxDbType.DataSource = DbHandler.getDbType();
             comboBoxDbType.DisplayMember = "Key";
             comboBoxDbType.ValueMember = "Value";
         }
-        public void setCaption()
+
+        private void setCaption()
         {
             labelDbOperatorName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_OPERATOR_NAME);
             labelDbOperatorPassword.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_OPERATOR_PASSWORD);
@@ -40,10 +49,9 @@ namespace JeanieMoney.Forms
             buttonTest.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_TEST);
 
             checkBoxModifyProfile.Text = G18NHandler.getValue(Constant.CAPTION_CHECKBOX_MODIFY) + "(F3)";
-            checkBoxNewProfile.Text = G18NHandler.getValue(Constant.CAPTION_CHECKBOX_NEW)+"(F2)";
+            checkBoxNewProfile.Text = G18NHandler.getValue(Constant.CAPTION_CHECKBOX_NEW) + "(F2)";
 
-            Text=G18NHandler.getValue(Constant.CAPTION_FORM_LOGIN);
-
+            Text = G18NHandler.getValue(Constant.CAPTION_FORM_LOGIN);
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
