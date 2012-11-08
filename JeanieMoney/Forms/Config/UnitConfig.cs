@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using JeanieMoney.Utility;
+using ClassLibrary.lib;
 using JeanieMoney.Actions;
 using JeanieMoney.Entities;
 
@@ -70,7 +70,7 @@ namespace JeanieMoney.Forms.Config
         private void setCaption()
         {
 
-            this.Text = G18NHandler.getValue(Constant.CAPTION_FORM_UNIT);
+            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_UNIT);
         }
 
         private void init()
@@ -84,7 +84,7 @@ namespace JeanieMoney.Forms.Config
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!unitAction.deleteUnitById(unitListByAbbr.ElementAt(listBox.SelectedIndex).Id))
+            if (!unitAction.delete(unitListByAbbr.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -123,7 +123,7 @@ namespace JeanieMoney.Forms.Config
             {
                 //insert
                 category.Id = Guid.NewGuid().ToString();
-                if (unitAction.createUnit(category))
+                if (unitAction.create(category))
                 {
                     MessageBox.Show("OK");
                     init();

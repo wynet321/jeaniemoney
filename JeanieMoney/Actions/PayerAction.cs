@@ -3,58 +3,81 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using JeanieMoney.Entities;
-using JeanieMoney.Utility;
+using ClassLibrary.lib;
 using System.Data;
+using ClassLibrary.lib.Handler;
+using System.Data.Common;
 
 namespace JeanieMoney.Actions
 {
     class PayerAction
     {
+        private IDbHandler dbHandler = HandlerFactory.getDbHandler();
+        private DbParameter[] generateDbParameterArray(Payer payer)
+        {
+            DbParameter[] dbParameterArray ={
+                    dbHandler.generateDbParameter("@id",payer.Id,payer.Id.GetType().Name),
+                    dbHandler.generateDbParameter("@name", payer.Name, payer.Name.GetType().Name),
+                    dbHandler.generateDbParameter("@abbr", payer.Abbr, payer.Abbr.GetType().Name),
+                    dbHandler.generateDbParameter("@password", payer.Password, payer.Password.GetType().Name)
+                    };
+            return dbParameterArray;
+        }
         public bool createPayer(Payer payer)
         {
-            string command = "insert into payer values('" + payer.Id + "','" + payer.Name + "','" + payer.Abbr + "','"+payer.Password+"')";
-            if (1== DbHandler.execCommand(command))
+            string command = "insert into payer values(@id,@name,@abbr,@password)";
+            DbParameter[] dbParameterArray = generateDbParameterArray(payer);
+            if (1== HandlerFactory.getDbHandler().execCommand(command,dbParameterArray))
                 return true;
             return false;
         }
 
-        public Payer retrievePayerById(string id)
+        public Payer retrieve(Payer payer)
         {
-            string command = "select * from payer where id='" + id + "'";
-            DataTable dataTable = DbHandler.getDataTable(command);
-            Payer payer = new Payer();
-            payer.Id = id;
+            string command = "select * from payer where id=@id";
+            if (string.IsNullOrWhiteSpace(payer.Id))
+                return payer;
+            DbParameter[] dbParameterArray = generateDbParameterArray(payer);
+            DataTable dataTable = HandlerFactory.getDbHandler().getDataTable(command,dbParameterArray);
+            payer = new Payer();
+            payer.Id = 
             payer.Name = dataTable.Rows[0]["name"].ToString();
             payer.Abbr = dataTable.Rows[0]["abbr"].ToString();
             return payer;
         }
 
-        public List<Payer> retrievePayerList()
-        {
-            string command = "select * from payer";
-            List<Payer> payerList = retrievePayerListBySQL(command);
-            return payerList;
-        }
+        //public List<Payer> retrievePayerList()
+        //{
+        //    string command = "select * from payer";
+        //    List<Payer> payerList = retrievePayerListBySQL(command);
+        //    return payerList;
+        //}
 
-        public bool deletePayerById(string id)
+        public bool delete(Payer payer)
         {
-            string command = "delete from payer where id='" + id + "'";
-            if (0 < DbHandler.execCommand(command))
+            string command = "delete from payer where id=@id";
+            if (string.IsNullOrWhiteSpace(payer.Id))
+                return false;
+            DbParameter[] dbParameterArray = generateDbParameterArray(payer);
+            if (0 < HandlerFactory.getDbHandler().execCommand(command,dbParameterArray))
                 return true;
             return false;
         }
-        public List<Payer> retrievePayerListByAbbr(string abbr)
-        {
-            string command = "select * from payer where abbr like '" + abbr + "%'";
-            List<Payer> payerList = retrievePayerListBySQL(command);
-            return payerList;
-        }
+        //public List<Payer> retrievePayerListByAbbr(string abbr)
+        //{
+        //    string command = "select * from payer where abbr like '" + abbr + "%'";
+        //    List<Payer> payerList = retrievePayerListBySQL(command);
+        //    return payerList;
+        //}
 
-        public List<Payer> retrievePayerListBySQL(string command)
+        public List<Payer> retrieveList(Payer payer)
         {
-            DataTable dataTable = DbHandler.getDataTable(command);
+            string command = "select * from payer";
+            if (string.IsNullOrWhiteSpace(payer.Abbr))
+                command += " where abbr like @abbr%";
+            DbParameter[] dbParameterArray = generateDbParameterArray(payer);
+            DataTable dataTable = HandlerFactory.getDbHandler().getDataTable(command,dbParameterArray);
             List<Payer> payerList = new List<Payer>();
-            Payer payer;
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 payer = new Payer();
@@ -68,12 +91,11 @@ namespace JeanieMoney.Actions
 
         public bool updatePayerById(Payer payer)
         {
-            string command = "update payer set ";
-            if (0 > payer.Id.Length)
+            string command = "update payer set name=@name,abbr=@abbr,password=@password Where id=@id";
+            if (string.IsNullOrWhiteSpace(payer.Id))
                 return false;
-            command += "name='" + payer.Name + "',abbr='" + payer.Abbr + "',password='"+payer.Password+"' Where id='" + payer.Id.Trim() + "'";
-
-            if (0 < DbHandler.execCommand(command))
+            DbParameter[] dbParameterArray = generateDbParameterArray(payer);
+            if (0 < HandlerFactory.getDbHandler().execCommand(command,dbParameterArray))
                 return true;
             return false;
         }

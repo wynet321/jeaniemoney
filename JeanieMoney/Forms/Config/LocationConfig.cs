@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using JeanieMoney.Actions;
 using JeanieMoney.Entities;
-using JeanieMoney.Utility;
+using ClassLibrary.lib;
 using JeanieMoney.Forms.Config;
 
 namespace JeanieMoney.Forms
@@ -22,7 +22,7 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.Text = G18NHandler.getValue(Constant.CAPTION_FORM_LOCATION);
+            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_LOCATION);
         }
         public LocationConfig(string abbr)
         {
@@ -88,7 +88,7 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!locationAction.deleteLocationById(locationList.ElementAt(listBox.SelectedIndex).Id))
+            if (!locationAction.delete(locationList.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -116,7 +116,7 @@ namespace JeanieMoney.Forms
             {
                 //modify
                 category.Id = locationList.ElementAt(listBox.SelectedIndex).Id;
-                if (locationAction.updateLocationById(category))
+                if (locationAction.update(category))
                 {
                     MessageBox.Show("OK");
                     init();
@@ -133,7 +133,7 @@ namespace JeanieMoney.Forms
 
                 category.Id = Guid.NewGuid().ToString();
 
-                if (locationAction.createLocation(category))
+                if (locationAction.create(category))
                 {
                     MessageBox.Show("OK");
                     init();

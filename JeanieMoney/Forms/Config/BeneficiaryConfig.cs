@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using JeanieMoney.Actions;
 using JeanieMoney.Entities;
-using JeanieMoney.Utility;
+using ClassLibrary.lib;
 
 namespace JeanieMoney.Forms.Config
 {
@@ -35,7 +35,7 @@ namespace JeanieMoney.Forms.Config
         }
         private void setCaption()
         {
-            this.Text = G18NHandler.getValue(Constant.CAPTION_FORM_BENEFICIARY);
+            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_BENEFICIARY);
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {

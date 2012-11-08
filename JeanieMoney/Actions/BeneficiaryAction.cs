@@ -2,14 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JeanieMoney.Utility;
 using JeanieMoney.Entities;
 using System.Data;
+using ClassLibrary.lib.Handler;
+using System.Data.Common;
+using ClassLibrary.lib;
 
 namespace JeanieMoney.Actions
 {
     class BeneficiaryAction
     {
+        private IDbHandler dbHandler = HandlerFactory.getDbHandler();
+        private DbParameter[] generateDbParameterArray(Beneficiary beneficiary)
+        {
+            DbParameter[] dbParameterArray ={
+                    dbHandler.generateDbParameter("@id",beneficiary.Id,beneficiary.Id.GetType().Name),
+                    dbHandler.generateDbParameter("@name", beneficiary.Name, beneficiary.Name.GetType().Name),
+                    dbHandler.generateDbParameter("@abbr", beneficiary.Abbr, beneficiary.Abbr.GetType().Name),
+            };
+            return dbParameterArray;
+        }
+
         private void antiSqlInjection(Beneficiary beneficiary)
         {
             if (beneficiary == null)
@@ -24,8 +37,9 @@ namespace JeanieMoney.Actions
         public bool create(Beneficiary beneficiary)
         {
             antiSqlInjection(beneficiary);
-            string command = "insert into beneficiary values('" + beneficiary.Id + "','" + beneficiary.Name + "','" + beneficiary.Abbr + "')";
-            if (1 == DbHandler.execCommand(command))
+            string command = "insert into beneficiary values(@id,@name,@abbr)";
+            DbParameter[] dbParameterArray = generateDbParameterArray(beneficiary);
+            if (1 == HandlerFactory.getDbHandler().execCommand(command,dbParameterArray))
                 return true;
             return false;
         }
@@ -38,14 +52,15 @@ namespace JeanieMoney.Actions
                 antiSqlInjection(beneficiary);
                 command += " where 1=1 and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Id))
-                    command += "id='" + beneficiary.Id + "' and ";
+                    command += "id=@id and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Name))
-                    command += "name='" + beneficiary.Name + "' and ";
+                    command += "name=@name and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Abbr))
-                    command += "abbr='" + beneficiary.Abbr + "' and ";
+                    command += "abbr=@abbr and ";
                 command=command.Remove(command.Length - 5);
             }
-            DataTable dataTable = DbHandler.getDataTable(command);
+            DbParameter[] dbParameterArray = generateDbParameterArray(beneficiary);
+            DataTable dataTable = HandlerFactory.getDbHandler().getDataTable(command,dbParameterArray);
             Beneficiary beneficiaryResult = new Beneficiary();
             beneficiaryResult.Id = dataTable.Rows[0]["id"].ToString();
             beneficiaryResult.Name = dataTable.Rows[0]["name"].ToString();
@@ -61,14 +76,15 @@ namespace JeanieMoney.Actions
                 antiSqlInjection(beneficiary);
                 command += " where 1=1 and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Id))
-                    command += "id like '" + beneficiary.Id + "%' and ";
+                    command += "id like @id% and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Name))
-                    command += "name like '" + beneficiary.Name + "%' and ";
+                    command += "name like @name% and ";
                 if (!string.IsNullOrWhiteSpace(beneficiary.Abbr))
-                    command += "abbr like '" + beneficiary.Abbr + "%' and ";
+                    command += "abbr like @abbr% and ";
                 command=command.Remove(command.Length - 5);
             }
-            DataTable dataTable = DbHandler.getDataTable(command);
+            DbParameter[] dbParameterArray = generateDbParameterArray(beneficiary);
+            DataTable dataTable = HandlerFactory.getDbHandler().getDataTable(command,dbParameterArray);
             List<Beneficiary> beneficiaryResultList = new List<Beneficiary>();
             //Beneficiary beneficiaryResult;
             foreach (DataRow dataRow in dataTable.Rows)
@@ -85,12 +101,12 @@ namespace JeanieMoney.Actions
         public bool update(Beneficiary beneficiary)
         {
             antiSqlInjection(beneficiary);
-            string command = "update beneficiary set ";
+            string command = "update beneficiary set name=@name,abbr=@abbr Where id=@id";
+            DbParameter[] dbParameterArray = generateDbParameterArray(beneficiary);
             if (0 > beneficiary.Id.Length)
                 return false;
-            command += "name='" + beneficiary.Name + "',abbr='" + beneficiary.Abbr + "' Where id='" + beneficiary.Id.Trim() + "'";
-
-            if (0 < DbHandler.execCommand(command))
+            
+            if (0 < HandlerFactory.getDbHandler().execCommand(command,dbParameterArray))
                 return true;
             return false;
         }
@@ -102,14 +118,14 @@ namespace JeanieMoney.Actions
             antiSqlInjection(beneficiary);
             string command = "delete from beneficiary where 1=1 and ";
             if (!string.IsNullOrWhiteSpace(beneficiary.Id))
-                command += "id='" + beneficiary.Id + "' and ";
+                command += "id=@id and ";
             if (!string.IsNullOrWhiteSpace(beneficiary.Name))
-                command += "name='" + beneficiary.Name + "' and ";
+                command += "name=@name and ";
             if (!string.IsNullOrWhiteSpace(beneficiary.Abbr))
-                command += "abbr='" + beneficiary.Abbr + "' and ";
+                command += "abbr=@abbr and ";
             command=command.Remove(command.Length - 5);
-
-            if (0 < DbHandler.execCommand(command))
+            DbParameter[] dbParameterArray = generateDbParameterArray(beneficiary);
+            if (0 < HandlerFactory.getDbHandler().execCommand(command,dbParameterArray))
                 return true;
             return false;
         }

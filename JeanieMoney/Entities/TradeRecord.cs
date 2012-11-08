@@ -19,8 +19,8 @@ namespace JeanieMoney.Entities
         private string locationid = String.Empty;
         public string LocationId { get { return locationid; } set { locationid = value; } }
 
-        private string paymentcategoryid = String.Empty;
-        public string PaymentModeId { get { return paymentcategoryid; } set { paymentcategoryid = value; } }
+        private string paymentmodeid = String.Empty;
+        public string PaymentModeId { get { return paymentmodeid; } set { paymentmodeid = value; } }
 
         private string money = String.Empty;
         public string Money { get { return money; } set { money = value; } }

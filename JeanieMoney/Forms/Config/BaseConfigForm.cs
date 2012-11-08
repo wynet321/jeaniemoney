@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using JeanieMoney.Actions;
-using JeanieMoney.Utility;
+using ClassLibrary.lib;
 
 namespace JeanieMoney.Forms.Config
 {
@@ -16,14 +16,14 @@ namespace JeanieMoney.Forms.Config
         }
         private void setCaption()
         {
-            this.buttonDelete.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_DELETE);
-            this.buttonReset.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_RESET);
-            this.buttonCancel.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_CANCEL);
-            this.buttonOK.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_OK);
+            this.buttonDelete.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_BUTTON_DELETE);
+            this.buttonReset.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_BUTTON_RESET);
+            this.buttonCancel.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_BUTTON_CANCEL);
+            this.buttonOK.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_BUTTON_OK);
 
-            this.labelAbbr.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_ABBR);
-            this.labelName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_NAME);
-            this.labelKeyword.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_KEYWORD);
+            this.labelAbbr.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_LABEL_ABBR);
+            this.labelName.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_LABEL_NAME);
+            this.labelKeyword.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_LABEL_KEYWORD);
 
         }
     }

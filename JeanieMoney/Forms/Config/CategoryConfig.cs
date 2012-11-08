@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using JeanieMoney.Actions;
 using JeanieMoney.Entities;
-using JeanieMoney.Utility;
+using ClassLibrary.lib;
 
 namespace JeanieMoney.Forms.Config
 {
@@ -47,32 +47,32 @@ namespace JeanieMoney.Forms.Config
             setCaption();
             categoryAction = new CategoryAction();
 
-            categoryListIncome = categoryAction.retrieveCategoryList(true);
+            categoryListIncome = categoryAction.retrieveList(true);
             buildupCategoryTreeView(treeViewIncome, categoryListIncome);
-            categoryListOutgoing = categoryAction.retrieveCategoryList(false);
+            categoryListOutgoing = categoryAction.retrieveList(false);
             buildupCategoryTreeView(treeViewOutgoing, categoryListOutgoing);
         }
 
         private void setCaption()
         {
-            tabPageIncome.Text = G18NHandler.getValue(Constant.CAPTION_TAB_INCOME);
-            tabPageOutgoing.Text = G18NHandler.getValue(Constant.CAPTION_TAB_OUTGOING);
+            tabPageIncome.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TAB_INCOME);
+            tabPageOutgoing.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TAB_OUTGOING);
 
-            labelIncomeAbbr.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_ABBR);
-            labelIncomeName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_NAME);
+            labelIncomeAbbr.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_ABBR);
+            labelIncomeName.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_NAME);
             labelOutgoingAbbr.Text = this.labelIncomeAbbr.Text;
             labelOutgoingName.Text = this.labelIncomeName.Text;
 
-            buttonIncomeCancel.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_CANCEL);
-            buttonIncomeOK.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_OK);
+            buttonIncomeCancel.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_CANCEL);
+            buttonIncomeOK.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_OK);
             buttonOutgoingCancel.Text = buttonIncomeCancel.Text;
             buttonOutgoingOK.Text = buttonIncomeOK.Text;
-            buttonClose.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_CLOSE);
+            buttonClose.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_CLOSE);
 
-            toolStripMenuItemNew.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPMENU_NEW);
-            toolStripMenuItemDelete.Text = G18NHandler.getValue(Constant.CAPTION_TOOLSTRIPMENU_DELETE);
+            toolStripMenuItemNew.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPMENU_NEW);
+            toolStripMenuItemDelete.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPMENU_DELETE);
 
-            Text = G18NHandler.getValue(Constant.CAPTION_FORM_CATEGORY);
+            Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_CATEGORY);
         }
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -163,7 +163,7 @@ namespace JeanieMoney.Forms.Config
             Category category = new Category();
             category.Id = draggedNode.Name;
             category.ParentId = targetNode.Name;
-            if (categoryAction.updateCategoryById(category))
+            if (categoryAction.update(category))
             {
 
                 if (String.IsNullOrEmpty(targetNode.Name))
@@ -252,7 +252,7 @@ namespace JeanieMoney.Forms.Config
             {
                 //create
                 category.Id = Guid.NewGuid().ToString();
-                if (categoryAction.createCategory(category))
+                if (categoryAction.create(category))
                 {
                     hideGroup(treeView);
                     treeView.SelectedNode.Name = category.Id;
@@ -271,7 +271,7 @@ namespace JeanieMoney.Forms.Config
                 category.Id = treeView.SelectedNode.Name;
                 if (treeView.SelectedNode.Parent != null)
                     category.ParentId = treeView.SelectedNode.Parent.Name;
-                if (categoryAction.updateCategoryById(category))
+                if (categoryAction.update(category))
                 {
                     hideGroup(treeView);
                     treeView.SelectedNode.Text = category.Name;
@@ -388,7 +388,7 @@ namespace JeanieMoney.Forms.Config
             if (DialogResult.Yes == MessageBox.Show("really delete?", "", MessageBoxButtons.YesNo))
             {
                 TreeView treeView = (tabControl.SelectedTab == tabPageIncome) ? treeViewIncome : treeViewOutgoing;
-                if (categoryAction.deleteCategoryById(treeView.SelectedNode.Name))
+                if (categoryAction.delete(treeView.SelectedNode.Name))
                 {
                     treeView.SelectedNode.Remove();
                 }

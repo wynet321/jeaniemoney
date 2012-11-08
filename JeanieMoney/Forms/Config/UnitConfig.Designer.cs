@@ -1,5 +1,4 @@
-﻿using JeanieMoney.Utility;
-namespace JeanieMoney.Forms.Config
+﻿namespace JeanieMoney.Forms.Config
 {
     partial class UnitConfig : BaseConfigForm
     {
