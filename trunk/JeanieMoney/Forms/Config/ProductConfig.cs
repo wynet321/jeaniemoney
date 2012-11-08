@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using JeanieMoney.Utility;
 using JeanieMoney.Actions;
 using JeanieMoney.Entities;
 using JeanieMoney.Forms.Config;
+using ClassLibrary.lib;
 
 namespace JeanieMoney.Forms
 {
@@ -71,9 +71,9 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.labelBarcode.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_BARCODE);
+            this.labelBarcode.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_BARCODE);
 
-            this.Text = G18NHandler.getValue(Constant.CAPTION_FORM_PRODUCT);
+            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_PRODUCT);
         }
         private void init()
         {
@@ -86,7 +86,7 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!productAction.deleteProductById(productList.ElementAt(listBox.SelectedIndex).Id))
+            if (!productAction.delete(productList.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -129,7 +129,7 @@ namespace JeanieMoney.Forms
             {
                 //insert
                 category.Id = Guid.NewGuid().ToString();
-                if (productAction.createProduct(category))
+                if (productAction.create(category))
                 {
                     MessageBox.Show("OK");
                     init();

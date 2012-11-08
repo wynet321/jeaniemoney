@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using JeanieMoney.Entities;
 using JeanieMoney.Actions;
 using JeanieMoney.Forms.Config;
-using JeanieMoney.Utility;
+using ClassLibrary.lib;
 using System.Drawing;
 
 namespace JeanieMoney.Forms
@@ -46,42 +46,42 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.labelDetailProductResultTitle.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_NAME);
-            this.labelMoney.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_MONEY);
-            this.labelCategory.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_CATEGORY);
-            this.labelDate.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DATE);
-            this.labelPayer.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PAYER);
-            this.labelLocation.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_LOCATION);
-            this.labelSummaryPaymentMode.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PAYMENTMODE);
-            this.labelSummaryPayer.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PAYER);
-            this.labelSummaryLocation.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_LOCATION);
-            this.labelSummaryInOutResult.Text = G18NHandler.getValue(Constant.CAPTION_RADIO_INCOME);
-            this.labelSummaryMoney.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_MONEY);
-            this.labelSummaryDate.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DATE);
-            this.labelSummaryCategory.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_CATEGORY);
-            this.labelSummaryDetails.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DETAILS);
-            this.labelDetailManufactoryName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_MANUFACTORY);
-            this.labelDetailUnit.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_UNIT);
-            this.labelDetailAveragePrice.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_AVERAGEPRICE);
-            this.labelDetailTotal.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_TOTAL);
-            this.labelDetailQuantity.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_QUANTITY);
-            this.labelDetailPrice.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PRICE);
-            this.labelDetailBeneficiaryName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_BENEFICIARY);
-            this.labelDetailProduct.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_NAME);
-            this.labelDetailProductResultTitle.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_NAME);
-            this.labelPaymentMode.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PAYMENTMODE);
-            this.radioButtonIncome.Text = G18NHandler.getValue(Constant.CAPTION_RADIO_INCOME);
-            this.radioButtonOutgoing.Text = G18NHandler.getValue(Constant.CAPTION_RADIO_OUTGOING);
-            this.groupBoxSummary.Text = G18NHandler.getValue(Constant.CAPTION_GROUPBOX_SUMMARY);
+            this.labelDetailProductResultTitle.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_NAME);
+            this.labelMoney.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_MONEY);
+            this.labelCategory.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_CATEGORY);
+            this.labelDate.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_DATE);
+            this.labelPayer.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PAYER);
+            this.labelLocation.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_LOCATION);
+            this.labelSummaryPaymentMode.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PAYMENTMODE);
+            this.labelSummaryPayer.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PAYER);
+            this.labelSummaryLocation.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_LOCATION);
+            this.labelSummaryInOutResult.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_RADIO_INCOME);
+            this.labelSummaryMoney.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_MONEY);
+            this.labelSummaryDate.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_DATE);
+            this.labelSummaryCategory.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_CATEGORY);
+            this.labelSummaryDetails.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_DETAILS);
+            this.labelDetailManufactoryName.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_MANUFACTORY);
+            this.labelDetailUnit.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_UNIT);
+            this.labelDetailAveragePrice.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_AVERAGEPRICE);
+            this.labelDetailTotal.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_TOTAL);
+            this.labelDetailQuantity.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_QUANTITY);
+            this.labelDetailPrice.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PRICE);
+            this.labelDetailBeneficiaryName.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_BENEFICIARY);
+            this.labelDetailProduct.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_NAME);
+            this.labelDetailProductResultTitle.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_NAME);
+            this.labelPaymentMode.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PAYMENTMODE);
+            this.radioButtonIncome.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_RADIO_INCOME);
+            this.radioButtonOutgoing.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_RADIO_OUTGOING);
+            this.groupBoxSummary.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_GROUPBOX_SUMMARY);
 
-            this.buttonReset.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_RESET);
-            this.buttonOK.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_OK);
-            this.buttonCancel.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_CANCEL);
+            this.buttonReset.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_RESET);
+            this.buttonOK.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_OK);
+            this.buttonCancel.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_CANCEL);
 
 
-            this.checkBoxDetails.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_DETAILS) + "->";
+            this.checkBoxDetails.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_DETAILS) + "->";
 
-            this.Text = G18NHandler.getValue(Constant.CAPTION_FORM_RECORDINPUT);
+            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_RECORDINPUT);
         }
         private void init()
         {
@@ -138,7 +138,7 @@ namespace JeanieMoney.Forms
         }
         private void groupBoxSummaryInit()
         {
-            labelSummaryInOutResult.Text = G18NHandler.getValue("JeanieMoney/Caption/Radio/Outgoing");
+            labelSummaryInOutResult.Text = HandlerFactory.getG18NHandler().getValue("JeanieMoney/Caption/Radio/Outgoing");
             labelSummaryMoneyResult.Text = String.Empty;
             labelSummaryDateResult.Text = DateTime.Now.ToLongDateString();
             labelSummaryCategoryResult.Text = String.Empty;
@@ -146,13 +146,13 @@ namespace JeanieMoney.Forms
             labelSummaryPayerResult.Text = String.Empty;
             labelSummaryPaymentModeResult.Text = String.Empty;
             listViewSummaryDetails.Clear();
-            listViewSummaryDetails.Columns.Add(G18NHandler.getValue("JeanieMoney/Caption/ListView/Column/Name"));
-            listViewSummaryDetails.Columns.Add(G18NHandler.getValue("JeanieMoney/Caption/ListView/Column/Unit"));
-            listViewSummaryDetails.Columns.Add(G18NHandler.getValue("JeanieMoney/Caption/ListView/Column/Manufactory"));
-            listViewSummaryDetails.Columns.Add(G18NHandler.getValue("JeanieMoney/Caption/ListView/Column/Beneficiary"));
-            listViewSummaryDetails.Columns.Add(G18NHandler.getValue("JeanieMoney/Caption/ListView/Column/Total"));
-            listViewSummaryDetails.Columns.Add(G18NHandler.getValue("JeanieMoney/Caption/ListView/Column/Price"));
-            listViewSummaryDetails.Columns.Add(G18NHandler.getValue("JeanieMoney/Caption/ListView/Column/Quantity"));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getG18NHandler().getValue("JeanieMoney/Caption/ListView/Column/Name"));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getG18NHandler().getValue("JeanieMoney/Caption/ListView/Column/Unit"));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getG18NHandler().getValue("JeanieMoney/Caption/ListView/Column/Manufactory"));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getG18NHandler().getValue("JeanieMoney/Caption/ListView/Column/Beneficiary"));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getG18NHandler().getValue("JeanieMoney/Caption/ListView/Column/Total"));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getG18NHandler().getValue("JeanieMoney/Caption/ListView/Column/Price"));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getG18NHandler().getValue("JeanieMoney/Caption/ListView/Column/Quantity"));
         }
         private void textBoxMoney_Leave(object sender, EventArgs e)
         {
@@ -208,9 +208,9 @@ namespace JeanieMoney.Forms
         private void radioButtonOut_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonOutgoing.Checked)
-                labelSummaryInOutResult.Text = G18NHandler.getValue("JeanieMoney/Caption/Radio/Outgoing");
+                labelSummaryInOutResult.Text = HandlerFactory.getG18NHandler().getValue("JeanieMoney/Caption/Radio/Outgoing");
             else
-                labelSummaryInOutResult.Text = G18NHandler.getValue("JeanieMoney/Caption/Radio/Income");
+                labelSummaryInOutResult.Text = HandlerFactory.getG18NHandler().getValue("JeanieMoney/Caption/Radio/Income");
         }
 
         private void checkBoxDetails_CheckedChanged(object sender, EventArgs e)
@@ -248,10 +248,10 @@ namespace JeanieMoney.Forms
                 tradeRecord.PayerId = payerList.ElementAt(listBoxPayer.SelectedIndex).Id;
                 tradeRecord.LocationId = locationList.ElementAt(listBoxLocation.SelectedIndex).Id;
                 tradeRecord.PaymentModeId = paymentModeList.ElementAt(listBoxPaymentMode.SelectedIndex).Id;
-                List<TradeRecordDetail> tradeRecordDetailList = new List<TradeRecordDetail>();
+                List<Beneficiary> tradeRecordDetailList = new List<Beneficiary>();
                 foreach (ListViewItem item in listViewSummaryDetails.Items)
                 {
-                    TradeRecordDetail tradeRecordDetail = new TradeRecordDetail();
+                    Beneficiary tradeRecordDetail = new Beneficiary();
                     tradeRecordDetail.Id = Guid.NewGuid().ToString();
                     tradeRecordDetail.ProductId = item.SubItems[7].Text;
                     tradeRecordDetail.BeneficiaryId = item.SubItems[8].Text;

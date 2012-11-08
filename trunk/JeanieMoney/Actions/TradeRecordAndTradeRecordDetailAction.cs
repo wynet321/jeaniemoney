@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using JeanieMoney.Entities;
-using JeanieMoney.Utility;
+using ClassLibrary.lib;
 
 namespace JeanieMoney.Actions
 {
     class TradeRecordAndTradeRecordDetailAction
     {
-        public bool createTrade(TradeRecord tradeRecord, List<TradeRecordDetail> tradeRecordDetailList)
+        public bool createTrade(TradeRecord tradeRecord, List<Beneficiary> tradeRecordDetailList)
         {
             List<string> commandList = new List<string>();
             TradeRecordAction tradeRecordAction = new TradeRecordAction();
             TradeRecordDetailAction tradeRecordDetailAction = new TradeRecordDetailAction();
             commandList.Add(tradeRecordAction.createTradeRecordCommand(tradeRecord));
-            foreach (TradeRecordDetail tradeRecordDetail in tradeRecordDetailList)
+            foreach (Beneficiary tradeRecordDetail in tradeRecordDetailList)
             {
                 commandList.Add(tradeRecordDetailAction.createTradeRecordDetailCommand(tradeRecordDetail)); 
             }
-            if (DbHandler.execTranx(commandList)==commandList.Count)
+            if (HandlerFactory.getDbHandler().execTranx(commandList)==commandList.Count)
                 return true;
             return false;
         }

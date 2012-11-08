@@ -4,8 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using JeanieMoney.Actions;
 using JeanieMoney.Entities;
-using JeanieMoney.Utility;
 using JeanieMoney.Forms.Config;
+using ClassLibrary.lib;
 
 namespace JeanieMoney.Forms
 {
@@ -70,9 +70,9 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.labelPassword.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PASSWORD);
+            this.labelPassword.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PASSWORD);
 
-            this.Text = G18NHandler.getValue(Constant.CAPTION_FORM_PAYER);
+            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_PAYER);
         }
         private void init()
         {
@@ -86,7 +86,7 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!payerAction.deletePayerById(payerList.ElementAt(listBox.SelectedIndex).Id))
+            if (!payerAction.delete(payerList.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;

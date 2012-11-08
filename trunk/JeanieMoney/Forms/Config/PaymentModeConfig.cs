@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using JeanieMoney.Actions;
 using JeanieMoney.Entities;
-using JeanieMoney.Utility;
+using ClassLibrary.lib;
 
 namespace JeanieMoney.Forms.Config
 {
@@ -69,7 +69,7 @@ namespace JeanieMoney.Forms.Config
         }
         private void setCaption()
         {
-            this.Text = G18NHandler.getValue(Constant.CAPTION_FORM_PAYMENTMODE);
+            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_PAYMENTMODE);
         }
         private void init()
         {
@@ -82,7 +82,7 @@ namespace JeanieMoney.Forms.Config
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!paymentModeAction.deletePaymentModeById(paymentModeList.ElementAt(listBox.SelectedIndex).Id))
+            if (!paymentModeAction.delete(paymentModeList.ElementAt(listBox.SelectedIndex).Id))
             {
                 MessageBox.Show("delete failed");
                 return;
@@ -120,7 +120,7 @@ namespace JeanieMoney.Forms.Config
             {
                 //insert
                 category.Id = Guid.NewGuid().ToString();
-                if (paymentModeAction.createPaymentMode(category))
+                if (paymentModeAction.create(category))
                 {
                     MessageBox.Show("OK");
                     init();

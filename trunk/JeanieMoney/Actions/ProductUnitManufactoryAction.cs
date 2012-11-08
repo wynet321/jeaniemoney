@@ -2,27 +2,49 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JeanieMoney.Utility;
 using System.Data;
 using JeanieMoney.Entities;
+using ClassLibrary.lib;
+using System.Data.Common;
+using ClassLibrary.lib.Handler;
 
 namespace JeanieMoney.Actions
 {
     class ProductUnitManufactoryAction
     {
-        
-        public List<ProductUnitManufactory> retrieveProductUnitListByAbbr(string abbr)
+        private IDbHandler dbHandler = HandlerFactory.getDbHandler();
+        private DbParameter[] generateDbParameterArray(ProductUnitManufactory productUnitManufactory)
         {
-            string command = "select * from product_unit_manufactory where abbr like'" + abbr + "%'";
-            List<ProductUnitManufactory> productUnitManufactoryList = retrieveProductListBySQL(command);
-            return productUnitManufactoryList;
+            DbParameter[] dbParameterArray ={
+                    dbHandler.generateDbParameter("@id",productUnitManufactory.Id,productUnitManufactory.Id.GetType().Name),
+                    dbHandler.generateDbParameter("@unitid", productUnitManufactory.UnitId, productUnitManufactory.UnitId.GetType().Name),
+                    dbHandler.generateDbParameter("@manufactoryid", productUnitManufactory.ManufactoryId, productUnitManufactory.ManufactoryId.GetType().Name),
+                    dbHandler.generateDbParameter("@name", productUnitManufactory.Name, productUnitManufactory.Name.GetType().Name),
+                    dbHandler.generateDbParameter("@abbr", productUnitManufactory.Abbr, productUnitManufactory.Abbr.GetType().Name),
+                    dbHandler.generateDbParameter("@unit", productUnitManufactory.Unit, productUnitManufactory.Unit.GetType().Name),
+                    dbHandler.generateDbParameter("@nameunit", productUnitManufactory.NameUnit, productUnitManufactory.NameUnit.GetType().Name),
+                    dbHandler.generateDbParameter("@manufactoryname", productUnitManufactory.ManufactoryName, productUnitManufactory.ManufactoryName.GetType().Name),
+                    dbHandler.generateDbParameter("@address", productUnitManufactory.Address, productUnitManufactory.Address.GetType().Name),
+                    dbHandler.generateDbParameter("@tel", productUnitManufactory.Tel, productUnitManufactory.tel.GetType().Name)
+                    };
+            return dbParameterArray;
         }
 
-        public List<ProductUnitManufactory> retrieveProductListBySQL(string command)
+        //public List<ProductUnitManufactory> retrieveProductUnitListByAbbr(string abbr)
+        //{
+        //    string command = "select * from product_unit_manufactory where abbr like'" + abbr + "%'";
+        //    List<ProductUnitManufactory> productUnitManufactoryList = retrieveProductListBySQL(command);
+        //    return productUnitManufactoryList;
+        //}
+
+        public List<ProductUnitManufactory> retrieveList(ProductUnitManufactory productUnitManufactory)
         {
-            DataTable dataTable = DbHandler.getDataTable(command);
+            string command = "select * from product_unit_manufactory";
+            if (string.IsNullOrWhiteSpace(productUnitManufactory.Abbr))
+                command += " where abbr like @abbr%";
+            DbParameter[] dbParameterArray = generateDbParameterArray(productUnitManufactory);
+            DataTable dataTable = HandlerFactory.getDbHandler().getDataTable(command,dbParameterArray);
             List<ProductUnitManufactory> productUnitManufactoryList = new List<ProductUnitManufactory>();
-            ProductUnitManufactory productUnitManufactory;
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 productUnitManufactory = new ProductUnitManufactory();

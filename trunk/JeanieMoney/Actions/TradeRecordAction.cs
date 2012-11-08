@@ -3,32 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using JeanieMoney.Entities;
-using JeanieMoney.Utility;
 using System.Data;
+using ClassLibrary.lib;
+using ClassLibrary.lib.Handler;
+using System.Data.Common;
 
 namespace JeanieMoney.Actions
 {
     class TradeRecordAction
     {
+        private IDbHandler dbHandler = HandlerFactory.getDbHandler();
+        private DbParameter[] generateDbParameterArray(TradeRecord tradeRecord)
+        {
+            DbParameter[] dbParameterArray ={
+                    dbHandler.generateDbParameter("@id",tradeRecord.Id,tradeRecord.Id.GetType().Name),
+                    dbHandler.generateDbParameter("@categoryid", tradeRecord.CategoryId, tradeRecord.CategoryId.GetType().Name),
+                    dbHandler.generateDbParameter("@payerid", tradeRecord.PayerId, tradeRecord.PayerId.GetType().Name),
+                    dbHandler.generateDbParameter("@locationid", tradeRecord.LocationId, tradeRecord.LocationId.GetType().Name),
+                    dbHandler.generateDbParameter("@paymentmodeid", tradeRecord.PaymentModeId, tradeRecord.PaymentModeId.GetType().Name),
+                    dbHandler.generateDbParameter("@money", tradeRecord.Money, tradeRecord.Money.GetType().Name),
+                    dbHandler.generateDbParameter("@date", tradeRecord.Date, tradeRecord.Date.GetType().Name)
+                    };
+            return dbParameterArray;
+        }
         public bool createTradeRecord(TradeRecord tradeRecord)
         {
-            string command = createTradeRecordCommand(tradeRecord);
-            if (DbHandler.execCommand(command)==1)
+            string command = "insert into trade_record values(@id,@categoryid,@payerid,@locationid,@paymentmodeid,@money,@date)";
+            DbParameter[] dbParameterArray = generateDbParameterArray(tradeRecord); 
+            if (HandlerFactory.getDbHandler().execCommand(command,dbParameterArray)==1)
                 return true;
             return false;
         }
 
-        public string createTradeRecordCommand(TradeRecord tradeRecord)
+        public TradeRecord retrieve(TradeRecord tradeRecord)
         {
-            string command = "insert into trade_record values('" + tradeRecord.Id + "','" + tradeRecord.CategoryId + "','" + tradeRecord.PayerId + "','" + tradeRecord.LocationId + "','" + tradeRecord.PaymentModeId + "','" + tradeRecord.Money + "','" + tradeRecord.Date + "')";
-            return command;
-        }
-        public TradeRecord retrieveTradeRecordById(string id)
-        {
-            string command = "select * from trade_record where id='" + id + "'";
-            DataTable dataTable = DbHandler.getDataTable(command);
-            TradeRecord tradeRecord = new TradeRecord();
-            tradeRecord.Id = id;
+            string command = "select * from trade_record where id=@id";
+            if (string.IsNullOrWhiteSpace(tradeRecord.Id))
+                return tradeRecord;
+            DbParameter[] dbParameterArray = generateDbParameterArray(tradeRecord); 
+            DataTable dataTable = HandlerFactory.getDbHandler().getDataTable(command,dbParameterArray);
+            tradeRecord = new TradeRecord();
+            tradeRecord.Id = dataTable.Rows[0]["id"].ToString();
             tradeRecord.CategoryId = dataTable.Rows[0]["category_id"].ToString();
             tradeRecord.PayerId = dataTable.Rows[0]["payer_id"].ToString();
             tradeRecord.LocationId = dataTable.Rows[0]["location_id"].ToString();
@@ -38,32 +53,38 @@ namespace JeanieMoney.Actions
             return tradeRecord;
         }
 
-        public List<TradeRecord> retrieveTradeRecordList()
-        {
-            string command = "select * from trade_record";
-            List<TradeRecord> tradeRecordList = retrieveTradeRecordListBySQL(command);
-            return tradeRecordList;
-        }
+        //public List<TradeRecord> retrieveTradeRecordList()
+        //{
+        //    string command = "select * from trade_record";
+        //    List<TradeRecord> tradeRecordList = retrieveTradeRecordListBySQL(command);
+        //    return tradeRecordList;
+        //}
 
-        public bool deleteTradeRecordById(string id)
+        public bool delete(TradeRecord tradeRecord)
         {
-            string command = "delete from tradeRecord where id='" + id + "'";
-            if (0 < DbHandler.execCommand(command))
+            string command = "delete from tradeRecord where id=@id";
+            if (string.IsNullOrWhiteSpace(tradeRecord.Id))
+                return false;
+            DbParameter[] dbParameterArray = generateDbParameterArray(tradeRecord); 
+            if (0 < HandlerFactory.getDbHandler().execCommand(command,dbParameterArray))
                 return true;
             return false;
         }
-        public List<TradeRecord> retrieveTradeRecordListByAbbr(string abbr)
-        {
-            string command = "select * from trade_record where abbr like '" + abbr + "%'";
-            List<TradeRecord> tradeRecordList = retrieveTradeRecordListBySQL(command);
-            return tradeRecordList;
-        }
+        //public List<TradeRecord> retrieveTradeRecordListByAbbr(string abbr)
+        //{
+        //    string command = "select * from trade_record where abbr like '" + abbr + "%'";
+        //    List<TradeRecord> tradeRecordList = retrieveTradeRecordListBySQL(command);
+        //    return tradeRecordList;
+        //}
 
-        public List<TradeRecord> retrieveTradeRecordListBySQL(string command)
+        public List<TradeRecord> retrieveList(TradeRecord tradeRecord)
         {
-            DataTable dataTable = DbHandler.getDataTable(command);
+            string command = "select * from trade_record";
+            if (string.IsNullOrWhiteSpace(tradeRecord.Id))
+                command += " where abbr like @abbr%";
+            DbParameter[] dbParameterArray = generateDbParameterArray(tradeRecord); 
+            DataTable dataTable = HandlerFactory.getDbHandler().getDataTable(command,dbParameterArray);
             List<TradeRecord> tradeRecordList = new List<TradeRecord>();
-            TradeRecord tradeRecord;
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 tradeRecord = new TradeRecord();
@@ -81,11 +102,11 @@ namespace JeanieMoney.Actions
 
         public bool updateTradeRecordById(TradeRecord tradeRecord)
         {
-            string command = "update trade_record set ";
-            if (0 > tradeRecord.Id.Length)
+            string command = "update trade_record set category_id=@categoryid,payer_id=@payerid,location_id=@locationid,payment_mode_id=@paymentmodeid,money=@money,date=@date Where id=@id";
+            if (string.IsNullOrWhiteSpace(tradeRecord.Id))
                 return false;
-            command += "category_id='" + tradeRecord.CategoryId + "',payer_id='" + tradeRecord.PayerId + "',location_id='" + tradeRecord.LocationId + "',payment_mode_id='" + tradeRecord.PaymentModeId + "',money='" + tradeRecord.Money + "',date='" + tradeRecord.Date + "' Where id='" + tradeRecord.Id.Trim() + "'";
-            if (0 < DbHandler.execCommand(command))
+            DbParameter[] dbParameterArray = generateDbParameterArray(tradeRecord); 
+            if (0 < HandlerFactory.getDbHandler().execCommand(command,dbParameterArray))
                 return true;
             return false;
         }

@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using JeanieMoney.Utility;
+using ClassLibrary.lib;
 
 namespace JeanieMoney.Forms
 {
@@ -26,32 +26,32 @@ namespace JeanieMoney.Forms
 
 
 
-            comboBoxDbType.DataSource = DbHandler.getDbType();
+            comboBoxDbType.DataSource = HandlerFactory.getDbHandler().getDbType();
             comboBoxDbType.DisplayMember = "Key";
             comboBoxDbType.ValueMember = "Value";
         }
 
         private void setCaption()
         {
-            labelDbOperatorName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_OPERATOR_NAME);
-            labelDbOperatorPassword.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_OPERATOR_PASSWORD);
-            labelDBName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_NAME);
-            labelDbType.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_TYPE);
-            labelProfileName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PROFILE_NAME);
-            labelDbServerHostName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_DB_SERVER_HOSTNAME);
+            labelDbOperatorName.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_DB_OPERATOR_NAME);
+            labelDbOperatorPassword.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_DB_OPERATOR_PASSWORD);
+            labelDBName.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_DB_NAME);
+            labelDbType.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_DB_TYPE);
+            labelProfileName.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PROFILE_NAME);
+            labelDbServerHostName.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_DB_SERVER_HOSTNAME);
 
-            labelUserName.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_USERNAME);
-            labelPassword.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PASSWORD);
-            labelProfile.Text = G18NHandler.getValue(Constant.CAPTION_LABEL_PROFILE_NAME);
+            labelUserName.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_USERNAME);
+            labelPassword.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PASSWORD);
+            labelProfile.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PROFILE_NAME);
 
-            buttonCancel.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_CANCEL);
-            buttonOK.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_OK);
-            buttonTest.Text = G18NHandler.getValue(Constant.CAPTION_BUTTON_TEST);
+            buttonCancel.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_CANCEL);
+            buttonOK.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_OK);
+            buttonTest.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_TEST);
 
-            checkBoxModifyProfile.Text = G18NHandler.getValue(Constant.CAPTION_CHECKBOX_MODIFY) + "(F3)";
-            checkBoxNewProfile.Text = G18NHandler.getValue(Constant.CAPTION_CHECKBOX_NEW) + "(F2)";
+            checkBoxModifyProfile.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_CHECKBOX_MODIFY) + "(F3)";
+            checkBoxNewProfile.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_CHECKBOX_NEW) + "(F2)";
 
-            Text = G18NHandler.getValue(Constant.CAPTION_FORM_LOGIN);
+            Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_LOGIN);
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -60,8 +60,8 @@ namespace JeanieMoney.Forms
             if (validateInput(textBoxUserName.Text) && validateInput(textBoxPassword.Text))
             {
                 //Check DB Connection valid
-                DbHandler.setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
-                if (!DbHandler.canConnect())
+                HandlerFactory.getDbHandler().setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
+                if (!HandlerFactory.getDbHandler().canConnect())
                 {
                     MessageBox.Show("Can't connect to DB");
                     return;
@@ -75,7 +75,7 @@ namespace JeanieMoney.Forms
                 }
 
                 //check user/password
-                int validUserCount = (int)DbHandler.getValue("select count(*) from payer where name='" + textBoxUserName.Text + "' and password='" + textBoxPassword.Text + "'");
+                int validUserCount = (int)HandlerFactory.getDbHandler().getValue("select count(*) from payer where name='" + textBoxUserName.Text + "' and password='" + textBoxPassword.Text + "'");
                 if (validUserCount > 0)
                 {
                     this.DialogResult = DialogResult.OK;
@@ -139,8 +139,8 @@ namespace JeanieMoney.Forms
         {
             if (validateProfileInput())
             {
-                DbHandler.setConnection(comboBoxDbType.SelectedValue.ToString(), generateConnectionString(String.Empty));
-                if (DbHandler.canConnect())
+                HandlerFactory.getDbHandler().setConnection(comboBoxDbType.SelectedValue.ToString(), generateConnectionString(String.Empty));
+                if (HandlerFactory.getDbHandler().canConnect())
                 {
                     if (isNewProfile)
                     {
