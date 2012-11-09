@@ -10,7 +10,7 @@ using System.Data.Common;
 
 namespace JeanieMoney.Actions
 {
-    class LocationAction
+    class LocationAction : IAction<Location>
     {
         private IDbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(Location location)

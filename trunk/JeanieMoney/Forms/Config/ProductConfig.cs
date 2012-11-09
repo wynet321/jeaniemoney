@@ -114,7 +114,7 @@ namespace JeanieMoney.Forms
             {
                 //modify
                 category.Id = productList.ElementAt(listBox.SelectedIndex).Id;
-                if (productAction.updateProductById(category))
+                if (productAction.update(category))
                 {
                     MessageBox.Show("OK");
                     init();

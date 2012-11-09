@@ -10,7 +10,7 @@ using System.Data.Common;
 
 namespace JeanieMoney.Actions
 {
-    class ProductAction
+    class ProductAction : IAction<Product>
     {
         private IDbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(Product product)
@@ -35,7 +35,7 @@ namespace JeanieMoney.Actions
             return false;
         }
 
-        public Product retrieveProductById(Product product)
+        public Product retrieve(Product product)
         {
             string command = "select * from product where id=@id";
             if (string.IsNullOrWhiteSpace(product.Id))
@@ -100,7 +100,7 @@ namespace JeanieMoney.Actions
             return productList;
         }
 
-        public bool updateProductById(Product product)
+        public bool update(Product product)
         {
             string command = "update product set name=@name,abbr=@abbr,barcode=@barcode, unit_id=@unitid,unit_quantity=@unitquantity,manufactory_id=@manufactoryid Where id=@id";
             if (0 > product.Id.Length)

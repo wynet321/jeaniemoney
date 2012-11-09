@@ -10,7 +10,7 @@ using System.Data.Common;
 
 namespace JeanieMoney.Actions
 {
-    class PayerAction
+    class PayerAction : IAction<Payer>
     {
         private IDbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(Payer payer)
@@ -23,7 +23,7 @@ namespace JeanieMoney.Actions
                     };
             return dbParameterArray;
         }
-        public bool createPayer(Payer payer)
+        public bool create(Payer payer)
         {
             string command = "insert into payer values(@id,@name,@abbr,@password)";
             DbParameter[] dbParameterArray = generateDbParameterArray(payer);
@@ -89,7 +89,7 @@ namespace JeanieMoney.Actions
             return payerList;
         }
 
-        public bool updatePayerById(Payer payer)
+        public bool update(Payer payer)
         {
             string command = "update payer set name=@name,abbr=@abbr,password=@password Where id=@id";
             if (string.IsNullOrWhiteSpace(payer.Id))

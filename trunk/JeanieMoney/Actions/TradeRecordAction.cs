@@ -10,7 +10,7 @@ using System.Data.Common;
 
 namespace JeanieMoney.Actions
 {
-    class TradeRecordAction
+    class TradeRecordAction : IAction<TradeRecord>
     {
         private IDbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(TradeRecord tradeRecord)
@@ -26,7 +26,7 @@ namespace JeanieMoney.Actions
                     };
             return dbParameterArray;
         }
-        public bool createTradeRecord(TradeRecord tradeRecord)
+        public bool create(TradeRecord tradeRecord)
         {
             string command = "insert into trade_record values(@id,@categoryid,@payerid,@locationid,@paymentmodeid,@money,@date)";
             DbParameter[] dbParameterArray = generateDbParameterArray(tradeRecord); 
@@ -100,7 +100,7 @@ namespace JeanieMoney.Actions
             return tradeRecordList;
         }
 
-        public bool updateTradeRecordById(TradeRecord tradeRecord)
+        public bool update(TradeRecord tradeRecord)
         {
             string command = "update trade_record set category_id=@categoryid,payer_id=@payerid,location_id=@locationid,payment_mode_id=@paymentmodeid,money=@money,date=@date Where id=@id";
             if (string.IsNullOrWhiteSpace(tradeRecord.Id))

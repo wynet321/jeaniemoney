@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="Actions\BeneficiaryAction.cs" />
     <Compile Include="Actions\CategoryAction.cs" />
+    <Compile Include="Actions\IAction.cs" />
     <Compile Include="Actions\PaymentModeAction.cs" />
     <Compile Include="Actions\ProductUnitManufactoryAction.cs" />
     <Compile Include="Actions\TradeRecordAction.cs" />
