@@ -108,7 +108,7 @@ namespace JeanieMoney.Forms.Config
             {
                 //modify
                 category.Id = unitListByAbbr.ElementAt(listBox.SelectedIndex).Id;
-                if (unitAction.updateUnitById(category))
+                if (unitAction.update(category))
                 {
                     MessageBox.Show("OK");
                     init();

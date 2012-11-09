@@ -10,7 +10,7 @@ using ClassLibrary.lib;
 
 namespace JeanieMoney.Actions
 {
-    class BeneficiaryAction
+    class BeneficiaryAction:IAction<Beneficiary>
     {
         private IDbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(Beneficiary beneficiary)
@@ -22,7 +22,7 @@ namespace JeanieMoney.Actions
             };
             return dbParameterArray;
         }
-
+        
         private void antiSqlInjection(Beneficiary beneficiary)
         {
             if (beneficiary == null)

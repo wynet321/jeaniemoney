@@ -10,7 +10,7 @@ using System.Data.Common;
 
 namespace JeanieMoney.Actions
 {
-    class UnitAction
+    class UnitAction : IAction<Unit>
     {
         private IDbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(Unit unit)
@@ -88,7 +88,7 @@ namespace JeanieMoney.Actions
             return unitList;
         }
 
-        public bool updateUnitById(Unit unit)
+        public bool update(Unit unit)
         {
             string command = "update unit set name=@name,abbr=@abbr Where id=@id";
             if (string.IsNullOrWhiteSpace(unit.Id))

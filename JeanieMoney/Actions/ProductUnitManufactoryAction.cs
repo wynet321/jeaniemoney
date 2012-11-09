@@ -25,7 +25,7 @@ namespace JeanieMoney.Actions
                     dbHandler.generateDbParameter("@nameunit", productUnitManufactory.NameUnit, productUnitManufactory.NameUnit.GetType().Name),
                     dbHandler.generateDbParameter("@manufactoryname", productUnitManufactory.ManufactoryName, productUnitManufactory.ManufactoryName.GetType().Name),
                     dbHandler.generateDbParameter("@address", productUnitManufactory.Address, productUnitManufactory.Address.GetType().Name),
-                    dbHandler.generateDbParameter("@tel", productUnitManufactory.Tel, productUnitManufactory.tel.GetType().Name)
+                    dbHandler.generateDbParameter("@tel", productUnitManufactory.Tel, productUnitManufactory.Tel.GetType().Name)
                     };
             return dbParameterArray;
         }

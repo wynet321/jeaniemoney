@@ -10,7 +10,7 @@ using System.Data.Common;
 
 namespace JeanieMoney.Actions
 {
-    class TradeRecordDetailAction
+    class TradeRecordDetailAction : IAction<TradeRecordDetail>
     {
         private IDbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(TradeRecordDetail tradeRecordDetail)
@@ -26,7 +26,7 @@ namespace JeanieMoney.Actions
             return dbParameterArray;
         }
 
-        public bool createTradeRecordDetail(TradeRecordDetail tradeRecordDetail)
+        public bool create(TradeRecordDetail tradeRecordDetail)
         {
             string command = "insert into trade_record_detail values(@id, @trade_record_id,@product_id,@quantity,@price,@benificiary_id)";
             DbParameter[] dbParameterArray = generateDbParameterArray(tradeRecordDetail);
@@ -34,7 +34,7 @@ namespace JeanieMoney.Actions
             return (executionResult > 0) ? true : false;
         }
 
-        public TradeRecordDetail retrieveTradeRecordDetailById(TradeRecordDetail tradeRecordDetail)
+        public TradeRecordDetail retrieve(TradeRecordDetail tradeRecordDetail)
         {
             string command = "select * from trade_record_detail where id=@id";
             if (string.IsNullOrWhiteSpace(tradeRecordDetail.Id))
@@ -51,10 +51,9 @@ namespace JeanieMoney.Actions
             return tradeRecordDetail;
         }
 
-        public List<TradeRecordDetail> retrieveList()
+        public List<TradeRecordDetail> retrieveList(TradeRecordDetail tradeRecordDetail)
         {
             string command = "select * from trade_record_detail";
-            TradeRecordDetail tradeRecordDetail = new TradeRecordDetail();
             DbParameter[] dbParameterArray = generateDbParameterArray(tradeRecordDetail);
             DataTable dataTable = HandlerFactory.getDbHandler().getDataTable(command,dbParameterArray);
             List<TradeRecordDetail> tradeRecordDetailList = new List<TradeRecordDetail>();

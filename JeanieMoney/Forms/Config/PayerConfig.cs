@@ -121,7 +121,7 @@ namespace JeanieMoney.Forms
             {
                 //modify
                 payer.Id = payerList.ElementAt(listBox.SelectedIndex).Id;
-                if (payerAction.updatePayerById(payer))
+                if (payerAction.update(payer))
                 {
                     MessageBox.Show("OK");
                     init();
@@ -136,7 +136,7 @@ namespace JeanieMoney.Forms
             {
                 //insert
                 payer.Id = Guid.NewGuid().ToString();
-                if (payerAction.createPayer(payer))
+                if (payerAction.create(payer))
                 {
                     MessageBox.Show("OK");
                     init();

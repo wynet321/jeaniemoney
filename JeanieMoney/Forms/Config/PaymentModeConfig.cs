@@ -105,7 +105,7 @@ namespace JeanieMoney.Forms.Config
             {
                 //modify
                 category.Id = paymentModeList.ElementAt(listBox.SelectedIndex).Id;
-                if (paymentModeAction.updatePaymentModeById(category))
+                if (paymentModeAction.update(category))
                 {
                     MessageBox.Show("OK");
                     init();

@@ -10,7 +10,7 @@ using ClassLibrary.lib.Handler;
 
 namespace JeanieMoney.Actions
 {
-    class CategoryAction
+    class CategoryAction:IAction<Category>
     {
         private IDbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(Category category)
@@ -23,6 +23,17 @@ namespace JeanieMoney.Actions
                     dbHandler.generateDbParameter("@parent_id", category.ParentId, category.ParentId.GetType().Name)
             };
             return dbParameterArray;
+        }
+        private void antiSqlInjection(Beneficiary beneficiary)
+        {
+            if (beneficiary == null)
+                return;
+            if (!string.IsNullOrWhiteSpace(beneficiary.Id))
+                beneficiary.Id = beneficiary.Id.Replace("'", "''");
+            if (!string.IsNullOrWhiteSpace(beneficiary.Name))
+                beneficiary.Name = beneficiary.Name.Replace("'", "''");
+            if (!string.IsNullOrWhiteSpace(beneficiary.Abbr))
+                beneficiary.Abbr = beneficiary.Abbr.Replace("'", "''");
         }
         public bool create(Category category)
         {
@@ -67,18 +78,19 @@ namespace JeanieMoney.Actions
             return false;
         }
 
-        //public Category retrieve(string id)
-        //{
-        //    string command = "select * from category where id='" + id + "'";
-        //    DataTable dataTable = HandlerFactory.getDbHandler().getDataTable(command);
-        //    Category category = new Category();
-        //    category.Id = id;
-        //    category.Name = dataTable.Rows[0]["name"].ToString();
-        //    category.ParentId = dataTable.Rows[0]["parent_id"].ToString();
-        //    category.Abbr = dataTable.Rows[0]["abbr"].ToString();
-        //    category.IncomeOrOutgoing = ((bool)dataTable.Rows[0]["flag_in_out"]) ? '1' : '0';
-        //    return category;
-        //}
+        public Category retrieve(Category category)
+        {
+            string command = "select * from category where id=@id";
+            DbParameter[] dbParameterArray = generateDbParameterArray(category);
+            DataTable dataTable = HandlerFactory.getDbHandler().getDataTable(command,dbParameterArray);
+            category = new Category();
+            category.Id = dataTable.Rows[0]["id"].ToString();
+            category.Name = dataTable.Rows[0]["name"].ToString();
+            category.ParentId = dataTable.Rows[0]["parent_id"].ToString();
+            category.Abbr = dataTable.Rows[0]["abbr"].ToString();
+            category.IncomeOrOutgoing = ((bool)dataTable.Rows[0]["flag_in_out"]) ? '1' : '0';
+            return category;
+        }
 
         //public List<Category> retrieveList()
         //{

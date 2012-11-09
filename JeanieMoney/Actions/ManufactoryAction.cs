@@ -10,7 +10,7 @@ using System.Data.Common;
 
 namespace JeanieMoney.Actions
 {
-    class ManufactoryAction
+    class ManufactoryAction : IAction<Manufactory>
     {
         private IDbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(Manufactory manufactory)

@@ -10,7 +10,7 @@ using System.Data.Common;
 
 namespace JeanieMoney.Actions
 {
-    class PaymentModeAction
+    class PaymentModeAction : IAction<PaymentMode>
     {
         private IDbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(PaymentMode paymentMode)
@@ -89,7 +89,7 @@ namespace JeanieMoney.Actions
             return paymentModeList;
         }
 
-        public bool updatePaymentModeById(PaymentMode paymentMode)
+        public bool update(PaymentMode paymentMode)
         {
             string command = "update payment_mode set name=@name,abbr=@abbr Where id=@id";
             if (string.IsNullOrWhiteSpace(paymentMode.Id))
