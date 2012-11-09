@@ -47,7 +47,9 @@ namespace JeanieMoney.Forms
                 listBox.DataSource = null;
                 return;
             }
-            productList = productAction.retrieveProductListByAbbr(textBoxKeyword.Text);
+            Product product = new Product();
+            product.Abbr = textBoxKeyword.Text;
+            productList = productAction.retrieveList(product);
             listBox.DisplayMember = "Name";
             listBox.ValueMember = "Id";
             listBox.DataSource = productList;
@@ -86,7 +88,9 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!productAction.delete(productList.ElementAt(listBox.SelectedIndex).Id))
+            Product product = new Product();
+            product.Id=productList.ElementAt(listBox.SelectedIndex).Id;
+            if (!productAction.delete(product))
             {
                 MessageBox.Show("delete failed");
                 return;

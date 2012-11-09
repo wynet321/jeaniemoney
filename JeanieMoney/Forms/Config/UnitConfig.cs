@@ -46,7 +46,9 @@ namespace JeanieMoney.Forms.Config
                 listBox.DataSource = null;
                 return;
             }
-            unitListByAbbr = unitAction.retrieveUnitListByAbbr(textBoxKeyword.Text);
+            Unit unit = new Unit();
+            unit.Abbr = textBoxKeyword.Text;
+            unitListByAbbr = unitAction.retrieveList(unit);
             listBox.DisplayMember = "Name";
             listBox.ValueMember = "Id";
             listBox.DataSource = unitListByAbbr;
@@ -84,7 +86,9 @@ namespace JeanieMoney.Forms.Config
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!unitAction.delete(unitListByAbbr.ElementAt(listBox.SelectedIndex).Id))
+            Unit unit = new Unit();
+            unit.Id = unitListByAbbr.ElementAt(listBox.SelectedIndex).Id;
+            if (!unitAction.delete(unit))
             {
                 MessageBox.Show("delete failed");
                 return;

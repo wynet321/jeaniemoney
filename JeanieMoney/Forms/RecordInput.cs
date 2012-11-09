@@ -248,10 +248,10 @@ namespace JeanieMoney.Forms
                 tradeRecord.PayerId = payerList.ElementAt(listBoxPayer.SelectedIndex).Id;
                 tradeRecord.LocationId = locationList.ElementAt(listBoxLocation.SelectedIndex).Id;
                 tradeRecord.PaymentModeId = paymentModeList.ElementAt(listBoxPaymentMode.SelectedIndex).Id;
-                List<Beneficiary> tradeRecordDetailList = new List<Beneficiary>();
+                List<TradeRecordDetail> tradeRecordDetailList = new List<TradeRecordDetail>();
                 foreach (ListViewItem item in listViewSummaryDetails.Items)
                 {
-                    Beneficiary tradeRecordDetail = new Beneficiary();
+                    TradeRecordDetail tradeRecordDetail = new TradeRecordDetail();
                     tradeRecordDetail.Id = Guid.NewGuid().ToString();
                     tradeRecordDetail.ProductId = item.SubItems[7].Text;
                     tradeRecordDetail.BeneficiaryId = item.SubItems[8].Text;
@@ -356,8 +356,9 @@ namespace JeanieMoney.Forms
 
         private void textBoxPayer_TextChanged(object sender, EventArgs e)
         {
-            String payer = textBoxPayer.Text.Trim();
-            payerList = payerAction.retrievePayerListByAbbr(payer);
+            Payer payer = new Payer();
+            payer.Abbr=textBoxPayer.Text.Trim();
+            payerList = payerAction.retrieveList(payer);
             listBoxPayer.DataSource = payerList;
             if (0 < listBoxPayer.Items.Count)
             {
@@ -377,7 +378,9 @@ namespace JeanieMoney.Forms
                     {
                         PayerConfig pc = new PayerConfig(textBoxPayer.Text.Trim());
                         pc.ShowDialog();
-                        payerList = payerAction.retrievePayerListByAbbr(textBoxPayer.Text.Trim());
+                        Payer payer = new Payer();
+                        payer.Abbr = textBoxPayer.Text.Trim();
+                        payerList = payerAction.retrieveList(payer);
                         if (0 < payerList.Count)
                         {
                             listBoxPayer.DataSource = payerList;
@@ -407,8 +410,9 @@ namespace JeanieMoney.Forms
 
         private void textBoxLocation_TextChanged(object sender, EventArgs e)
         {
-            String location = textBoxLocation.Text.Trim();
-            locationList = locationAction.retrieveLocationListByAbbr(location);
+            Location location = new Location();
+            location.Abbr=textBoxLocation.Text.Trim();
+            locationList = locationAction.retrieveList(location);
             listBoxLocation.DataSource = locationList;
             if (0 < listBoxLocation.Items.Count)
             {
@@ -448,7 +452,9 @@ namespace JeanieMoney.Forms
                         LocationConfig lc = new LocationConfig(textBoxLocation.Text.Trim());
 
                         lc.ShowDialog();
-                        locationList = locationAction.retrieveLocationListByAbbr(textBoxLocation.Text.Trim());
+                        Location location = new Location();
+                        location.Abbr = textBoxLocation.Text.Trim();
+                        locationList = locationAction.retrieveList(location);
                         if (0 < locationList.Count)
                         {
                             listBoxLocation.DataSource = locationList;
@@ -492,8 +498,9 @@ namespace JeanieMoney.Forms
 
         private void textBoxDetailProduct_TextChanged(object sender, EventArgs e)
         {
-            String product = textBoxDetailProduct.Text.Trim();
-            productUnitManufactoryList = productUnitManufactoryAction.retrieveProductUnitListByAbbr(product);
+            ProductUnitManufactory productUnitManufactory = new ProductUnitManufactory();
+            productUnitManufactory.Abbr = textBoxDetailProduct.Text.Trim();
+            productUnitManufactoryList = productUnitManufactoryAction.retrieveList(productUnitManufactory);
             listBoxDetailProduct.DataSource = productUnitManufactoryList;
             if (0 < listBoxDetailProduct.Items.Count)
             {
@@ -513,7 +520,9 @@ namespace JeanieMoney.Forms
                     {
                         ProductConfig pc = new ProductConfig(textBoxDetailProduct.Text.Trim());
                         pc.ShowDialog();
-                        productUnitManufactoryList = productUnitManufactoryAction.retrieveProductUnitListByAbbr(textBoxDetailProduct.Text.Trim());
+                        ProductUnitManufactory productUnitManufactory = new ProductUnitManufactory();
+                        productUnitManufactory.Abbr = textBoxDetailProduct.Text.Trim();
+                        productUnitManufactoryList = productUnitManufactoryAction.retrieveList(productUnitManufactory);
                         if (0 < productUnitManufactoryList.Count)
                         {
                             listBoxDetailProduct.DataSource = productUnitManufactoryList;
@@ -614,8 +623,9 @@ namespace JeanieMoney.Forms
 
         private void textBoxPaymentMode_TextChanged(object sender, EventArgs e)
         {
-            String paymentMode = textBoxPaymentMode.Text.Trim();
-            paymentModeList = paymentModeAction.retrievePaymentModeListByAbbr(paymentMode);
+            PaymentMode paymentMode = new PaymentMode();
+            paymentMode.Abbr=textBoxPaymentMode.Text.Trim();
+            paymentModeList = paymentModeAction.retrieveList(paymentMode);
             listBoxPaymentMode.DataSource = paymentModeList;
             if (0 < listBoxPaymentMode.Items.Count)
             {
@@ -635,7 +645,9 @@ namespace JeanieMoney.Forms
                     {
                         PaymentModeConfig pcc = new PaymentModeConfig(textBoxPaymentMode.Text.Trim());
                         pcc.ShowDialog();
-                        paymentModeList = paymentModeAction.retrievePaymentModeListByAbbr(textBoxPaymentMode.Text.Trim());
+                        PaymentMode paymentMode = new PaymentMode();
+                        paymentMode.Abbr = textBoxPaymentMode.Text.Trim();
+                        paymentModeList = paymentModeAction.retrieveList(paymentMode);
                         if (0 < paymentModeList.Count)
                         {
                             listBoxPaymentMode.DataSource = paymentModeList;
