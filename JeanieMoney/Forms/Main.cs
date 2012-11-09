@@ -20,26 +20,26 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            dataGridViewJournalRecord.Columns["id"].HeaderText = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_ID);
-            dataGridViewJournalRecord.Columns["name"].HeaderText = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_NAME);
-            dataGridViewJournalRecord.Columns["location_name"].HeaderText = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_LOCATION);
-            dataGridViewJournalRecord.Columns["payer_name"].HeaderText = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYER);
-            dataGridViewJournalRecord.Columns["payment_mode_name"].HeaderText = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYMENTMODE);
-            dataGridViewJournalRecord.Columns["money"].HeaderText = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_MONEY);
-            dataGridViewJournalRecord.Columns["date"].HeaderText = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_DATE);
+            dataGridViewJournalRecord.Columns["id"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_ID);
+            dataGridViewJournalRecord.Columns["name"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_NAME);
+            dataGridViewJournalRecord.Columns["location_name"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_LOCATION);
+            dataGridViewJournalRecord.Columns["payer_name"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYER);
+            dataGridViewJournalRecord.Columns["payment_mode_name"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYMENTMODE);
+            dataGridViewJournalRecord.Columns["money"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_MONEY);
+            dataGridViewJournalRecord.Columns["date"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_DATE);
 
-            toolStripButtonRecordInput.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_RECORDINPUT);
-            toolStripButtonBeneficiary.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_BENEFICIARY);
-            toolStripButtonCategory.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_CATEGORY);
-            toolStripButtonLocation.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_LOCATION);
-            toolStripButtonPayer.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PAYER);
-            toolStripButtonPaymentMode.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PAYMENTMODE);
-            toolStripButtonProduct.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PRODUCT);
-            toolStripButtonUnit.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_UNIT);
+            toolStripButtonRecordInput.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_RECORDINPUT);
+            toolStripButtonBeneficiary.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_BENEFICIARY);
+            toolStripButtonCategory.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_CATEGORY);
+            toolStripButtonLocation.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_LOCATION);
+            toolStripButtonPayer.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PAYER);
+            toolStripButtonPaymentMode.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PAYMENTMODE);
+            toolStripButtonProduct.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PRODUCT);
+            toolStripButtonUnit.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_UNIT);
 
-            this.lablePeriod.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_LABEL_PERIOD);
-            this.buttonSearch.Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_BUTTON_SEARCH);
-            Text = HandlerFactory.getHandlerFactory.getG18NHandler()().getValue(Constant.CAPTION_FORM_MAIN);
+            this.lablePeriod.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PERIOD);
+            this.buttonSearch.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_SEARCH);
+            Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_MAIN);
         }
         private void Main_Load(object sender, EventArgs e)
         {
