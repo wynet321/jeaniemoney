@@ -50,7 +50,9 @@ namespace JeanieMoney.Forms
                 listBox.DataSource = null;
                 return;
             }
-            locationList = locationAction.retrieveLocationListByAbbr(textBoxKeyword.Text);
+            Location location = new Location();
+            location.Abbr = textBoxKeyword.Text.Trim();
+            locationList = locationAction.retrieveList(location);
             listBox.DisplayMember = "Name";
             listBox.ValueMember = "Id";
             listBox.DataSource = locationList;
@@ -88,7 +90,9 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!locationAction.delete(locationList.ElementAt(listBox.SelectedIndex).Id))
+            Location location = new Location();
+            location.Id = locationList.ElementAt(listBox.SelectedIndex).Id;
+            if (!locationAction.delete(location))
             {
                 MessageBox.Show("delete failed");
                 return;

@@ -388,7 +388,9 @@ namespace JeanieMoney.Forms.Config
             if (DialogResult.Yes == MessageBox.Show("really delete?", "", MessageBoxButtons.YesNo))
             {
                 TreeView treeView = (tabControl.SelectedTab == tabPageIncome) ? treeViewIncome : treeViewOutgoing;
-                if (categoryAction.delete(treeView.SelectedNode.Name))
+                Category category = new Category();
+                category.Id = treeView.SelectedNode.Name;
+                if (categoryAction.delete(category))
                 {
                     treeView.SelectedNode.Remove();
                 }

@@ -47,7 +47,9 @@ namespace JeanieMoney.Forms
                 listBox.DataSource = null;
                 return;
             }
-            payerList = payerAction.retrievePayerListByAbbr(textBoxKeyword.Text);
+            Payer payer = new Payer();
+            payer.Abbr = textBoxKeyword.Text;
+            payerList = payerAction.retrieveList(payer);
             listBox.DisplayMember = "Name";
             listBox.ValueMember = "Id";
             listBox.DataSource = payerList;
@@ -86,7 +88,9 @@ namespace JeanieMoney.Forms
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!payerAction.delete(payerList.ElementAt(listBox.SelectedIndex).Id))
+            Payer payer = new Payer();
+            payer.Id = payerList.ElementAt(listBox.SelectedIndex).Id;
+            if (!payerAction.delete(payer))
             {
                 MessageBox.Show("delete failed");
                 return;
