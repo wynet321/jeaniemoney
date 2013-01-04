@@ -61,6 +61,7 @@
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 25);
             this.buttonOK.TabIndex = 4;
+            this.buttonOK.Text = "ok";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
@@ -71,6 +72,7 @@
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 25);
             this.buttonCancel.TabIndex = 5;
+            this.buttonCancel.Text = "cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
@@ -93,16 +95,18 @@
             this.labelUserName.AutoSize = true;
             this.labelUserName.Location = new System.Drawing.Point(14, 33);
             this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(57, 13);
+            this.labelUserName.Size = new System.Drawing.Size(53, 13);
             this.labelUserName.TabIndex = 4;
+            this.labelUserName.Text = "username";
             // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
             this.labelPassword.Location = new System.Drawing.Point(14, 62);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(53, 13);
+            this.labelPassword.Size = new System.Drawing.Size(52, 13);
             this.labelPassword.TabIndex = 5;
+            this.labelPassword.Text = "password";
             // 
             // groupBoxDbConnection
             // 
@@ -131,8 +135,9 @@
             this.labelProfileName.AutoSize = true;
             this.labelProfileName.Location = new System.Drawing.Point(20, 18);
             this.labelProfileName.Name = "labelProfileName";
-            this.labelProfileName.Size = new System.Drawing.Size(36, 13);
+            this.labelProfileName.Size = new System.Drawing.Size(33, 13);
             this.labelProfileName.TabIndex = 17;
+            this.labelProfileName.Text = "name";
             // 
             // textBoxProfileName
             // 
@@ -155,8 +160,9 @@
             this.labelDbType.AutoSize = true;
             this.labelDbType.Location = new System.Drawing.Point(20, 41);
             this.labelDbType.Name = "labelDbType";
-            this.labelDbType.Size = new System.Drawing.Size(31, 13);
+            this.labelDbType.Size = new System.Drawing.Size(27, 13);
             this.labelDbType.TabIndex = 14;
+            this.labelDbType.Text = "type";
             // 
             // buttonTest
             // 
@@ -164,16 +170,18 @@
             this.buttonTest.Name = "buttonTest";
             this.buttonTest.Size = new System.Drawing.Size(75, 25);
             this.buttonTest.TabIndex = 13;
+            this.buttonTest.Text = "test";
             this.buttonTest.UseVisualStyleBackColor = true;
             this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
-            // labelDbAdminPassword
+            // labelDbOperatorPassword
             // 
             this.labelDbOperatorPassword.AutoSize = true;
             this.labelDbOperatorPassword.Location = new System.Drawing.Point(20, 157);
-            this.labelDbOperatorPassword.Name = "labelDbAdminPassword";
-            this.labelDbOperatorPassword.Size = new System.Drawing.Size(53, 13);
+            this.labelDbOperatorPassword.Name = "labelDbOperatorPassword";
+            this.labelDbOperatorPassword.Size = new System.Drawing.Size(52, 13);
             this.labelDbOperatorPassword.TabIndex = 12;
+            this.labelDbOperatorPassword.Text = "password";
             // 
             // textBoxDbAdminPassword
             // 
@@ -183,13 +191,14 @@
             this.textBoxDbAdminPassword.TabIndex = 11;
             this.textBoxDbAdminPassword.UseSystemPasswordChar = true;
             // 
-            // labelDbAdminName
+            // labelDbOperatorName
             // 
             this.labelDbOperatorName.AutoSize = true;
             this.labelDbOperatorName.Location = new System.Drawing.Point(20, 128);
-            this.labelDbOperatorName.Name = "labelDbAdminName";
-            this.labelDbOperatorName.Size = new System.Drawing.Size(57, 13);
+            this.labelDbOperatorName.Name = "labelDbOperatorName";
+            this.labelDbOperatorName.Size = new System.Drawing.Size(53, 13);
             this.labelDbOperatorName.TabIndex = 10;
+            this.labelDbOperatorName.Text = "username";
             // 
             // textBoxDbAdminName
             // 
@@ -203,8 +212,9 @@
             this.labelDBName.AutoSize = true;
             this.labelDBName.Location = new System.Drawing.Point(20, 99);
             this.labelDBName.Name = "labelDBName";
-            this.labelDBName.Size = new System.Drawing.Size(22, 13);
+            this.labelDBName.Size = new System.Drawing.Size(45, 13);
             this.labelDBName.TabIndex = 8;
+            this.labelDBName.Text = "dbname";
             // 
             // textBoxDbName
             // 
@@ -213,13 +223,14 @@
             this.textBoxDbName.Size = new System.Drawing.Size(143, 20);
             this.textBoxDbName.TabIndex = 7;
             // 
-            // labelServerName
+            // labelDbServerHostName
             // 
             this.labelDbServerHostName.AutoSize = true;
             this.labelDbServerHostName.Location = new System.Drawing.Point(20, 69);
-            this.labelDbServerHostName.Name = "labelServerName";
-            this.labelDbServerHostName.Size = new System.Drawing.Size(38, 13);
+            this.labelDbServerHostName.Name = "labelDbServerHostName";
+            this.labelDbServerHostName.Size = new System.Drawing.Size(53, 13);
             this.labelDbServerHostName.TabIndex = 6;
+            this.labelDbServerHostName.Text = "hostname";
             // 
             // textBoxServerName
             // 
@@ -233,8 +244,9 @@
             this.labelProfile.AutoSize = true;
             this.labelProfile.Location = new System.Drawing.Point(19, 92);
             this.labelProfile.Name = "labelProfile";
-            this.labelProfile.Size = new System.Drawing.Size(36, 13);
+            this.labelProfile.Size = new System.Drawing.Size(35, 13);
             this.labelProfile.TabIndex = 8;
+            this.labelProfile.Text = "profile";
             // 
             // comboBoxProfile
             // 
@@ -252,6 +264,7 @@
             this.checkBoxModifyProfile.Name = "checkBoxModifyProfile";
             this.checkBoxModifyProfile.Size = new System.Drawing.Size(79, 26);
             this.checkBoxModifyProfile.TabIndex = 7;
+            this.checkBoxModifyProfile.Text = "modify";
             this.checkBoxModifyProfile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxModifyProfile.UseVisualStyleBackColor = true;
             this.checkBoxModifyProfile.CheckedChanged += new System.EventHandler(this.checkBoxModifyProfile_CheckedChanged);
@@ -264,6 +277,7 @@
             this.checkBoxNewProfile.Name = "checkBoxNewProfile";
             this.checkBoxNewProfile.Size = new System.Drawing.Size(79, 24);
             this.checkBoxNewProfile.TabIndex = 6;
+            this.checkBoxNewProfile.Text = "new";
             this.checkBoxNewProfile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxNewProfile.UseVisualStyleBackColor = true;
             this.checkBoxNewProfile.CheckedChanged += new System.EventHandler(this.checkBoxNewProfile_CheckedChanged);
@@ -273,7 +287,7 @@
             this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 283);
+            this.ClientSize = new System.Drawing.Size(502, 283);
             this.Controls.Add(this.checkBoxNewProfile);
             this.Controls.Add(this.checkBoxModifyProfile);
             this.Controls.Add(this.comboBoxProfile);

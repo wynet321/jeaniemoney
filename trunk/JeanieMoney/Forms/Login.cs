@@ -23,8 +23,7 @@ namespace JeanieMoney.Forms
         private void init()
         {
             setCaption();
-
-
+            this.Size = new System.Drawing.Size(264, 321);
 
             comboBoxDbType.DataSource = HandlerFactory.getDbHandler().getDbType();
             comboBoxDbType.DisplayMember = "Key";
@@ -60,7 +59,8 @@ namespace JeanieMoney.Forms
             if (validateInput(textBoxUserName.Text) && validateInput(textBoxPassword.Text))
             {
                 //Check DB Connection valid
-                HandlerFactory.getDbHandler().setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
+                //HandlerFactory.getDbHandler().setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
+                HandlerFactory.getDbHandler().getConnection()
                 if (!HandlerFactory.getDbHandler().canConnect())
                 {
                     MessageBox.Show("Can't connect to DB");
