@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ClassLibrary.lib;
+using System.Data.Common;
 
 namespace JeanieMoney.Forms
 {
@@ -25,7 +26,7 @@ namespace JeanieMoney.Forms
             setCaption();
             this.Size = new System.Drawing.Size(264, 321);
 
-            comboBoxDbType.DataSource = HandlerFactory.getDbHandler().getDbType();
+            comboBoxDbType.DataSource = HandlerFactory.dbType;
             comboBoxDbType.DisplayMember = "Key";
             comboBoxDbType.ValueMember = "Value";
         }
@@ -58,15 +59,6 @@ namespace JeanieMoney.Forms
             //verify user/pass value
             if (validateInput(textBoxUserName.Text) && validateInput(textBoxPassword.Text))
             {
-                //Check DB Connection valid
-                //HandlerFactory.getDbHandler().setConnection(ConfigHandler.getDbType(comboBoxProfile.SelectedItem.ToString()), generateConnectionString(comboBoxProfile.SelectedItem.ToString()));
-                HandlerFactory.getDbHandler().getConnection()
-                if (!HandlerFactory.getDbHandler().canConnect())
-                {
-                    MessageBox.Show("Can't connect to DB");
-                    return;
-                }
-
                 //Super admin validation
                 if (textBoxUserName.Text == Constant.SUPER_ADMIN_USER_NAME && textBoxPassword.Text == Constant.SUPER_ADMIN_PASSWORD)
                 {
@@ -75,7 +67,11 @@ namespace JeanieMoney.Forms
                 }
 
                 //check user/password
-                int validUserCount = (int)HandlerFactory.getDbHandler().getValue("select count(*) from payer where name='" + textBoxUserName.Text + "' and password='" + textBoxPassword.Text + "'");
+                DbParameter[] dbParameter ={
+                GeneralVariable.dbHandler.generateDbParameter("name", textBoxUserName.Text),
+                GeneralVariable.dbHandler.generateDbParameter("password", textBoxPassword.Text)
+                                          };
+                int validUserCount = (int)GeneralVariable.dbHandler.getValue("select count(*) from payer where name=@name and password=@password", dbParameter);
                 if (validUserCount > 0)
                 {
                     this.DialogResult = DialogResult.OK;
@@ -114,7 +110,7 @@ namespace JeanieMoney.Forms
             }
             else
             {
-                connectionString += ConfigHandler.getServerName(profileName) + ";Initial Catalog=" + ConfigHandler.getDbName(profileName) + ";User id=" + ConfigHandler.getDbAdminName(profileName) + ";Password=" + ConfigHandler.getDbAdminPassword(profileName) + ";";
+                //connectionString += ConfigHandler.getServerName(profileName) + ";Initial Catalog=" + ConfigHandler.getDbName(profileName) + ";User id=" + ConfigHandler.getDbAdminName(profileName) + ";Password=" + ConfigHandler.getDbAdminPassword(profileName) + ";";
             }
             return connectionString;
         }
@@ -139,7 +135,7 @@ namespace JeanieMoney.Forms
         {
             if (validateProfileInput())
             {
-                HandlerFactory.getDbHandler().setConnection(comboBoxDbType.SelectedValue.ToString(), generateConnectionString(String.Empty));
+                //HandlerFactory.getDbHandler().setConnection(comboBoxDbType.SelectedValue.ToString(), generateConnectionString(String.Empty));
                 if (HandlerFactory.getDbHandler().canConnect())
                 {
                     if (isNewProfile)
@@ -153,13 +149,16 @@ namespace JeanieMoney.Forms
                         }
                         else
                         {
+                            
                             //add xml profile
-                            ConfigHandler.addProfile(textBoxProfileName.Text);
-                            ConfigHandler.setDbType(textBoxProfileName.Text, comboBoxDbType.SelectedValue.ToString());
-                            ConfigHandler.setServerName(textBoxProfileName.Text, textBoxServerName.Text);
-                            ConfigHandler.setDbName(textBoxProfileName.Text, textBoxDbName.Text);
-                            ConfigHandler.setDbAdminName(textBoxProfileName.Text, textBoxDbAdminName.Text);
-                            ConfigHandler.setDbAdminPassword(textBoxProfileName.Text, textBoxDbAdminPassword.Text);
+                            HandlerFactory.getConfigHandler().addProfile(textBoxProfileName.Text);
+                            GeneralVariable.configHandler = HandlerFactory.getConfigHandler(textBoxProfileName.Text);
+                            GeneralVariable.configHandler.setDbType(comboBoxDbType.SelectedValue.ToString());
+                            GeneralVariable.configHandler.setServerName(textBoxServerName.Text);
+                            GeneralVariable.configHandler.setDbName(textBoxDbName.Text);
+                            GeneralVariable.configHandler.setDbAdminName(textBoxDbAdminName.Text);
+                            GeneralVariable.configHandler.setDbAdminPassword(textBoxDbAdminPassword.Text);
+                            
                             //add profile combobox
                             comboBoxProfile.Items.Add(textBoxProfileName.Text);
                         }
@@ -167,14 +166,15 @@ namespace JeanieMoney.Forms
                     else
                     {
                         //change xml
-                        ConfigHandler.reviseProfile(comboBoxProfile.Items[profileSelectedIndex].ToString(), textBoxProfileName.Text);
-                        ConfigHandler.setDbType(textBoxProfileName.Text, comboBoxDbType.SelectedValue.ToString());
-                        ConfigHandler.setServerName(textBoxProfileName.Text, textBoxServerName.Text);
-                        ConfigHandler.setDbName(textBoxProfileName.Text, textBoxDbName.Text);
-                        ConfigHandler.setDbAdminName(textBoxProfileName.Text, textBoxDbAdminName.Text);
-                        ConfigHandler.setDbAdminPassword(textBoxProfileName.Text, textBoxDbAdminPassword.Text);
+                        GeneralVariable.configHandler.reviseProfile(comboBoxProfile.Items[profileSelectedIndex].ToString(), textBoxProfileName.Text);
+                        GeneralVariable.configHandler.setDbType( comboBoxDbType.SelectedValue.ToString());
+                        GeneralVariable.configHandler.setServerName( textBoxServerName.Text);
+                        GeneralVariable.configHandler.setDbName( textBoxDbName.Text);
+                        GeneralVariable.configHandler.setDbAdminName(textBoxDbAdminName.Text);
+                        GeneralVariable.configHandler.setDbAdminPassword( textBoxDbAdminPassword.Text);
+                        GeneralVariable.configHandler = HandlerFactory.getConfigHandler(textBoxProfileName.Text);
                         //change profile selection
-                        comboBoxProfile.DataSource = ConfigHandler.getProfileList();
+                        comboBoxProfile.DataSource = GeneralVariable.configHandler.getProfiles();
                         comboBoxProfile.SelectedIndex = profileSelectedIndex;
                     }
                     groupBoxDbConnection.Visible = !groupBoxDbConnection.Visible;
@@ -222,8 +222,16 @@ namespace JeanieMoney.Forms
 
         private void Login_Load(object sender, EventArgs e)
         {
-            List<String> profileList = ConfigHandler.getProfileList();
+            List<String> profileList = c.getProfiles();
             comboBoxProfile.DataSource = profileList;
+            if (comboBoxProfile.Text == null)
+            {
+                checkBoxNewProfile_CheckedChanged(sender, e);
+            }
+            else
+            {
+                comboBoxProfile.SelectedIndex=0;
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -238,12 +246,13 @@ namespace JeanieMoney.Forms
                 isNewProfile = false;
                 groupBoxDbConnectionShow();
                 profileSelectedIndex = comboBoxProfile.SelectedIndex;
+                GeneralVariable.configHandler = HandlerFactory.getConfigHandler(textBoxProfileName.Text);
                 textBoxProfileName.Text = comboBoxProfile.SelectedItem.ToString();
-                comboBoxDbType.SelectedValue = ConfigHandler.getDbType(textBoxProfileName.Text);
-                textBoxServerName.Text = ConfigHandler.getServerName(textBoxProfileName.Text);
-                textBoxDbName.Text = ConfigHandler.getDbName(textBoxProfileName.Text);
-                textBoxDbAdminName.Text = ConfigHandler.getDbAdminName(textBoxProfileName.Text);
-                textBoxDbAdminPassword.Text = ConfigHandler.getDbAdminPassword(textBoxProfileName.Text);
+                comboBoxDbType.SelectedValue = GeneralVariable.configHandler.getDbType();
+                textBoxServerName.Text = GeneralVariable.configHandler.getServerName();
+                textBoxDbName.Text = GeneralVariable.configHandler.getDbName();
+                textBoxDbAdminName.Text = GeneralVariable.configHandler.getDbAdminName();
+                textBoxDbAdminPassword.Text = GeneralVariable.configHandler.getDbAdminPassword();
             }
             else
             {

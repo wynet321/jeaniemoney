@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using JeanieMoney.Forms;
+using ClassLibrary.lib.Handler;
+using ClassLibrary.lib.DBImpl;
 
 namespace JeanieMoney
 {
