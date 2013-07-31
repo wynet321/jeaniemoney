@@ -7,6 +7,7 @@ namespace JeanieMoney
 {
     class Constant
     {
+        public const String PRODUCT_NAME = "JeanieMoney";
         public const String CAPTION_LABEL_NAME = "JeanieMoney/Caption/Label/Name";
         public const String CAPTION_LABEL_ABBR = "JeanieMoney/Caption/Label/Abbr";
         public const String CAPTION_LABEL_BARCODE = "JeanieMoney/Caption/Label/Barcode";
@@ -27,10 +28,6 @@ namespace JeanieMoney
         public const String CAPTION_LABEL_PRICE = "JeanieMoney/Caption/Label/Price";
         public const String CAPTION_LABEL_QUANTITY = "JeanieMoney/Caption/Label/Quantity";
         public const String CAPTION_LABEL_TOTAL = "JeanieMoney/Caption/Label/Total";
-        public const String CAPTION_LABEL_DB_OPERATOR_NAME = "JeanieMoney/Caption/Label/DbOperatorName";
-        public const String CAPTION_LABEL_DB_OPERATOR_PASSWORD = "JeanieMoney/Caption/Label/DbOperatorPassword";
-        public const String CAPTION_LABEL_DB_NAME = "JeanieMoney/Caption/Label/DbName";
-        public const String CAPTION_LABEL_DB_SERVER_HOSTNAME = "JeanieMoney/Caption/Label/DbServerHostName";
         public const String CAPTION_LABEL_PROFILE_NAME = "JeanieMoney/Caption/Label/ProfileName";
         public const String CAPTION_LABEL_DB_TYPE = "JeanieMoney/Caption/Label/DbType";
         public const String CAPTION_LABEL_USERNAME = "JeanieMoney/Caption/Label/UserName";
@@ -97,5 +94,6 @@ namespace JeanieMoney
 
         public const String SUPER_ADMIN_USER_NAME = "Jeanie";
         public const String SUPER_ADMIN_PASSWORD = "Money";
+
     }
 }
