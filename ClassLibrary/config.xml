@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <JeanieMoney>
-  <Dennis>
+  <MyProfile>
   <Database>
     <DbType>SQLSERVER</DbType>
-    <DbConnectionString>Data Source=localhost\\sqlexpress;Initial Catalog=JeanieMoneyDev;User id=sa;Password=flhs1net;</DbConnectionString>
+    <ConnectionString>Data Source=localhost\\sqlexpress;Initial Catalog=futurecentury_dev;User id=sa;Password=flhs1net;</ConnectionString>
   </Database>
   <Log>
     <LogLevel>debug</LogLevel>
-    <LogFullPath>.\money.log</LogFullPath>
+    <LogFullPath>.\FutureCentury.log</LogFullPath>
     <LogFileCount>2</LogFileCount>
     <LogFileSize>1024000</LogFileSize>
   </Log>
-  </Dennis>
+  </MyProfile>
 </JeanieMoney>

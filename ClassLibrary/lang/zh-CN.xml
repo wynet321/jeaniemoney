@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FutureCenturyCRM>
+  <Caption>
+    <Button>
+      <OK>OK</OK>
+      <Reset>Reset</Reset>
+      <Cancel>Cancel</Cancel>
+      <Close>Close</Close>
+      <Delete>Delete</Delete>
+      <Search>Search</Search>
+      <Details>Details</Details>
+      <Test>Test</Test>
+    </Button>
+    <Label>
+      <Name>Name</Name>
+      <Abbr>Abbr.</Abbr>
+      <Barcode>Barcode</Barcode>
+      <Parent>Parent</Parent>
+      <Period>Period</Period>
+      <Money>Money</Money>
+      <Date>Date</Date>
+      <Payer>Payer</Payer>
+      <Password>Password</Password>
+      <Location>Location</Location>
+      <Category>Category</Category>
+      <PaymentMode>Payment Mode</PaymentMode>
+      <Details>Details</Details>
+      <Beneficiary>Beneficiary</Beneficiary>
+      <Unit>Unit</Unit>
+      <Manufactory>Manufactory</Manufactory>
+      <AveragePrice>Average Price</AveragePrice>
+      <Price>Price</Price>
+      <Quantity>Quantity</Quantity>
+      <Total>Total</Total>
+      <Keyword>Keyword</Keyword>
+      <DbOperatorName>DB Operator Name</DbOperatorName>
+      <DbOperatorPassword>DB Operator Password</DbOperatorPassword>
+      <DbName>DB Name</DbName>
+      <DbServerHostName>DB Server Hostname</DbServerHostName>
+      <ProfileName>Profile Name</ProfileName>
+      <DbType>Type</DbType>
+      <UserName>User Name</UserName>
+    </Label>
+    <CheckBox>
+      <Modify>Mondify</Modify>
+      <New>New</New>
+    </CheckBox>
+    <GroupBox>
+      <Summary>Summary</Summary>
+    </GroupBox>
+    <Radio>
+      <Income>Income</Income>
+      <Outgoing>Outgoing</Outgoing>
+    </Radio>
+    <DataGridView>
+      <Column>
+        <Id>ID</Id>
+        <Name>Name</Name>
+        <Location>Location</Location>
+        <Payer>Payer</Payer>
+        <PaymentMode>Payment Mode</PaymentMode>
+        <Money>Money</Money>
+        <Date>Date</Date>
+      </Column>
+    </DataGridView>
+    <ListView>
+      <Column>
+        <Name>Name</Name>
+        <Unit>Unit</Unit>
+        <Manufactory>Manufactory</Manufactory>
+        <Total>Total</Total>
+        <Quantity>Quantity</Quantity>
+        <Price>Price</Price>
+        <Beneficiary>Beneficiary</Beneficiary>
+      </Column>
+    </ListView>
+    <Tab>
+      <Income>Income</Income>
+      <Outgoing>Outgoing</Outgoing>
+    </Tab>
+    <Form>
+      <Main>Jeanie Money</Main>
+      <RecordInput>Record Input</RecordInput>
+      <Beneficiary>Beneficiary Configuration</Beneficiary>
+      <Category>Category Configruation</Category>
+      <Location>Location Configuration</Location>
+      <Payer>Payer Configuration</Payer>
+      <PaymentMode>Payment Mode Configuration</PaymentMode>
+      <Product>Product Configuration</Product>
+      <Unit>Unit Configuration</Unit>
+      <Login>Login...</Login>
+    </Form>
+    <Menu>
+
+    </Menu>
+    <ToolStripMenu>
+      <New>&amp;New</New>
+      <Delete>&amp;Delete</Delete>
+    </ToolStripMenu>
+    <ToolStripButton>
+      <RecordInput>Record Input</RecordInput>
+      <Beneficiary>Beneficiary Configuration</Beneficiary>
+      <Category>Category Configruation</Category>
+      <Location>Location Configuration</Location>
+      <Payer>Payer Configuration</Payer>
+      <PaymentMode>Payment Mode Configuration</PaymentMode>
+      <Product>Product Configuration</Product>
+      <Unit>Unit Configuration</Unit>
+    </ToolStripButton>
+  </Caption>
+  <Message>
+
+  </Message>
+</FutureCenturyCRM>

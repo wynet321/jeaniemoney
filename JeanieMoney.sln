@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeanieMoney", "JeanieMoney\JeanieMoney.csproj", "{B7B90452-1CF2-46B4-BC4B-97BB917B82A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "..\SupportLibrary\ClassLibrary\ClassLibrary.csproj", "{9E48C08E-8254-47EE-8D06-89C868689A04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{9E48C08E-8254-47EE-8D06-89C868689A04}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
