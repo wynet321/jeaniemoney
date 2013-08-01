@@ -35,20 +35,14 @@ namespace ClassLibrary.lib
                 streamWriter = File.AppendText(logFullPath);
             else
                 streamWriter = File.CreateText(logFullPath);
-
         }
 
-        public LogHandler(string uri)
+        public LogHandler()
         {
             logLevel = 4;
             logFileCount = 1;
-            if (logFileCount < 0)
-            {
-                //MessageBox.Show("Log file count is invalid, only keep 1 log backup file instead.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                logFileCount = 0;
-            }
             logFileSize = 1024000;
-            logFullPath = uri;
+            logFullPath = System.Environment.CurrentDirectory + "/trace.log";
             if (File.Exists(logFullPath))
                 streamWriter = File.AppendText(logFullPath);
             else

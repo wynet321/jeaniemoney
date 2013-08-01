@@ -28,6 +28,7 @@ namespace ClassLibrary.lib.DBImpl
             catch (Exception e)
             {
                 //todo: deal with exception
+                HandlerFactory.getLogHandler().error(e.Message);
                 return false;
             }
             return true;

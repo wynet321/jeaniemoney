@@ -73,9 +73,9 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.labelBarcode.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_BARCODE);
+            this.labelBarcode.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_BARCODE);
 
-            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_PRODUCT);
+            this.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_FORM_PRODUCT);
         }
         private void init()
         {

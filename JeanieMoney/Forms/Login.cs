@@ -13,8 +13,6 @@ namespace JeanieMoney.Forms
 {
     public partial class Login : Form
     {
-        private Boolean isNewProfile;
-        private int profileSelectedIndex;
         public Login()
         {
             InitializeComponent();
@@ -30,16 +28,14 @@ namespace JeanieMoney.Forms
 
         private void setCaption()
         {
+            labelUserName.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_USERNAME);
+            labelPassword.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_PASSWORD);
+            labelProfile.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_PROFILE_NAME);
 
-            labelUserName.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_USERNAME);
-            labelPassword.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PASSWORD);
-            labelProfile.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PROFILE_NAME);
+            buttonCancel.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_BUTTON_CANCEL);
+            buttonOK.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_BUTTON_OK);
 
-            buttonCancel.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_CANCEL);
-            buttonOK.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_OK);
-
-
-            Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_LOGIN);
+            Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_FORM_LOGIN);
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -55,11 +51,12 @@ namespace JeanieMoney.Forms
                 }
 
                 //check user/password
+                DbParameter db = HandlerFactory.getDbHandler().generateDbParameter("name", textBoxUserName.Text);
                 DbParameter[] dbParameter ={
-                GeneralVariable.dbHandler.generateDbParameter("name", textBoxUserName.Text),
-                GeneralVariable.dbHandler.generateDbParameter("password", textBoxPassword.Text)
+                HandlerFactory.getDbHandler().generateDbParameter("name", textBoxUserName.Text),
+                HandlerFactory.getDbHandler().generateDbParameter("password", textBoxPassword.Text)
                                           };
-                int validUserCount = (int)GeneralVariable.dbHandler.getValue("select count(*) from payer where name=@name and password=@password", dbParameter);
+                int validUserCount = int.Parse(HandlerFactory.getDbHandler().getValue("select count(*) from payer where name=@name and password=@password", dbParameter).ToString());
                 if (validUserCount > 0)
                 {
                     this.DialogResult = DialogResult.OK;
@@ -89,24 +86,9 @@ namespace JeanieMoney.Forms
             throw new NotImplementedException();
         }
 
- 
-        private void buttonModifyProfile_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void groupBoxDbConnectionShow()
-        {
-            this.Width = 512;
-            buttonOK.Left = 145;
-            buttonCancel.Left = 277;
-
-        }
-
-       
-
         private void Login_Load(object sender, EventArgs e)
         {
-            List<String> profileList = GeneralVariable.configHandler.getElementListByNodePath(Constant.PRODUCT_NAME);
+            List<String> profileList = HandlerFactory.getConfigHandler().getRootElementList();
             comboBoxProfile.DataSource = profileList;
             if (comboBoxProfile.Text != null)
             {
@@ -121,9 +103,9 @@ namespace JeanieMoney.Forms
 
         private void comboBoxProfile_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string dbType = GeneralVariable.configHandler.getValue(Constant.PRODUCT_NAME +"/"+comboBoxProfile.Items[comboBoxProfile.SelectedIndex].ToString()+ "/Database/DbType");
-            string dbConnectionString = GeneralVariable.configHandler.getValue(Constant.PRODUCT_NAME + "/" + comboBoxProfile.Items[comboBoxProfile.SelectedIndex].ToString() + "/Database/DbConnectionString");
-            GeneralVariable.dbHandler = HandlerFactory.getDbHandler(dbType, dbConnectionString);
+            string dbType = HandlerFactory.getConfigHandler().getValue( comboBoxProfile.Items[comboBoxProfile.SelectedIndex].ToString() + "/Database/DbType");
+            string dbConnectionString = HandlerFactory.getConfigHandler().getValue( comboBoxProfile.Items[comboBoxProfile.SelectedIndex].ToString() + "/Database/DbConnectionString");
+            
         }
 
       

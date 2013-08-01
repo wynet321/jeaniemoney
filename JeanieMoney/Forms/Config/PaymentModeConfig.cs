@@ -46,7 +46,9 @@ namespace JeanieMoney.Forms.Config
                 listBox.DataSource = null;
                 return;
             }
-            paymentModeList = paymentModeAction.retrievePaymentModeListByAbbr(textBoxKeyword.Text);
+            PaymentMode paymentMode = new PaymentMode();
+            paymentMode.Abbr = textBoxKeyword.Text;
+            paymentModeList = paymentModeAction.retrieveList(paymentMode);
             listBox.DisplayMember = "Name";
             listBox.ValueMember = "Id";
             listBox.DataSource = paymentModeList;
@@ -69,7 +71,7 @@ namespace JeanieMoney.Forms.Config
         }
         private void setCaption()
         {
-            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_PAYMENTMODE);
+            this.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_FORM_PAYMENTMODE);
         }
         private void init()
         {
@@ -82,7 +84,9 @@ namespace JeanieMoney.Forms.Config
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (!paymentModeAction.delete(paymentModeList.ElementAt(listBox.SelectedIndex).Id))
+            PaymentMode paymentMode = new PaymentMode();
+            paymentMode.Id = paymentModeList.ElementAt(listBox.SelectedIndex).Id;
+            if (!paymentModeAction.delete(paymentMode))
             {
                 MessageBox.Show("delete failed");
                 return;

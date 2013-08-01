@@ -22,7 +22,7 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_LOCATION);
+            this.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_FORM_LOCATION);
         }
         public LocationConfig(string abbr)
         {

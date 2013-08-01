@@ -40,23 +40,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="lib\ConfigHandler.cs" />
+    <Compile Include="lib\Handler\ConfigHandler.cs" />
     <Compile Include="lib\DBImpl\CSqlServerImpl.cs" />
     <Compile Include="lib\HandlerFactory.cs" />
     <Compile Include="lib\Handler\IDbHandler.cs" />
-    <Compile Include="lib\LogHandler.cs" />
-    <Compile Include="lib\XmlHandler.cs" />
+    <Compile Include="lib\Handler\LanguageHandler.cs" />
+    <Compile Include="lib\Handler\LogHandler.cs" />
+    <Compile Include="lib\Handler\XmlHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="config.xml">
+    <Content Include="lib\Template\config.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="lang\en-US.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="lang\zh-CN.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\Template\Lang\en-US.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\Template\Lang\zh-CN.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup />

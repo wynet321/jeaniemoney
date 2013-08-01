@@ -10,139 +10,109 @@ namespace ClassLibrary.lib
 {
     public class HandlerFactory
     {
-        public static Dictionary<String, String> dbType;
+
         static HandlerFactory()
         {
-            dbType = new Dictionary<string, string>();
-            dbType.Add("DB2", "DB2");
-            dbType.Add("SQLSERVER", "SQLSERVER");
-            dbType.Add("SQLITE", "SQLITE");
+            configHandler = getConfigHandler();
         }
         //DB Handler
         private static IDbHandler dbHandler;
-        public static IDbHandler getDbHandler(string dbType, string connectionString)
+        public static IDbHandler getDbHandler()
         {
             if (dbHandler == null)
             {
-                //string dbType=getConfigHandler().getDbType();
-                switch (dbType)
+                try
                 {
-                    case "SQLSERVER":
-                        try
-                        {
+                    string dbType = getConfigHandler().getDbType();
+                    string connectionString = getConfigHandler().getDbConnectionString();
+                    switch (dbType)
+                    {
+                        case "SQLSERVER":
                             dbHandler = new CSqlServerImpl(connectionString);
-                        }
-                        catch (Exception e)
-                        {
-                            getLogHandler().error("can't open db connection");
-                            throw e;
-                        }
-                        break;
-                    case "DB2": break;
+                            break;
+                        case "DB2": break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    getLogHandler().error(e.Message);
                 }
             }
             return dbHandler;
         }
 
-        //public static IDbHandler getDbHandler()
-        //{
-        //    if (dbHandler == null)
-        //    {
-        //        string dbType=getConfigHandler().getValue("")
-        //        switch (dbType)
-        //        {
-        //            case "SQLSERVER":
-        //                try
-        //                {
-        //                    dbHandler = new CSqlServerImpl(connectionString);
-        //                }
-        //                catch (Exception e)
-        //                {
-        //                    getLogHandler().error("can't open db connection");
-        //                    throw e;
-        //                }
-        //                break;
-        //            case "DB2": break;
-        //        }
-        //    }
-        //    return dbHandler;
-        //}
-
         //Configuration XML Handler
-        private static XmlHandler configHandler;
-        public static XmlHandler getConfigHandler(string uri)
+        private static ConfigHandler configHandler;
+        public static ConfigHandler getConfigHandler()
         {
             if (configHandler == null)
             {
                 try
                 {
-                    configHandler = new XmlHandler(uri);
+                    configHandler = new ConfigHandler();
                 }
                 catch (Exception e)
                 {
-                    getLogHandler().error("Can't open config file");
-                    throw e;
-                }
-            }
-            return configHandler;
-        }
-
-
-
-        public static XmlHandler getConfigHandler()
-        {
-            if (configHandler == null)
-            {
-                try
-                {
-                    configHandler = new ConfigHandler(System.Environment.CurrentDirectory + "/" + "config.xml");
-                }
-                catch (Exception e)
-                {
-                    getLogHandler().error("Can't open config file");
-                    throw e;
+                    getLogHandler().error(e.Message);
                 }
             }
             return configHandler;
         }
 
         //Language XML Handler
-        private static XmlHandler g18nHandler;
-        public static XmlHandler getG18NHandler()
+        //private static XmlHandler g18nHandler;
+        //public static XmlHandler getG18NHandler()
+        //{
+        //    if (g18nHandler == null)
+        //    {
+        //        try
+        //        {
+        //            g18nHandler = new XmlHandler(System.Environment.CurrentDirectory + "/lang/" + CultureInfo.CurrentCulture.Name + ".xml");
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            getLogHandler().error("Can't open X18N file");
+        //            throw e;
+        //        }
+        //    }
+        //    return g18nHandler;
+        //}
+
+        private static LanguageHandler languageHandler;
+        public static LanguageHandler getLanguageHandler()
         {
-            if (g18nHandler == null)
+            if (languageHandler == null)
             {
                 try
                 {
-                    g18nHandler = new XmlHandler(System.Environment.CurrentDirectory + "/lang/" + CultureInfo.CurrentCulture.Name + ".xml");
+                    languageHandler = new LanguageHandler();
                 }
                 catch (Exception e)
                 {
-                    getLogHandler().error("Can't open X18N file");
-                    throw e;
+                    getLogHandler().error(e.Message);
                 }
             }
-            return g18nHandler;
+            return languageHandler;
         }
 
         //Log Handler
         private static LogHandler logHandler;
-        public static LogHandler getLogHandler(string logLevelString, short logFileCount, int logFileSize, string logFullPath)
+        public static LogHandler getLogHandler()
         {
-            if (configHandler == null)
-                logHandler = new LogHandler(System.Environment.CurrentDirectory + "/money.log");
-            else
+            if (logHandler == null)
             {
-                if (logHandler == null)
+                try
                 {
-                    try
-                    {
-                        logHandler = new LogHandler(logLevelString, logFileCount, logFileSize, logFullPath);
-                    }
-                    catch (Exception e)
-                    {
-                        throw e;
-                    }
+                    string logLevelString = getConfigHandler().getLogLevel();
+                    short logFileCount = getConfigHandler().getLogFileCount();
+                    int logFileSize = getConfigHandler().getLogFileSize();
+                    string logFullPath = getConfigHandler().getLogFullPath();
+                    logHandler = new LogHandler(logLevelString, logFileCount, logFileSize, logFullPath);
+                }
+                catch (Exception e)
+                {
+                    logHandler = new LogHandler();
+                    logHandler.error(e.Message);
                 }
             }
             return logHandler;

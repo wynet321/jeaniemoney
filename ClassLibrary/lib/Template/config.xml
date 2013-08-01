@@ -6,7 +6,7 @@
   </Database>
   <Log>
     <LogLevel>debug</LogLevel>
-    <LogFullPath>.\JeanieMoney.log</LogFullPath>
+    <LogFullPath>.\money.log</LogFullPath>
     <LogFileCount>2</LogFileCount>
     <LogFileSize>1024000</LogFileSize>
   </Log>
