@@ -35,7 +35,7 @@ namespace JeanieMoney.Forms.Config
         }
         private void setCaption()
         {
-            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_BENEFICIARY);
+            this.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_FORM_BENEFICIARY);
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {

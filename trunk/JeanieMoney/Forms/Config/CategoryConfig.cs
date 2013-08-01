@@ -46,33 +46,35 @@ namespace JeanieMoney.Forms.Config
         {
             setCaption();
             categoryAction = new CategoryAction();
-
-            categoryListIncome = categoryAction.retrieveList(true);
+            Category category = new Category();
+            category.IncomeOrOutgoing = Category.INCOME;
+            categoryListIncome = categoryAction.retrieveList(category);
             buildupCategoryTreeView(treeViewIncome, categoryListIncome);
-            categoryListOutgoing = categoryAction.retrieveList(false);
+            category.IncomeOrOutgoing = Category.OUTGOING;
+            categoryListOutgoing = categoryAction.retrieveList(category);
             buildupCategoryTreeView(treeViewOutgoing, categoryListOutgoing);
         }
 
         private void setCaption()
         {
-            tabPageIncome.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TAB_INCOME);
-            tabPageOutgoing.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TAB_OUTGOING);
+            tabPageIncome.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TAB_INCOME);
+            tabPageOutgoing.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TAB_OUTGOING);
 
-            labelIncomeAbbr.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_ABBR);
-            labelIncomeName.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_NAME);
+            labelIncomeAbbr.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_ABBR);
+            labelIncomeName.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_NAME);
             labelOutgoingAbbr.Text = this.labelIncomeAbbr.Text;
             labelOutgoingName.Text = this.labelIncomeName.Text;
 
-            buttonIncomeCancel.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_CANCEL);
-            buttonIncomeOK.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_OK);
+            buttonIncomeCancel.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_BUTTON_CANCEL);
+            buttonIncomeOK.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_BUTTON_OK);
             buttonOutgoingCancel.Text = buttonIncomeCancel.Text;
             buttonOutgoingOK.Text = buttonIncomeOK.Text;
-            buttonClose.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_CLOSE);
+            buttonClose.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_BUTTON_CLOSE);
 
-            toolStripMenuItemNew.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPMENU_NEW);
-            toolStripMenuItemDelete.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPMENU_DELETE);
+            toolStripMenuItemNew.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TOOLSTRIPMENU_NEW);
+            toolStripMenuItemDelete.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TOOLSTRIPMENU_DELETE);
 
-            Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_CATEGORY);
+            Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_FORM_CATEGORY);
         }
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {

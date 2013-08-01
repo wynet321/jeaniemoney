@@ -72,9 +72,9 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            this.labelPassword.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PASSWORD);
+            this.labelPassword.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_PASSWORD);
 
-            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_PAYER);
+            this.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_FORM_PAYER);
         }
         private void init()
         {

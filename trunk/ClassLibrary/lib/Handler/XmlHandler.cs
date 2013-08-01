@@ -23,6 +23,10 @@ namespace ClassLibrary.lib
             xmlDocument.Load(uri);
             xPathNavigator = new XPathDocument(uri).CreateNavigator();
         }
+        public XmlHandler()
+        {
+
+        }
 
         //Get XML node value from xml string
         public String getValue(String nodePath)
@@ -59,14 +63,27 @@ namespace ClassLibrary.lib
         }
         public List<String> getElementListByNodePath(String nodePath)
         {
-            xPathNavigator.MoveToRoot();
-            XPathNodeIterator node = xPathNavigator.SelectSingleNode(nodePath).SelectChildren(XPathNodeType.Element);
             List<String> elementList = new List<String>();
+            if (nodePath == null)
+            {
+                HandlerFactory.getLogHandler().warn("Return empty list");
+                return elementList;
+            }
+            XPathNodeIterator node;
+            xPathNavigator.MoveToRoot();
+            if (nodePath.Length == 0)
+                node = xPathNavigator.SelectChildren(XPathNodeType.Element);
+            else
+                node = xPathNavigator.SelectSingleNode(nodePath).SelectChildren(XPathNodeType.Element);
             while (node.MoveNext())
             {
                 elementList.Add(node.Current.Name);
             }
             return elementList;
+        }
+        public List<String> getRootElementList()
+        {
+            return getElementListByNodePath("");
         }
         public int getElementCountByNodePath(String nodePath)
         {

@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using JeanieMoney.Forms.Config;
 using ClassLibrary.lib;
+using System.Data.Common;
 
 namespace JeanieMoney.Forms
 {
@@ -20,30 +21,30 @@ namespace JeanieMoney.Forms
         }
         private void setCaption()
         {
-            dataGridViewJournalRecord.Columns["id"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_ID);
-            dataGridViewJournalRecord.Columns["name"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_NAME);
-            dataGridViewJournalRecord.Columns["location_name"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_LOCATION);
-            dataGridViewJournalRecord.Columns["payer_name"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYER);
-            dataGridViewJournalRecord.Columns["payment_mode_name"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYMENTMODE);
-            dataGridViewJournalRecord.Columns["money"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_MONEY);
-            dataGridViewJournalRecord.Columns["date"].HeaderText = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_DATAGRIDVIEW_COLUME_DATE);
+            dataGridViewJournalRecord.Columns["id"].HeaderText = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_DATAGRIDVIEW_COLUME_ID);
+            dataGridViewJournalRecord.Columns["name"].HeaderText = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_DATAGRIDVIEW_COLUME_NAME);
+            dataGridViewJournalRecord.Columns["location_name"].HeaderText = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_DATAGRIDVIEW_COLUME_LOCATION);
+            dataGridViewJournalRecord.Columns["payer_name"].HeaderText = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYER);
+            dataGridViewJournalRecord.Columns["payment_mode_name"].HeaderText = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_DATAGRIDVIEW_COLUME_PAYMENTMODE);
+            dataGridViewJournalRecord.Columns["money"].HeaderText = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_DATAGRIDVIEW_COLUME_MONEY);
+            dataGridViewJournalRecord.Columns["date"].HeaderText = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_DATAGRIDVIEW_COLUME_DATE);
 
-            toolStripButtonRecordInput.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_RECORDINPUT);
-            toolStripButtonBeneficiary.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_BENEFICIARY);
-            toolStripButtonCategory.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_CATEGORY);
-            toolStripButtonLocation.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_LOCATION);
-            toolStripButtonPayer.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PAYER);
-            toolStripButtonPaymentMode.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PAYMENTMODE);
-            toolStripButtonProduct.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_PRODUCT);
-            toolStripButtonUnit.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_TOOLSTRIPBUTTON_UNIT);
+            toolStripButtonRecordInput.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TOOLSTRIPBUTTON_RECORDINPUT);
+            toolStripButtonBeneficiary.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TOOLSTRIPBUTTON_BENEFICIARY);
+            toolStripButtonCategory.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TOOLSTRIPBUTTON_CATEGORY);
+            toolStripButtonLocation.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TOOLSTRIPBUTTON_LOCATION);
+            toolStripButtonPayer.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TOOLSTRIPBUTTON_PAYER);
+            toolStripButtonPaymentMode.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TOOLSTRIPBUTTON_PAYMENTMODE);
+            toolStripButtonProduct.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TOOLSTRIPBUTTON_PRODUCT);
+            toolStripButtonUnit.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_TOOLSTRIPBUTTON_UNIT);
 
-            this.lablePeriod.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_LABEL_PERIOD);
-            this.buttonSearch.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_BUTTON_SEARCH);
-            Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_MAIN);
+            this.lablePeriod.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_PERIOD);
+            this.buttonSearch.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_BUTTON_SEARCH);
+            Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_FORM_MAIN);
         }
         private void Main_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void toolStripButtonRecordInput_Click(object sender, EventArgs e)
@@ -95,7 +96,11 @@ namespace JeanieMoney.Forms
         }
         private void refreshDataGridView()
         {
-            DataTable dt = HandlerFactory.getDbHandler().getDataTable("select * from journal_record where date between '" + dateTimePickerStart.Value.ToShortDateString() + "' and '" + dateTimePickerEnd.Value.ToShortDateString() + "'");
+            DbParameter[] dbParameter ={
+                HandlerFactory.getDbHandler().generateDbParameter("dateStart", dateTimePickerStart.Value.ToShortDateString()),
+                HandlerFactory.getDbHandler().generateDbParameter("dateEnd",  dateTimePickerEnd.Value.ToShortDateString())
+                                          };
+            DataTable dt = HandlerFactory.getDbHandler().getDataTable("select * from journal_record where date between @dateStart and @dateEnd", dbParameter);
             dataGridViewJournalRecord.DataSource = dt;
         }
 

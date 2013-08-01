@@ -72,7 +72,7 @@ namespace JeanieMoney.Forms.Config
         private void setCaption()
         {
 
-            this.Text = HandlerFactory.getG18NHandler().getValue(Constant.CAPTION_FORM_UNIT);
+            this.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_FORM_UNIT);
         }
 
         private void init()

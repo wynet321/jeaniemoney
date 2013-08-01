@@ -10,8 +10,6 @@ namespace JeanieMoney
 {
     class GeneralVariable
     {
-        public static string configUri = System.Environment.CurrentDirectory + "/" + "config.xml";
-        public static XmlHandler configHandler = HandlerFactory.getConfigHandler(configUri);
-        public static IDbHandler dbHandler;
+
     }
 }
