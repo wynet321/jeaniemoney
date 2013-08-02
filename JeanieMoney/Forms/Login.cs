@@ -49,9 +49,7 @@ namespace JeanieMoney.Forms
                     this.DialogResult = DialogResult.OK;
                     return;
                 }
-
                 //check user/password
-                DbParameter db = HandlerFactory.getDbHandler().generateDbParameter("name", textBoxUserName.Text);
                 DbParameter[] dbParameter ={
                 HandlerFactory.getDbHandler().generateDbParameter("name", textBoxUserName.Text),
                 HandlerFactory.getDbHandler().generateDbParameter("password", textBoxPassword.Text)
@@ -92,7 +90,7 @@ namespace JeanieMoney.Forms
             comboBoxProfile.DataSource = profileList;
             if (comboBoxProfile.Text != null)
             {
-                comboBoxProfile.SelectedIndex=0;
+                comboBoxProfile.SelectedIndex = 0;
             }
         }
 
@@ -103,11 +101,11 @@ namespace JeanieMoney.Forms
 
         private void comboBoxProfile_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string dbType = HandlerFactory.getConfigHandler().getValue( comboBoxProfile.Items[comboBoxProfile.SelectedIndex].ToString() + "/Database/DbType");
-            string dbConnectionString = HandlerFactory.getConfigHandler().getValue( comboBoxProfile.Items[comboBoxProfile.SelectedIndex].ToString() + "/Database/DbConnectionString");
-            
+            //string dbType = HandlerFactory.getConfigHandler().getValue( comboBoxProfile.Items[comboBoxProfile.SelectedIndex].ToString() + "/Database/DbType");
+            //string dbConnectionString = HandlerFactory.getConfigHandler().getValue( comboBoxProfile.Items[comboBoxProfile.SelectedIndex].ToString() + "/Database/DbConnectionString");
+
         }
 
-      
+
     }
 }

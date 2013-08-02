@@ -14,27 +14,27 @@ namespace ClassLibrary.lib
         }
         public string getDbConnectionString()
         {
-            return getValue("Configuration/Database/Connectionstring");
+            return getValue("Configuration/Database/ConnectionString");
         }
         public string getDbType()
         {
-            return getValue("Configuration/Database/DbType");
+            return getValue("Configuration/Database/Type");
         }
         public string getLogLevel()
         {
-            return getValue("Configuration/Log/LogLevel");
+            return getValue("Configuration/Log/Level");
         }
         public string getLogFullPath()
         {
-            return getValue("Configuration/Log/LogFullPath");
+            return getValue("Configuration/Log/FileName");
         }
         public int getLogFileSize()
         {
-            return int.Parse(getValue("Configuration/Log/LogFileSize"));
+            return int.Parse(getValue("Configuration/Log/FileSize"));
         }
         public short getLogFileCount()
         {
-            return short.Parse(getValue("Configuration/Log/LogFileCount"));
+            return short.Parse(getValue("Configuration/Log/FileCount"));
         }
     }
 }

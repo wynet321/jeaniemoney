@@ -10,7 +10,7 @@ namespace ClassLibrary.lib.Handler
 {
     public interface IDbHandler
     {
-        DbConnection getConnection();
+        //DbConnection getConnection();
         bool isValid();
         DbCommand generateDbCommand(string command, DbParameter[] parameters);
         DbParameter generateDbParameter(string parameterName, object value, string objectClassName="string", ParameterDirection parameterDirection = ParameterDirection.Input);

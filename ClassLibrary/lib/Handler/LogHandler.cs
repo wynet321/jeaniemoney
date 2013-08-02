@@ -15,6 +15,16 @@ namespace ClassLibrary.lib
         StreamWriter streamWriter;
         public LogHandler(string logLevelString, short logFileCount,int logFileSize, string logFullPath)
         {
+            this.logFullPath = logFullPath;
+            this.logFileSize = logFileSize;
+            logFileCount -= 1;
+            if (logFileCount < 0)
+            {
+                //MessageBox.Show("Log file count is invalid, only keep 1 log backup file instead.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                logFileCount = 0;
+            }
+            this.logFileCount = logFileCount;
+
             switch (logLevelString.ToUpper())
             {
                 case "DEBUG": logLevel = 4; break;
@@ -23,12 +33,6 @@ namespace ClassLibrary.lib
                 case "ERROR": logLevel = 1; break;
                 default: //exception on log level and output
                     logLevel = 1; break;
-            }
-            logFileCount -= 1;
-            if (logFileCount < 0)
-            {
-                //MessageBox.Show("Log file count is invalid, only keep 1 log backup file instead.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                logFileCount = 0;
             }
             
             if (File.Exists(logFullPath))

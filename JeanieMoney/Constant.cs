@@ -31,6 +31,9 @@ namespace JeanieMoney
         public const String CAPTION_LABEL_DB_TYPE = "Label/DbType";
         public const String CAPTION_LABEL_USERNAME = "Label/UserName";
         public const String CAPTION_LABEL_KEYWORD = "Label/Keyword";
+        public const string CAPTION_LABEL_OUTGOING = "Label/Outgoing";
+        public const string CAPTION_LABEL_INCOME = "Label/Income";
+        
 
         public const String CAPTION_CHECKBOX_MODIFY = "CheckBox/Modify";
         public const String CAPTION_CHECKBOX_NEW = "CheckBox/New";
@@ -55,7 +58,7 @@ namespace JeanieMoney
         public const String CAPTION_LISTVIEW_COLUME_TOTAL = "ListView/Column/Total";
         public const String CAPTION_LISTVIEW_COLUME_QUANTITY = "ListView/Column/Quantity";
         public const String CAPTION_LISTVIEW_COLUME_PRICE = "ListView/Column/Price";
-        public const String CAPTION_LISTVIEW_COLUME_BENEFICIARY = "ListView/Column/beneficiary";
+        public const String CAPTION_LISTVIEW_COLUME_BENEFICIARY = "ListView/Column/Beneficiary";
 
         public const String CAPTION_DATAGRIDVIEW_COLUME_ID = "DataGridView/Column/Id";
         public const String CAPTION_DATAGRIDVIEW_COLUME_NAME = "DataGridView/Column/Name";
