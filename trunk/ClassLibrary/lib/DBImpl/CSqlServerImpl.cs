@@ -34,11 +34,6 @@ namespace ClassLibrary.lib.DBImpl
             return true;
         }
 
-        //public DbConnection getConnection()
-        //{
-        //    return sqlConnection;
-        //}
-
         public DbCommand generateDbCommand(string command, DbParameter[] parameters)
         {
             SqlCommand sqlCommand = (SqlCommand)sqlConnection.CreateCommand();
@@ -53,30 +48,26 @@ namespace ClassLibrary.lib.DBImpl
 
         public int execCommand(string command, DbParameter[] parameters)
         {
-
             SqlCommand dbCommand = (SqlCommand)generateDbCommand(command, parameters);
-
             int affectedRows = 0;
-            sqlConnection.Open();
-            try
+            using (sqlConnection)
             {
-                affectedRows = dbCommand.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                string parameter = "";
-                foreach (DbParameter param in parameters)
+                sqlConnection.Open();
+                try
                 {
-                    parameter += param.Value.ToString();
+                    affectedRows = dbCommand.ExecuteNonQuery();
                 }
-                HandlerFactory.getLogHandler().error("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace);
-                throw e;
+                catch (Exception e)
+                {
+                    string parameter = "";
+                    foreach (DbParameter param in parameters)
+                    {
+                        parameter += param.Value.ToString();
+                    }
+                    HandlerFactory.getLogHandler().error("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace);
+                    throw e;
+                }
             }
-            finally
-            {
-                sqlConnection.Close();
-            }
-
             return affectedRows;
         }
 
@@ -107,26 +98,24 @@ namespace ClassLibrary.lib.DBImpl
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = (SqlCommand)generateDbCommand(command, parameters);
             DataTable dataTable = new DataTable();
-            sqlConnection.Open();
-            try
+            using (sqlConnection)
             {
-                sqlDataAdapter.Fill(dataTable);
-            }
-            catch (Exception e)
-            {
-                string parameter = "";
-                foreach (DbParameter param in parameters)
+                sqlConnection.Open();
+                try
                 {
-                    parameter += param.Value.ToString();
+                    sqlDataAdapter.Fill(dataTable);
                 }
-                HandlerFactory.getLogHandler().error("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace);
-                throw e;
+                catch (Exception e)
+                {
+                    string parameter = "";
+                    foreach (DbParameter param in parameters)
+                    {
+                        parameter += param.Value.ToString();
+                    }
+                    HandlerFactory.getLogHandler().error("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace);
+                    throw e;
+                }
             }
-            finally
-            {
-                sqlConnection.Close();
-            }
-
             return dataTable;
         }
 
@@ -134,24 +123,23 @@ namespace ClassLibrary.lib.DBImpl
         {
             SqlCommand sqlCommand = (SqlCommand)generateDbCommand(command, parameters);
             object result = new object();
-            sqlConnection.Open();
-            try
+            using (sqlConnection)
             {
-                result = sqlCommand.ExecuteScalar();
-            }
-            catch (Exception e)
-            {
-                string parameter = "";
-                foreach (DbParameter param in parameters)
+                sqlConnection.Open();
+                try
                 {
-                    parameter += param.Value.ToString() + ",";
+                    result = sqlCommand.ExecuteScalar();
                 }
-                HandlerFactory.getLogHandler().error("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace);
-                throw e;
-            }
-            finally
-            {
-                sqlConnection.Close();
+                catch (Exception e)
+                {
+                    string parameter = "";
+                    foreach (DbParameter param in parameters)
+                    {
+                        parameter += param.Value.ToString() + ",";
+                    }
+                    HandlerFactory.getLogHandler().error("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace);
+                    throw e;
+                }
             }
             return result;
         }
@@ -161,53 +149,52 @@ namespace ClassLibrary.lib.DBImpl
             SqlTransaction sqlTranx;
             SqlCommand currentCommand = new SqlCommand(); ;
             int affectedRows = 0;
-            sqlConnection.Open();
-            //sqlCommand = (SqlCommand)getConnection().CreateCommand();
-            sqlTranx = (SqlTransaction)sqlConnection.BeginTransaction();
-            //sqlCommand.Transaction = sqlTranx;
-
-            try
+            using (sqlConnection)
             {
-                for (int i = 0; i < commandList.Count; i++)
-                {
-                    currentCommand = commandList[i];
-                    currentCommand.Transaction = sqlTranx;
-                    currentCommand.Parameters.AddRange(parametersList[i]);
-                    affectedRows += currentCommand.ExecuteNonQuery();
-                }
-                sqlTranx.Commit();
-            }
-            catch (Exception e)
-            {
-                //log the exception command
-                string parameters = "{";
-                foreach (DbParameter dbParameter in currentCommand.Parameters)
-                    parameters += dbParameter.Value + ",";
-                if (parameters.EndsWith(","))
-                    parameters = parameters.Remove(parameters.Length - 2);
-                parameters += "}\n";
-                HandlerFactory.getLogHandler().error("Fail to run command: " + currentCommand.CommandText + ", parameter: {1}" + currentCommand.Parameters + "\n" + e.StackTrace);
+                //sqlCommand = (SqlCommand)getConnection().CreateCommand();
+                sqlTranx = (SqlTransaction)sqlConnection.BeginTransaction();
+                //sqlCommand.Transaction = sqlTranx;
 
-                //log the whole transaction commands
-                string commands = "";
-                for (int i = 0; i < commandList.Count; i++)
+                try
                 {
-                    commands += commandList[i] + "{";
-                    foreach (DbParameter dbParameter in parametersList[i])
+                    for (int i = 0; i < commandList.Count; i++)
                     {
-                        commands += dbParameter.Value + ",";
+                        currentCommand = commandList[i];
+                        currentCommand.Transaction = sqlTranx;
+                        currentCommand.Parameters.AddRange(parametersList[i]);
+                        affectedRows += currentCommand.ExecuteNonQuery();
                     }
-                    if (commands.EndsWith(","))
-                        commands = commands.Remove(commands.Length - 2);
-                    commands += "}\n";
+                    sqlTranx.Commit();
                 }
-                HandlerFactory.getLogHandler().debug("Transaction commands and parameters: " + commands);
-                sqlTranx.Rollback();
-                throw e;
-            }
-            finally
-            {
-                sqlConnection.Close();
+                catch (Exception e)
+                {
+                    //log the exception command
+                    string parameters = "{";
+                    foreach (DbParameter dbParameter in currentCommand.Parameters)
+                        parameters += dbParameter.Value + ",";
+                    if (parameters.EndsWith(","))
+                        parameters = parameters.Remove(parameters.Length - 2);
+                    parameters += "}\n";
+                    HandlerFactory.getLogHandler().error("Fail to run command: " + currentCommand.CommandText + ", parameter: {1}" + currentCommand.Parameters + "\n" + e.StackTrace);
+
+                    //log the whole transaction commands
+                    string commands = "";
+                    for (int i = 0; i < commandList.Count; i++)
+                    {
+                        commands += commandList[i] + "{";
+                        foreach (DbParameter dbParameter in parametersList[i])
+                        {
+                            commands += dbParameter.Value + ",";
+                        }
+                        if (commands.EndsWith(","))
+                            commands = commands.Remove(commands.Length - 2);
+                        commands += "}\n";
+                    }
+                    HandlerFactory.getLogHandler().debug("Transaction commands and parameters: " + commands);
+                    sqlTranx.Rollback();
+                    throw e;
+                }
+
             }
             return affectedRows;
         }
