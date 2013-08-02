@@ -138,7 +138,7 @@ namespace JeanieMoney.Forms
         }
         private void groupBoxSummaryInit()
         {
-            labelSummaryInOutResult.Text = HandlerFactory.getLanguageHandler().getCaption("JeanieMoney/Caption/Radio/Outgoing");
+            labelSummaryInOutResult.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_OUTGOING);
             labelSummaryMoneyResult.Text = String.Empty;
             labelSummaryDateResult.Text = DateTime.Now.ToLongDateString();
             labelSummaryCategoryResult.Text = String.Empty;
@@ -146,13 +146,13 @@ namespace JeanieMoney.Forms
             labelSummaryPayerResult.Text = String.Empty;
             labelSummaryPaymentModeResult.Text = String.Empty;
             listViewSummaryDetails.Clear();
-            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption("JeanieMoney/Caption/ListView/Column/Name"));
-            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption("JeanieMoney/Caption/ListView/Column/Unit"));
-            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption("JeanieMoney/Caption/ListView/Column/Manufactory"));
-            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption("JeanieMoney/Caption/ListView/Column/Beneficiary"));
-            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption("JeanieMoney/Caption/ListView/Column/Total"));
-            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption("JeanieMoney/Caption/ListView/Column/Price"));
-            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption("JeanieMoney/Caption/ListView/Column/Quantity"));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LISTVIEW_COLUME_NAME));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LISTVIEW_COLUME_UNIT));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LISTVIEW_COLUME_MANUFACTORY));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LISTVIEW_COLUME_BENEFICIARY));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LISTVIEW_COLUME_TOTAL));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LISTVIEW_COLUME_PRICE));
+            listViewSummaryDetails.Columns.Add(HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LISTVIEW_COLUME_QUANTITY));
         }
         private void textBoxMoney_Leave(object sender, EventArgs e)
         {
@@ -208,9 +208,9 @@ namespace JeanieMoney.Forms
         private void radioButtonOut_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonOutgoing.Checked)
-                labelSummaryInOutResult.Text = HandlerFactory.getLanguageHandler().getCaption("JeanieMoney/Caption/Radio/Outgoing");
+                labelSummaryInOutResult.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_OUTGOING);
             else
-                labelSummaryInOutResult.Text = HandlerFactory.getLanguageHandler().getCaption("JeanieMoney/Caption/Radio/Income");
+                labelSummaryInOutResult.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_INCOME);
         }
 
         private void checkBoxDetails_CheckedChanged(object sender, EventArgs e)

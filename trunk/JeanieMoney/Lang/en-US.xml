@@ -40,6 +40,8 @@
       <ProfileName>Profile Name</ProfileName>
       <DbType>Type</DbType>
       <UserName>User Name</UserName>
+      <Outgoing>Outgoing</Outgoing>
+      <Income>Income</Income>
     </Label>
     <CheckBox>
       <Modify>Mondify</Modify>

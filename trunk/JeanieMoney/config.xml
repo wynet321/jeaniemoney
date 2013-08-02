@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuration>
   <Database>
-    <DbType>SQLSERVER</DbType>
-    <DbConnectionString>Data Source=localhost\\sqlexpress;Initial Catalog=JeanieMoneyDev;User id=sa;Password=flhs1net;</DbConnectionString>
+    <Type>SQLSERVER</Type>
+    <ConnectionString>Data Source=localhost\sqlexpress;Initial Catalog=JeanieMoneyDev;User id=sa;Password=flhs1net;</ConnectionString>
   </Database>
   <Log>
-    <LogLevel>debug</LogLevel>
-    <LogFullPath>.\JeanieMoney.log</LogFullPath>
-    <LogFileCount>2</LogFileCount>
-    <LogFileSize>1024000</LogFileSize>
+    <Level>debug</Level>
+    <FileName>.\JeanieMoney.log</FileName>
+    <FileCount>2</FileCount>
+    <FileSize>1024000</FileSize>
   </Log>
 </Configuration>

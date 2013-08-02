@@ -34,14 +34,14 @@ namespace ClassLibrary.lib.DBImpl
             return true;
         }
 
-        public DbConnection getConnection()
-        {
-            return sqlConnection;
-        }
+        //public DbConnection getConnection()
+        //{
+        //    return sqlConnection;
+        //}
 
         public DbCommand generateDbCommand(string command, DbParameter[] parameters)
         {
-            SqlCommand sqlCommand = (SqlCommand)getConnection().CreateCommand();
+            SqlCommand sqlCommand = (SqlCommand)sqlConnection.CreateCommand();
             sqlCommand.CommandText = command;
             sqlCommand.CommandType = CommandType.Text;
             if (parameters != null && parameters.Length > 0)
@@ -57,7 +57,7 @@ namespace ClassLibrary.lib.DBImpl
             SqlCommand dbCommand = (SqlCommand)generateDbCommand(command, parameters);
 
             int affectedRows = 0;
-            getConnection().Open();
+            sqlConnection.Open();
             try
             {
                 affectedRows = dbCommand.ExecuteNonQuery();
@@ -74,7 +74,7 @@ namespace ClassLibrary.lib.DBImpl
             }
             finally
             {
-                getConnection().Close();
+                sqlConnection.Close();
             }
 
             return affectedRows;
@@ -107,7 +107,7 @@ namespace ClassLibrary.lib.DBImpl
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = (SqlCommand)generateDbCommand(command, parameters);
             DataTable dataTable = new DataTable();
-
+            sqlConnection.Open();
             try
             {
                 sqlDataAdapter.Fill(dataTable);
@@ -122,6 +122,10 @@ namespace ClassLibrary.lib.DBImpl
                 HandlerFactory.getLogHandler().error("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace);
                 throw e;
             }
+            finally
+            {
+                sqlConnection.Close();
+            }
 
             return dataTable;
         }
@@ -130,6 +134,7 @@ namespace ClassLibrary.lib.DBImpl
         {
             SqlCommand sqlCommand = (SqlCommand)generateDbCommand(command, parameters);
             object result = new object();
+            sqlConnection.Open();
             try
             {
                 result = sqlCommand.ExecuteScalar();
@@ -139,12 +144,15 @@ namespace ClassLibrary.lib.DBImpl
                 string parameter = "";
                 foreach (DbParameter param in parameters)
                 {
-                    parameter += param.Value.ToString();
+                    parameter += param.Value.ToString() + ",";
                 }
                 HandlerFactory.getLogHandler().error("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace);
                 throw e;
             }
-
+            finally
+            {
+                sqlConnection.Close();
+            }
             return result;
         }
 
@@ -153,9 +161,9 @@ namespace ClassLibrary.lib.DBImpl
             SqlTransaction sqlTranx;
             SqlCommand currentCommand = new SqlCommand(); ;
             int affectedRows = 0;
-
+            sqlConnection.Open();
             //sqlCommand = (SqlCommand)getConnection().CreateCommand();
-            sqlTranx = (SqlTransaction)getConnection().BeginTransaction();
+            sqlTranx = (SqlTransaction)sqlConnection.BeginTransaction();
             //sqlCommand.Transaction = sqlTranx;
 
             try
@@ -196,6 +204,10 @@ namespace ClassLibrary.lib.DBImpl
                 HandlerFactory.getLogHandler().debug("Transaction commands and parameters: " + commands);
                 sqlTranx.Rollback();
                 throw e;
+            }
+            finally
+            {
+                sqlConnection.Close();
             }
             return affectedRows;
         }

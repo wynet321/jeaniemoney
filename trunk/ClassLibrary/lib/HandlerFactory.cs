@@ -59,24 +59,36 @@ namespace ClassLibrary.lib
             return configHandler;
         }
 
-        //Language XML Handler
-        //private static XmlHandler g18nHandler;
-        //public static XmlHandler getG18NHandler()
-        //{
-        //    if (g18nHandler == null)
-        //    {
-        //        try
-        //        {
-        //            g18nHandler = new XmlHandler(System.Environment.CurrentDirectory + "/lang/" + CultureInfo.CurrentCulture.Name + ".xml");
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            getLogHandler().error("Can't open X18N file");
-        //            throw e;
-        //        }
-        //    }
-        //    return g18nHandler;
-        //}
+        //Log Handler
+        private static LogHandler logHandler;
+        public static LogHandler getLogHandler()
+        {
+            if (logHandler == null)
+            {
+                if (configHandler == null)
+                {
+                    logHandler = new LogHandler();
+                    logHandler.error("Can't open config file");
+                }
+                else
+                {
+                    try
+                    {
+                        string logLevelString = getConfigHandler().getLogLevel();
+                        short logFileCount = getConfigHandler().getLogFileCount(); System.Console.WriteLine(logFileCount);
+                        int logFileSize = getConfigHandler().getLogFileSize();
+                        string logFullPath = getConfigHandler().getLogFullPath();
+                        logHandler = new LogHandler(logLevelString, logFileCount, logFileSize, logFullPath);
+                    }
+                    catch (Exception e)
+                    {
+                        logHandler = new LogHandler();
+                        logHandler.error(e.Message);
+                    }
+                }
+            }
+            return logHandler;
+        }
 
         private static LanguageHandler languageHandler;
         public static LanguageHandler getLanguageHandler()
@@ -95,27 +107,5 @@ namespace ClassLibrary.lib
             return languageHandler;
         }
 
-        //Log Handler
-        private static LogHandler logHandler;
-        public static LogHandler getLogHandler()
-        {
-            if (logHandler == null)
-            {
-                try
-                {
-                    string logLevelString = getConfigHandler().getLogLevel();
-                    short logFileCount = getConfigHandler().getLogFileCount();
-                    int logFileSize = getConfigHandler().getLogFileSize();
-                    string logFullPath = getConfigHandler().getLogFullPath();
-                    logHandler = new LogHandler(logLevelString, logFileCount, logFileSize, logFullPath);
-                }
-                catch (Exception e)
-                {
-                    logHandler = new LogHandler();
-                    logHandler.error(e.Message);
-                }
-            }
-            return logHandler;
-        }
     }
 }
