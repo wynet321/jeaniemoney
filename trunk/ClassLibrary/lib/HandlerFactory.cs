@@ -23,8 +23,8 @@ namespace ClassLibrary.lib
             {
                 try
                 {
-                    string dbType = getConfigHandler().getDbType();
-                    string connectionString = getConfigHandler().getDbConnectionString();
+                    string dbType = getConfigHandler().getString("Configuration/Database/Type");
+                    string connectionString = getConfigHandler().getString("Configuration/Database/ConnectionString");
                     switch (dbType)
                     {
                         case "SQLSERVER":
@@ -74,10 +74,10 @@ namespace ClassLibrary.lib
                 {
                     try
                     {
-                        string logLevelString = getConfigHandler().getLogLevel();
-                        short logFileCount = getConfigHandler().getLogFileCount(); System.Console.WriteLine(logFileCount);
-                        int logFileSize = getConfigHandler().getLogFileSize();
-                        string logFullPath = getConfigHandler().getLogFullPath();
+                        string logLevelString = getConfigHandler().getString("Configuration/Log/Level");
+                        short logFileCount = getConfigHandler().getShort("Configuration/Log/FileCount");
+                        int logFileSize = getConfigHandler().getInteger("Configuration/Log/FileSize");
+                        string logFullPath = getConfigHandler().getString("Configuration/Log/FileName");
                         logHandler = new LogHandler(logLevelString, logFileCount, logFileSize, logFullPath);
                     }
                     catch (Exception e)

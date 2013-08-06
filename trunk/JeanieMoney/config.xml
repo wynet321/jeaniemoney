@@ -10,4 +10,8 @@
     <FileCount>2</FileCount>
     <FileSize>1024000</FileSize>
   </Log>
+  <Layout>
+    <Left>20</Left>
+    <Top>30</Top>
+  </Layout>
 </Configuration>

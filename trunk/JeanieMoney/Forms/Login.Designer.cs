@@ -34,13 +34,12 @@
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.labelUserName = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
-            this.labelProfile = new System.Windows.Forms.Label();
-            this.comboBoxProfile = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(32, 143);
+            this.buttonOK.AutoSize = true;
+            this.buttonOK.Location = new System.Drawing.Point(29, 131);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 25);
             this.buttonOK.TabIndex = 4;
@@ -50,8 +49,9 @@
             // 
             // buttonCancel
             // 
+            this.buttonCancel.AutoSize = true;
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(140, 143);
+            this.buttonCancel.Location = new System.Drawing.Point(140, 144);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 25);
             this.buttonCancel.TabIndex = 5;
@@ -91,33 +91,12 @@
             this.labelPassword.TabIndex = 5;
             this.labelPassword.Text = "password";
             // 
-            // labelProfile
-            // 
-            this.labelProfile.AutoSize = true;
-            this.labelProfile.Location = new System.Drawing.Point(19, 92);
-            this.labelProfile.Name = "labelProfile";
-            this.labelProfile.Size = new System.Drawing.Size(35, 13);
-            this.labelProfile.TabIndex = 8;
-            this.labelProfile.Text = "profile";
-            // 
-            // comboBoxProfile
-            // 
-            this.comboBoxProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxProfile.FormattingEnabled = true;
-            this.comboBoxProfile.Location = new System.Drawing.Point(72, 89);
-            this.comboBoxProfile.Name = "comboBoxProfile";
-            this.comboBoxProfile.Size = new System.Drawing.Size(143, 21);
-            this.comboBoxProfile.TabIndex = 3;
-            this.comboBoxProfile.SelectedIndexChanged += new System.EventHandler(this.comboBoxProfile_SelectedIndexChanged);
-            // 
             // Login
             // 
             this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(242, 193);
-            this.Controls.Add(this.comboBoxProfile);
-            this.Controls.Add(this.labelProfile);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.textBoxPassword);
@@ -140,7 +119,5 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.Label labelPassword;
-        private System.Windows.Forms.Label labelProfile;
-        private System.Windows.Forms.ComboBox comboBoxProfile;
     }
 }
