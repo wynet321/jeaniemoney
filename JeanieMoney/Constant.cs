@@ -27,7 +27,6 @@ namespace JeanieMoney
         public const String CAPTION_LABEL_PRICE = "Label/Price";
         public const String CAPTION_LABEL_QUANTITY = "Label/Quantity";
         public const String CAPTION_LABEL_TOTAL = "Label/Total";
-        public const String CAPTION_LABEL_PROFILE_NAME = "Label/ProfileName";
         public const String CAPTION_LABEL_DB_TYPE = "Label/DbType";
         public const String CAPTION_LABEL_USERNAME = "Label/UserName";
         public const String CAPTION_LABEL_KEYWORD = "Label/Keyword";

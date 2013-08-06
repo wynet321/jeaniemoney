@@ -12,29 +12,19 @@ namespace ClassLibrary.lib
         public ConfigHandler():base(System.Environment.CurrentDirectory + "/" + "config.xml")
         {
         }
-        public string getDbConnectionString()
+        public string getString(string key)
         {
-            return getValue("Configuration/Database/ConnectionString");
+            return getValue(key);
         }
-        public string getDbType()
+
+        public int getInteger(string key)
         {
-            return getValue("Configuration/Database/Type");
+            return int.Parse(getValue(key));
         }
-        public string getLogLevel()
+
+        public short getShort(string key)
         {
-            return getValue("Configuration/Log/Level");
-        }
-        public string getLogFullPath()
-        {
-            return getValue("Configuration/Log/FileName");
-        }
-        public int getLogFileSize()
-        {
-            return int.Parse(getValue("Configuration/Log/FileSize"));
-        }
-        public short getLogFileCount()
-        {
-            return short.Parse(getValue("Configuration/Log/FileCount"));
+            return short.Parse(getValue(key));
         }
     }
 }

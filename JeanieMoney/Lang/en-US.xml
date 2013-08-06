@@ -33,12 +33,6 @@
       <Quantity>Quantity</Quantity>
       <Total>Total</Total>
       <Keyword>Keyword</Keyword>
-      <DbOperatorName>DB Operator Name</DbOperatorName>
-      <DbOperatorPassword>DB Operator Password</DbOperatorPassword>
-      <DbName>DB Name</DbName>
-      <DbServerHostName>DB Server Hostname</DbServerHostName>
-      <ProfileName>Profile Name</ProfileName>
-      <DbType>Type</DbType>
       <UserName>User Name</UserName>
       <Outgoing>Outgoing</Outgoing>
       <Income>Income</Income>
