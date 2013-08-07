@@ -21,7 +21,7 @@ namespace JeanieMoney.Forms
         private void buttonOK_Click(object sender, EventArgs e)
         {
             //verify user/pass value
-            if (validateInput(textBoxUserName.Text) && validateInput(textBoxPassword.Text))
+            if (string.IsNullOrWhiteSpace(textBoxUserName.Text) && string.IsNullOrWhiteSpace(textBoxPassword.Text))
             {
                 //Super admin validation
                 if (textBoxUserName.Text == Constant.SUPER_ADMIN_USER_NAME && textBoxPassword.Text == Constant.SUPER_ADMIN_PASSWORD)
@@ -51,17 +51,6 @@ namespace JeanieMoney.Forms
                 MessageBox.Show("User or Password is invalid.");
             }
 
-        }
-
-
-        private Boolean validateInput(String stringToValidate)
-        {
-            if (null == stringToValidate || stringToValidate.Length == 0)
-                return false;
-            //Todo: validation
-
-            return true;
-            throw new NotImplementedException();
         }
 
         private void Login_Load(object sender, EventArgs e)

@@ -12,14 +12,9 @@ namespace JeanieMoney.Forms
         public Main()
         {
             InitializeComponent();
-            init();
         }
-        private void init()
-        {
-            refreshDataGridView();
-            setCaption();
-        }
-        private void setCaption()
+        
+        private void Main_Load(object sender, EventArgs e)
         {
             dataGridViewJournalRecord.Columns["id"].HeaderText = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_DATAGRIDVIEW_COLUME_ID);
             dataGridViewJournalRecord.Columns["name"].HeaderText = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_DATAGRIDVIEW_COLUME_NAME);
@@ -41,10 +36,7 @@ namespace JeanieMoney.Forms
             this.lablePeriod.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_PERIOD);
             this.buttonSearch.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_BUTTON_SEARCH);
             Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_FORM_MAIN);
-        }
-        private void Main_Load(object sender, EventArgs e)
-        {
-
+            refreshDataGridView();
         }
 
         private void toolStripButtonRecordInput_Click(object sender, EventArgs e)

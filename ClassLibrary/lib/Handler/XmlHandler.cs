@@ -23,15 +23,26 @@ namespace ClassLibrary.lib
             xmlDocument.Load(uri);
             xPathNavigator = new XPathDocument(uri).CreateNavigator();
         }
-        public XmlHandler()
-        {
-
-        }
-
         //Get XML node value from xml string
         public String getValue(String nodePath)
         {
-            return xmlDocument.SelectSingleNode(nodePath).FirstChild.Value;
+            HandlerFactory.getLogHandler().debug("XmlHandler.getValue() start - parameter nodePath=" + nodePath + "'");
+            string result = string.Empty;
+            if (string.IsNullOrWhiteSpace(nodePath))
+            {
+                HandlerFactory.getLogHandler().warn("XmlHandler.getValue() warning - invalid parameter nodePath=" + nodePath + "'");
+                return result;
+            }
+            try
+            {
+                result = xmlDocument.SelectSingleNode(nodePath).FirstChild.Value;
+            }
+            catch (Exception e)
+            {
+                HandlerFactory.getLogHandler().error("XmlHandler.getValue() error - parameter nodePath='" + nodePath + "', Message='" + e.Message + "'");
+            }
+            HandlerFactory.getLogHandler().debug("XmlHandler.getValue() end - return value result='" + result + "'");
+            return result;
         }
         //Set XML node value from xml string
         public void setValue(String nodePath, String value)
