@@ -19,12 +19,15 @@ namespace ClassLibrary.lib
         private static IDbHandler dbHandler;
         public static IDbHandler getDbHandler()
         {
+            getLogHandler().debug("HandlerFactory.getDbHandler() - start");
             if (dbHandler == null)
             {
                 try
                 {
                     string dbType = getConfigHandler().getString("Configuration/Database/Type");
+                    getLogHandler().debug("HandlerFactory.getDbHandler() - dbType='" + dbType + "'");
                     string connectionString = getConfigHandler().getString("Configuration/Database/ConnectionString");
+                    getLogHandler().debug("HandlerFactory.getDbHandler() - connectionString='" + connectionString + "'");
                     switch (dbType)
                     {
                         case "SQLSERVER":
@@ -35,9 +38,10 @@ namespace ClassLibrary.lib
                 }
                 catch (Exception e)
                 {
-                    getLogHandler().error(e.Message);
+                    getLogHandler().error("HandlerFactory.getDbHandler() - Failed to create DB connection. Message:'" + e.Message + "'");
                 }
             }
+            getLogHandler().debug("HandlerFactory.getDbHandler() - end");
             return dbHandler;
         }
 
@@ -45,6 +49,7 @@ namespace ClassLibrary.lib
         private static ConfigHandler configHandler;
         public static ConfigHandler getConfigHandler()
         {
+            getLogHandler().debug("HandlerFactory.getConfigHandler() - start");
             if (configHandler == null)
             {
                 try
@@ -53,9 +58,10 @@ namespace ClassLibrary.lib
                 }
                 catch (Exception e)
                 {
-                    getLogHandler().error(e.Message);
+                    getLogHandler().error("HandlerFactory.getConfigHandler() - Failed to load Configuration XML. Message:'" + e.Message + "'");
                 }
             }
+            getLogHandler().debug("HandlerFactory.getConfigHandler() - end");
             return configHandler;
         }
 
@@ -63,36 +69,32 @@ namespace ClassLibrary.lib
         private static LogHandler logHandler;
         public static LogHandler getLogHandler()
         {
+            getLogHandler().debug("HandlerFactory.getLogHandler() - start");
             if (logHandler == null)
             {
-                if (configHandler == null)
+                logHandler = new LogHandler();
+                try
+                {
+                    string logLevelString = getConfigHandler().getString("Configuration/Log/Level");
+                    short logFileCount = getConfigHandler().getShort("Configuration/Log/FileCount");
+                    int logFileSize = getConfigHandler().getInteger("Configuration/Log/FileSize");
+                    string logFullPath = getConfigHandler().getString("Configuration/Log/FileName");
+                    logHandler = new LogHandler(logLevelString, logFileCount, logFileSize, logFullPath);
+                }
+                catch (Exception e)
                 {
                     logHandler = new LogHandler();
-                    logHandler.error("Can't open config file");
-                }
-                else
-                {
-                    try
-                    {
-                        string logLevelString = getConfigHandler().getString("Configuration/Log/Level");
-                        short logFileCount = getConfigHandler().getShort("Configuration/Log/FileCount");
-                        int logFileSize = getConfigHandler().getInteger("Configuration/Log/FileSize");
-                        string logFullPath = getConfigHandler().getString("Configuration/Log/FileName");
-                        logHandler = new LogHandler(logLevelString, logFileCount, logFileSize, logFullPath);
-                    }
-                    catch (Exception e)
-                    {
-                        logHandler = new LogHandler();
-                        logHandler.error(e.Message);
-                    }
+                    logHandler.error("HandlerFactory.LogHandler() - Failed to get logger information from Configuration XML. Message:'" + e.Message + "'");
                 }
             }
+            getLogHandler().debug("HandlerFactory.getLogHandler() - end");
             return logHandler;
         }
 
         private static LanguageHandler languageHandler;
         public static LanguageHandler getLanguageHandler()
         {
+            getLogHandler().debug("HandlerFactory.getLanguageHandler() - start");
             if (languageHandler == null)
             {
                 try
@@ -101,11 +103,11 @@ namespace ClassLibrary.lib
                 }
                 catch (Exception e)
                 {
-                    getLogHandler().error(e.Message);
+                    getLogHandler().error("HandlerFactory.getLanguageHandler() - Failed to load language XML. Message:'" + e.Message + "'");
                 }
             }
+            getLogHandler().debug("HandlerFactory.getLanguageHandler() - end");
             return languageHandler;
         }
-
     }
 }

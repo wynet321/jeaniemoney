@@ -36,7 +36,7 @@
     <SccProvider>SubversionScc</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -70,9 +70,6 @@
     <StartupObject>JeanieMoney.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ClassLibrary">
-      <HintPath>.\ClassLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Synchronization, Version=1.0.0.0" />
     <Reference Include="Microsoft.Synchronization.Data, Version=2.0.0.0" />
     <Reference Include="Microsoft.Synchronization.Data.Server, Version=2.0.0.0" />
@@ -289,6 +286,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
+      <Project>{9E48C08E-8254-47EE-8D06-89C868689A04}</Project>
+      <Name>ClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
