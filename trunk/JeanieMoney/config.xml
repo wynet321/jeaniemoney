@@ -9,6 +9,11 @@
     <FileName>.\JeanieMoney.log</FileName>
     <FileCount>2</FileCount>
     <FileSize>1024000</FileSize>
+    <Category>
+      <DB>true</DB>
+      <GUI>true</GUI>
+      <LIB>true</LIB>
+    </Category>
   </Log>
   <Layout>
     <Left>20</Left>

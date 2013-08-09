@@ -56,6 +56,7 @@ namespace JeanieMoney.Forms
         private void Login_Load(object sender, EventArgs e)
         {
             //set caption
+            HandlerFactory.getLanguageHandler();
             labelUserName.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_USERNAME);
             labelPassword.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_PASSWORD);
 
