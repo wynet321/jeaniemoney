@@ -69,16 +69,20 @@ namespace ClassLibrary.lib
         private static LogHandler logHandler;
         public static LogHandler getLogHandler()
         {
-            getLogHandler().debug("HandlerFactory.getLogHandler() - start");
             if (logHandler == null)
             {
                 logHandler = new LogHandler();
+                getLogHandler().debug("HandlerFactory.getLogHandler() - start");
                 try
                 {
                     string logLevelString = getConfigHandler().getString("Configuration/Log/Level");
+                    getLogHandler().debug("HandlerFactory.getLogHandler() - logLevelString='"+logLevelString+"'");
                     short logFileCount = getConfigHandler().getShort("Configuration/Log/FileCount");
+                    getLogHandler().debug("HandlerFactory.getLogHandler() - logFileCount='" + logFileCount + "'");
                     int logFileSize = getConfigHandler().getInteger("Configuration/Log/FileSize");
+                    getLogHandler().debug("HandlerFactory.getLogHandler() - logFileSize='" + logFileSize + "'");
                     string logFullPath = getConfigHandler().getString("Configuration/Log/FileName");
+                    getLogHandler().debug("HandlerFactory.getLogHandler() - logFullPath='" + logFullPath + "'");
                     logHandler = new LogHandler(logLevelString, logFileCount, logFileSize, logFullPath);
                 }
                 catch (Exception e)
@@ -86,8 +90,8 @@ namespace ClassLibrary.lib
                     logHandler = new LogHandler();
                     logHandler.error("HandlerFactory.LogHandler() - Failed to get logger information from Configuration XML. Message:'" + e.Message + "'");
                 }
+                getLogHandler().debug("HandlerFactory.getLogHandler() - end");
             }
-            getLogHandler().debug("HandlerFactory.getLogHandler() - end");
             return logHandler;
         }
 
