@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="lib\Logging\Category.cs" />
+    <Compile Include="lib\Logging\ConsoleHandler.cs" />
+    <Compile Include="lib\Logging\FileHandler.cs" />
+    <Compile Include="lib\Logging\Handler.cs" />
+    <Compile Include="lib\Logging\Level.cs" />
     <Compile Include="lib\Handler\ConfigHandler.cs" />
     <Compile Include="lib\DBImpl\CSqlServerImpl.cs" />
     <Compile Include="lib\HandlerFactory.cs" />
@@ -50,6 +55,7 @@
     <Compile Include="lib\Handler\LanguageHandler.cs" />
     <Compile Include="lib\Handler\LogHandler.cs" />
     <Compile Include="lib\Handler\XmlHandler.cs" />
+    <Compile Include="lib\Logging\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,7 +78,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="lib\ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="lib\DB\" />
+    <Folder Include="lib\Language\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
