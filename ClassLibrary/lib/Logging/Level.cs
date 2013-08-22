@@ -7,9 +7,9 @@ namespace ClassLibrary
 {
     public enum Level
     {
-        DEBUG,
-        INFO,
         ERROR,
         WARN,
+        INFO,
+        DEBUG
     }
 }
