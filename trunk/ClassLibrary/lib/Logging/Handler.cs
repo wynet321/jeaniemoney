@@ -8,28 +8,16 @@ namespace ClassLibrary
 {
     public abstract class Handler
     {
-        StreamWriter streamWriter;
-
-        private int logFileCount;
-
-        private int logFileSize;
-
-        private string logFullPath;
-
         private int logLevel;
-        public Handler()
+
+        public void write(string message, Level level)
         {
-            
+
         }
 
-        public void write()
+        public void format(string format)
         {
-            
-        }
 
-               public void format()
-        {
-            
         }
     }
 }

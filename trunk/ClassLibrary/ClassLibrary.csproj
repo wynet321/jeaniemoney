@@ -47,6 +47,7 @@
     <Compile Include="lib\Logging\ConsoleHandler.cs" />
     <Compile Include="lib\Logging\FileHandler.cs" />
     <Compile Include="lib\Logging\Handler.cs" />
+    <Compile Include="lib\Logging\HandlerConfig.cs" />
     <Compile Include="lib\Logging\Level.cs" />
     <Compile Include="lib\Handler\ConfigHandler.cs" />
     <Compile Include="lib\DBImpl\CSqlServerImpl.cs" />
