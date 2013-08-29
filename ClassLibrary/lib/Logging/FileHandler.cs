@@ -15,10 +15,14 @@ namespace ClassLibrary
         private string logPath;
         private Level logLevel;
         private string logFormat;
+        private string logText;
+        private int logTextWriteUnitSize;
+        private int logTextWriteUnitCount;
 
         public FileHandler(HandlerConfig handlerConfig)
         {
-            logFileCount = --handlerConfig.logFileCount;
+            logTextWriteUnitSize = logFileSize > 1024 ? 1024 : logFileSize;
+            logFileCount = handlerConfig.logFileCount;
             logFileSize = handlerConfig.logFileSize;
             logPath = handlerConfig.logPath;
             logLevel = handlerConfig.logLevel;
@@ -27,52 +31,52 @@ namespace ClassLibrary
             {
                 logFileCount = 0;
             }
-            if (File.Exists(logPath))
-                streamWriter = File.AppendText(logPath);
-            else
-                streamWriter = File.CreateText(logPath);
+           
         }
         public void write(string message, Level lineLevel)
         {
             if (lineLevel > logLevel)
-                writeToLogFile(message);
+            {
+                logText +=  DateTime.Now.ToShortDateString()+DateTime.Now.ToShortTimeString()+message + "\0";
+
+                if (logText.Length >= logTextWriteUnitSize)
+                {
+                    writeToLogFile(logText.Substring(0, logTextWriteUnitSize));
+                    logText = logText.Substring(logTextWriteUnitSize - 1, logText.Length - logTextWriteUnitSize);
+                    logTextWriteUnitCount++;
+                        if (logTextWriteUnitCount >= logFileSize / logTextWriteUnitSize)
+                        {
+                            generateNewLogFile();
+                            logTextWriteUnitCount = 0;
+                        }
+                }
+            }
         }
 
         public void format()
         {
 
         }
-        private void writeToLogFile(string message)
+        private void writeToLogFile(string logText)
         {
-            streamWriter.WriteLine("{0} {1} {2}", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortTimeString(), message);
+            if (File.Exists(logPath))
+                streamWriter = File.AppendText(logPath);
+            else
+                streamWriter = File.CreateText(logPath);
+            streamWriter.WriteLine(logText);
             streamWriter.Flush();
-            if (new FileInfo(logPath).Length > logFileSize)
-                generateNewLogFile();
+            streamWriter.Close();
         }
         private void generateNewLogFile()
         {
-            streamWriter.Close();
-            int i = logFileCount;
-            string logText = File.ReadAllText(logPath);
-            //keep log text with >logFileSize
-            string newLogText = logText.Substring(logFileSize - 1, logText.Length - logFileSize);
-            //keep log text with logFileSize 
-            logText = logText.Substring(0, logFileSize);
-            //after keep current log file content above, delete current log
-            File.Delete(logPath);
-            while (i >= 0)
+            int i = logFileCount-1;
+            while (i > 1)
             {
                 if (File.Exists(logPath + "." + i.ToString()))
                     File.Delete(logPath + "." + i.ToString());
-                if (i == 0)
-                    File.WriteAllText(logPath + "." + i.ToString(), logText);
-                else
                     File.Move(logPath + "." + (i - 1).ToString(), logPath + "." + i.ToString());
                 --i;
             }
-            streamWriter = File.CreateText(logPath);
-            streamWriter.WriteLine(newLogText);
-            streamWriter.Flush();
         }
     }
 }
