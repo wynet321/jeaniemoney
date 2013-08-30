@@ -8,7 +8,6 @@ namespace ClassLibrary
 {
     public class ConsoleHandler : Handler
     {
-       private int logLevel;
         public ConsoleHandler()
         {
 

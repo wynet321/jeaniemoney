@@ -8,16 +8,12 @@ namespace ClassLibrary
 {
     public abstract class Handler
     {
-        private int logLevel;
+        protected Level logLevel;
 
         public void write(string message, Level level)
         {
 
         }
 
-        public void format(string format)
-        {
-
-        }
     }
 }
