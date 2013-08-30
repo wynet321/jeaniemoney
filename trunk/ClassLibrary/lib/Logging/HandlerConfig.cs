@@ -14,6 +14,5 @@ namespace ClassLibrary.lib.Logging
         public string logPath { get; set; }
 
         public Level logLevel { get; set; }
-        public string logFormat { get; set; }
     }
 }
