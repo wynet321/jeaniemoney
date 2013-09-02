@@ -12,12 +12,7 @@ namespace ClassLibrary
         {
 
         }
-        public void write()
-        {
-
-        }
-
-        public void format()
+        public override void write(string message, Level level, Category category)
         {
 
         }

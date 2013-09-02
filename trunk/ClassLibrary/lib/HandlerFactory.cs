@@ -113,12 +113,12 @@ namespace ClassLibrary.lib
             getLogHandler().debug("HandlerFactory.getLanguageHandler() - end");
             return languageHandler;
         }
-        private static Logger logger;
-        public static Logger getLogger()
+        private static Entry logger;
+        public static Entry getLogger()
         {
             if (logger == null)
             {
-                logger = new Logger();
+                logger = new Entry();
 
             }
             return logger;

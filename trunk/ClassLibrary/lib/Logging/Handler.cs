@@ -8,12 +8,9 @@ namespace ClassLibrary
 {
     public abstract class Handler
     {
-        protected Level logLevel;
+        protected Level level;
+        protected List<Category> categoryList;
 
-        public void write(string message, Level level)
-        {
-
-        }
-
+        public abstract void write(string message, Level level, Category category);
     }
 }

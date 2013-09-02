@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="lib\Logging\Category.cs" />
-    <Compile Include="lib\Logging\ConsoleHandler.cs" />
-    <Compile Include="lib\Logging\FileHandler.cs" />
+    <Compile Include="lib\Logging\DataType\Category.cs" />
+    <Compile Include="lib\Logging\HandlerImpl\ConsoleHandler.cs" />
+    <Compile Include="lib\Logging\HandlerImpl\FileHandler.cs" />
     <Compile Include="lib\Logging\Handler.cs" />
-    <Compile Include="lib\Logging\HandlerConfig.cs" />
-    <Compile Include="lib\Logging\Level.cs" />
+    <Compile Include="lib\Logging\Config.cs" />
+    <Compile Include="lib\Logging\DataType\Level.cs" />
     <Compile Include="lib\Handler\ConfigHandler.cs" />
     <Compile Include="lib\DBImpl\CSqlServerImpl.cs" />
     <Compile Include="lib\HandlerFactory.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="lib\Handler\LanguageHandler.cs" />
     <Compile Include="lib\Handler\LogHandler.cs" />
     <Compile Include="lib\Handler\XmlHandler.cs" />
-    <Compile Include="lib\Logging\Logger.cs" />
+    <Compile Include="lib\Logging\Entry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
