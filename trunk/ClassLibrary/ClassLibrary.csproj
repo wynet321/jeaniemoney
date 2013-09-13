@@ -56,7 +56,7 @@
     <Compile Include="lib\Handler\LanguageHandler.cs" />
     <Compile Include="lib\Handler\LogHandler.cs" />
     <Compile Include="lib\Handler\XmlHandler.cs" />
-    <Compile Include="lib\Logging\Entry.cs" />
+    <Compile Include="lib\Logging\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

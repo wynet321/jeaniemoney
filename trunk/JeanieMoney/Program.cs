@@ -5,6 +5,9 @@ using System.Windows.Forms;
 using JeanieMoney.Forms;
 using ClassLibrary.lib.Handler;
 using ClassLibrary.lib.DBImpl;
+using ClassLibrary;
+using ClassLibrary.lib.Logging;
+using ClassLibrary.lib;
 
 namespace JeanieMoney
 {
@@ -18,6 +21,11 @@ namespace JeanieMoney
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //init log
+            Logger logger = new Logger();
+            Config logConfig = new Config();
+            logConfig.path = HandlerFactory.getConfigHandler().getString("/Configuration/Log/FileName");
+
             Login login = new Login();
             login.ShowDialog();
             if (login.DialogResult == DialogResult.OK)

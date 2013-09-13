@@ -24,7 +24,7 @@ namespace ClassLibrary.lib
             xPathNavigator = new XPathDocument(uri).CreateNavigator();
         }
         //Get XML node value from xml string
-        public String getValue(String nodePath)
+        protected String getValue(String nodePath)
         {
             HandlerFactory.getLogHandler().debug("XmlHandler.getValue() start - parameter nodePath=" + nodePath + "'");
             string result = string.Empty;

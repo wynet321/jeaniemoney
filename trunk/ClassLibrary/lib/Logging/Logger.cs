@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ClassLibrary
 {
-    public class Entry
+    public class Logger
     {
-        private List<Handler> handlers=new List<Handler>();
+        private List<Handler> handlers = new List<Handler>();
         public void addHandler(Handler handler)
         {
             if (handler != null)
@@ -20,9 +20,7 @@ namespace ClassLibrary
         }
         public void append(string message, Level level, Category category)
         {
-            //if (logLevel == 4)
-            //    writeToLogFile("DEBUG - " + message);
-            if (handlers == null || handlers.Count < 1)
+            if (handlers.Count == 0)
                 return;
             foreach (Handler handler in handlers)
             {
