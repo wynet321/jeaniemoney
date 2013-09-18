@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using JeanieMoney.Forms.Config;
 using ClassLibrary.lib;
 using System.Data.Common;
+using ClassLibrary;
 
 namespace JeanieMoney.Forms
 {
@@ -99,6 +100,11 @@ namespace JeanieMoney.Forms
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             refreshDataGridView();
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

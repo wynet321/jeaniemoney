@@ -13,6 +13,7 @@
       <DB>true</DB>
       <GUI>true</GUI>
       <LIB>true</LIB>
+      <COMMON>true</COMMON>
     </Category>
   </Log>
   <Layout>

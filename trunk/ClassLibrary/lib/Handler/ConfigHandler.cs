@@ -15,20 +15,20 @@ namespace ClassLibrary.lib
         }
         public string getString(string key)
         {
-            HandlerFactory.getLogHandler().debug("ConfigHandler.getString() start - parameter key=" + key + "'");
+            Logger.getLogger().append("ConfigHandler.getString() start - parameter key=" + key + "'", Level.DEBUG, Category.LIB);
             string result = getValue(key);
             if (string.IsNullOrWhiteSpace(result))
             {
-                HandlerFactory.getLogHandler().error("ConfigHandler.getString() - invalid parameter key='" + key + "'");
+                Logger.getLogger().append("ConfigHandler.getString() - invalid parameter key='" + key + "'", Level.ERROR,Category.LIB);
                 result = "";
             }
-            HandlerFactory.getLogHandler().debug("ConfigHandler.getString() end - return value result='" + result + "'");
+            Logger.getLogger().append("ConfigHandler.getString() end - return value result='" + result + "'", Level.DEBUG, Category.LIB);
             return result;
         }
 
         public int getInteger(string key)
         {
-            HandlerFactory.getLogHandler().debug("ConfigHandler.getInteger() start - parameter key=" + key + "'");
+            Logger.getLogger().append("ConfigHandler.getInteger() start - parameter key=" + key + "'", Level.DEBUG, Category.LIB);
             string resultString = getValue(key);
             int resultInteger = 0;
             try
@@ -37,15 +37,15 @@ namespace ClassLibrary.lib
             }
             catch (Exception e)
             {
-                HandlerFactory.getLogHandler().error("ConfigHandler.getInteger() - parameter key='" + key + "', Message='" + e.Message + "'");
+                Logger.getLogger().append("ConfigHandler.getInteger() - parameter key='" + key + "', Message='" + e.Message + "'", Level.ERROR, Category.LIB);
             }
-            HandlerFactory.getLogHandler().debug("ConfigHandler.getInteger() end - return value resultInteger=" + resultInteger);
+            Logger.getLogger().append("ConfigHandler.getInteger() end - return value resultInteger=" + resultInteger, Level.DEBUG, Category.LIB);
             return resultInteger;
         }
 
         public short getShort(string key)
         {
-            HandlerFactory.getLogHandler().debug("ConfigHandler.getShort() start - parameter key=" + key + "'");
+            Logger.getLogger().append("ConfigHandler.getShort() start - parameter key=" + key + "'", Level.DEBUG, Category.LIB);
             string resultString = getValue(key);
             short resultShort = 0;
             try
@@ -54,9 +54,9 @@ namespace ClassLibrary.lib
             }
             catch (Exception e)
             {
-                HandlerFactory.getLogHandler().error("ConfigHandler.getShort() - parameter key='" + key + "', Message='" + e.Message + "'");
+                Logger.getLogger().append("ConfigHandler.getShort() - parameter key='" + key + "', Message='" + e.Message + "'", Level.ERROR, Category.LIB);
             }
-            HandlerFactory.getLogHandler().debug("ConfigHandler.getShort() end - return value resultShort=" + resultShort);
+            Logger.getLogger().append("ConfigHandler.getShort() end - return value resultShort=" + resultShort, Level.DEBUG, Category.LIB);
             return resultShort;
         }
     }

@@ -8,6 +8,13 @@ namespace ClassLibrary
     public class Logger
     {
         private List<Handler> handlers = new List<Handler>();
+        private static Logger logger;
+        public static Logger getLogger()
+        {
+            if (logger == null)
+                logger = new Logger();
+            return logger;
+        }
         public void addHandler(Handler handler)
         {
             if (handler != null)
@@ -25,6 +32,15 @@ namespace ClassLibrary
             foreach (Handler handler in handlers)
             {
                 handler.write(message, level, category);
+            }
+        }
+        public void flush()
+        {
+            if (handlers.Count == 0)
+                return;
+            foreach (Handler handler in handlers)
+            {
+                handler.flush();
             }
         }
     }
