@@ -41,11 +41,11 @@
             this.toolStripButtonRecordInput = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonCategory = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonPayer = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPaymentMode = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLocation = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonProduct = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonUnit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonPaymentMode = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPayer = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonBeneficiary = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainer.ContentPanel.SuspendLayout();
@@ -72,7 +72,7 @@
             // 
             this.toolStripContainer.ContentPanel.Controls.Add(this.dataGridViewJournalRecord);
             this.toolStripContainer.ContentPanel.Controls.Add(this.panelSearchCondition);
-            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(1264, 430);
+            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(1264, 445);
             this.toolStripContainer.Dock = System.Windows.Forms.DockStyle.Top;
             this.toolStripContainer.LeftToolStripPanelVisible = false;
             this.toolStripContainer.Location = new System.Drawing.Point(0, 0);
@@ -97,7 +97,7 @@
             this.dataGridViewJournalRecord.ReadOnly = true;
             this.dataGridViewJournalRecord.RowTemplate.Height = 23;
             this.dataGridViewJournalRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewJournalRecord.Size = new System.Drawing.Size(1264, 402);
+            this.dataGridViewJournalRecord.Size = new System.Drawing.Size(1264, 417);
             this.dataGridViewJournalRecord.TabIndex = 0;
             // 
             // panelSearchCondition
@@ -168,7 +168,7 @@
             this.toolStripButtonBeneficiary});
             this.toolStripMainMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMainMenu.Name = "toolStripMainMenu";
-            this.toolStripMainMenu.Size = new System.Drawing.Size(626, 86);
+            this.toolStripMainMenu.Size = new System.Drawing.Size(562, 71);
             this.toolStripMainMenu.TabIndex = 0;
             // 
             // toolStripButtonRecordInput
@@ -177,7 +177,7 @@
             this.toolStripButtonRecordInput.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonRecordInput.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRecordInput.Name = "toolStripButtonRecordInput";
-            this.toolStripButtonRecordInput.Size = new System.Drawing.Size(76, 83);
+            this.toolStripButtonRecordInput.Size = new System.Drawing.Size(68, 68);
             this.toolStripButtonRecordInput.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonRecordInput.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonRecordInput.Click += new System.EventHandler(this.toolStripButtonRecordInput_Click);
@@ -185,7 +185,7 @@
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 86);
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 71);
             // 
             // toolStripButtonCategory
             // 
@@ -194,21 +194,20 @@
             this.toolStripButtonCategory.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonCategory.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCategory.Name = "toolStripButtonCategory";
-            this.toolStripButtonCategory.Size = new System.Drawing.Size(68, 83);
+            this.toolStripButtonCategory.Size = new System.Drawing.Size(68, 68);
             this.toolStripButtonCategory.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonCategory.Click += new System.EventHandler(this.toolStripButtonCategory_Click);
             // 
-            // toolStripButtonPayer
+            // toolStripButtonPaymentMode
             // 
-            this.toolStripButtonPayer.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
-            this.toolStripButtonPayer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonPayer.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonPayer.Name = "toolStripButtonPayer";
-            this.toolStripButtonPayer.Size = new System.Drawing.Size(68, 83);
-            this.toolStripButtonPayer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripButtonPayer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonPayer.Click += new System.EventHandler(this.toolStripButtonPayer_Click);
+            this.toolStripButtonPaymentMode.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
+            this.toolStripButtonPaymentMode.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonPaymentMode.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPaymentMode.Name = "toolStripButtonPaymentMode";
+            this.toolStripButtonPaymentMode.Size = new System.Drawing.Size(68, 68);
+            this.toolStripButtonPaymentMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonPaymentMode.Click += new System.EventHandler(this.toolStripButtonPaymentMode_Click);
             // 
             // toolStripButtonLocation
             // 
@@ -216,7 +215,7 @@
             this.toolStripButtonLocation.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonLocation.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLocation.Name = "toolStripButtonLocation";
-            this.toolStripButtonLocation.Size = new System.Drawing.Size(68, 83);
+            this.toolStripButtonLocation.Size = new System.Drawing.Size(68, 68);
             this.toolStripButtonLocation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonLocation.Click += new System.EventHandler(this.toolStripButtonLocation_Click);
             // 
@@ -226,7 +225,7 @@
             this.toolStripButtonProduct.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonProduct.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonProduct.Name = "toolStripButtonProduct";
-            this.toolStripButtonProduct.Size = new System.Drawing.Size(68, 83);
+            this.toolStripButtonProduct.Size = new System.Drawing.Size(68, 68);
             this.toolStripButtonProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonProduct.Click += new System.EventHandler(this.toolStripButtonProduct_Click);
             // 
@@ -236,19 +235,20 @@
             this.toolStripButtonUnit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonUnit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonUnit.Name = "toolStripButtonUnit";
-            this.toolStripButtonUnit.Size = new System.Drawing.Size(68, 83);
+            this.toolStripButtonUnit.Size = new System.Drawing.Size(68, 68);
             this.toolStripButtonUnit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonUnit.Click += new System.EventHandler(this.toolStripButtonUnit_Click);
             // 
-            // toolStripButtonPaymentMode
+            // toolStripButtonPayer
             // 
-            this.toolStripButtonPaymentMode.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
-            this.toolStripButtonPaymentMode.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonPaymentMode.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonPaymentMode.Name = "toolStripButtonPaymentMode";
-            this.toolStripButtonPaymentMode.Size = new System.Drawing.Size(92, 83);
-            this.toolStripButtonPaymentMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonPaymentMode.Click += new System.EventHandler(this.toolStripButtonPaymentMode_Click);
+            this.toolStripButtonPayer.Image = global::JeanieMoney.Properties.Resources.ConsumeRecord;
+            this.toolStripButtonPayer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonPayer.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPayer.Name = "toolStripButtonPayer";
+            this.toolStripButtonPayer.Size = new System.Drawing.Size(68, 68);
+            this.toolStripButtonPayer.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripButtonPayer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonPayer.Click += new System.EventHandler(this.toolStripButtonPayer_Click);
             // 
             // toolStripButtonBeneficiary
             // 
@@ -256,9 +256,14 @@
             this.toolStripButtonBeneficiary.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButtonBeneficiary.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBeneficiary.Name = "toolStripButtonBeneficiary";
-            this.toolStripButtonBeneficiary.Size = new System.Drawing.Size(69, 83);
+            this.toolStripButtonBeneficiary.Size = new System.Drawing.Size(68, 68);
             this.toolStripButtonBeneficiary.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonBeneficiary.Click += new System.EventHandler(this.toolStripButtonBeneficiary_Click);
+            // 
+            // toolStripButton
+            // 
+            this.toolStripButton.Name = "toolStripButton";
+            this.toolStripButton.Size = new System.Drawing.Size(23, 23);
             // 
             // Main
             // 
@@ -269,6 +274,7 @@
             this.Controls.Add(this.statusStripMain);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.toolStripContainer.ContentPanel.ResumeLayout(false);
             this.toolStripContainer.TopToolStripPanel.ResumeLayout(false);

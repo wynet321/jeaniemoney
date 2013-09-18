@@ -22,9 +22,15 @@ namespace JeanieMoney
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //init log
-            Logger logger = new Logger();
-            Config logConfig = new Config();
-            logConfig.path = HandlerFactory.getConfigHandler().getString("/Configuration/Log/FileName");
+            Config.getConfig().path = HandlerFactory.getLogConfigHandler().getString("/Configuration/Log/FileName");
+            Config.getConfig().fileCount = HandlerFactory.getLogConfigHandler().getInteger("/Configuration/Log/FileCount");
+            Config.getConfig().fileSize = HandlerFactory.getLogConfigHandler().getInteger("/Configuration/Log/FileSize");
+            Config.getConfig().level = (Level)Enum.Parse(typeof(Level), HandlerFactory.getLogConfigHandler().getString("/Configuration/Log/Level"), true);
+            Config.getConfig().categoryList = HandlerFactory.getLogConfigHandler().getElementListByNodePath("/Configuration/Log/Category").ConvertAll(new Converter<string, Category>(Config.getConfig().stringToCategory));
+            Logger.getLogger().addHandler(new FileHandler(Config.getConfig()));
+            Logger.getLogger().addHandler(new ConsoleHandler(Config.getConfig()));
+
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(CurrentDomain_ProcessExit);
 
             Login login = new Login();
             login.ShowDialog();
@@ -33,6 +39,10 @@ namespace JeanieMoney
                 Main main = new Main();
                 Application.Run(main);
             }
+        }
+        static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            Logger.getLogger().flush();
         }
     }
 }

@@ -26,11 +26,11 @@ namespace ClassLibrary.lib
         //Get XML node value from xml string
         protected String getValue(String nodePath)
         {
-            HandlerFactory.getLogHandler().debug("XmlHandler.getValue() start - parameter nodePath=" + nodePath + "'");
+            Logger.getLogger().append("XmlHandler.getValue() start - parameter nodePath=" + nodePath + "'", Level.DEBUG, Category.LIB);
             string result = string.Empty;
             if (string.IsNullOrWhiteSpace(nodePath))
             {
-                HandlerFactory.getLogHandler().warn("XmlHandler.getValue() warning - invalid parameter nodePath=" + nodePath + "'");
+                Logger.getLogger().append("XmlHandler.getValue() warning - invalid parameter nodePath=" + nodePath + "'", Level.WARN, Category.LIB);
                 return result;
             }
             try
@@ -39,9 +39,9 @@ namespace ClassLibrary.lib
             }
             catch (Exception e)
             {
-                HandlerFactory.getLogHandler().error("XmlHandler.getValue() error - parameter nodePath='" + nodePath + "', Message='" + e.Message + "'");
+                Logger.getLogger().append("XmlHandler.getValue() error - parameter nodePath='" + nodePath + "', Message='" + e.Message + "'", Level.ERROR, Category.LIB);
             }
-            HandlerFactory.getLogHandler().debug("XmlHandler.getValue() end - return value result='" + result + "'");
+            Logger.getLogger().append("XmlHandler.getValue() end - return value result='" + result + "'", Level.DEBUG, Category.LIB);
             return result;
         }
         //Set XML node value from xml string
@@ -77,7 +77,7 @@ namespace ClassLibrary.lib
             List<String> elementList = new List<String>();
             if (nodePath == null)
             {
-                HandlerFactory.getLogHandler().warn("Return empty list");
+                Logger.getLogger().append("Return empty list", Level.WARN, Category.LIB);
                 return elementList;
             }
             XPathNodeIterator node;

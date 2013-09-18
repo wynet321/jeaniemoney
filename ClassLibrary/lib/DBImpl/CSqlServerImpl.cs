@@ -28,7 +28,7 @@ namespace ClassLibrary.lib.DBImpl
             catch (Exception e)
             {
                 //todo: deal with exception
-                HandlerFactory.getLogHandler().error(e.Message);
+                Logger.getLogger().append(e.Message, Level.ERROR, Category.LIB);
                 return false;
             }
             return true;
@@ -64,7 +64,7 @@ namespace ClassLibrary.lib.DBImpl
                     {
                         parameter += param.Value.ToString();
                     }
-                    HandlerFactory.getLogHandler().error("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace);
+                    Logger.getLogger().append("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace, Level.ERROR, Category.LIB);
                     throw e;
                 }
             }
@@ -112,7 +112,7 @@ namespace ClassLibrary.lib.DBImpl
                     {
                         parameter += param.Value.ToString();
                     }
-                    HandlerFactory.getLogHandler().error("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace);
+                    Logger.getLogger().append("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace, Level.ERROR, Category.LIB);
                     throw e;
                 }
             }
@@ -137,7 +137,7 @@ namespace ClassLibrary.lib.DBImpl
                     {
                         parameter += param.Value.ToString() + ",";
                     }
-                    HandlerFactory.getLogHandler().error("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace);
+                    Logger.getLogger().append("Fail to run command: " + command + ", parameter: {1}" + parameter + "\n" + e.StackTrace, Level.ERROR, Category.LIB);
                     throw e;
                 }
             }
@@ -175,7 +175,7 @@ namespace ClassLibrary.lib.DBImpl
                     if (parameters.EndsWith(","))
                         parameters = parameters.Remove(parameters.Length - 2);
                     parameters += "}\n";
-                    HandlerFactory.getLogHandler().error("Fail to run command: " + currentCommand.CommandText + ", parameter: {1}" + currentCommand.Parameters + "\n" + e.StackTrace);
+                    Logger.getLogger().append("Fail to run command: " + currentCommand.CommandText + ", parameter: {1}" + currentCommand.Parameters + "\n" + e.StackTrace, Level.ERROR, Category.LIB);
 
                     //log the whole transaction commands
                     string commands = "";
@@ -190,7 +190,7 @@ namespace ClassLibrary.lib.DBImpl
                             commands = commands.Remove(commands.Length - 2);
                         commands += "}\n";
                     }
-                    HandlerFactory.getLogHandler().debug("Transaction commands and parameters: " + commands);
+                    Logger.getLogger().append("Transaction commands and parameters: " + commands, Level.DEBUG, Category.LIB);
                     sqlTranx.Rollback();
                     throw e;
                 }

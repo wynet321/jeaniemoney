@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using ClassLibrary.lib;
 using System.Data.Common;
+using ClassLibrary;
 
 namespace JeanieMoney.Forms
 {
@@ -15,7 +16,7 @@ namespace JeanieMoney.Forms
     {
         public Login()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -30,6 +31,7 @@ namespace JeanieMoney.Forms
                     return;
                 }
                 //check user/password
+                Logger.getLogger().append("Start to check user/password from DB", Level.DEBUG, Category.COMMON);
                 DbParameter[] dbParameter ={
                 HandlerFactory.getDbHandler().generateDbParameter("name", textBoxUserName.Text),
                 HandlerFactory.getDbHandler().generateDbParameter("password", textBoxPassword.Text)
@@ -56,7 +58,6 @@ namespace JeanieMoney.Forms
         private void Login_Load(object sender, EventArgs e)
         {
             //set caption
-            HandlerFactory.getLanguageHandler();
             labelUserName.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_USERNAME);
             labelPassword.Text = HandlerFactory.getLanguageHandler().getCaption(Constant.CAPTION_LABEL_PASSWORD);
 

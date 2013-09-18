@@ -9,5 +9,7 @@ namespace ClassLibrary
     {
         DB,
         GUI,
+        COMMON,
+        LIB
     }
 }

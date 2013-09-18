@@ -19,9 +19,9 @@ namespace ClassLibrary
 
         public FileHandler(Config config)
         {
-            textWriteUnitSize = fileSize > 1024 ? 1024 : fileSize;
             fileCount = config.fileCount;
             fileSize = config.fileSize;
+            textWriteUnitSize = (fileSize >= 1024) ? 1024 : fileSize;
             path = config.path;
             level = config.level;
             categoryList = config.categoryList;
@@ -32,9 +32,9 @@ namespace ClassLibrary
         }
         public override void write(string message, Level lineLevel, Category category)
         {
-            if(categoryList.Contains(category) && lineLevel > level)
+            if (categoryList.Contains(category) && lineLevel >= level)
             {
-                text += DateTime.Now.ToShortDateString() + DateTime.Now.ToShortTimeString() + message + "\0";
+                text += DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + message + "\r";
                 if (text.Length >= textWriteUnitSize)
                 {
                     writeToLogFile(text.Substring(0, textWriteUnitSize));
@@ -54,7 +54,8 @@ namespace ClassLibrary
                 streamWriter = File.AppendText(path);
             else
                 streamWriter = File.CreateText(path);
-            streamWriter.WriteLine("{0} {1} {2}", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortTimeString(), logText);
+            //streamWriter.WriteLine("{0} {1} {2}", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortTimeString(), logText);
+            streamWriter.Write(logText);
             streamWriter.Flush();
             streamWriter.Close();
         }
@@ -72,5 +73,10 @@ namespace ClassLibrary
                 --i;
             }
         }
+        public override void flush()
+        {
+            writeToLogFile("");
+        }
+
     }
 }
