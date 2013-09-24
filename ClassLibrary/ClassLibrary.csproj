@@ -43,20 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="lib\Handler\LogConfigHandler.cs" />
+    <Compile Include="lib\Config\LogConfigHandler.cs" />
     <Compile Include="lib\Logging\DataType\Category.cs" />
-    <Compile Include="lib\Logging\HandlerImpl\ConsoleHandler.cs" />
-    <Compile Include="lib\Logging\HandlerImpl\FileHandler.cs" />
-    <Compile Include="lib\Logging\Handler.cs" />
-    <Compile Include="lib\Logging\Config.cs" />
+    <Compile Include="lib\Logging\Handler\ConsoleHandler.cs" />
+    <Compile Include="lib\Logging\Handler\FileHandler.cs" />
+    <Compile Include="lib\Logging\Handler\Handler.cs" />
+    <Compile Include="lib\Logging\ConfigInfo.cs" />
     <Compile Include="lib\Logging\DataType\Level.cs" />
-    <Compile Include="lib\Handler\ConfigHandler.cs" />
-    <Compile Include="lib\DBImpl\CSqlServerImpl.cs" />
+    <Compile Include="lib\Config\ConfigHandler.cs" />
+    <Compile Include="lib\DB\Impl\CSqlServerImpl.cs" />
     <Compile Include="lib\HandlerFactory.cs" />
-    <Compile Include="lib\Handler\IDbHandler.cs" />
-    <Compile Include="lib\Handler\LanguageHandler.cs" />
-    <Compile Include="lib\Handler\XmlHandler.cs" />
-    <Compile Include="lib\Logging\Logger.cs" />
+    <Compile Include="lib\DB\IDbHandler.cs" />
+    <Compile Include="lib\Language\LanguageHandler.cs" />
+    <Compile Include="lib\Xml\XmlHandler.cs" />
+    <Compile Include="lib\Logging\LogHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,10 +82,7 @@
   <ItemGroup>
     <None Include="lib\ClassDiagram.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="lib\DB\" />
-    <Folder Include="lib\Language\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

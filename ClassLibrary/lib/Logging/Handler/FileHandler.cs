@@ -17,7 +17,7 @@ namespace ClassLibrary
         private int textWriteUnitSize;
         private int textWriteUnitCount;
 
-        public FileHandler(Config config)
+        public FileHandler(ConfigInfo config)
         {
             fileCount = config.fileCount;
             fileSize = config.fileSize;

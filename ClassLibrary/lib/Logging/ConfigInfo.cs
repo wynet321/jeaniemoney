@@ -5,14 +5,14 @@ using System.Text;
 
 namespace ClassLibrary.lib.Logging
 {
-    public class Config
+    public class ConfigInfo
     {
-        private static Config config;
-        public static Config getConfig()
+        private static ConfigInfo configInfo;
+        public static ConfigInfo getConfigInfo()
         {
-            if (config == null)
-                config = new Config();
-            return config;
+            if (configInfo == null)
+                configInfo = new ConfigInfo();
+            return configInfo;
         }
 
         public int fileCount { get; set; }

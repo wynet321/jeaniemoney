@@ -10,7 +10,7 @@ namespace ClassLibrary
     public class ConsoleHandler : Handler
     {
         //Console handler only need set level and categoryList before use.
-        public ConsoleHandler(Config config)
+        public ConsoleHandler(ConfigInfo config)
         {
             level = config.level;
             categoryList = config.categoryList;

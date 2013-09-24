@@ -26,11 +26,11 @@ namespace ClassLibrary.lib
         //Get XML node value from xml string
         protected String getValue(String nodePath)
         {
-            Logger.getLogger().append("XmlHandler.getValue() start - parameter nodePath='" + nodePath + "'", Level.DEBUG, Category.LIB);
+            HandlerFactory.getLogHandler().append("XmlHandler.getValue() start - parameter nodePath='" + nodePath + "'", Level.DEBUG, Category.LIB);
             string result = string.Empty;
             if (string.IsNullOrWhiteSpace(nodePath))
             {
-                Logger.getLogger().append("XmlHandler.getValue() warning - invalid parameter nodePath='" + nodePath + "'", Level.WARN, Category.LIB);
+                HandlerFactory.getLogHandler().append("XmlHandler.getValue() warning - invalid parameter nodePath='" + nodePath + "'", Level.WARN, Category.LIB);
                 return result;
             }
             try
@@ -39,9 +39,9 @@ namespace ClassLibrary.lib
             }
             catch (Exception e)
             {
-                Logger.getLogger().append("XmlHandler.getValue() error - parameter nodePath='" + nodePath + "', Message='" + e.Message + "'", Level.ERROR, Category.LIB);
+                HandlerFactory.getLogHandler().append("XmlHandler.getValue() error - parameter nodePath='" + nodePath + "', Message='" + e.Message + "'", Level.ERROR, Category.LIB);
             }
-            Logger.getLogger().append("XmlHandler.getValue() end - return value result='" + result + "'", Level.DEBUG, Category.LIB);
+            HandlerFactory.getLogHandler().append("XmlHandler.getValue() end - return value result='" + result + "'", Level.DEBUG, Category.LIB);
             return result;
         }
         //Set XML node value from xml string
@@ -77,7 +77,7 @@ namespace ClassLibrary.lib
             List<String> elementList = new List<String>();
             if (nodePath == null)
             {
-                Logger.getLogger().append("XmlHandler.getElementListByNodePath() - Return empty list", Level.WARN, Category.LIB);
+                HandlerFactory.getLogHandler().append("XmlHandler.getElementListByNodePath() - Return empty list", Level.WARN, Category.LIB);
                 return elementList;
             }
             XPathNodeIterator node;

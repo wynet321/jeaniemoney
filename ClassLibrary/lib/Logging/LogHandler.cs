@@ -5,16 +5,9 @@ using System.Text;
 
 namespace ClassLibrary
 {
-    public class Logger
+    public class LogHandler
     {
         private List<Handler> handlers = new List<Handler>();
-        private static Logger logger;
-        public static Logger getLogger()
-        {
-            if (logger == null)
-                logger = new Logger();
-            return logger;
-        }
         public void addHandler(Handler handler)
         {
             if (handler != null)

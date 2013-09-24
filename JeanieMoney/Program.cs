@@ -22,13 +22,13 @@ namespace JeanieMoney
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //init log
-            Config.getConfig().path = HandlerFactory.getLogConfigHandler().getString("/Configuration/Log/FileName");
-            Config.getConfig().fileCount = HandlerFactory.getLogConfigHandler().getInteger("/Configuration/Log/FileCount");
-            Config.getConfig().fileSize = HandlerFactory.getLogConfigHandler().getInteger("/Configuration/Log/FileSize");
-            Config.getConfig().level = (Level)Enum.Parse(typeof(Level), HandlerFactory.getLogConfigHandler().getString("/Configuration/Log/Level"), true);
-            Config.getConfig().categoryList = HandlerFactory.getLogConfigHandler().getElementListByNodePath("/Configuration/Log/Category").ConvertAll(new Converter<string, Category>(Config.getConfig().stringToCategory));
-            Logger.getLogger().addHandler(new FileHandler(Config.getConfig()));
-            Logger.getLogger().addHandler(new ConsoleHandler(Config.getConfig()));
+            ConfigInfo.getConfigInfo().path = HandlerFactory.getLogConfigHandler().getString("/Configuration/Log/FileName");
+            ConfigInfo.getConfigInfo().fileCount = HandlerFactory.getLogConfigHandler().getInteger("/Configuration/Log/FileCount");
+            ConfigInfo.getConfigInfo().fileSize = HandlerFactory.getLogConfigHandler().getInteger("/Configuration/Log/FileSize");
+            ConfigInfo.getConfigInfo().level = (Level)Enum.Parse(typeof(Level), HandlerFactory.getLogConfigHandler().getString("/Configuration/Log/Level"), true);
+            ConfigInfo.getConfigInfo().categoryList = HandlerFactory.getLogConfigHandler().getElementListByNodePath("/Configuration/Log/Category").ConvertAll(new Converter<string, Category>(ConfigInfo.getConfigInfo().stringToCategory));
+            HandlerFactory.getLogHandler().addHandler(new FileHandler(ConfigInfo.getConfigInfo()));
+            HandlerFactory.getLogHandler().addHandler(new ConsoleHandler(ConfigInfo.getConfigInfo()));
 
             Application.ApplicationExit+= new EventHandler(CurrentDomain_ProcessExit);
             Login login = new Login();
@@ -38,11 +38,11 @@ namespace JeanieMoney
                 Main main = new Main();
                 Application.Run(main);
             }
-            Logger.getLogger().flush();
+            HandlerFactory.getLogHandler().flush();
         }
         static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
-            Logger.getLogger().flush();
+            HandlerFactory.getLogHandler().flush();
         }
     }
 }
