@@ -16,43 +16,41 @@ namespace JeanieMoney.Forms
     {
         public Login()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
             //verify user/pass value
-            if (string.IsNullOrWhiteSpace(textBoxUserName.Text) && string.IsNullOrWhiteSpace(textBoxPassword.Text))
+            if (string.IsNullOrWhiteSpace(textBoxUserName.Text) || string.IsNullOrWhiteSpace(textBoxPassword.Text))
             {
-                //Super admin validation
-                if (textBoxUserName.Text == Constant.SUPER_ADMIN_USER_NAME && textBoxPassword.Text == Constant.SUPER_ADMIN_PASSWORD)
-                {
-                    this.DialogResult = DialogResult.OK;
-                    return;
-                }
-                //check user/password
-                Logger.getLogger().append("Start to check user/password from DB", Level.DEBUG, Category.COMMON);
-                DbParameter[] dbParameter ={
+                MessageBox.Show("User or Password is invalid.");
+                return;
+            }
+
+            //Super admin validation
+            if (textBoxUserName.Text == Constant.SUPER_ADMIN_USER_NAME && textBoxPassword.Text == Constant.SUPER_ADMIN_PASSWORD)
+            {
+                this.DialogResult = DialogResult.OK;
+                return;
+            }
+            //check user/password
+            Logger.getLogger().append("Start to check user/password from DB", Level.DEBUG, Category.COMMON);
+            DbParameter[] dbParameter ={
                 HandlerFactory.getDbHandler().generateDbParameter("name", textBoxUserName.Text),
                 HandlerFactory.getDbHandler().generateDbParameter("password", textBoxPassword.Text)
                                           };
-                int validUserCount = int.Parse(HandlerFactory.getDbHandler().getValue("select count(*) from payer where name=@name and password=@password", dbParameter).ToString());
-                if (validUserCount > 0)
-                {
-                    this.DialogResult = DialogResult.OK;
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show("User/Password are not correct!");
-                    textBoxUserName.Focus();
-                }
+            int validUserCount = int.Parse(HandlerFactory.getDbHandler().getValue("select count(*) from payer where name=@name and password=@password", dbParameter).ToString());
+            if (validUserCount > 0)
+            {
+                this.DialogResult = DialogResult.OK;
+                return;
             }
             else
             {
-                MessageBox.Show("User or Password is invalid.");
+                MessageBox.Show("User/Password are not correct!");
+                textBoxUserName.Focus();
             }
-
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -86,8 +84,8 @@ namespace JeanieMoney.Forms
 
             labelUserName.Top = HandlerFactory.getConfigHandler().getInteger("Configuration/Layout/Top");
             labelPassword.Top = labelUserName.Top + labelUserName.Height + 15;
-            textBoxUserName.Top = labelUserName.Top-4;
-            textBoxPassword.Top = labelPassword.Top-4;
+            textBoxUserName.Top = labelUserName.Top - 4;
+            textBoxPassword.Top = labelPassword.Top - 4;
 
             buttonOK.Left = (this.Width - buttonOK.Width - buttonCancel.Width) / 3;
             buttonCancel.Left = buttonOK.Left * 2 + buttonOK.Width;

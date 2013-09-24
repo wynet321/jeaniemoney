@@ -15,7 +15,7 @@ namespace ClassLibrary.lib
         }
         public string getString(string key)
         {
-            Logger.getLogger().append("ConfigHandler.getString() start - parameter key=" + key + "'", Level.DEBUG, Category.LIB);
+            Logger.getLogger().append("ConfigHandler.getString() start - parameter key='" + key + "'", Level.DEBUG, Category.LIB);
             string result = getValue(key);
             if (string.IsNullOrWhiteSpace(result))
             {
@@ -39,13 +39,13 @@ namespace ClassLibrary.lib
             {
                 Logger.getLogger().append("ConfigHandler.getInteger() - parameter key='" + key + "', Message='" + e.Message + "'", Level.ERROR, Category.LIB);
             }
-            Logger.getLogger().append("ConfigHandler.getInteger() end - return value resultInteger=" + resultInteger, Level.DEBUG, Category.LIB);
+            Logger.getLogger().append("ConfigHandler.getInteger() end - return value resultInteger='" + resultInteger+"'", Level.DEBUG, Category.LIB);
             return resultInteger;
         }
 
         public short getShort(string key)
         {
-            Logger.getLogger().append("ConfigHandler.getShort() start - parameter key=" + key + "'", Level.DEBUG, Category.LIB);
+            Logger.getLogger().append("ConfigHandler.getShort() start - parameter key='" + key + "'", Level.DEBUG, Category.LIB);
             string resultString = getValue(key);
             short resultShort = 0;
             try
@@ -56,7 +56,7 @@ namespace ClassLibrary.lib
             {
                 Logger.getLogger().append("ConfigHandler.getShort() - parameter key='" + key + "', Message='" + e.Message + "'", Level.ERROR, Category.LIB);
             }
-            Logger.getLogger().append("ConfigHandler.getShort() end - return value resultShort=" + resultShort, Level.DEBUG, Category.LIB);
+            Logger.getLogger().append("ConfigHandler.getShort() end - return value resultShort='" + resultShort+"'", Level.DEBUG, Category.LIB);
             return resultShort;
         }
     }

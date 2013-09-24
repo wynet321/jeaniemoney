@@ -34,49 +34,57 @@ namespace ClassLibrary
         {
             if (categoryList.Contains(category) && lineLevel >= level)
             {
-                text += DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + message + "\r";
-                if (text.Length >= textWriteUnitSize)
-                {
-                    writeToLogFile(text.Substring(0, textWriteUnitSize));
-                    text = text.Substring(textWriteUnitSize - 1, text.Length - textWriteUnitSize);
-                    textWriteUnitCount++;
-                    if (textWriteUnitCount >= fileSize / textWriteUnitSize)
-                    {
-                        generateNewLogFile();
-                        textWriteUnitCount = 0;
-                    }
-                }
+                text += DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + lineLevel.ToString() + " " + category.ToString() + " " + message + "\r";
+                flush(false);
             }
         }
-        private void writeToLogFile(string logText)
+        public override void flush(bool flashAll)
         {
+            //int lengthAlreadyInLog=0;
             if (File.Exists(path))
+            {
+                //lengthAlreadyInLog = File.ReadAllText(path).Length;
                 streamWriter = File.AppendText(path);
+            }
             else
                 streamWriter = File.CreateText(path);
-            //streamWriter.WriteLine("{0} {1} {2}", DateTime.Now.ToShortDateString(), DateTime.Now.ToShortTimeString(), logText);
-            streamWriter.Write(logText);
-            streamWriter.Flush();
+            while (text.Length >= textWriteUnitSize)
+            {
+                streamWriter.Write(text.Substring(0, textWriteUnitSize));
+                streamWriter.Flush();
+                text = text.Substring(textWriteUnitSize, text.Length - textWriteUnitSize);
+                textWriteUnitCount++;
+                if (textWriteUnitCount >= fileSize / textWriteUnitSize)
+                {
+                    streamWriter.Close();
+                    generateNewLogFile();
+                    textWriteUnitCount = 0;
+                    streamWriter = File.CreateText(path);
+                }
+            }
+            if(flashAll)
+                streamWriter.Write(text);
             streamWriter.Close();
         }
         private void generateNewLogFile()
         {
-            int i = fileCount - 1;
-            while (i >= 0)
+            if (fileCount == 1 && File.Exists(path))
+                File.Delete(path);
+            else
             {
-                if (File.Exists(path + "." + i.ToString()))
-                    File.Delete(path + "." + i.ToString());
-                if (i == 0)
-                    File.Move(path, path + "." + i.ToString());
-                else
-                    File.Move(path + "." + (i - 1).ToString(), path + "." + i.ToString());
-                --i;
+                int i = fileCount - 1;
+                while (i > 1)
+                {
+                    if (File.Exists(path + "." + i.ToString()))
+                        File.Delete(path + "." + i.ToString());
+                    if (File.Exists(path + "." + (i - 1).ToString()))
+                        File.Move(path + "." + (i - 1).ToString(), path + "." + i.ToString());
+                    --i;
+                }
+                if (File.Exists(path + ".1"))
+                    File.Delete(path + ".1");
+                File.Move(path, path + ".1");
             }
         }
-        public override void flush()
-        {
-            writeToLogFile("");
-        }
-
     }
 }

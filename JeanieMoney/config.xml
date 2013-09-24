@@ -7,7 +7,7 @@
   <Log>
     <Level>debug</Level>
     <FileName>.\JeanieMoney.log</FileName>
-    <FileCount>2</FileCount>
+    <FileCount>5</FileCount>
     <FileSize>1024000</FileSize>
     <Category>
       <DB>true</DB>
