@@ -35,7 +35,7 @@ namespace JeanieMoney.Forms
                 return;
             }
             //check user/password
-            Logger.getLogger().append("Start to check user/password from DB", Level.DEBUG, Category.COMMON);
+            HandlerFactory.getLogHandler().append("Start to check user/password from DB", Level.DEBUG, Category.COMMON);
             DbParameter[] dbParameter ={
                 HandlerFactory.getDbHandler().generateDbParameter("name", textBoxUserName.Text),
                 HandlerFactory.getDbHandler().generateDbParameter("password", textBoxPassword.Text)
