@@ -26,11 +26,11 @@ namespace ClassLibrary.lib
         //Get XML node value from xml string
         protected String getValue(String nodePath)
         {
-            Logger.getLogger().append("XmlHandler.getValue() start - parameter nodePath=" + nodePath + "'", Level.DEBUG, Category.LIB);
+            Logger.getLogger().append("XmlHandler.getValue() start - parameter nodePath='" + nodePath + "'", Level.DEBUG, Category.LIB);
             string result = string.Empty;
             if (string.IsNullOrWhiteSpace(nodePath))
             {
-                Logger.getLogger().append("XmlHandler.getValue() warning - invalid parameter nodePath=" + nodePath + "'", Level.WARN, Category.LIB);
+                Logger.getLogger().append("XmlHandler.getValue() warning - invalid parameter nodePath='" + nodePath + "'", Level.WARN, Category.LIB);
                 return result;
             }
             try
@@ -77,7 +77,7 @@ namespace ClassLibrary.lib
             List<String> elementList = new List<String>();
             if (nodePath == null)
             {
-                Logger.getLogger().append("Return empty list", Level.WARN, Category.LIB);
+                Logger.getLogger().append("XmlHandler.getElementListByNodePath() - Return empty list", Level.WARN, Category.LIB);
                 return elementList;
             }
             XPathNodeIterator node;

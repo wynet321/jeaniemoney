@@ -40,7 +40,7 @@ namespace ClassLibrary
                 return;
             foreach (Handler handler in handlers)
             {
-                handler.flush();
+                handler.flush(true);
             }
         }
     }

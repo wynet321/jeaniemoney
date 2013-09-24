@@ -30,8 +30,7 @@ namespace JeanieMoney
             Logger.getLogger().addHandler(new FileHandler(Config.getConfig()));
             Logger.getLogger().addHandler(new ConsoleHandler(Config.getConfig()));
 
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(CurrentDomain_ProcessExit);
-
+            Application.ApplicationExit+= new EventHandler(CurrentDomain_ProcessExit);
             Login login = new Login();
             login.ShowDialog();
             if (login.DialogResult == DialogResult.OK)
@@ -39,6 +38,7 @@ namespace JeanieMoney
                 Main main = new Main();
                 Application.Run(main);
             }
+            Logger.getLogger().flush();
         }
         static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {

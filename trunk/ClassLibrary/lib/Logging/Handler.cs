@@ -11,6 +11,6 @@ namespace ClassLibrary
         protected Level level;
         protected List<Category> categoryList;
         public abstract void write(string message, Level level, Category category);
-        public abstract void flush();
+        public abstract void flush(bool flushAll);
     }
 }

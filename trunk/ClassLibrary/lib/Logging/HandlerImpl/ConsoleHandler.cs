@@ -22,7 +22,7 @@ namespace ClassLibrary
                 System.Console.WriteLine(DateTime.Now.ToShortDateString() + DateTime.Now.ToShortTimeString() + message + "\0");
             }
         }
-        public override void flush()
+        public override void flush(bool flashAll)
         {
             return;
         }
