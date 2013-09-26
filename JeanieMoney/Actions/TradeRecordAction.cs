@@ -12,7 +12,7 @@ namespace JeanieMoney.Actions
 {
     class TradeRecordAction : IAction<TradeRecord>
     {
-        private IDbHandler dbHandler = HandlerFactory.getDbHandler();
+        private DbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(TradeRecord tradeRecord)
         {
             DbParameter[] dbParameterArray ={

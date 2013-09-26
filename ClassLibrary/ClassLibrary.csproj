@@ -45,15 +45,14 @@
   <ItemGroup>
     <Compile Include="lib\Config\LogConfigHandler.cs" />
     <Compile Include="lib\Logging\DataType\Category.cs" />
-    <Compile Include="lib\Logging\Handler\ConsoleHandler.cs" />
-    <Compile Include="lib\Logging\Handler\FileHandler.cs" />
-    <Compile Include="lib\Logging\Handler\Handler.cs" />
-    <Compile Include="lib\Logging\ConfigInfo.cs" />
+    <Compile Include="lib\Logging\Appender\ConsoleAppender.cs" />
+    <Compile Include="lib\Logging\Appender\FileAppender.cs" />
+    <Compile Include="lib\Logging\Appender\Appender.cs" />
     <Compile Include="lib\Logging\DataType\Level.cs" />
     <Compile Include="lib\Config\ConfigHandler.cs" />
-    <Compile Include="lib\DB\Impl\CSqlServerImpl.cs" />
+    <Compile Include="lib\DB\SqlServerHandler.cs" />
     <Compile Include="lib\HandlerFactory.cs" />
-    <Compile Include="lib\DB\IDbHandler.cs" />
+    <Compile Include="lib\DB\DbHandler.cs" />
     <Compile Include="lib\Language\LanguageHandler.cs" />
     <Compile Include="lib\Xml\XmlHandler.cs" />
     <Compile Include="lib\Logging\LogHandler.cs" />

@@ -9,16 +9,15 @@ using ClassLibrary.lib.Handler;
 
 namespace ClassLibrary.lib.DBImpl
 {
-    public class CSqlServerImpl : IDbHandler
+    public class SqlServerHandler : DbHandler
     {
         private SqlConnection sqlConnection;
-
-        public CSqlServerImpl(string connectionString)
+        public SqlServerHandler(string connectionString)
         {
             sqlConnection = new SqlConnection(connectionString);
         }
 
-        public bool isValid()
+        public override bool isValid()
         {
             try
             {
@@ -34,7 +33,7 @@ namespace ClassLibrary.lib.DBImpl
             return true;
         }
 
-        public DbCommand generateDbCommand(string command, DbParameter[] parameters)
+        public override DbCommand generateDbCommand(string command, DbParameter[] parameters)
         {
             SqlCommand sqlCommand = (SqlCommand)sqlConnection.CreateCommand();
             sqlCommand.CommandText = command;
@@ -46,7 +45,7 @@ namespace ClassLibrary.lib.DBImpl
             return sqlCommand;
         }
 
-        public int execCommand(string command, DbParameter[] parameters)
+        public override int execCommand(string command, DbParameter[] parameters)
         {
             SqlCommand dbCommand = (SqlCommand)generateDbCommand(command, parameters);
             int affectedRows = 0;
@@ -71,7 +70,7 @@ namespace ClassLibrary.lib.DBImpl
             return affectedRows;
         }
 
-        public DbParameter generateDbParameter(string parameterName, object value, string objectClassName = "string", System.Data.ParameterDirection parameterDirection = ParameterDirection.Input)
+        public override DbParameter generateDbParameter(string parameterName, object value, string objectClassName = "string", System.Data.ParameterDirection parameterDirection = ParameterDirection.Input)
         {
             SqlParameter sqlParameter = new SqlParameter();
             sqlParameter.ParameterName = parameterName;
@@ -93,7 +92,7 @@ namespace ClassLibrary.lib.DBImpl
             return SqlDbType.VarChar;
         }
 
-        public System.Data.DataTable getDataTable(string command, DbParameter[] parameters)
+        public override DataTable getDataTable(string command, DbParameter[] parameters)
         {
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
             sqlDataAdapter.SelectCommand = (SqlCommand)generateDbCommand(command, parameters);
@@ -119,7 +118,7 @@ namespace ClassLibrary.lib.DBImpl
             return dataTable;
         }
 
-        public object getValue(string command, DbParameter[] parameters)
+        public override object getValue(string command, DbParameter[] parameters)
         {
             SqlCommand sqlCommand = (SqlCommand)generateDbCommand(command, parameters);
             object result = new object();
@@ -144,7 +143,7 @@ namespace ClassLibrary.lib.DBImpl
             return result;
         }
 
-        public int execTranx(IList<SqlCommand> commandList, IList<DbParameter[]> parametersList)
+        public override int execTranx(IList<SqlCommand> commandList, IList<DbParameter[]> parametersList)
         {
             SqlTransaction sqlTranx;
             SqlCommand currentCommand = new SqlCommand(); ;

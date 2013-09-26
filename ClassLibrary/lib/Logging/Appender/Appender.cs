@@ -6,7 +6,7 @@ using System.IO;
 
 namespace ClassLibrary
 {
-    public abstract class Handler
+    public abstract class Appender
     {
         protected Level level;
         protected List<Category> categoryList;

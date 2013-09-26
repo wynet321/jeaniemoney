@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using ClassLibrary.lib.Logging;
+using ClassLibrary.lib;
 
 namespace ClassLibrary
 {
-    public class FileHandler : Handler
+    public class FileAppender : Appender
     {
         private StreamWriter streamWriter;
         private int fileCount;
@@ -17,18 +17,15 @@ namespace ClassLibrary
         private int textWriteUnitSize;
         private int textWriteUnitCount;
 
-        public FileHandler(ConfigInfo config)
+        public FileAppender()
         {
-            fileCount = config.fileCount;
-            fileSize = config.fileSize;
+            fileCount = HandlerFactory.getLogConfigHandler().getInteger("/Configuration/Log/FileAppender/FileCount");
+            fileCount = fileCount < 0 ? 0 : fileCount;
+            fileSize = HandlerFactory.getLogConfigHandler().getInteger("/Configuration/Log/FileAppender/FileSize");
             textWriteUnitSize = (fileSize >= 1024) ? 1024 : fileSize;
-            path = config.path;
-            level = config.level;
-            categoryList = config.categoryList;
-            if (fileCount < 0)
-            {
-                fileCount = 0;
-            }
+            path = HandlerFactory.getLogConfigHandler().getString("/Configuration/Log/FileAppender/FilePath");
+            level = (Level)Enum.Parse(typeof(Level), HandlerFactory.getLogConfigHandler().getString("/Configuration/Log/FileAppender/Level"), true);
+            categoryList = HandlerFactory.getLogConfigHandler().getElementListByNodePath("/Configuration/Log/FileAppender/Category").ConvertAll(new Converter<string, Category>(delegate(string x) { return (Category)Enum.Parse(typeof(Category), x, true); }));
         }
         public override void write(string message, Level lineLevel, Category category)
         {
@@ -40,10 +37,8 @@ namespace ClassLibrary
         }
         public override void flush(bool flashAll)
         {
-            //int lengthAlreadyInLog=0;
             if (File.Exists(path))
             {
-                //lengthAlreadyInLog = File.ReadAllText(path).Length;
                 streamWriter = File.AppendText(path);
             }
             else
@@ -62,7 +57,7 @@ namespace ClassLibrary
                     streamWriter = File.CreateText(path);
                 }
             }
-            if(flashAll)
+            if (flashAll)
                 streamWriter.Write(text);
             streamWriter.Close();
         }

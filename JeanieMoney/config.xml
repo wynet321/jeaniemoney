@@ -5,16 +5,27 @@
     <ConnectionString>Data Source=localhost\sqlexpress;Initial Catalog=JeanieMoneyDev;User id=sa;Password=flhs1net;</ConnectionString>
   </Database>
   <Log>
-    <Level>debug</Level>
-    <FileName>.\JeanieMoney.log</FileName>
-    <FileCount>5</FileCount>
-    <FileSize>1024000</FileSize>
-    <Category>
-      <DB>true</DB>
-      <GUI>true</GUI>
-      <LIB>true</LIB>
-      <COMMON>true</COMMON>
-    </Category>
+    <FileAppender>
+      <Level>debug</Level>
+      <FilePath>.\JeanieMoney.log</FilePath>
+      <FileCount>5</FileCount>
+      <FileSize>1024000</FileSize>
+      <Category>
+        <DB>true</DB>
+        <GUI>true</GUI>
+        <LIB>true</LIB>
+        <COMMON>true</COMMON>
+      </Category>
+    </FileAppender>
+    <ConsoleAppender>
+      <Level>debug</Level>
+      <Category>
+        <DB>true</DB>
+        <GUI>true</GUI>
+        <LIB>true</LIB>
+        <COMMON>true</COMMON>
+      </Category>
+    </ConsoleAppender>
   </Log>
   <Layout>
     <Left>20</Left>

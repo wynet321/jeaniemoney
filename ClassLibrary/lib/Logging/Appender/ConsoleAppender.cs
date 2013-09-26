@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using ClassLibrary.lib.Logging;
+using ClassLibrary.lib;
 
 namespace ClassLibrary
 {
-    public class ConsoleHandler : Handler
+    public class ConsoleAppender : Appender
     {
         //Console handler only need set level and categoryList before use.
-        public ConsoleHandler(ConfigInfo config)
+        public ConsoleAppender()
         {
-            level = config.level;
-            categoryList = config.categoryList;
+            level = (Level)Enum.Parse(typeof(Level), HandlerFactory.getLogConfigHandler().getString("/Configuration/Log/FileAppender/Level"), true);
+            categoryList = HandlerFactory.getLogConfigHandler().getElementListByNodePath("/Configuration/Log/FileAppender/Category").ConvertAll(new Converter<string, Category>(delegate(string x) { return (Category)Enum.Parse(typeof(Category), x, true); }));
         }
         public override void write(string message, Level lineLevel, Category category)
         {
