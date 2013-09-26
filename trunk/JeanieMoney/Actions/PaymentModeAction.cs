@@ -12,7 +12,7 @@ namespace JeanieMoney.Actions
 {
     class PaymentModeAction : IAction<PaymentMode>
     {
-        private IDbHandler dbHandler = HandlerFactory.getDbHandler();
+        private DbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(PaymentMode paymentMode)
         {
             DbParameter[] dbParameterArray ={

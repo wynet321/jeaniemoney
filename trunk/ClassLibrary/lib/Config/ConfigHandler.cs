@@ -16,14 +16,14 @@ namespace ClassLibrary.lib
         public string getString(string key)
         {
             HandlerFactory.getLogHandler().append("ConfigHandler.getString() start - parameter key='" + key + "'", Level.DEBUG, Category.LIB);
-            string result = getValue(key);
-            if (string.IsNullOrWhiteSpace(result))
+            string resultString = getValue(key);
+            if (string.IsNullOrWhiteSpace(resultString))
             {
-                HandlerFactory.getLogHandler().append("ConfigHandler.getString() - invalid parameter key='" + key + "'", Level.ERROR,Category.LIB);
-                result = "";
+                HandlerFactory.getLogHandler().append("ConfigHandler.getString() - invalid parameter key='" + key + "'", Level.ERROR, Category.LIB);
+                resultString = "";
             }
-            HandlerFactory.getLogHandler().append("ConfigHandler.getString() end - return value result='" + result + "'", Level.DEBUG, Category.LIB);
-            return result;
+            HandlerFactory.getLogHandler().append("ConfigHandler.getString() end - return value resultString='" + resultString + "'", Level.DEBUG, Category.LIB);
+            return resultString;
         }
 
         public int getInteger(string key)
@@ -39,7 +39,7 @@ namespace ClassLibrary.lib
             {
                 HandlerFactory.getLogHandler().append("ConfigHandler.getInteger() - parameter key='" + key + "', Message='" + e.Message + "'", Level.ERROR, Category.LIB);
             }
-            HandlerFactory.getLogHandler().append("ConfigHandler.getInteger() end - return value resultInteger='" + resultInteger+"'", Level.DEBUG, Category.LIB);
+            HandlerFactory.getLogHandler().append("ConfigHandler.getInteger() end - return value resultInteger='" + resultInteger + "'", Level.DEBUG, Category.LIB);
             return resultInteger;
         }
 
@@ -56,7 +56,7 @@ namespace ClassLibrary.lib
             {
                 HandlerFactory.getLogHandler().append("ConfigHandler.getShort() - parameter key='" + key + "', Message='" + e.Message + "'", Level.ERROR, Category.LIB);
             }
-            HandlerFactory.getLogHandler().append("ConfigHandler.getShort() end - return value resultShort='" + resultShort+"'", Level.DEBUG, Category.LIB);
+            HandlerFactory.getLogHandler().append("ConfigHandler.getShort() end - return value resultShort='" + resultShort + "'", Level.DEBUG, Category.LIB);
             return resultShort;
         }
     }

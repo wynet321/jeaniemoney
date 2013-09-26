@@ -12,7 +12,7 @@ namespace JeanieMoney.Actions
 {
     class CategoryAction:IAction<Category>
     {
-        private IDbHandler dbHandler = HandlerFactory.getDbHandler();
+        private DbHandler dbHandler = HandlerFactory.getDbHandler();
         private DbParameter[] generateDbParameterArray(Category category)
         {
             DbParameter[] dbParameterArray ={

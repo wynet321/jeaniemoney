@@ -2,36 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ClassLibrary.lib;
 
 namespace ClassLibrary
 {
     public class LogHandler
     {
-        private List<Handler> handlers = new List<Handler>();
-        public void addHandler(Handler handler)
+        private List<Appender> appenders = new List<Appender>();
+        public LogHandler()
         {
-            if (handler != null)
-                handlers.Add(handler);
-        }
-        public void removeHandler(Handler handler)
-        {
-            if (handler != null)
-                handlers.Remove(handler);
+            List<string> appenderstringlist = new List<string>();
+            appenderstringlist = HandlerFactory.getLogConfigHandler().getElementListByNodePath("/Configuration/Log");
+            foreach (string appender in appenderstringlist)
+            {
+                switch (appender)
+                {
+                    case "FileAppender": appenders.Add(new FileAppender()); break;
+                    case "ConsoleAppender": appenders.Add(new ConsoleAppender()); break;
+                }
+            }
         }
         public void append(string message, Level level, Category category)
         {
-            if (handlers.Count == 0)
-                return;
-            foreach (Handler handler in handlers)
+            foreach (Appender handler in appenders)
             {
                 handler.write(message, level, category);
             }
         }
         public void flush()
         {
-            if (handlers.Count == 0)
-                return;
-            foreach (Handler handler in handlers)
+            foreach (Appender handler in appenders)
             {
                 handler.flush(true);
             }
